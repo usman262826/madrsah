@@ -1,0 +1,1447 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>দারুল উলূম মাদানিয়া মহিলা মাদ্রাসা</title>
+  <link href="https://fonts.maateen.me/kalpurush/font.css" rel="stylesheet">
+  <style>
+    *
+     {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Bornomala';
+      background-color: #00547e;
+    }
+    @font-face {
+      font-family: 'JunudullahZami';
+      src: url('ফন্ট/FN Junudullah Zami.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'Sheikh Hasina';
+      src: url('ফন্ট/Li Sheikh Hasina 2 Unicode.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: 'Headline Bangla';
+      src: url('ফন্ট/Headline Bangla Unicode Italic.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: 'Bornomala-Bold';
+      src: url('ফন্ট/Bornomala-Bold.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: 'Bornomala';
+      src: url('ফন্ট/Bornomala-Regular.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    header {
+      background-color: #004658;
+      text-align: center;
+      padding: 10px;
+    }
+
+    .header-logo {
+      max-width: 800px;
+      width: 100%;
+      align-items: center;
+    }
+
+    nav {
+      background-color: #005d73;
+      padding: -3px;
+      position: relative;
+    }
+
+    .menu-icon {
+      display: none;
+      font-size: 26px;
+      color: white;
+      padding: 0px 16px;
+      cursor: pointer;
+      width: 100%;
+      background-color: #005d73;
+      text-align: right;
+    }
+
+    nav ul {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      list-style: none;
+      padding: 10px;
+      margin: 0;
+    }
+
+    nav ul li {
+      margin: 5px 10px;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+      padding: 8px 12px;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    nav ul li a:hover,
+    nav ul li a.active {
+      background-color: #007d9c;
+      font-weight: bold;
+    }
+
+    nav ul li a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #a2ebff, #ffffff);
+      left: 0;
+      bottom: 0;
+      transition: 0.4s;
+    }
+
+    nav ul li a:hover::after {
+      width: 100%;
+    }
+
+    .page {
+      display: none;
+      padding: 30px;
+      max-width: 1000px;
+      margin: auto;
+      background-color: rgba(255, 255, 255, 0.95);
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    h2 {
+      text-align: center;
+      color: #222;
+      margin-bottom: 15px;
+    }
+
+    p {
+      font-size: 16px;
+      color: #333;
+      text-align: justify;
+    }
+
+    /* Gallery styles */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .gallery-grid img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      object-fit: cover;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+      transform: scale(1);
+      opacity: 0;
+      transition: transform 0.5s ease, box-shadow 0.5s ease, opacity 0.8s ease;
+    }
+
+    .gallery-grid img:hover {
+      transform: scale(1.06);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .gallery-grid img.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .menu-icon {
+        display: block;
+      }
+
+      nav ul {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        position: absolute;
+        background-color: #005d73;
+        z-index: 100;
+      }
+
+      nav ul.show {
+        display: flex;
+      }
+    }
+
+    /* Background Animation */
+    .animated-bg::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(-45deg, #e0f7ff, #d9efff, #f0faff, #d3f6ff);
+      background-size: 400% 400%;
+      z-index: -1;
+      animation: gradientFlow 20s ease infinite;
+    }
+
+    @keyframes gradientFlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <img class="header-logo" src="jpg/ওয়েব-সাইট.png" alt="মাদ্রাসা লোগো ও নাম" />
+  </header>
+
+  <nav>
+    <div class="menu-icon" onclick="toggleMenu()">☰</div>
+    <ul id="menuList">
+      <li><a href="#" onclick="showPage('home')">হোম</a></li>
+      <li><a href="#" onclick="showPage('porichiti')">পরিচিতি</a></li>
+      <li><a href="#" onclick="showPage('bivag')">বিভাগ সমূহ</a></li>
+      <li><a href="#" onclick="showPage('voisisso')">বৈশিষ্ট্য</a></li>
+      <li><a href="#" onclick="showPage('vorti')">ভর্তি তথ্য</a></li>
+      <li><a href="#" onclick="showPage('routine')">রুটিন</a></li>
+      <li><a href="#" onclick="showPage('result')">রেজাল্ট</a></li>
+      <li><a href="#" onclick="showPage('gallery')">গ্যালারি</a></li>
+      <li><a href="#" onclick="showPage('contact')">যোগাযোগ</a></li>
+    </ul>
+  </nav>
+
+
+
+
+
+  <!-- Sections -->
+
+  <!-- হোম -->
+  <section id="home" class="page animated-bg">
+      <style>
+        .animated-img {
+          width: 100%;
+          max-width: 800px;
+          margin: 30px auto;
+          display: block;
+          border-radius: 12px;
+          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+          opacity: 0;
+          transform: translateY(30px);
+          transition: all 0.2s ease;
+        }
+
+        .animated-img.visible {
+          opacity: 1;
+          transform: translateY(0);
+        }
+
+        .animated-img:hover {
+          transform: scale(1.03);
+          box-shadow: 0 14px 30px rgba(0, 0, 0, 0.25);
+        }
+
+        body {
+          font-family: 'SolaimanLipi', Arial, sans-serif;
+          background: linear-gradient(to right, #e0f7fa, #e0f2f1);
+          margin: 0;
+          padding: 0;
+        }
+    
+        .container {
+          display: flex;
+          flex-wrap: wrap;
+          padding: 30px;
+          max-width: 1200px;
+          margin: auto;
+        }
+    
+        .left, .right {
+          flex: 1 1 500px;
+          padding: 20px;
+        }
+    
+        .headline {
+          font-size: 40px;
+          font-family: 'JunudullahZami';
+          text-align: center;
+          color: #006699;
+          margin-bottom: 0px;
+          margin-top: 30px;
+        }
+    
+        .campus-title {
+          text-align: center;
+          line-height: 30px;
+          font-family: 'bornomala';
+          font-size: 35px;
+          font-weight: bold;
+          color: #d60000;
+          margin-bottom: 15px;
+        }
+    
+        .left p, .left li {
+          font-size: 19px;
+          line-height: 1.2;
+          height: auto; ;
+          color: #333;
+        }
+    
+        .highlight {
+          font-size: 30px;
+          color: #ccc;
+          font-family: 'sheikh hasina' ;
+          text-align: center;
+          margin-top: 20px;
+          margin-bottom: 10px;
+          background-color: #d35400;
+        }
+        .right img {
+          max-width: 100%;
+          border-radius: 10px;
+          box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+    
+        .right p {
+          font-size: 18px ;
+          margin-top: 10px;
+          color: #000000;
+          line-height: 20px;
+        }
+      </style>
+    <div class="headline">  <a> ইলমের আলোয় গড়ে তুলুন আপনার কন্যার উজ্জ্বল ভবিষ্যৎ! </a> </div>
+    <div class="container">
+      <div class="left">
+        <p>নারী শিক্ষার আলোকিত পথ<br>
+        আমরা কুরআন, হাদিস এবং ইসলামীক শিক্ষা প্রদানের মাধ্যমে একটি নৈতিক ও সুপথগামী সমাজ তৈরিতে প্রতিশ্রুতিবদ্ধ।</p>
+        <ul>
+          <li>ইসলামী শিক্ষা | নৈতিক উন্নতি | আধ্যাত্মিক বিকাশ</li>
+          <li>সর্বোচ্চ শিক্ষামান, সর্বাধুনিক পরিবেশ ও সর্বক্ষণিক আমলী</li>
+          <li>জিন্দেগীর বাইরে অনুপমভাবে আমরা বন্ধপরিকর</li>
+        </ul>
+         <div class="highlight" > <a> আমাদের লক্ষ্য ও উদ্দেশ্য: </a> </div>
+        <p> আল্লাহ তা’আলার সন্তুষ্টি অর্জনই আমাদের মূল লক্ষ্য। তাওহীদ ও সুন্নাহর প্রতিপত্তি,
+           শিরক-বিদআতের নিরসন এবং বিশুদ্ধ কুরআনী শিক্ষা প্রচারের মাধ্যমে দ্বীনদার কুরআনের ধারক-বাহক গড়ে তোলা।</p>
+      </div>
+    
+
+      <div class="right">
+        <div class="campus-title">মাদারসার নিজস্ব ক্যাম্পাস</div>
+        <img src="jpg/dummm-campus.jpg" alt="মাদ্রাসা ছবি" class="animated-img">
+        <p>২০১৭ সালে মেঘনা উপজেলার নয়া কাঁন্দারগাঁও এলাকায় প্রতিষ্ঠিত এই প্রতিষ্ঠানটি নিজস্ব ভবনে আধুনিক ও শান্ত পরিবেশে মানসম্মত জেনারেল ও দ্বীনি শিক্ষা প্রদান করছে।</p>
+      </div>
+    </div>
+    <h1>ভবিষ্যৎ পরিকল্পনা </h>
+    <p>
+      আমরা ইনশাআল্লাহ মাদ্রাসাটিকে আন্তর্জাতিক মানের দ্বীনি শিক্ষা প্রতিষ্ঠানে রূপান্তর করার লক্ষ্যে কাজ করছি। প্রযুক্তির সহায়তায় অনলাইন পাঠদান, অনলাইন রেজাল্ট সিস্টেম এবং আধুনিক পাঠ্য উপকরণ প্রবর্তনের উদ্যোগ নেওয়া হচ্ছে।
+    </p>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const animatedImages = document.querySelectorAll('.animated-img');
+    
+        const observer = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+            }
+          });
+        }, {
+          threshold: 0.1
+        });
+    
+        animatedImages.forEach(img => observer.observe(img));
+      });
+    </script>    
+  </section>
+
+
+
+
+
+
+
+<!-- পরিচিতি -->
+  <section id="porichiti" class="page animated-bg">
+    <h2>প্রতিষ্ঠান পরিচিতি</h2>
+    <p>
+      ২০১৭ সালে প্রতিষ্ঠিত "দারুল উলূম মাদানিয়া মহিলা মাদ্রাসা" একটি নির্ভরযোগ্য ইসলামী শিক্ষা কেন্দ্র, যেখানে মুসলিম নারীদের জন্য কুরআন, হাদীস, তাফসীর, ফিকহসহ অন্যান্য ইসলামিক বিষয়ে পূর্ণাঙ্গ পাঠদান করা হয়।
+    </p>
+    <p>
+      মাদ্রাসাটির মূল লক্ষ্য হলো — নারী সমাজকে দ্বীনি শিক্ষায় শিক্ষিত করে তাদেরকে একজন আল্লাহভীরু, আদর্শ মা, স্ত্রী ও সমাজসেবী রূপে গড়ে তোলা।
+    </p>
+    
+    <p>❝ নারী শিক্ষার আলোকিত পথ ❞</p>
+    <p>
+      দারুল উলূম মাদানিয়া মহিলা মাদ্রাসা একটি আদর্শ দ্বীনি শিক্ষা প্রতিষ্ঠান, যেখানে কুরআন, হাদিস এবং আধুনিক শিক্ষার সমন্বয়ে ছাত্রীরা দ্বীনের জ্ঞান অর্জনের পাশাপাশি বাস্তব জীবনেও একজন আদর্শ নারী হিসেবে গড়ে ওঠে।
+    </p>
+    <style>
+      .animated-img {
+        width: 100%;
+        max-width: 800px;
+        margin: 30px auto;
+        display: block;
+        border-radius: 12px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.33s ease;
+      }
+    
+      .animated-img.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    
+      .animated-img:hover {
+        transform: scale(1.03);
+        box-shadow: 0 14px 30px rgba(0, 0, 0, 0.25);
+      }
+    </style>     
+    <img src="jpg/dummm-campus.jpg" alt="মাদ্রাসা ছবি" class="animated-img">
+
+    <h2>আমাদের বৈশিষ্ট্য</h2>
+    <ul>
+      <li>🔹 কুরআন ও হাদীস ভিত্তিক পূর্ণাঙ্গ দ্বীনি শিক্ষা</li>
+      <li>🔹 অভিজ্ঞ ওলামায়ে কেরামের তত্ত্বাবধানে পরিচালিত</li>
+      <li>🔹 আরবি, বাংলা, ইংরেজি, অংক—সব বিষয়ের উপর সমান গুরুত্ব</li>
+      <li>🔹 নিয়মিত পরীক্ষা, পুরস্কার ও ছাত্রীর মান উন্নয়নমূলক কার্যক্রম</li>
+      <li>🔹 নিরাপদ, স্বাস্থ্যসম্মত আবাসন ব্যবস্থা</li>
+      <li>🔹 গরীব, ইয়াতিম ও মেধাবীদের জন্য বিশেষ বৃত্তি</li>
+      <li>🔹 শালীন পোশাক ও পূর্ণ পর্দার ব্যবস্থা</li>
+    </ul>
+  </section>
+
+
+
+
+
+
+
+ <!-- বিভাগ সমূহ -->
+  <section id="bivag" class="page animated-bg">
+    <style>
+      body {
+        font-family: 'kalpurush';
+        background-color: #fffefb;
+        color: #222;
+        margin: 0;
+        padding: 20px;
+      }
+
+      .section {
+        background: #fff;
+        padding: 30px;
+        border-radius: 10px;
+        max-width: 900px;
+        margin: auto;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      }
+
+      h4 {
+        background: lab(28.26% -8.33 -21.88);
+        color: rgb(255, 255, 255);
+        display: inline-block;
+        padding: 0px 100px;
+        border-radius: 5px;
+        margin-bottom: 10px;
+        font-size: 30px; 
+      }
+
+      .division {
+        margin-bottom: 25px;
+      }
+
+      .division h3 {
+        color: #bb0000;
+        margin-bottom: 0px;
+        font-size: 20px;
+      }
+
+      .division p {
+        margin-left: 20px;
+      }
+
+      .division ul {
+        margin-left: 40px;
+        line-height: 22px;
+        list-style: "► ";
+      }
+
+      .rules {
+        margin-top: 40px;
+        padding: 20px;
+        background-color: #e8f0fc;
+        border-left: 5px solid #00589e;
+        border-radius: 6px;
+      }
+      .rules h3 {
+        background: #00589e;
+        color: white;
+        display: inline-block;
+        padding: 6px 16px;
+        border-radius: 5px;
+        font-size: 18px;
+        margin-bottom: 10px;
+      }
+
+      .rules ul {
+        padding-left: 25px;
+        margin-top: 10px;
+      }
+
+      .rules ul li {
+        font-size: 18px;
+        margin-bottom: 5px;
+      }
+    </style>
+    </head>
+    <body>
+
+    <div class="section">
+    <h4>বিভাগ সমূহ</h4>
+    <div class="division">
+      <h3>▸ আধুনিক নূরানী বিভাগ :</h3>
+      <p>শিশু শ্রেণী থেকে ৩য় শ্রেণী পর্যন্ত।</p>
+      <ul>
+        <li>শিশু শ্রেণী</li>
+        <li>প্রথম শ্রেণী</li>
+        <li>দ্বিতীয় শ্রেণী</li>
+        <li>তৃতীয় শ্রেণী</li>
+      </ul>
+    </div>
+
+    <div class="division">
+      <h3>▸ নাযেরা বিভাগ:</h3>
+      <p>কুরআন পরিচিতি, তাজবিদ শিক্ষা, হরফ শেখানো, মাখরাজ চর্চা, এবং শুদ্ধভাবে কুরআন দেখে তিলাওয়াত শেখানো।</p>
+    </div>
+
+    <div class="division">
+      <h3>▸ মানসম্পন্ন কিতাব বিভাগ:</h3>
+      <p><strong>খুলুছী জামাত</strong> থেকে <strong>দাওরায়ে হাদিস</strong> পর্যন্ত সম্পূর্ণ কওমী নেসাব।</p>
+      <ul>
+        <li><strong>খুসুছি:</strong> ইবতেদায়িয়া রাবে (প্রাথমিক - চতুর্থ শ্রেণী সমমান)</li>
+        <li><strong>খামেস:</strong> ইবতেদায়িয়া খামস (প্রাথমিক - পঞ্চম শ্রেণী সমমান)</li>
+        <li><strong>মিযান:</strong> মুতাওয়াসসিতাহ আওয়াল (নিম্ন মাধ্যমিক - ষষ্ঠ শ্রেণী সমমান)</li>
+        <li><strong>নাহবেমীর:</strong> মুতাওয়াসসিতাহ ছানি (নিম্ন মাধ্যমিক - সপ্তম শ্রেণী সমমান)</li>
+        <li><strong>কুদূরী:</strong> সানাবিয়্যা আউয়াল (মাধ্যমিক- এস.এস.সি./দাখিল সমমান)</li>
+        <li><strong>শরহে বেকায়া:</strong> সানাবিয়্যা ছানী (মাধ্যমিক- এস.এস.সি./দাখিল সমমান):</li>
+        <li><strong>হেদায়া:</strong> ফজিলত আউয়াল (স্নাতক- বি.এ./ডিগ্রী/ফাযিল সমমান)</li>
+        <li><strong>মেশকাত:</strong> ফজিলত ছানী (স্নাতক- বি.এ./ডিগ্রী/ফাযিল সমমান)</li>
+        <li><strong>দাওরায়ে হাদিস:</strong> তাকমিল (স্নাতকোত্তর- এম.এ./কামিল সমমান)</li>
+      </ul>
+    </div>
+
+    <div class="rules">
+      <h3>ছাত্রীদের জন্য নিয়মাবলী</h3>
+      <ul>
+        <li>মাদ্রাসা কর্তৃপক্ষের প্রণীত তালিকা বহির্ভূত কোনো পোশাক-পরিচ্ছেদ, খেলনা সামগ্রী বা অন্য কোনো জিনিস মাদ্রাসায় আনা যাবে না।</li>
+        <li>কর্তৃপক্ষের অনুমতি ব্যতীত মাদ্রাসার গেইট এর বাইরে কোনো অবস্থাতেই যাওয়া যাবে না।</li>
+        <li>মাদ্রাসার ভিতরে ছাত্রী এবং শিক্ষককের মধ্যে কোনো ব্যক্তিগত আচার-ব্যবহার সম্পূর্ণ নিষেধ।</li>
+        <li>ছাত্রীদের নিকট মোবাইল ফোন, মেমোরি, সিম, ইন্টারনেট সম্পূর্ণ নিষেধ।</li>
+      </ul>
+    </div>
+    </div>
+  </section>
+
+
+
+
+
+  <!-- বৈশিষ্ট্য --> 
+  <section id="voisisso" class="page animated-bg">
+      <div class="animated-bg"></div>
+      <div class="feature-container">
+        <h1 class="headline">
+          সর্বোচ্চ শিক্ষামান, সর্বাধুনিক পরিবেশ ও সার্বক্ষণিক আমলী জিন্দেগীর বাস্তব অনুশীলনে আমরা বদ্ধপরিকর।
+        </h1>
+
+        <div class="section-box">
+          <h3 class="section-title">🎯 লক্ষ্য ও উদ্দেশ্য</h3>
+          <p class="section-text">
+            আল্লাহ তা'আলার সন্তুষ্টি অর্জনই প্রতিষ্ঠানের মূল লক্ষ্য। তাওহীদ ও সুন্নাহ প্রতিষ্ঠা এবং শিরক ও বিদআতসহ সকল বাতিল অপসংস্কৃতির মূলোৎপাটন। নৈতিকতা, কুরআন ও সুন্নাহর শিক্ষায় আদর্শ পর্দানশীল যুগোপযোগী আলেমা হিসেবে তৈরি করা। 
+            পরকালীন মুক্তি লাভের উদ্দেশ্যে বিশুদ্ধ তিলাওয়াত ও ইসলামী আদর্শে গড়ে তোলা পূর্ণাঙ্গ দ্বীনদার প্রজন্ম গঠনের দৃঢ় প্রত্যয়।
+          </p>
+        </div>
+
+        <div class="section-box">
+          <h3 class="section-title">⭐ মাদরাসার বৈশিষ্ট্যসমূহ</h3>
+          <ul class="feature-list">
+            <li>📘 যুগশ্রেষ্ঠ ওলামায়ে কেরামের সুচিন্তিত পরামর্শে পরিচালিত।</li>
+            <li>🕌 সুন্নাতে রাসূল (সা.)-এর আমলী জিন্দেগীর বাস্তব অনুশীলন।</li>
+            <li>👨‍🏫 অভিজ্ঞ ও দক্ষ ওলামা/শিক্ষকদের দ্বারা পাঠদান।</li>
+            <li>💡 আলেমা ও দ্বীনের দায়ী তৈরিতে আমল, আখলাক ও তারবিয়াতের গুরুত্ব।</li>
+            <li>📝 নিয়মিত সাপ্তাহিক ও মাসিক পরীক্ষা।</li>
+            <li>🍛 উন্নত পরিবেশে তিন বেলা সুস্বাদু খাবারের ব্যবস্থা।</li>
+            <li>📚 আরবি শিক্ষার পাশাপাশি বাংলা, অংক ও ইংরেজি শিক্ষার সমন্বয়।</li>
+            <li>📜 বেফাক ও হাইয়াতুল উলয়ার অধীনে পরীক্ষার সুযোগ।</li>
+            <li>🧕 পূর্ণ শরয়ী পর্দার বাস্তবায়ন (হাত মোজা, নেকাব ইত্যাদি)।</li>
+            <li>🏞️ মাদরাসার ভিতরে পর্দাসম্মত হাঁটা-চলার ব্যবস্থা।</li>
+            <li>🎓 গরিব, ইয়াতিম ও মেধাবী ছাত্রীর জন্য বিশেষ সুবিধা।</li>
+          </ul>
+        </div>
+
+        <div class="section-note">
+          🔔 <strong>বি:দ্র:</strong> স্কুল-কলেজের ছাত্রী, কর্মজীবী ও বয়স্ক মহিলাদের জন্য নূরানী পদ্ধতিতে কুরআন শিক্ষা, প্রয়োজনীয় দোয়া ও মাসআলা তালিমের সুব্যবস্থা রয়েছে।
+        </div>
+      </div>
+    </section>
+
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+
+      .feature-section {
+        position: relative;
+        overflow: hidden;
+        font-family: 'Kalpurush', sans-serif;
+        padding: 60px 20px;
+        z-index: 1;
+      }
+
+      @keyframes gradientBG {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+      }
+
+      .feature-container {
+        max-width: 900px;
+        margin: 0 auto;
+        background: rgba(255, 255, 255, 0.95);
+        padding: 40px;
+        border-radius: 16px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      }
+
+      .headline {
+        text-align: center;
+        color: #004561;
+        font-size: 26px;
+        font-weight: bold;
+        line-height: 1.6;
+        margin-bottom: 30px;
+      }
+
+      .section-box {
+        margin-bottom: 35px;
+      }
+
+      .section-title {
+        background-color: #00749c;
+        color: white;
+        padding: 10px 20px;
+        font-size: 22px;
+        font-weight: bold;
+        border-radius: 6px;
+        margin-bottom: 15px;
+        display: inline-block;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .section-text {
+        font-size: 18px;
+        color: #222;
+        line-height: 1.7;
+        text-align: justify;
+      }
+
+      .feature-list {
+        list-style: none;
+        padding-left: 0;
+      }
+
+      .feature-list li {
+        font-size: 18px;
+        padding: 10px;
+        border-bottom: 1px dashed #ccc;
+        color: #333;
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        transition: background-color 0.3s, transform 0.3s;
+      }
+
+      .feature-list li:hover {
+        background-color: #f0faff;
+        transform: translateX(5px);
+      }
+
+      .section-note {
+        background: #e6faff;
+        border-left: 5px solid #00749c;
+        padding: 15px 20px;
+        font-size: 17px;
+        color: #00415c;
+        border-radius: 6px;
+        margin-top: 30px;
+      }
+
+      @media (max-width: 600px) {
+        .headline {
+          font-size: 20px;
+        }
+
+        .section-title {
+          font-size: 18px;
+        }
+
+        .section-text,
+        .feature-list li,
+        .section-note {
+          font-size: 16px;
+        }
+
+        .feature-container {
+          padding: 20px;
+        }
+      }
+    </style>
+  </section>
+
+
+
+
+<!-- ভর্তি -->
+  <section id="vorti" class="page animated-bg">
+    <style>
+    body {
+      font-family: 'kalpurush';
+      background: linear-gradient(to bottom right, #fdf6e3, #fefcea);
+      color: #222;
+      padding: 20px;
+      line-height: 1.8;
+    }
+    .section {
+      background-color: #ffffffdd;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    h2 {
+      background: linear-gradient(to right, #c0392b, #d35400);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 20px;
+      margin-bottom: 15px;
+      display: inline-block;
+    }
+    ul {
+      padding-left: 20px;
+    }
+    li::marker {
+      color: #00a9d3;
+    }
+    .highlight {
+      background-color: #f39c12;
+      color: white;
+      padding: 0px 8px;
+      border-radius: 4px;
+    }
+    .important {
+      color: red;
+      font-weight: bold;
+      margin-top: 15px;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+      font-family: 'sheikh hasina', sans-serif;
+    }
+
+    .tag-container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin: 40x 40;
+      margin-bottom: 25px;
+      gap: 10px;
+      animation: fadeIn 1s ease-in;
+    }
+
+    .tag {
+      font-size: 25px;
+      background-color: #c0392b;
+      font-family: 'sheikh hasina' ;
+      color: #ffffff;
+      padding: 6px 30px;
+      font-weight: normal;
+      border: none;
+      border-radius: 5px;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      cursor: pointer;
+    }
+
+    .tag:nth-child(2) {
+      background-color: #004e66;
+    }
+
+    .tag:nth-child(3) {
+      background-color: #00759f;
+    }
+
+    .tag:hover {
+      background-color: #003c5a;
+      transform: scale(1.05);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+  <div class="tag-container">
+    <span class="tag">আবাসিক</span>
+    <span class="tag">অনাবাসিক</span>
+    <span class="tag">ডে-কেয়ার</span>
+  </div>
+
+    <div class="section">
+    <h4>ভর্তি তথ্যাবলী</h2>
+    <ul>
+      <li>ভর্তি শুরু ১ম পর্ব ১লা রমজান থেকে এবং ২য় পর্ব ১লা ডিসেম্বর থেকে ১ জানুয়ারী পর্যন্ত।</li>
+      <li>ভর্তির জন্য মাদরাসার নিয়ম-কানুন মেনে চলার যোগ্যতা থাকতে হবে।</li>
+      <li>ভর্তি হওয়ার সময় জন্ম নিবন্ধনের ফটোকপি ও আগের প্রতিষ্ঠানের ছাড়পত্র নিয়ে আসতে হবে।</li>
+      <li>ভর্তি ফরম সংগ্রহ করার সময় শিক্ষর্থীকে সাথে নিয়ে আসতে হবে।</li>
+      <li>প্রত্যেক মাসের বেতন চলতি মাসের ১ তারিখ থেকে ১২ তারিখের মধ্যে পরিশোধ করতে হবে।</li>
+      <li>অভিভাবকের আইডি কার্ডের ফটোকপি ও মোবাইল নাম্বার জমা দিতে হবে।</li>
+    </ul>
+    </div>
+
+    <div class="section">
+    <h2>যোগাযোগ ও সাক্ষাতের সময়</h2>
+    <p><strong>মোবাইল:</strong> প্রতিদিন আসরের পর থেকে মাগরিবের আযানের ১৫ মিনিট পূর্ব পর্যন্ত এবং খানার সময় যোগাযোগ করতে পারবেন।</p>
+    <p><strong>সরাসরি সাক্ষাৎ ও ছুটি:</strong> প্রতিদিন আছরের পর থেকে মাগরিবের ১৫ মিনিট পূর্ব পর্যন্ত এবং শুক্রবার সকাল ৯টা থেকে মাগরিবের ১৫ মিনিট পূর্ব পর্যন্ত সাক্ষাৎ করা যাবে।</p>
+    <p>১৫ দিন পর পর বৃহস্পতিবার তাকরারের পর থেকে শুক্রবার মাগরিব পর্যন্ত ছুটি থাকবে।</p>
+    </div>
+
+    <div class="section">
+    <h2>বাৎসরিক ছুটির দিন</h2>
+    <ul>
+      <li>প্রতি পরীক্ষার পর ৫ দিন করে:   ১৫ দিন 
+      <li>ঈদুল ফিতর: ১২ দিন
+      <li>ঈদুল আযহা: ১২ দিন
+      <li>এ ছাড়া ধর্মীয় ও জাতীয় দিবস সমূহ উদযাপন করা হয়।</li>
+    </ul>
+    <p class="important">বিশেষ কারণ বশত কর্তৃপক্ষ ছুটির তালিকা পরিবর্তন করতে পারেন।</p>
+    </div>
+   
+   <style>
+      body {
+        font-family: 'kalpurush';
+        background: linear-gradient(to bottom, #eaf6ff, #ffffff);
+        color: #333;
+        padding: 20px;
+      }
+    
+      .cost-section {
+        max-width: 1000px;
+        margin: auto;
+        background: linear-gradient(135deg, #ffffff, #e3f4ff);
+        border-radius: 20px;
+        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
+        padding: 40px 30px;
+        animation: fadeInUp 0.8s ease;
+      }
+    
+      @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(30px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+    
+      .cost-section h2 {
+        text-align: center;
+        font-size: 32px;
+        margin-bottom: 35px;
+        color: #004864;
+        position: relative;
+        display: inline-block;
+        border-bottom: 3px solid #004864;
+        padding-bottom: 8px;
+      }
+    
+      .tabs {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-bottom: 30px;
+        gap: 12px;
+      }
+    
+      .tab {
+        padding: 12px 24px;
+        background: #d0ecf8;
+        color: #004864;
+        border: 1px solid #a3d3ea;
+        border-radius: 10px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease, transform 0.2s;
+      }
+    
+      .tab:hover {
+        background-color: #b4e4f8;
+        transform: translateY(-2px);
+      }
+    
+      .tab.active {
+        background-color: #004864;
+        color: #fff;
+        border-color: #004864;
+      }
+    
+      .tab-content {
+        display: none;
+        animation: fadeIn 0.5s ease;
+      }
+    
+      .tab-content.active {
+        display: block;
+      }
+    
+      @keyframes fadeIn {
+        from { opacity: 0; transform: scale(0.97); }
+        to { opacity: 1; transform: scale(1); }
+      }
+    
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+        border-radius: 10px;
+        overflow: hidden;
+        background-color: white;
+      }
+    
+      th, td {
+        border: 1px solid #d0e6f5;
+        padding: 14px 12px;
+        text-align: center;
+        font-size: 16px;
+      }
+    
+      th {
+        background: #004864;
+        color: white;
+        font-weight: bold;
+      }
+    
+      tr:nth-child(even) {
+        background-color: #f4fbff;
+      }
+    
+      tr:hover {
+        background-color: #e6f4fb;
+      }
+    
+      @media (max-width: 600px) {
+        .tabs {
+          flex-direction: column;
+          align-items: center;
+        }
+      }
+    </style>
+    
+    <section class="cost-section">
+      <h2 aria-label="খরচের তালিকা">💰 খরচের তালিকা</h2>
+    
+      <div class="tabs">
+        <div class="tab active" onclick="showTab(0)">📄 ভর্তি খরচ</div>
+        <div class="tab" onclick="showTab(1)">📆 মাসিক বেতন</div>
+      </div>
+    
+      <div class="tab-content active">
+        <table>
+          <tr>
+            <th>বিবরণ</th>
+            <th>শিশু শ্রেণী - ৪র্থ শ্রেণী</th>
+            <th>খুসুছি - দাওরায়ে হাদীস</th>
+          </tr>
+          <tr><td>ভর্তি ফরম</td><td>৫০/-</td><td>৫০/-</td></tr>
+          <tr><td>বেতন কার্ড</td><td>৫০/-</td><td>৫০/-</td></tr>
+          <tr><td>ভর্তি ফি</td><td>১০০০/-</td><td>১৫০০/-</td></tr>
+          <tr><td>বাৎসরিক চাঁদা</td><td>২০০/-</td><td>২০০/-</td></tr>
+          <tr><td>আইডি কার্ড</td><td>২০০/-</td><td>২০০/-</td></tr>
+          <tr><th>মোট</th><th>১৫০০/-</th><th>২০০০/-</th></tr>
+        </table>
+      </div>
+    
+      <div class="tab-content">
+        <table>
+          <tr>
+            <th>বিবরণ</th>
+            <th>শিশু শ্রেণী - ৪র্থ শ্রেণী</th>
+            <th>খুসুছি - দাওরায়ে হাদীস</th>
+          </tr>
+          <tr><td>আবাসিক বেতন</td><td>৬০০/-</td><td>১০০০/-</td></tr>
+          <tr><td>আবাসিক খানা</td><td>২০০০/-</td><td>২০০০/-</td></tr>
+          <tr><td>অনাবাসিক বেতন</td><td>৬০০/-</td><td>১০০০/-</td></tr>
+          <tr><td>বিদ্যুৎ বিল</td><td>১০০/-</td><td>১০০/-</td></tr>
+          <tr><th>মোট (আবাসিক)</th><th>২৬০০/-</th><th>৩০০০/-</th></tr>
+          <tr><th>মোট (অনাবাসিক)</th><th>৭০০/-</th><th>১১০০/-</th></tr>
+        </table>
+      </div>
+    </section>
+    
+    <script>
+      function showTab(index) {
+        const tabs = document.querySelectorAll('.tab');
+        const contents = document.querySelectorAll('.tab-content');
+        tabs.forEach(t => t.classList.remove('active'));
+        contents.forEach(c => c.classList.remove('active'));
+        tabs[index].classList.add('active');
+        contents[index].classList.add('active');
+      }
+    </script>    
+
+    <li>📅 ভর্তি সময়: প্রতি বছর জানুয়ারি ও জুন মাসে</li>
+      <li>📌 আবেদনের যোগ্যতা: বয়স, পূর্ব শিক্ষা, মৌলিক জ্ঞান</li>
+      <li>📄 প্রয়োজনীয় কাগজপত্র: জন্মসনদ, ছবি, অভিভাবকের পরিচয়পত্র</li>
+      <li>📞 যোগাযোগ: সরাসরি অফিসে এসে অথবা ফোনে</li>
+      <li>🎓 বৃত্তির সুযোগ: মেধাবী ও গরীব ছাত্রীর জন্য</li>
+      
+          <li>ভর্তি ফর্ম: <a href="#">ডাউনলোড করুন</a></li> 
+          <li>ভর্তির সময়সূচী</li>
+        </p>      ভর্তি শুরু ১ম পর্ব ১লা রমজান থেকে এবং </p>
+        </p>        ভর্তি শুরু ২য় পর্ব ১লা ডিসেম্বর থেকে ১ জানুয়ারী পর্যন্ত। </p>
+          <li>শর্তাবলী ও ডকুমেন্ট</li>
+      </p> ভর্তির জন্য মাদরাসার নিয়ম-কানুন মেনে চলার যোগ্যতা থাকতে হবে। </p>
+    </p> ভর্তি হওয়ার সময় জন্ম নিবন্ধনের ফটোকপি ও আগের প্রতিষ্ঠানের ছাড়পত্র নিয়ে আসতে হবে। </p>
+    </p>ভর্তি ফরম সংগ্রহ করার সময় শিক্ষর্থীকে সাথে নিয়ে আসতে হবে। </p>
+    </p>প্রত্যেক মাসের বেতন চলতি মাসের ১ তারিখ থেকে ১২ তারিখের মধ্যে পরিশোধ করতে হবে। </p>
+    </p> অভিভাবকের আইডি কার্ডের ফটোকপি, ও অভিভাকের মোবাইল নাম্বার। </p>
+        </ul>
+  </section>
+
+
+
+
+<!-- রুটিন -->
+  <section id="routine" class="page animated-bg">
+    <h2>রুটিন</h2>
+    <p>পাঠদানের রুটিন সপ্তাহের প্রতি দিন নির্ধারিত আছে।</p>
+  </section>
+
+
+
+
+
+<!-- রেজাল্ট -->
+  <section id="result" class="page animated-bg">
+    <h2>রেজাল্ট</h2>
+    <p>সর্বশেষ পরীক্ষার ফলাফল এখানে প্রকাশ করা হয়।</p>
+  </section>
+
+
+
+
+
+<!-- গ্যালারি -->
+  <section id="gallery" class="page animated-bg">
+    <h2><i class="fas fa-images"></i> আমাদের গ্যালারি</h2>
+    <p>মাদ্রাসার কিছু স্মরণীয় মুহূর্ত উপভোগ করুন:</p>
+
+    <div class="gallery-grid">
+      <a href="jpg/photo11.jpg" class="gallery-item glightbox" data-gallery="gallery" data-aos="zoom-in">
+        <img src="jpg/Asset 1-100.jpg" alt="ছবি ১">
+      </a>
+      <a href="jpg/photo2.jpg" class="gallery-item glightbox" data-gallery="gallery" data-aos="fade-up">
+        <img src="jpg/20240216_1342381.jpg" alt="ছবি ২">
+      </a>
+      <a href="jpg/photo3.jpg" class="gallery-item glightbox" data-gallery="gallery" data-aos="zoom-in">
+        <img src="jpg/473834899_1703614356863522_3412771631677724907_n.jpg" alt="ছবি ৩">
+      </a>
+      <a href="jpg/photo4.jpg" class="gallery-item glightbox" data-gallery="gallery" data-aos="fade-up">
+        <img src="jpg/473843620_1703614170196874_8932438696129570475_n.jpg" alt="ছবি ৪">
+      </a>
+      <a href="jpg/photo5.jpg" class="gallery-item glightbox" data-gallery="gallery" data-aos="zoom-in">
+        <img src="jpg/4.jpg" alt="ছবি ৫">
+      </a>
+      <a href="jpg/photo6.jpg" class="gallery-item glightbox" data-gallery="gallery" data-aos="fade-up">
+        <img src="jpg/অফিস-ক্যানভাস1.jpg" alt="ছবি ৬">
+      </a>
+      <a href="jpg/photo7.jpg" class="gallery-item glightbox" data-gallery="gallery" data-aos="zoom-in">
+        <img src="jpg/অফিস-ক্যানভাস2.jpg" alt="ছবি ৭">
+      </a>
+      <a href="jpg/photo8.jpg" class="gallery-item glightbox" data-gallery="gallery" data-aos="fade-up">
+        <img src="jpg/অফিস-ক্যানভাস3.jpg" alt="ছবি ৮">
+      </a>
+      <a href="jpg/photo9.jpg" class="gallery-item glightbox" data-gallery="gallery" data-aos="zoom-in">
+        <img src="jpg/অফিস-ক্যানভাস5.jpg" alt="ছবি ৯">
+      </a>
+      <a href="jpg/photo10.jpg" class="gallery-item glightbox" data-gallery="gallery" data-aos="fade-up">
+        <img src="jpg/অফিস-ক্যানভাস6.jpg" alt="ছবি ১০">
+      </a>
+      <a href="jpg/photo1.jpg" class="gallery-item glightbox" data-gallery="gallery" data-aos="zoom-in">
+        <img src="jpg/dummm-campus.jpg" alt="ছবি ১১" >
+      </a>
+      <a href="jpg/photo12.jpg" class="gallery-item glightbox" data-gallery="gallery" data-aos="fade-up">
+        <img src="jpg/eid-poster.jpg" alt="ছবি ১২">
+      </a>
+    </div>
+  </section>
+
+  <!-- CSS -->
+  <style>
+    .gallery-section {
+      padding: 60px 20px;
+      background: #ffffff;
+      text-align: center;
+      font-family: 'Noto Sans Bengali', sans-serif;
+    }
+
+    .gallery-section h2 {
+      font-size: 30px;
+      color: #004561;
+      margin-bottom: 10px;
+    }
+
+    .gallery-section p {
+      font-size: 18px;
+      color: #555;
+      margin-bottom: 30px;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .gallery-item {
+      display: block;
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      transition: transform 0.4s ease;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+      display: block;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.08);
+    }
+
+    @media (max-width: 600px) {
+      .gallery-grid {
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      }
+
+      .gallery-item img {
+        height: 140px;
+      }
+    }
+  </style>
+
+  <!-- Font Awesome (for icons) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Glightbox CSS & JS -->
+  <link href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+
+  <!-- AOS CSS & JS for Scroll Animation -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init();
+    const lightbox = GLightbox({ selector: '.glightbox' });
+  </script>
+  </section>
+
+
+
+
+
+
+    <!-- যোগাযোগ সেকশন -->
+<section id="contact" class="page animated-bg">
+      <style>
+        .contact-section {
+          font-family: 'kalpurush';' !important;
+          background: linear-gradient(145deg, #ffffff, #f2f7fb) !important;
+          padding: 40px 25px !important;
+          border-radius: 16px !important;
+          max-width: 900px;
+          margin: 20px auto !important;
+          box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08) !important;
+          animation: fadeIn 0.8s ease-in-out;
+          position: relative;
+          overflow: hidden;
+          color: #333 !important;
+        }
+
+        .contact-section::before {
+          content: "";
+          position: absolute;
+          top: -50px;
+          right: -50px;
+          width: 150px;
+          height: 150px;
+          background: radial-gradient(circle, #0077cc33, transparent 70%);
+          border-radius: 50%;
+        }
+
+        @keyframes fadeIn {
+          from { opacity: 0; transform: translateY(10px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+
+        .contact-section h2 {
+          font-size: 30px;
+          text-align: center;
+          color: #002d5d !important;
+          margin-bottom: 30px;
+          border-bottom: 2px solid #0077cc;
+          display: inline-block;
+          padding-bottom: 6px;
+        }
+
+        .contact-section p {
+          font-size: 18px;
+          margin: 15px 0;
+          color: #444 !important;
+          line-height: 1.6;
+        }
+
+        .contact-section i {
+          margin-right: 8px;
+          transition: transform 0.3s ease;
+        }
+
+        .contact-section a {
+          text-decoration: none;
+          color: #005b96 !important;
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          font-weight: 500;
+        }
+
+        .contact-section a:hover i {
+          transform: scale(1.3);
+        }
+
+        .contact-links {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 14px;
+          margin-top: 20px;
+        }
+
+        .contact-links a {
+          background: linear-gradient(to right, #e7f5ff, #ffffff);
+          padding: 12px 14px;
+          border-radius: 8px;
+          font-size: 20px;
+          color: #007aaf;
+          transition: all 0.3s ease;
+          box-shadow: 0 5px 8px rgba(0, 119, 204, 0.05);
+        }
+
+        .contact-links a:hover {
+          background: #d0f2ff;
+        }
+
+        .map-link {
+          margin-top: 28px;
+          text-align: center;
+        }
+
+        .map-link a {
+          display: inline-block;
+          border: 1px solid #0077cc;
+          color: #0077cc !important;
+          padding: 10px 18px;
+          border-radius: 8px;
+          text-decoration: none;
+          font-weight: bold;
+          background: #f0f8ff;
+          transition: all 0.3s ease;
+        }
+
+        .map-link a:hover {
+          background-color: hsl(201, 100%, 17%);
+          color: #fff !important;
+        }
+
+        .transport-info {
+          margin-top: 35px;
+          padding: 20px;
+          background-color: #f9fcff;
+          border-left: 5px solid #0077cc;
+          border-radius: 10px;
+          box-shadow: 0 2px 10px rgba(0, 119, 204, 0.05);
+        }
+
+        .transport-info h3 {
+          font-size: 20px;
+          margin-bottom: 12px;
+          color: #003366;
+        }
+
+        .transport-info ul {
+          padding-left: 20px;
+          color: #333;
+        }
+
+        .transport-info ul li {
+          margin-bottom: 8px;
+        }
+
+        @media (max-width: 600px) {
+          .contact-links {
+            grid-template-columns: 1fr;
+          }
+        }
+
+        .info-contect {
+          color: #003154 !important;
+          padding: 10px 18px;
+          font-family: 'JunudullahZami';
+          font-size: 30px;
+          border-radius: 8px;
+          text-decoration: none;
+          font-weight: bold;
+          background-color: #f9fcff;
+          transition: all 0.9s ease;
+        }
+
+        @font-face {
+          font-family: 'JunudullahZami';
+          src: url('ফন্ট/FN Junudullah Zami.ttf') format('truetype');
+          font-weight: normal;
+          font-style: normal;
+        }
+
+      </style>
+      <div class="info-contect"> 
+        <a aria-label="যোগাযোগ বিভাগ">
+          <i class="fas fa-address-book"></i> যোগাযোগ</a>
+      </div>
+      <h1><i class="fas fa-map-marker-alt">    </i> <strong>   ঠিকানা: </strong> 
+        গ্রাম: নয়া কান্দারগাঁও (৩য় ভবন), লুটের চর, মেঘনা, কুমিল্লা, বাংলাদেশ - ৭৭৮০৬০</p>
+
+      <div class="contact-links">
+        <a href="tel:01647382241"> <i class="fas fa-phone-alt"></i>    01647382241</a>
+        <a href="tel:01814853884"> <i class="fas fa-phone-alt"></i>    01814853884</a>
+        <a href="tel:01865778060"> <i class="fas fa-phone-alt"></i>    01865778060</a>
+        <a href="tel:01980817196"> <i class="fas fa-phone-alt"></i>    01980817196</a>
+        <a href="mailto:almadani8060@gmail.com">  <i class="fas fa-envelope">  </i>    ইমেইল</a>
+        <a href="https://www.facebook.com/profile.php?id=100092195414779" target="_blank">
+          <i class="fab fa-facebook">   </i>        ফেসবুক পেইজ
+        </a>
+      </div>
+
+      <div class="map-link">
+        <a href="https://www.google.com/maps/place/23.535986,90.700615" target="_blank">
+          <i class="fas fa-map-location-dot"></i> গুগল ম্যাপে দেখুন
+        </a>
+      </div>
+
+      <div class="transport-info">
+        <h3><i class="fas fa-bus"></i> যাতায়াত</h3>
+        <ul>
+          <li>কুমিল্লা শহর থেকে সরাসরি অটোরিকশা বা লোকাল বাসে লুটের চর আসা যায়।</li>
+          <li>মেঘনা উপজেলা সদর থেকে সিএনজি বা অটো করে ১৫-২০ মিনিটে পৌঁছানো যায়।</li>
+          <li>যাত্রীবাহী বাস মেঘনা ব্রিজ পার হওয়ার পর নিকটবর্তী লোকেশন: নয়া কান্দারগাঁও।</li>
+          <li>স্থানীয় পরিবহন সহজলভ্য ও নিরাপদ।</li>
+        </ul>
+      </div>
+  </section>
+
+
+
+
+  <!-- Scripts -->
+  <script>
+    function showPage(pageId) {
+      document.querySelectorAll('.page').forEach(section => {
+        section.style.display = 'none';
+      });
+
+      const target = document.getElementById(pageId);
+      if (target) target.style.display = 'block';
+
+      document.querySelectorAll('nav ul li a').forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('onclick').includes(pageId)) {
+          link.classList.add('active');
+        }
+      });
+
+      const menu = document.getElementById('menuList');
+      if (menu.classList.contains('show')) {
+        menu.classList.remove('show');
+      }
+    }
+
+    function toggleMenu() {
+      document.getElementById('menuList').classList.toggle('show');
+    }
+
+    window.onload = function () {
+      showPage('home');
+
+      const galleryImages = document.querySelectorAll('.gallery-grid img');
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+
+      galleryImages.forEach(img => observer.observe(img));
+    };
+  </script>
+<div class="footer">
+  © ২০২৫ দারুল উলূম মাদানিয়া মহিলা মাদ্রাসা। সর্বস্বত্ব সংরক্ষিত।
+</body>
+</html>
+</body>
+</html>
