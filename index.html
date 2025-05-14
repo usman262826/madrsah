@@ -1610,46 +1610,66 @@
 
   <!-- Scripts -->
   <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // হোম পেজ প্রথমবার লোড হবে
+      showPage('home');
+  
+      // গ্যালারির ছবি lazy-load
+      const galleryImages = document.querySelectorAll('.gallery-grid img');
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.1 });
+  
+        galleryImages.forEach(img => observer.observe(img));
+      } else {
+        // যদি পুরাতন ব্রাউজার হয়
+        galleryImages.forEach(img => img.classList.add('visible'));
+      }
+  
+      // মোবাইল মেনু hide করে রাখবে ক্লিকের পর
+      document.querySelectorAll('nav ul li a').forEach(link => {
+        link.addEventListener('click', () => {
+          const menu = document.getElementById('menuList');
+          if (menu.classList.contains('show')) {
+            menu.classList.remove('show');
+          }
+        });
+      });
+    });
+  
+    // পেজ দেখানো ফাংশন
     function showPage(pageId) {
+      // সব পেজ লুকাও
       document.querySelectorAll('.page').forEach(section => {
         section.style.display = 'none';
       });
-
+  
+      // টার্গেট পেজ দেখাও
       const target = document.getElementById(pageId);
-      if (target) target.style.display = 'block';
-
+      if (target) {
+        target.style.display = 'block';
+        target.scrollIntoView({ behavior: 'instant', block: 'start' });
+      }
+  
+      // মেনুতে active লিংক হাইলাইট
       document.querySelectorAll('nav ul li a').forEach(link => {
         link.classList.remove('active');
-        if (link.getAttribute('onclick').includes(pageId)) {
+        if (link.getAttribute('onclick')?.includes(pageId)) {
           link.classList.add('active');
         }
       });
-
-      const menu = document.getElementById('menuList');
-      if (menu.classList.contains('show')) {
-        menu.classList.remove('show');
-      }
     }
-
+  
+    // মোবাইল মেনু টগল
     function toggleMenu() {
       document.getElementById('menuList').classList.toggle('show');
     }
-
-    window.onload = function () {
-      showPage('home');
-
-      const galleryImages = document.querySelectorAll('.gallery-grid img');
-      const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.1 });
-
-      galleryImages.forEach(img => observer.observe(img));
-    };
   </script>
 <div class="footer">
   © ২০২৫ দারুল উলূম মাদানিয়া মহিলা মাদ্রাসা। সর্বস্বত্ব সংরক্ষিত।
