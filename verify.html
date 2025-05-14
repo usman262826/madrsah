@@ -48,20 +48,19 @@
     const reg = params.get('reg');
     const roll = params.get('roll');
 
-    const sheetID = '1pCeeL8FiWSAtihVUf6DVwpDcLmMDNbe8TJg9qxj6794';
-    const sheetName = 'Sheet1';
     const url = 'https://docs.google.com/spreadsheets/d/1pCeeL8FiWSAtihVUf6DVwpDcLmMDNbe8TJg9qxj6794/gviz/tq?tqx=out:json&sheet=Sheet1';
 
     fetch(url)
       .then(res => res.text())
       .then(rep => {
-        const jsonData = JSON.parse(rep.substring(47).slice(0, -2));
-        const rows = jsonData.table.rows;
+        const json = JSON.parse(rep.substring(47).slice(0, -2)); // Clean up JSONP
+        const cols = json.table.cols.map(col => col.label.trim());
+        const rows = json.table.rows;
 
         const data = rows.map(row => {
           const obj = {};
-          jsonData.table.cols.forEach((col, i) => {
-            obj[col.label.trim()] = row.c[i] ? row.c[i].v : '';
+          cols.forEach((col, i) => {
+            obj[col] = row.c[i] ? row.c[i].v : '';
           });
           return obj;
         });
