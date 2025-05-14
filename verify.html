@@ -44,57 +44,58 @@
   </div>
 
   <script>
-    const params = new URLSearchParams(window.location.search);
-    const reg = params.get('reg');
-    const roll = params.get('roll');
-    const jamat = params.get('jamat');
+  const params = new URLSearchParams(window.location.search);
+  const reg = params.get('reg');
+  const roll = params.get('roll');
+  const jamat = params.get('jamat');
 
-    const url = 'https://docs.google.com/spreadsheets/d/1O6KK-M8e7sz-ppQbUd6bD0ficItaDLfE-YC6Qn29T1Q/edit?usp=sharing" ;
+  const url = 'https://docs.google.com/spreadsheets/d/1pCeeL8FiWSAtihVUf6DVwpDcLmMDNbe8TJg9qxj6794/gviz/tq?tqx=out:json';
 
-    fetch(url)
-      .then(res => res.text())
-      .then(rep => {
-        const json = JSON.parse(rep.substring(47).slice(0, -2));
-        const cols = json.table.cols.map(col => col.label.trim());
-        const rows = json.table.rows;
+  fetch(url)
+    .then(res => res.text())
+    .then(rep => {
+      const json = JSON.parse(rep.substring(47).slice(0, -2));
+      const cols = json.table.cols.map(col => col.label.trim());
+      const rows = json.table.rows;
 
-        const data = rows.map(row => {
-          const obj = {};
-          cols.forEach((col, i) => {
-            obj[col] = row.c[i] ? row.c[i].v.toString().trim() : '';
-          });
-          return obj;
+      const data = rows.map(row => {
+        const obj = {};
+        cols.forEach((col, i) => {
+          obj[col] = row.c[i] ? row.c[i].v.toString().trim() : '';
         });
-
-        const student = data.find(s =>
-          s['রেজিস্টশন নং'] === reg &&
-          s['রোল নং'] === roll &&
-          s['জামাত'] === jamat
-        );
-
-        if (!student) {
-          document.getElementById('studentInfo').innerHTML =
-            '<div class="not-found">⚠️ শিক্ষার্থীর তথ্য পাওয়া যায়নি।</div>';
-          return;
-        }
-
-        document.getElementById('studentInfo').innerHTML = `
-          <p><b>রেজিস্ট্রেশন নং:</b> ${student['রেজিস্টশন নং']}</p>
-          <p><b>রোল নং:</b> ${student['রোল নং']}</p>
-          <p><b>শিক্ষার্থীর নাম:</b> ${student['শিক্ষার্থীর নাম ']}</p>
-          <p><b>পিতার নাম:</b> ${student['পিতার নাম']}</p>
-          <p><b>জামাত:</b> ${student['জামাত']}</p>
-          <p><b>অভিভাকের মোবাইল:</b> ${student['অভিবাকের মোবাইল'] || 'উপলব্ধ নয়'}</p>
-          <p><b>জন্ম নিবন্ধন নম্বর:</b> ${student['জন্ম নিবন্ধন নাম্বার'] || 'উল্লেখ নেই'}</p>
-          <p><b>জন্ম তারিখ:</b> ${student['জন্ম তারিখ'] || 'উল্লেখ নেই'}</p>
-          <p><b>ঠিকানা:</b> ${student['ঠিকানা']}</p>
-        `;
-      })
-      .catch(err => {
-        document.getElementById('studentInfo').innerHTML =
-          '<div class="not-found">⚠️ ডেটা লোড করতে সমস্যা হয়েছে।</div>';
-        console.error(err);
+        return obj;
       });
-  </script>
+
+      const student = data.find(s =>
+        s['রেজিস্টশন নং'] === reg &&
+        s['রোল নং'] === roll &&
+        s['জামাত'] === jamat
+      );
+
+      if (!student) {
+        document.getElementById('studentInfo').innerHTML =
+          '<div class="not-found">⚠️ শিক্ষার্থীর তথ্য পাওয়া যায়নি।</div>';
+        return;
+      }
+
+      document.getElementById('studentInfo').innerHTML = `
+        <p><b>রেজিস্ট্রেশন নং:</b> ${student['রেজিস্টশন নং']}</p>
+        <p><b>রোল নং:</b> ${student['রোল নং']}</p>
+        <p><b>শিক্ষার্থীর নাম:</b> ${student['শিক্ষার্থীর নাম ']}</p>
+        <p><b>পিতার নাম:</b> ${student['পিতার নাম']}</p>
+        <p><b>জামাত:</b> ${student['জামাত']}</p>
+        <p><b>অভিভাকের মোবাইল:</b> ${student['অভিবাকের মোবাইল'] || 'উপলব্ধ নয়'}</p>
+        <p><b>জন্ম নিবন্ধন নম্বর:</b> ${student['জন্ম নিবন্ধন নাম্বার'] || 'উল্লেখ নেই'}</p>
+        <p><b>জন্ম তারিখ:</b> ${student['জন্ম তারিখ'] || 'উল্লেখ নেই'}</p>
+        <p><b>ঠিকানা:</b> ${student['ঠিকানা']}</p>
+      `;
+    })
+    .catch(err => {
+      document.getElementById('studentInfo').innerHTML =
+        '<div class="not-found">⚠️ ডেটা লোড করতে সমস্যা হয়েছে।</div>';
+      console.error(err);
+    });
+</script>
+
 </body>
 </html>
