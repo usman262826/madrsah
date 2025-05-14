@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <title>শিক্ষার্থীর তথ্য যাচাইকরণ</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: 'Kalpurush', sans-serif;
+      background: #eef8f8;
+      margin: 0;
+      padding: 20px;
+    }
+    .card {
+      max-width: 600px;
+      margin: auto;
+      background: #fff;
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      color: #003333;
+    }
+    .info {
+      padding: 20px;
+      text-align: left;
+      line-height: 1.8;
+    }
+    .info b {
+      display: inline-block;
+      width: 180px;
+      color: #004444;
+    }
+    .not-found {
+      text-align: center;
+      color: crimson;
+      font-size: 20px;
+      margin-top: 100px;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="info" id="studentInfo">লোড হচ্ছে...</div>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const reg = params.get('reg');
+    const roll = params.get('roll');
+
+    const sheetID = '1pCeeL8FiWSAtihVUf6DVwpDcLmMDNbe8TJg9qxj6794';
+    const sheetName = 'Sheet1';
+    const url = `https://docs.google.com/spreadsheets/d/${sheetID}/gviz/tq?tqx=out:json&sheet=${sheetName}`;
+
+    fetch(url)
+      .then(res => res.text())
+      .then(rep => {
+        const jsonData = JSON.parse(rep.substring(47).slice(0, -2));
+        const rows = jsonData.table.rows;
+
+        const data = rows.map(row => {
+          const obj = {};
+          jsonData.table.cols.forEach((col, i) => {
+            obj[col.label.trim()] = row.c[i] ? row.c[i].v : '';
+          });
+          return obj;
+        });
+
+        const student = data.find(s =>
+          s['রেজিস্টশন নং'] === reg && s['রোল নং'] === roll
+        );
+
+        if (!student) {
+          document.getElementById('studentInfo').innerHTML =
+            '<div class="not-found">⚠️ শিক্ষার্থীর তথ্য পাওয়া যায়নি।</div>';
+          return;
+        }
+
+        document.getElementById('studentInfo').innerHTML = `
+          <p><b>রেজিস্ট্রেশন নং:</b> ${student['রেজিস্টশন নং']}</p>
+          <p><b>রোল নং:</b> ${student['রোল নং']}</p>
+          <p><b>শিক্ষার্থীর নাম:</b> ${student['শিক্ষার্থীর নাম ']}</p>
+          <p><b>পিতার নাম:</b> ${student['পিতার নাম']}</p>
+          <p><b>জামাত:</b> ${student['জামাত']}</p>
+          <p><b>অভিভাকের মোবাইল:</b> ${student['অভিবাকের মোবাইল'] || 'উপলব্ধ নয়'}</p>
+          <p><b>জন্ম নিবন্ধন নম্বর:</b> ${student['জন্ম নিবন্ধন নাম্বার'] || 'উল্লেখ নেই'}</p>
+          <p><b>জন্ম তারিখ:</b> ${student['জন্ম তারিখ'] || 'উল্লেখ নেই'}</p>
+          <p><b>ঠিকানা:</b> ${student['ঠিকানা']}</p>
+        `;
+      })
+      .catch(err => {
+        document.getElementById('studentInfo').innerHTML =
+          '<div class="not-found">⚠️ ডেটা লোড করতে সমস্যা হয়েছে।</div>';
+        console.error(err);
+      });
+  </script>
+</body>
+</html>
