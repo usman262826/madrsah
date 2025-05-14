@@ -47,6 +47,7 @@
     const params = new URLSearchParams(window.location.search);
     const reg = params.get('reg');
     const roll = params.get('roll');
+    const jamat = params.get('jamat');
 
     const url = 'https://docs.google.com/spreadsheets/d/1pCeeL8FiWSAtihVUf6DVwpDcLmMDNbe8TJg9qxj6794/gviz/tq?tqx=out:json&sheet=Sheet1';
 
@@ -66,7 +67,9 @@
         });
 
         const student = data.find(s =>
-          s['রেজিস্টশন নং'] === reg && s['রোল নং'] === roll
+          s['রেজিস্টশন নং'] === reg &&
+          s['রোল নং'] === roll &&
+          s['জামাত'] === jamat
         );
 
         if (!student) {
@@ -78,7 +81,7 @@
         document.getElementById('studentInfo').innerHTML = `
           <p><b>রেজিস্ট্রেশন নং:</b> ${student['রেজিস্টশন নং']}</p>
           <p><b>রোল নং:</b> ${student['রোল নং']}</p>
-          <p><b>শিক্ষার্থীর নাম:</b> ${student['শিক্ষার্থীর নাম']}</p>
+          <p><b>শিক্ষার্থীর নাম:</b> ${student['শিক্ষার্থীর নাম ']}</p>
           <p><b>পিতার নাম:</b> ${student['পিতার নাম']}</p>
           <p><b>জামাত:</b> ${student['জামাত']}</p>
           <p><b>অভিভাকের মোবাইল:</b> ${student['অভিবাকের মোবাইল'] || 'উপলব্ধ নয়'}</p>
