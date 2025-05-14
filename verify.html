@@ -4,43 +4,44 @@
   <meta charset="UTF-8">
   <title>শিক্ষার্থীর তথ্য যাচাইকরণ</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali&display=swap" rel="stylesheet">
   <style>
     body {
-      font-family: 'Kalpurush', sans-serif;
-      background: #eef8f8;
-      margin: 0;
-      padding: 20px;
+      font-family: 'kalpurush';
+      background-color: #f0fdf4;
     }
-    .card {
-      max-width: 600px;
-      margin: auto;
-      background: #fff;
-      padding: 40px;
-      border-radius: 16px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-      color: #003333;
+    .logo {
+      animation: pop 0.8s ease-in-out;
     }
-    .info {
-      padding: 20px;
-      text-align: left;
-      line-height: 1.8;
+    @keyframes pop {
+      from { transform: scale(0); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
     }
-    .info b {
-      display: inline-block;
-      width: 180px;
-      color: #004444;
+    .fade-in {
+      animation: fadeIn 1.2s ease-in-out;
     }
-    .not-found {
-      text-align: center;
-      color: crimson;
-      font-size: 20px;
-      margin-top: 100px;
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(-10px); }
+      100% { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
-<body>
-  <div class="card">
-    <div class="info" id="studentInfo">লোড হচ্ছে...</div>
+<body class="p-4 text-gray-800">
+
+  <!-- লোগো -->
+  <div class="text-center mb-6">
+    <img src="png/logo .png" alt="Madrasah Logo" class="logo w-32 mx-auto">
+  </div>
+
+  <!-- হেডার ব্যানার -->
+  <div class="text-center mb-6">
+    <img src="png/madrasa head.png" alt="Madrasah Head" class="logo w-full max-w-2xl mx-auto">
+  </div>
+
+  <!-- শিক্ষার্থীর তথ্য -->
+  <div class="max-w-2xl mx-auto bg-white rounded-2xl shadow-lg p-6">
+    <div id="studentInfo" class="space-y-2 text-base">লোড হচ্ছে...</div>
   </div>
 
   <script>
@@ -54,7 +55,7 @@
     fetch(url)
       .then(res => res.text())
       .then(rep => {
-        const json = JSON.parse(rep.substring(47).slice(0, -2));
+        const json = JSON.parse(rep.substring(47).slice(0, -2)); // Google Sheets JSON Fix
         const cols = json.table.cols.map(col => col.label.trim());
         const rows = json.table.rows;
 
@@ -67,32 +68,40 @@
         });
 
         const student = data.find(s =>
-          s['রেজিস্ট্রেশন নং'] === reg &&
-          s['রোল নং'] === roll &&
-          s['জামাত'] === jamat
+          s['জামাত'].trim().toLowerCase() === jamat.trim().toLowerCase() &&
+          s['রেজিস্ট্রেশন/আইডি নম্বর'].trim() === reg.trim() &&
+          s['রোল নম্বর'].trim() === roll.trim()
         );
 
         if (!student) {
           document.getElementById('studentInfo').innerHTML =
-            '<div class="not-found">⚠️ শিক্ষার্থীর তথ্য পাওয়া যায়নি।</div>';
+            '<div class="text-center text-red-600 font-semibold text-lg mt-20">⚠️ শিক্ষার্থীর তথ্য পাওয়া যায়নি।</div>';
           return;
         }
 
+        const formatRow = (label, value) => `
+          <div class="flex flex-wrap">
+            <div class="w-40 font-semibold text-green-900 text-right pr-2">${label}</div>
+            <div class="w-4 text-center">:</div>
+            <div class="flex-1">${value || 'উল্লেখ নেই'}</div>
+          </div>
+        `;
+
         document.getElementById('studentInfo').innerHTML = `
-          <p><b>রেজিস্ট্রেশন নং:</b> ${student['রেজিস্ট্রেশন নং']}</p>
-          <p><b>রোল নং:</b> ${student['রোল নং']}</p>
-          <p><b>শিক্ষার্থীর নাম:</b> ${student['শিক্ষার্থীর নাম']}</p>
-          <p><b>পিতার নাম:</b> ${student['পিতার নাম']}</p>
-          <p><b>জামাত:</b> ${student['জামাত']}</p>
-          <p><b>অভিভাবকের মোবাইল:</b> ${student['অভিভাবকের মোবাইল'] || 'উপলব্ধ নয়'}</p>
-          <p><b>জন্ম নিবন্ধন নাম্বার:</b> ${student['জন্ম নিবন্ধন নাম্বার'] || 'উল্লেখ নেই'}</p>
-          <p><b>জন্ম তারিখ:</b> ${student['জন্ম তারিখ'] || 'উল্লেখ নেই'}</p>
-          <p><b>ঠিকানা:</b> ${student['ঠিকানা']}</p>
+          ${formatRow('রেজিস্ট্রেশন/আইডি নম্বর', student['রেজিস্ট্রেশন/আইডি নম্বর'])}
+          ${formatRow('রোল নম্বর', student['রোল নম্বর'])}
+          ${formatRow('শিক্ষার্থীর নাম', student['শিক্ষার্থীর নাম'])}
+          ${formatRow('পিতার নাম', student['পিতার নাম'])}
+          ${formatRow('জামাত', student['জামাত'])}
+          ${formatRow('অভিভাবকের মোবাইল', student['অভিভাবকের মোবাইল'])}
+          ${formatRow('জন্ম নিবন্ধন নাম্বার', student['জন্ম নিবন্ধন নাম্বার'])}
+          ${formatRow('জন্ম তারিখ', student['জন্ম তারিখ'])}
+          ${formatRow('ঠিকানা', student['ঠিকানা'])}
         `;
       })
       .catch(err => {
         document.getElementById('studentInfo').innerHTML =
-          '<div class="not-found">⚠️ ডেটা লোড করতে সমস্যা হয়েছে।</div>';
+          '<div class="text-center text-red-600 font-semibold text-lg mt-20">⚠️ ডেটা লোড করতে সমস্যা হয়েছে।</div>';
         console.error(err);
       });
   </script>
