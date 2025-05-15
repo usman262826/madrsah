@@ -1,109 +1,139 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-  <meta charset="UTF-8">
-  <title>শিক্ষার্থীর তথ্য যাচাইকরণ</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>শিক্ষার্থীর তথ্য</title>
   <style>
     body {
-      font-family: 'kalpurush';
-      background-color: #f0fdf4;
+      font-family: 'Kalpurush', 'Noto Sans Bengali', sans-serif;
+      background: #eef6f6;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
     }
     .logo {
-      animation: pop 0.8s ease-in-out;
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      margin: 0 auto 20px;
+      animation: zoomIn 1s ease;
     }
-    @keyframes pop {
-      from { transform: scale(0); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
+    h2 {
+      margin-bottom: 30px;
+      color: #003333;
     }
-    .fade-in {
-      animation: fadeIn 1.2s ease-in-out;
+    .card {
+      max-width: 600px;
+      margin: auto;
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      text-align: left;
+      animation: zoomIn 0.7s ease;
     }
-    @keyframes fadeIn {
-      0% { opacity: 0; transform: translateY(-10px); }
-      100% { opacity: 1; transform: translateY(0); }
+    .row {
+      display: flex;
+      margin-bottom: 10px;
+    }
+    .title {
+      flex: 0 0 180px;
+      text-align: right;
+      font-weight: bold;
+      color: #004444;
+      padding-right: 10px;
+    }
+    .value {
+      flex: 1;
+      color: #222;
+    }
+    footer {
+      margin-top: 20px;
+      font-size: 18px;
+      color: #444;
+      font-weight: 500;
+    }
+    .not-found {
+      color: crimson;
+      font-size: 20px;
+      margin-top: 40px;
+    }
+    @keyframes zoomIn {
+      from {
+        transform: scale(0.8);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+    @media (max-width: 600px) {
+      .row {
+        flex-direction: column;
+      }
+      .title {
+        text-align: left;
+        padding-bottom: 5px;
+      }
     }
   </style>
 </head>
-<body class="p-4 text-gray-800">
+<body>
 
   <!-- লোগো -->
-  <div class="text-center mb-6">
-    <img src="png/logo .png" alt="Madrasah Logo" class="logo w-32 mx-auto">
+  <img src="png/logo .png" class="logo" alt="মাদরাসার লোগো" />
+  <h2>দারুল উলূম মাদানিয়া মহিলা মাদরাসা</h2>
+
+  <!-- তথ্য কার্ড -->
+  <div class="card" id="studentInfo">
+    তথ্য লোড হচ্ছে...
   </div>
 
-  <!-- হেডার ব্যানার -->
-  <div class="text-center mb-6">
-    <img src="png/madrasa head.png" alt="Madrasah Head" class="logo w-full max-w-2xl mx-auto">
-  </div>
-
-  <!-- শিক্ষার্থীর তথ্য -->
-  <div class="max-w-2xl mx-auto bg-white rounded-2xl shadow-lg p-6">
-    <div id="studentInfo" class="space-y-2 text-base">লোড হচ্ছে...</div>
-  </div>
+  <footer id="yearFooter">শিক্ষাবর্ষ: </footer>
 
   <script>
     const params = new URLSearchParams(window.location.search);
-    const reg = params.get('reg');
+    const year = params.get('year');
+    const cls = params.get('jamat');
+    const id = params.get('reg');
     const roll = params.get('roll');
-    const jamat = params.get('jamat');
 
-    const url = 'https://docs.google.com/spreadsheets/d/1O6KK-M8e7sz-ppQbUd6bD0ficItaDLfE-YC6Qn29T1Q/edit?usp=sharing';
+    const apiURL = `https://script.google.com/macros/s/AKfycbyMo4c1dNJj1ce9X0iGAR-_4jCmbYpAgSBsEYb63RL1xLfzBHa1Ys4wKYNrfhh52j183w/exec?year=${year}&cls=${cls}&id=${id}&roll=${roll}`;
 
-    fetch(url)
-      .then(res => res.text())
-      .then(rep => {
-        const json = JSON.parse(rep.substring(47).slice(0, -2)); // Google Sheets JSON Fix
-        const cols = json.table.cols.map(col => col.label.trim());
-        const rows = json.table.rows;
-
-        const data = rows.map(row => {
-          const obj = {};
-          cols.forEach((col, i) => {
-            obj[col] = row.c[i] ? row.c[i].v.toString().trim() : '';
-          });
-          return obj;
-        });
-
-        const student = data.find(s =>
-          s['জামাত'].trim().toLowerCase() === jamat.trim().toLowerCase() &&
-          s['রেজিস্ট্রেশন/আইডি নম্বর'].trim() === reg.trim() &&
-          s['রোল নম্বর'].trim() === roll.trim()
-        );
-
-        if (!student) {
+    fetch(apiURL)
+      .then(res => res.json())
+      .then(data => {
+        if (data.message === "Data not found") {
           document.getElementById('studentInfo').innerHTML =
-            '<div class="text-center text-red-600 font-semibold text-lg mt-20">⚠️ শিক্ষার্থীর তথ্য পাওয়া যায়নি।</div>';
+            `<div class="not-found">⚠️ শিক্ষার্থীর তথ্য পাওয়া যায়নি।</div>`;
           return;
         }
 
-        const formatRow = (label, value) => `
-          <div class="flex flex-wrap">
-            <div class="w-40 font-semibold text-green-900 text-right pr-2">${label}</div>
-            <div class="w-4 text-center">:</div>
-            <div class="flex-1">${value || 'উল্লেখ নেই'}</div>
-          </div>
+        const html = `
+          <div class="row"><div class="title">শিক্ষাবর্ষ :</div><div class="value">${data.শিক্ষাবর্ষ || 'উল্লেখ নেই'}</div></div>
+          <div class="row"><div class="title">জামাত :</div><div class="value">${data.জামাত || 'উল্লেখ নেই'}</div></div>
+          <div class="row"><div class="title">রেজিস্ট্রেশন নম্বর :</div><div class="value">${data.রেজিস্ট্রেশন || 'উল্লেখ নেই'}</div></div>
+          <div class="row"><div class="title">রোল নম্বর :</div><div class="value">${data.রোল || 'উল্লেখ নেই'}</div></div>
+          <div class="row"><div class="title">শিক্ষার্থীর নাম :</div><div class="value">${data.নাম || 'উল্লেখ নেই'}</div></div>
+          <div class="row"><div class="title">পিতার নাম :</div><div class="value">${data.পিতার_নাম || 'উল্লেখ নেই'}</div></div>
+          <div class="row"><div class="title">অভিভাবকের মোবাইল :</div><div class="value">${data.মোবাইল || 'উল্লেখ নেই'}</div></div>
+          <div class="row"><div class="title">জন্ম নিবন্ধন :</div><div class="value">${data.জন্ম_নিবন্ধন || 'উল্লেখ নেই'}</div></div>
+          <div class="row"><div class="title">জন্ম তারিখ :</div><div class="value">${data.জন্ম_তারিখ || 'উল্লেখ নেই'}</div></div>
+          <div class="row"><div class="title">ঠিকানা :</div><div class="value">${data.ঠিকানা || 'উল্লেখ নেই'}</div></div>
         `;
 
-        document.getElementById('studentInfo').innerHTML = `
-          ${formatRow('রেজিস্ট্রেশন/আইডি নম্বর', student['রেজিস্ট্রেশন/আইডি নম্বর'])}
-          ${formatRow('রোল নম্বর', student['রোল নম্বর'])}
-          ${formatRow('শিক্ষার্থীর নাম', student['শিক্ষার্থীর নাম'])}
-          ${formatRow('পিতার নাম', student['পিতার নাম'])}
-          ${formatRow('জামাত', student['জামাত'])}
-          ${formatRow('অভিভাবকের মোবাইল', student['অভিভাবকের মোবাইল'])}
-          ${formatRow('জন্ম নিবন্ধন নাম্বার', student['জন্ম নিবন্ধন নাম্বার'])}
-          ${formatRow('জন্ম তারিখ', student['জন্ম তারিখ'])}
-          ${formatRow('ঠিকানা', student['ঠিকানা'])}
-        `;
+        document.getElementById('studentInfo').innerHTML = html;
+        document.getElementById('yearFooter').innerText = `শিক্ষাবর্ষ: ${data.শিক্ষাবর্ষ || 'উল্লেখ নেই'}`;
       })
       .catch(err => {
+        console.error('Error:', err);
         document.getElementById('studentInfo').innerHTML =
-          '<div class="text-center text-red-600 font-semibold text-lg mt-20">⚠️ ডেটা লোড করতে সমস্যা হয়েছে।</div>';
-        console.error(err);
+          `<div class="not-found">⚠️ সার্ভার সমস্যা হয়েছে।</div>`;
       });
   </script>
+
 </body>
 </html>
+
