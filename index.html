@@ -5,8 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>দারুল উলূম মাদানিয়া মহিলা মাদ্রাসা</title>
   <link href="https://fonts.maateen.me/kalpurush/font.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.1/dist/tailwind.min.css" rel="stylesheet">
+<style>
+  body {
+    font-family: 'kalpurush', 'Noto Sans Bengali', sans-serif;
+  }
+</style>
   <style>
     *
+    
      {
       margin: 0;
       padding: 0;
@@ -248,14 +255,223 @@
   </nav>
 
 
-
-
-
   <!-- Sections -->
 
   <!-- হোম -->
   <section id="home" class="page animated-bg">
-      <style>
+     
+     
+<style>.highlight-btn {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 10px;
+          background: linear-gradient(135deg, #00759f, #00bcd4);
+          color: white;
+          font-size: 30px;
+          font-weight: 0;
+          padding: 14px 28px;
+          border-radius: 5px;
+          cursor: pointer;
+          font-family: "sheikh hasina";
+          border: none;
+          text-transform: uppercase;
+          box-shadow: 0 6px 12px rgba(0, 117, 159, 0.3);
+          animation: glow-pulse 3s infinite ease-in-out;
+          transition: all 0.3s ease-in-out;
+        }
+
+        .highlight-btn:hover {
+          background: linear-gradient(135deg, #005a78, #0097a7);
+          transform: scale(1.05);
+          box-shadow: 0 8px 18px rgba(0, 117, 159, 0.5);
+        }
+
+        @keyframes glow-pulse {
+          0% { box-shadow: 0 0 0 0 rgba(0, 188, 212, 0.6); }
+          70% { box-shadow: 0 0 0 15px rgba(0, 188, 212, 0); }
+          100% { box-shadow: 0 0 0 0 rgba(0, 188, 212, 0); }
+        }
+
+        .search-box {
+          display: none;
+          max-width: 600px;
+          margin: 30px auto;
+          background: linear-gradient(145deg, #ffffff, #e6f7ff);
+          padding: 30px;
+          border-radius: 16px;
+          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+          animation: fadeIn 0.8s ease forwards;
+        }
+
+        @keyframes fadeIn {
+          from { opacity: 0; transform: translateY(20px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+
+        .headverify {
+          text-align: center;
+          font-size: 30px;
+          font-weight: normal;
+          font-family: "sheikh hasina";
+          color: #006699;
+          margin-bottom: 20px;
+        }
+
+        .form-group {
+          margin-bottom: 20px;
+        }
+
+        .form-group label {
+          display: block;
+          margin-bottom: 8px;
+          color: #004865;
+          font-weight: bold;
+        }
+
+        .form-group select,
+        .form-group input {
+          width: 100%;
+          font-family: "Qayyum book";
+          padding: 12px;
+          border: 1px solid #cce7f3;
+          border-radius: 8px;
+          font-size: 16px;
+        }
+
+        .search-button {
+          width: 100%;
+          padding: 14px;
+          background-color: #00759f;
+          color: #fff;
+          border: none;
+          border-radius: 10px;
+          font-size: 18px;
+          font-weight: bold;
+          cursor: pointer;
+          transition: background-color 0.3s ease;
+        }
+
+        .search-button-font{
+          font-family: "kalpurush";
+        }
+
+        .search-button:hover {
+          background-color: #004f6e;
+        }
+
+        @media (max-width: 600px) {
+          .highlight-btn {
+            font-size: 16px;
+            padding: 12px 20px;
+          }
+          .search-box {
+            padding: 20px;
+          }
+          .headverify {
+            font-size: 22px;
+          }
+        }
+        </style>
+
+<body>
+   <div style="text-align:center;">
+    <button class="highlight-btn" onclick="document.getElementById('student-search').style.display='block'; 
+    this.style.display='none';">
+      🔍 শিক্ষার্থী যাচাইকরণ
+    </button>
+  </div>
+
+  <div id="student-search" class="search-box">
+    <div class="headverify">শিক্ষার্থী যাচাইকরণ</div>
+    <div class="form-group">
+      <label for="session">শিক্ষাবর্ষ নির্বাচন করুন</label>
+      <select id="session">
+        <option value="">-- শিক্ষাবর্ষ নির্বাচন করুন --</option>
+        <option value="১৪৪৫-৪৬ হিজরী/২০২৫-২৬ ঈসায়ী">১৪৪৫-৪৬ হিজরী/২০২৫-২৬ ঈসায়ী</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="jamat">জামাত নির্বাচন করুন</label>
+      <select id="jamat">
+         <option value="">-- জামাত নির্বাচন করুন --</option>
+          <option value="শিশু শ্রেণী">আতফাল (শিশু শ্রেণী)</option>
+          <option value="প্রথম শ্রেণী">আওয়াল (১ম শ্রেণী)</option>
+          <option value="দ্বিতীয় শ্রেণী">ছানী (২য় শ্রেণী)</option>
+          <option value="তৃতীয় শ্রেণী">ছালেছ (৩য় শ্রেণী)</option>
+          <option value="খুসুছি">খুসুছি (ইবতেদায়ি রাবে)</option>
+          <option value="খামেস">খামেস (ইবতেদায়ি খামেছ)</option>
+          <option value="মিযান">মিযান (মুতাওয়াসসিতাহ আওয়াল)</option>
+          <option value="নাহবেমীর">নাহবেমীর (মুতাওয়াসসিতাহ ছানি)</option>
+          <option value="কুদূরী">কুদূরী (সানাবিয়্যা আউয়াল)</option>
+          <option value="শরহে বেকায়া">শরহে বেকায়া (সানাবিয়্যা ছানী)</option>
+          <option value="হেদায়া">হেদায়া (ফজিলত আউয়াল)</option>
+          <option value="মেশকাত">মেশকাত (ফজিলত ছানী)</option>
+          <option value="দাওরায়ে হাদিস">দাওরায়ে হাদিস (তাকমিল)</option>
+      </select>
+    </div>
+  
+    <div class="form-group">
+      <label for="reg">রেজিস্ট্রেশন/আইডি নম্বর</label>
+      <input type="text" id="reg" placeholder="রেজি/আইডি দিন">
+    </div>
+    <div class="form-group">
+      <label for="roll">রোল নম্বর</label>
+      <input type="text" id="roll" placeholder="রোল নম্বর দিন">
+    </div>
+    <div class="search-button-font"> <button class="search-button" onclick="searchResult()"> যাচাই করুন</button> </div>
+  </div>
+<script>
+  // Form hide/show
+  document.addEventListener('click', function (e) {
+    const form = document.getElementById('student-search');
+    const trigger = document.querySelector('.highlight-btn');
+
+    if (
+      form.style.display === 'block' &&
+      !form.contains(e.target) &&
+      !trigger.contains(e.target)
+    ) {
+      form.style.display = 'none';
+      trigger.style.display = 'inline-flex';
+    }
+  });
+
+  // Animation on scroll
+  document.addEventListener('DOMContentLoaded', function () {
+    const animatedImages = document.querySelectorAll('.animated-img');
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+
+    animatedImages.forEach(img => observer.observe(img));
+  });
+
+  // Form submission
+      function searchResult() {
+      const session = document.getElementById('session').value;
+      const jamat = document.getElementById('jamat').value;
+      const reg = document.getElementById('reg').value.trim();
+      const roll = document.getElementById('roll').value.trim();
+
+      if (!session || !jamat || !reg || !roll) {
+        alert('সব তথ্য সঠিকভাবে পূরণ করুন');
+        return;
+      }
+
+      window.location.href = `verify.html?reg=${reg}&roll=${roll}&jamat=${jamat}&year=${session}`;
+    }
+
+</script>
+     
+     <style>
         .animated-img {
           width: 100%;
           max-width: 800px;
@@ -352,173 +568,9 @@
           margin: 0;
           padding: 20px;
         }
-
-
-
-
-
-        .highlight-btn {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          gap: 10px;
-          background: linear-gradient(135deg, #00759f, #00bcd4);
-          color: white;
-          font-size: 28px;
-          font-weight: 0;
-          padding: 14px 28px;
-          border-radius: 5px;
-          cursor: pointer;
-          font-family: "sheikh hasina";
-          border: none;
-          text-transform: uppercase;
-          box-shadow: 0 6px 12px rgba(0, 117, 159, 0.3);
-          animation: glow-pulse 2s infinite ease-in-out;
-          transition: all 0.3s ease-in-out;
-        }
-
-        .highlight-btn:hover {
-          background: linear-gradient(135deg, #005a78, #0097a7);
-          transform: scale(1.05);
-          box-shadow: 0 8px 18px rgba(0, 117, 159, 0.5);
-        }
-
-        @keyframes glow-pulse {
-          0% { box-shadow: 0 0 0 0 rgba(0, 188, 212, 0.6); }
-          70% { box-shadow: 0 0 0 15px rgba(0, 188, 212, 0); }
-          100% { box-shadow: 0 0 0 0 rgba(0, 188, 212, 0); }
-        }
-
-        .search-box {
-          display: none;
-          max-width: 600px;
-          margin: 30px auto;
-          background: linear-gradient(145deg, #ffffff, #e6f7ff);
-          padding: 30px;
-          border-radius: 16px;
-          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-          animation: fadeIn 0.8s ease forwards;
-        }
-
-        @keyframes fadeIn {
-          from { opacity: 0; transform: translateY(20px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-
-        .headverify {
-          text-align: center;
-          font-size: 30px;
-          font-weight: normal;
-          font-family: "sheikh hasina";
-          color: #006699;
-          margin-bottom: 20px;
-        }
-
-        .form-group {
-          margin-bottom: 20px;
-        }
-
-        .form-group label {
-          display: block;
-          margin-bottom: 8px;
-          color: #004865;
-          font-weight: bold;
-        }
-
-        .form-group select,
-        .form-group input {
-          width: 100%;
-          font-family: "Qayyum book";
-          padding: 12px;
-          border: 1px solid #cce7f3;
-          border-radius: 8px;
-          font-size: 16px;
-        }
-
-        .search-button {
-          width: 100%;
-          padding: 14px;
-          background-color: #00759f;
-          color: #fff;
-          border: none;
-          border-radius: 10px;
-          font-size: 18px;
-          font-weight: bold;
-          cursor: pointer;
-          transition: background-color 0.3s ease;
-        }
-
-        .search-button-font{
-          font-family: "kalpurush";
-        }
-
-        .search-button:hover {
-          background-color: #004f6e;
-        }
-
-        @media (max-width: 600px) {
-          .highlight-btn {
-            font-size: 16px;
-            padding: 12px 20px;
-          }
-          .search-box {
-            padding: 20px;
-          }
-          .headverify {
-            font-size: 22px;
-          }
-        }
   </style>
+
 </head>
-<body>
-   <div style="text-align:center;">
-    <button class="highlight-btn" onclick="document.getElementById('student-search').style.display='block'; this.style.display='none';">
-      🔍 শিক্ষার্থী যাচাইকরণ
-    </button>
-  </div>
-
-  <div id="student-search" class="search-box">
-    <div class="headverify">শিক্ষার্থী যাচাইকরণ</div>
-    <div class="form-group">
-      <label for="session">শিক্ষাবর্ষ নির্বাচন করুন</label>
-      <select id="session">
-        <option value="">-- শিক্ষাবর্ষ নির্বাচন করুন --</option>
-        <option value="১৪৪৫-৪৬ হিজরী/২০২৫-২৬ ঈসায়ী">১৪৪৫-৪৬ হিজরী/২০২৫-২৬ ঈসায়ী</option>
-      </select>
-    </div>
-    <div class="form-group">
-      <label for="jamat">জামাত নির্বাচন করুন</label>
-      <select id="jamat">
-         <option value="">-- জামাত নির্বাচন করুন --</option>
-          <option value="শিশু শ্রেণী">আতফাল (শিশু শ্রেণী) </option>
-          <option value="প্রথম শ্রেণী">আওয়াল (১ম শ্রেণী) </option>
-          <option value="দ্বিতীয় শ্রেণী">ছানী (২য় শ্রেণী)</option>
-          <option value="তৃতীয় শ্রেণী">ছালেছ (৩য় শ্রেণী)</option>
-          <option value="খুসুছি">খুসুছি (ইবতেদায়ি রাবে)</option>
-          <option value="খামেস">খামেস (ইবতেদায়ি খামেছ)</option>
-          <option value="মিযান">মিযান (মুতাওয়াসসিতাহ আওয়াল)</option>
-          <option value="নাহবেমীর">নাহবেমীর (মুতাওয়াসসিতাহ ছানি)</option>
-          <option value="কুদূরী">কুদূরী (সানাবিয়্যা আউয়াল)</option>
-          <option value="শরহে বেকায়া">শরহে বেকায়া (সানাবিয়্যা ছানী)</option>
-          <option value="হেদায়া">হেদায়া (ফজিলত আউয়াল)</option>
-          <option value="মেশকাত">মেশকাত (ফজিলত ছানী)</option>
-          <option value="দাওরায়ে হাদিস">দাওরায়ে হাদিস (তাকমিল)</option>
-      </select>
-    </div>
-  
-    <div class="form-group">
-      <label for="reg">রেজিস্ট্রেশন/আইডি নম্বর</label>
-      <input type="text" id="reg" placeholder="রেজি/আইডি দিন">
-    </div>
-    <div class="form-group">
-      <label for="roll">রোল নম্বর</label>
-      <input type="text" id="roll" placeholder="রোল নম্বর দিন">
-    </div>
-    <div class="search-button-font"> <button class="search-button" onclick="searchResult()"> যাচাই করুন</button> </div>
-    
-  </div>
-
-
     <div class="headline">  <a> ইলমের আলোয় গড়ে তুলুন আপনার কন্যার উজ্জ্বল ভবিষ্যৎ! </a> </div>
     <div class="container">
       <div class="left">
@@ -544,60 +596,9 @@
     <p>
       আমরা ইনশাআল্লাহ মাদ্রাসাটিকে আন্তর্জাতিক মানের দ্বীনি শিক্ষা প্রতিষ্ঠানে রূপান্তর করার লক্ষ্যে কাজ করছি। প্রযুক্তির সহায়তায় পাঠদান, অনলাইন রেজাল্ট সিস্টেম এবং আধুনিক পাঠ্য উপকরণ প্রবর্তনের উদ্যোগ নেওয়া হচ্ছে।
     </p>
-
-    <script>
-        // ডকুমেন্টে ক্লিক হলে চেক করবো
-        document.addEventListener('click', function (e) {
-          const form = document.getElementById('student-search');
-          const trigger = document.querySelector('.highlight-btn');
-
-          // যদি ফর্ম দেখা যাচ্ছে এবং ক্লিকটা ফর্ম বা বাটনের বাইরে হয়
-          if (
-            form.style.display === 'block' &&
-            !form.contains(e.target) &&
-            !trigger.contains(e.target)
-          ) {
-            form.style.display = 'none';       // ফর্ম হাইড করো
-            trigger.style.display = 'inline-flex'; // বাটন দেখাও
-          }
-        });
-
-      document.addEventListener('DOMContentLoaded', function () {
-        const animatedImages = document.querySelectorAll('.animated-img');
-    
-        const observer = new IntersectionObserver(entries => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('visible');
-            }
-          });
-        }, {
-          threshold: 0.1
-        });
-    
-        animatedImages.forEach(img => observer.observe(img));
-      });
-
-          function searchResult() {
-          const session = document.getElementById('session').value;
-          const jamat = document.getElementById('jamat').value;
-          const reg = document.getElementById('reg').value.trim();
-          const roll = document.getElementById('roll').value.trim();
-          if (!session || !jamat || !reg || !roll) {
-            alert('সব তথ্য পূরণ করুন');
-            return;
-          }
-          window.location.href = `verify.html?reg=${reg}&roll=${roll}`;
-        }
-    </script>    
   </section>
 
-
-
-
-
-
-
+ 
 
 <!-- পরিচিতি -->
   <section id="porichiti" class="page animated-bg">
@@ -1607,67 +1608,67 @@
 
 
 
+<!-- Scripts -->
+  <script>
+    // মেনু ক্লিক করলে সংশ্লিষ্ট পেজ দেখাবে
+    function showPage(pageId) {
+      // সব পেজ লুকিয়ে ফেলি
+      const pages = document.querySelectorAll('.page');
+      pages.forEach(page => page.style.display = 'none');
 
-  <!-- Scripts -->
-    <script>
-      // মেনু ক্লিক করলে সংশ্লিষ্ট পেজ দেখাবে
-      function showPage(pageId) {
-        // সব পেজ লুকিয়ে ফেলি
-        const pages = document.querySelectorAll('.page');
-        pages.forEach(page => page.style.display = 'none');
-    
-        // পেজ আইডি অনুযায়ী টার্গেট পেজ দেখাই
-        const targetPage = document.getElementById(pageId);
-        if (targetPage) {
-          targetPage.style.display = 'block';
-          // উপরে স্ক্রল করবে যেন মোবাইলে নিচে আটকে না থাকে
-          window.scrollTo({ top: 0, behavior: 'instant' });
-        }
-    
-        // মেনুতে active ক্লাস হালনাগাদ
-        const menuLinks = document.querySelectorAll('nav ul li a');
-        menuLinks.forEach(link => {
-          link.classList.remove('active');
-          if (link.getAttribute('onclick')?.includes(pageId)) {
-            link.classList.add('active');
-          }
-        });
-    
-        // মোবাইল মেনু বন্ধ করে দাও
-        const menu = document.getElementById('menuList');
-        if (menu.classList.contains('show')) {
-          menu.classList.remove('show');
-        }
+      // পেজ আইডি অনুযায়ী টার্গেট পেজ দেখাই
+      const targetPage = document.getElementById(pageId);
+      if (targetPage) {
+        targetPage.style.display = 'block';
+        // উপরে স্ক্রল করবে যেন মোবাইলে নিচে আটকে না থাকে
+        window.scrollTo({ top: 0, behavior: 'instant' });
       }
-    
-      // মোবাইলের মেনু টগল
-      function toggleMenu() {
-        const menu = document.getElementById('menuList');
-        menu.classList.toggle('show');
-      }
-    
-      // যখন পেজ প্রথমবার লোড হবে
-      window.addEventListener('load', function () {
-        showPage('home'); // হোম পেজ দেখাও
-    
-        // গ্যালারি ছবির lazy load animation
-        const galleryImages = document.querySelectorAll('.gallery-grid img');
-        if ('IntersectionObserver' in window) {
-          const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-              if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-                observer.unobserve(entry.target);
-              }
-            });
-          }, { threshold: 0.1 });
-    
-          galleryImages.forEach(img => observer.observe(img));
-        } else {
-          galleryImages.forEach(img => img.classList.add('visible'));
+
+      // মেনুতে active ক্লাস হালনাগাদ
+      const menuLinks = document.querySelectorAll('nav ul li a');
+      menuLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('onclick')?.includes(pageId)) {
+          link.classList.add('active');
         }
       });
-    </script>
+
+      // মোবাইল মেনু বন্ধ করে দাও
+      const menu = document.getElementById('menuList');
+      if (menu.classList.contains('show')) {
+        menu.classList.remove('show');
+      }
+    }
+
+    // মোবাইলের মেনু টগল
+    function toggleMenu() {
+      const menu = document.getElementById('menuList');
+      menu.classList.toggle('show');
+    }
+
+    // যখন পেজ প্রথমবার লোড হবে
+    window.addEventListener('load', function () {
+      showPage('home'); // হোম পেজ দেখাও
+
+      // গ্যালারি ছবির lazy load animation
+      const galleryImages = document.querySelectorAll('.gallery-grid img');
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.1 });
+
+        galleryImages.forEach(img => observer.observe(img));
+      } else {
+        galleryImages.forEach(img => img.classList.add('visible'));
+      }
+    });
+  </script>
+
 <div class="footer">
   © ২০২৫ দারুল উলূম মাদানিয়া মহিলা মাদ্রাসা। সর্বস্বত্ব সংরক্ষিত।
 </body>
