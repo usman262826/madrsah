@@ -388,29 +388,30 @@
       <label for="session">শিক্ষাবর্ষ নির্বাচন করুন</label>
       <select id="session">
         <option value="">-- শিক্ষাবর্ষ নির্বাচন করুন --</option>
+        <option value="১৪৪৪-৪৫ হিজরী/২০২৪-২৫ ঈসায়ী">১৪৪৪-৪৫ হিজরী/২০২৪-২৫ ঈসায়ী</option>
         <option value="১৪৪৫-৪৬ হিজরী/২০২৫-২৬ ঈসায়ী">১৪৪৫-৪৬ হিজরী/২০২৫-২৬ ঈসায়ী</option>
       </select>
     </div>
     <div class="form-group">
       <label for="jamat">জামাত নির্বাচন করুন</label>
-      <select id="jamat">
-         <option value="">-- জামাত নির্বাচন করুন --</option>
-          <option value="শিশু শ্রেণী">আতফাল (শিশু শ্রেণী)</option>
-          <option value="প্রথম শ্রেণী">আওয়াল (১ম শ্রেণী)</option>
-          <option value="দ্বিতীয় শ্রেণী">ছানী (২য় শ্রেণী)</option>
-          <option value="তৃতীয় শ্রেণী">ছালেছ (৩য় শ্রেণী)</option>
-          <option value="খুসুছি">খুসুছি (ইবতেদায়ি রাবে)</option>
-          <option value="খামেস">খামেস (ইবতেদায়ি খামেছ)</option>
-          <option value="মিযান">মিযান (মুতাওয়াসসিতাহ আওয়াল)</option>
-          <option value="নাহবেমীর">নাহবেমীর (মুতাওয়াসসিতাহ ছানি)</option>
-          <option value="কুদূরী">কুদূরী (সানাবিয়্যা আউয়াল)</option>
-          <option value="শরহে বেকায়া">শরহে বেকায়া (সানাবিয়্যা ছানী)</option>
-          <option value="হেদায়া">হেদায়া (ফজিলত আউয়াল)</option>
-          <option value="মেশকাত">মেশকাত (ফজিলত ছানী)</option>
-          <option value="দাওরায়ে হাদিস">দাওরায়ে হাদিস (তাকমিল)</option>
+      <select id="jamat" required>
+        <option value="">-- জামাত নির্বাচন করুন --</option>
+        <option value="আতফাল (শিশু শ্রেণী)">আতফাল (শিশু শ্রেণী)</option>
+        <option value="আওয়াল (১ম শ্রেণী)">আওয়াল (১ম শ্রেণী)</option>
+        <option value="ছানী (২য় শ্রেণী)">ছানী (২য় শ্রেণী)</option>
+        <option value="ছালেছ (৩য় শ্রেণী)">ছালেছ (৩য় শ্রেণী)</option>
+        <option value="খুসুছি (ইবতেদায়ি রাবে)">খুসুছি (ইবতেদায়ি রাবে)</option>
+        <option value="খামেস (ইবতেদায়ি খামেছ)">খামেস (ইবতেদায়ি খামেছ)</option>
+        <option value="মিযান (মুতাওয়াসসিতাহ আওয়াল)">মিযান (মুতাওয়াসসিতাহ আওয়াল)</option>
+        <option value="নাহবেমীর (মুতাওয়াসসিতাহ ছানি)">নাহবেমীর (মুতাওয়াসসিতাহ ছানি)</option>
+        <option value="কুদূরী (সানাবিয়্যা আউয়াল)">কুদূরী (সানাবিয়্যা আউয়াল)</option>
+        <option value="শরহে বেকায়া (সানাবিয়্যা ছানী)">শরহে বেকায়া (সানাবিয়্যা ছানী)</option>
+        <option value="হেদায়া (ফজিলত আউয়াল)">হেদায়া (ফজিলত আউয়াল)</option>
+        <option value="মেশকাত (ফজিলত ছানী)">মেশকাত (ফজিলত ছানী)</option>
+        <option value="দাওরায়ে হাদিস (তাকমিল)">দাওরায়ে হাদিস (তাকমিল)</option>
       </select>
     </div>
-  
+
     <div class="form-group">
       <label for="reg">রেজিস্ট্রেশন/আইডি নম্বর</label>
       <input type="text" id="reg" placeholder="রেজি/আইডি দিন">
@@ -455,9 +456,9 @@
   });
 
   // Form submission
-      function searchResult() {
-      const session = document.getElementById('session').value;
-      const jamat = document.getElementById('jamat').value;
+       function searchResult() {
+      const session = document.getElementById('session').value.trim();
+      const jamat = document.getElementById('jamat').value.trim();
       const reg = document.getElementById('reg').value.trim();
       const roll = document.getElementById('roll').value.trim();
 
@@ -466,7 +467,7 @@
         return;
       }
 
-      window.location.href = `verify.html?reg=${reg}&roll=${roll}&jamat=${jamat}&year=${session}`;
+      window.location.href = `verify.html?year=${session}&jamat=${jamat}&reg=${reg}&roll=${roll}`;
     }
 
 </script>
