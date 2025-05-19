@@ -1,139 +1,273 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>শিক্ষার্থীর তথ্য</title>
+  <meta charset="UTF-8">
+  <title>শিক্ষার্থী আইডি কার্ড</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
+    @font-face {
+      font-family: 'Qayyum book';
+      src: url('ফন্ট/Qayyum Book.ttf');
+    }
+    @font-face {
+      font-family: 'JunudullahZami';
+      src: url('ফন্ট/FN Junudullah Zami.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'Sheikh Hasina';
+      src: url('ফন্ট/Li Sheikh Hasina 2 Unicode.ttf');
+    }
     body {
-      font-family: 'Kalpurush', 'Noto Sans Bengali', sans-serif;
-      background: #eef6f6;
       margin: 0;
-      padding: 20px;
+      background: linear-gradient(to bottom, #eefaf7, #dcf4f0);
+      font-family: 'Qayyum book', sans-serif;
+      color: #002b29;
+    }
+
+    .header {
       text-align: center;
+      padding: 20px 10px 10px;
+      background: url('png/brush.png') no-repeat center top;
+      background-size: contain;
+      position: relative;
+      animation: fadeInTop 1s ease-in-out;
     }
-    .logo {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      margin: 0 auto 20px;
-      animation: zoomIn 1s ease;
+    .header img.logo {
+      width: 140px;
+      height: 140px;
     }
-    h2 {
-      margin-bottom: 30px;
-      color: #003333;
+    .header h1 {
+      font-family: 'JunudullahZami';
+      font-size: 28px;
+      color: #004d42;
+      margin: 10px 0 0;
     }
+
     .card {
-      max-width: 600px;
-      margin: auto;
-      background: #ffffff;
-      padding: 20px;
-      border-radius: 20px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      max-width: 700px;
+      background: #fff;
+      margin: 20px auto;
+      border-radius: 15px;
+      padding: 25px 30px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+      position: relative;
+      overflow: hidden;
+      animation: fadeIn 1.3s ease-in-out;
       text-align: left;
-      animation: zoomIn 0.7s ease;
     }
-    .row {
-      display: flex;
-      margin-bottom: 10px;
+    .student-name-center {
+      text-align: center;
+      margin-bottom: 30px;
+      background: linear-gradient(90deg, var(--start-color), var(--end-color));
+      padding: 0px 30px;
+      border-radius: 5px;
+      width: 100%;
+      display: block;
+      margin-top: 10px;
+      box-sizing: border-box;
+      --start-color: #00507f; /* শুরু রং */
+      --end-color: rgb(0, 48, 59);   /* শেষ রং */
     }
+     .student-name-center .name {
+      font-family: 'Sheikh Hasina';
+      font-size: 28px;
+      background: linear-gradient(90deg, #ebe5e7, #ffffff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+      margin-top: 5px;
+    }
+
     .title {
-      flex: 0 0 180px;
-      text-align: right;
-      font-weight: bold;
-      color: #004444;
-      padding-right: 10px;
-    }
-    .value {
-      flex: 1;
-      color: #222;
-    }
-    footer {
       margin-top: 20px;
       font-size: 18px;
-      color: #444;
-      font-weight: 500;
+      color: #006d60;
+      text-align: center
     }
-    .not-found {
-      color: crimson;
-      font-size: 20px;
+
+
+    .row {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      margin-bottom: 16px;
+      position: relative;
+    }
+
+    .label {
+      min-width: 220px;
+      font-size: 19px;
+      color: #005a5d;
+      font-family: 'sheikh hasina';
+      text-align: left;
+      position: relative;
+    }
+
+    .label::after {
+      content: ":";
+      position: absolute;
+      right: -16px;
+      top: 0;
+      color: #000;
+    }
+
+    .value {
+      flex: 1;
+      font-size: 17px;
+      color: #000000;
+      padding-left: 30px;
+    }
+
+    .value.empty {
+      color: #888;
+      font-style: 'normal';
+      font-family: 'kalpurush';
+      font-size: 15px;
+    }
+
+    .row::after {
+      content: "";
+      background: url('png/shape.png') no-repeat center bottom;
+      background-size: cover;
+      height: 12px;
+      width: 100%;
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      opacity: 0.5;
+    }
+
+    .year-footer-display {
+      text-align: center;
+      font-size: 16px;
       margin-top: 40px;
+      color: #444;
     }
-    @keyframes zoomIn {
-      from {
-        transform: scale(0.8);
-        opacity: 0;
-      }
-      to {
-        transform: scale(1);
-        opacity: 1;
-      }
+
+    footer {
+      text-align: center;
+      margin-top: 30px;
     }
-    @media (max-width: 600px) {
-      .row {
-        flex-direction: column;
-      }
-      .title {
-        text-align: left;
-        padding-bottom: 5px;
-      }
+    footer img {
+      width: 100%;
+      max-width: 700px;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+      margin-bottom: 100px;
+      border-radius: 0 0 15px 15px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInTop {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media(max-width: 600px){
+      .card { padding: 20px; margin: 15px; }
+      .row { flex-direction: column; align-items: flex-start; }
+      .label { text-align: left; }
+      .label::after { position: static; padding-left: 6px; }
+      .value { padding-left: 0; }
+      .header img.logo { width: 80px; height: 80px; }
+      .student-name-center .name { font-size: 30px; }
     }
   </style>
 </head>
 <body>
-
-  <!-- লোগো -->
-  <img src="png/logo .png" class="logo" alt="মাদরাসার লোগো" />
-  <h2>দারুল উলূম মাদানিয়া মহিলা মাদরাসা</h2>
-
-  <!-- তথ্য কার্ড -->
-  <div class="card" id="studentInfo">
-    তথ্য লোড হচ্ছে...
+  <div class="header">
+    <img src="png/logo.png" alt="লোগো" class="logo" />
+    <h1>শিক্ষার্থী তথ্য</h1>
   </div>
 
-  <footer id="yearFooter">শিক্ষাবর্ষ: </footer>
+  <div class="card">
+    <div id="studentInfo">তথ্য লোড হচ্ছে...</div>
+    <div id="yearDisplay" class="year-footer-display"></div>
+  </div>
+
+  <footer>
+    <img src="png/madrasa head.png" alt="মাদরাসা হেডার">
+  </footer>
 
   <script>
     const params = new URLSearchParams(window.location.search);
     const year = params.get('year');
-    const cls = params.get('jamat');
-    const id = params.get('reg');
-    const roll = params.get('roll');
+    const jamat = params.get('jamat');
+    const reg = parseInt(params.get('reg'));
+    const roll = parseInt(params.get('roll'));
 
-    const apiURL = `https://script.google.com/macros/s/AKfycbyMo4c1dNJj1ce9X0iGAR-_4jCmbYpAgSBsEYb63RL1xLfzBHa1Ys4wKYNrfhh52j183w/exec?year=${year}&cls=${cls}&id=${id}&roll=${roll}`;
+    const sheetID = '1B6BzLPVKGeRosVm0p_DbMk5tssfuQTWbSF5W97-31-A';
+    const sheetURL = `https://docs.google.com/spreadsheets/d/${sheetID}/gviz/tq?tqx=out:json`;
 
-    fetch(apiURL)
-      .then(res => res.json())
-      .then(data => {
-        if (data.message === "Data not found") {
-          document.getElementById('studentInfo').innerHTML =
-            `<div class="not-found">⚠️ শিক্ষার্থীর তথ্য পাওয়া যায়নি।</div>`;
+    fetch(sheetURL)
+      .then(res => res.text())
+      .then(text => {
+        const json = JSON.parse(text.substr(47).slice(0, -2));
+        const rows = json.table.rows;
+
+        const data = rows.map(row => {
+          const obj = {};
+          json.table.cols.forEach((col, i) => {
+            if (col.label) {
+              obj[col.label.trim()] = row.c[i] ? row.c[i].v : '';
+            }
+          });
+          return obj;
+        });
+
+        const student = data.find(s =>
+          s['শিক্ষাবর্ষ'] === year &&
+          s['জামাত'] === jamat &&
+          parseInt(s['রেজিস্ট্রেশন/আইডি নম্বর']) === reg &&
+          parseInt(s['রোল নম্বর']) === roll
+        );
+
+        const infoDiv = document.getElementById('studentInfo');
+        const yearDiv = document.getElementById('yearDisplay');
+
+        if (!student) {
+          infoDiv.innerHTML = '<div class="not-found">⚠️ শিক্ষার্থীর তথ্য পাওয়া যায়নি।</div>';
+          yearDiv.innerHTML = "";
           return;
         }
 
-        const html = `
-          <div class="row"><div class="title">শিক্ষাবর্ষ :</div><div class="value">${data.শিক্ষাবর্ষ || 'উল্লেখ নেই'}</div></div>
-          <div class="row"><div class="title">জামাত :</div><div class="value">${data.জামাত || 'উল্লেখ নেই'}</div></div>
-          <div class="row"><div class="title">রেজিস্ট্রেশন নম্বর :</div><div class="value">${data.রেজিস্ট্রেশন || 'উল্লেখ নেই'}</div></div>
-          <div class="row"><div class="title">রোল নম্বর :</div><div class="value">${data.রোল || 'উল্লেখ নেই'}</div></div>
-          <div class="row"><div class="title">শিক্ষার্থীর নাম :</div><div class="value">${data.নাম || 'উল্লেখ নেই'}</div></div>
-          <div class="row"><div class="title">পিতার নাম :</div><div class="value">${data.পিতার_নাম || 'উল্লেখ নেই'}</div></div>
-          <div class="row"><div class="title">অভিভাবকের মোবাইল :</div><div class="value">${data.মোবাইল || 'উল্লেখ নেই'}</div></div>
-          <div class="row"><div class="title">জন্ম নিবন্ধন :</div><div class="value">${data.জন্ম_নিবন্ধন || 'উল্লেখ নেই'}</div></div>
-          <div class="row"><div class="title">জন্ম তারিখ :</div><div class="value">${data.জন্ম_তারিখ || 'উল্লেখ নেই'}</div></div>
-          <div class="row"><div class="title">ঠিকানা :</div><div class="value">${data.ঠিকানা || 'উল্লেখ নেই'}</div></div>
+        yearDiv.innerHTML = `শিক্ষাবর্ষ: ${student['শিক্ষাবর্ষ'] || 'উল্লেখ নেই'}`;
+
+        function formatValue(val) {
+          return val && val.trim() !== ''
+            ? `<span class="value">${val}</span>`
+            : `<span class="value empty">উল্লেখ নেই</span>`;
+        }
+
+        infoDiv.innerHTML = `
+            <div class="title">শিক্ষার্থীর নাম</div>  
+        <div class="student-name-center">
+            <div class="name">${student['শিক্ষার্থীর নাম'] || 'উল্লেখ নেই'}</div>
+          </div>
+          <div class="row"><div class="label">রেজিস্ট্রেশন নম্বর</div><div class="value">${student['রেজিস্ট্রেশন/আইডি নম্বর'] || '<span class="value empty">উল্লেখ নেই</span>'}</div></div>
+          <div class="row"><div class="label">রোল নম্বর</div><div class="value">${student['রোল নম্বর'] || '<span class="value empty">উল্লেখ নেই</span>'}</div></div>
+          <div class="row"><div class="label">পিতার নাম</div><div class="value">${student['পিতার নাম'] || '<span class="value empty">উল্লেখ নেই</span>'}</div></div>
+          <div class="row"><div class="label">জামাত</div><div class="value">${student['জামাত'] || '<span class="value empty">উল্লেখ নেই</span>'}</div></div>
+          <div class="row"><div class="label">অভিভাবকের মোবাইল</div><div class="value">${student['অভিভাবকের মোবাইল'] || '<span class="value empty">উল্লেখ নেই</span>'}</div></div>
+          <div class="row"><div class="label">জন্ম নিবন্ধন নম্বর</div><div class="value">${student['জন্ম নিবন্ধন নাম্বার'] || '<span class="value empty">উল্লেখ নেই</span>'}</div></div>
+          <div class="row"><div class="label">জন্ম তারিখ</div><div class="value">${student['জন্ম তারিখ'] || '<span class="value empty">উল্লেখ নেই</span>'}</div></div>
+          <div class="row"><div class="label">ঠিকানা</div><div class="value">${student['ঠিকানা'] || '<span class="value empty">উল্লেখ নেই</span>'}</div></div>
         `;
 
-        document.getElementById('studentInfo').innerHTML = html;
-        document.getElementById('yearFooter').innerText = `শিক্ষাবর্ষ: ${data.শিক্ষাবর্ষ || 'উল্লেখ নেই'}`;
       })
       .catch(err => {
-        console.error('Error:', err);
-        document.getElementById('studentInfo').innerHTML =
-          `<div class="not-found">⚠️ সার্ভার সমস্যা হয়েছে।</div>`;
+        document.getElementById('studentInfo').innerHTML = '<div class="not-found">⚠️ ডেটা লোড করতে সমস্যা হয়েছে।</div>';
+        console.error(err);
       });
   </script>
-
+  <div class="footer">
+  © ২০২৫ দারুল উলূম মাদানিয়া মহিলা মাদ্রাসা। সর্বস্বত্ব সংরক্ষিত।
 </body>
 </html>
-
