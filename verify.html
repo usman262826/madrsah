@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="bn">
 <head>
@@ -20,48 +19,34 @@
       font-family: 'Sheikh Hasina';
       src: url('ফন্ট/Li Sheikh Hasina 2 Unicode.ttf');
     }
-      /* ========================== */
-  /* শিক্ষার্থীর তথ্য বক্স স্টাইল */
-  /* ========================== */
+
     @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(15px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
+    /* ========================== */
+    /* শিক্ষার্থীর তথ্য বক্স স্টাইল */
+    /* ========================== */
     .row {
       display: flex;
       align-items: center;
-      justify-content: flex-start;
+      flex-wrap: wrap; /* এক লাইনে না হলে value নিচে যাবে */
       margin-bottom: 16px;
-      position: relative;
-    }
-    .row {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin-bottom: 16px;
-        padding: 12px 18px;
-        border-radius: 12px;
-        border: 1px solid #c8e6c9;
-        background: linear-gradient(90deg, #e8f5e9, #ffffff);
-        box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-        transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
-
-        /* অ্যানিমেশন */
-        opacity: 0;
-        animation: fadeInUp 0.6s ease forwards;
+      padding: 12px 18px;
+      border-radius: 12px;
+      border: 1px solid #c8e6c9;
+      background: linear-gradient(90deg, #e8f5e9, #ffffff);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+      opacity: 0;
+      animation: fadeInUp 0.6s ease forwards;
     }
 
     .row:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 8px 18px rgba(0,0,0,0.12);
-        background: linear-gradient(90deg, #d0f0e8, #ffffff);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+      background: linear-gradient(90deg, #d0f0e8, #ffffff);
     }
 
     /* প্রতিটি row-এর delay */
@@ -76,76 +61,73 @@
     .row:nth-of-type(9) { animation-delay: 1s; }
     .row:nth-of-type(10) { animation-delay: 1.1s; }
 
-  .label {
-      min-width: 200px;
+    /* ====== এখানে পরিবর্তনকৃত মূল স্টাইলস ====== */
+    .label {
+      min-width: auto;
       font-weight: bold;
-      color: #006257;
-      min-width: 220px;
       font-size: 19px;
-      color: #005a5d;
+      color: #004b4e;
       font-family: 'kalpurush';
-      text-align: left;
       position: relative;
-    }
-  .label::after {
-      content: ":";
-      position: absolute;
-      right: -16px;
-      top: 0;
-      color: #000;
+      margin-right: 6px; /* ✅ label এর পরে gap */
+      white-space: nowrap; /* ✅ label ভাঙবে না */
     }
 
-    .value {
-      flex: 1;
-      font-size: 18px;
-      color: #014a00;
-      padding-left: 30px;
+    .label::after {
+      content: ":";
+      margin-left: 3px; /* ✅ কোলনের পর সামান্য gap */
     }
+
+    /* ✅ বড় স্ক্রিনে সবসময় এক লাইনে */
+    @media (min-width: 768px) {
+      .row {
+        flex-wrap: nowrap;  /* label + value ভাঙবে না */
+      }
+      .value {
+        flex: 1 1 100%; /* ✅ প্রয়োজন হলে পুরো লাইন নেবে */
+        white-space: nowrap; /* ✅ value-ও ভাঙবে না */
+        overflow: hidden;
+        text-overflow: ellipsis; /* ✅ বেশি বড় হলে ... দেখাবে */
+     
+      }
+    }
+
+    /* ✅ ছোট স্ক্রিনে জায়গা না হলে value নিচে যাবে */
+    @media (max-width: 767px) {
+      .row {
+        flex-wrap: wrap; /* value না ফিট করলে নিচে নামবে */
+      }
+      .value {
+        white-space: normal; /* ✅ মোবাইলে ভাঙতে পারবে */
+        color: #006c58;
+      }
+    }
+
 
     .value.empty {
       color: #888;
-      font-style: 'normal';
+      font-style: italic;
       font-family: 'kalpurush';
       font-size: 15px;
     }
 
-
-  /* খালি মানের জন্য */
-  .value.empty {
-      color: #888;
-      font-style: italic;
-  }
-
-  /* শিক্ষার্থীর নামের বড় বক্স */
-  .student-name-center {
+    /* শিক্ষার্থীর নামের বড় বক্স */
+    .student-name-center {
       text-align: center;
-      font-weight: normal;
       margin-bottom: 25px;
-      display: inline-block;
-      padding: 10px 25px;
       font-size: 28px;
       font-family: 'Sheikh Hasina';
       color: #fff;
-      background: linear-gradient(90deg, #009688, #004d40);
-      border-radius: 25px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      text-align: center;
-      margin-bottom: 30px;
-      background: linear-gradient(90deg, var(--start-color), var(--end-color));
-      padding: 0px 30px;
+      background: linear-gradient(90deg, #00507f, rgb(0, 48, 59));
       border-radius: 5px;
-      width: 100%;
-      display: block;
+      padding: 10px 25px;
       margin-top: 10px;
+      display: block;
+      width: 100%;
       box-sizing: border-box;
-      --start-color: #00507f; /* শুরু রং */
-      --end-color: rgb(0, 48, 59);   /* শেষ রং */
-
-      /* fade-in */
       opacity: 0;
       animation: fadeInUp 0.8s ease forwards;
-  }
-    
+    }
     
     body {
       margin: 0;
@@ -154,21 +136,16 @@
       color: #002b29;
     }
 
-  
     .header img.logo {
-      width: 45%;                 /* পাশে একটু gap রাখবে */
-      max-width: 680px;           /* card এর সাথে balance রাখবে */
+      width: 20%;
+      max-width: 680px;
       height: auto;
       display: block;
-      margin: 0 auto;
-      margin-top: 30px;
-      margin-bottom: 20px;
+      margin: 30px auto 20px;
       border-radius: 0 0 15px 15px;
-
-      /* অ্যানিমেশন */
       opacity: 0;
       transform: scale(0.95);
-      animation: footerFadeIn 1s ease forwards 1.2s; /* delay দিয়ে আসবে */
+      animation: footerFadeIn 1s ease forwards 1.2s;
     }
     .header h1 {
       font-family: 'JunudullahZami';
@@ -176,7 +153,6 @@
       color: #004d42;
       margin: 10px 0 0;
       text-align: center;
-    
     }
 
     .card {
@@ -211,38 +187,26 @@
       margin-top: 30px;
     }
     footer img {
-      width: 82%;                 /* পাশে একটু gap রাখবে */
-      max-width: 680px;           /* card এর সাথে balance রাখবে */
+      width: 82%;
+      max-width: 680px;
       height: auto;
       display: block;
-      margin: 0 auto;
-      margin-bottom: 80px;
+      margin: 0 auto 80px;
       border-radius: 0 0 15px 15px;
-
-      /* অ্যানিমেশন */
       opacity: 0;
       transform: scale(0.95);
-      animation: footerFadeIn 1s ease forwards 1.2s; /* delay দিয়ে আসবে */
+      animation: footerFadeIn 1s ease forwards 1.2s;
     }
 
-    /* অ্যানিমেশন keyframes */
     @keyframes footerFadeIn {
-      from {
-        opacity: 0;
-        transform: scale(0.95) translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: scale(1) translateY(0);
-      }
+      from { opacity: 0; transform: scale(0.95) translateY(20px); }
+      to { opacity: 1; transform: scale(1) translateY(0); }
     }
 
     footer img:hover {
-      transform: scale(1.02);  /* হালকা zoom effect */
-  
+      transform: scale(1.02);
       transition: transform 0.4s ease, box-shadow 0.4s ease;
     }
-
 
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px); }
@@ -256,18 +220,18 @@
 
     @media(max-width: 600px){
       .card { padding: 20px; margin: 15px; }
-      .row { flex-direction: column; align-items: flex-start; }
+      .row { flex-direction: row; }
       .label { text-align: left; }
-      .label::after { position: static; padding-left: 6px; }
-      .value { padding-left: 0; }
-      .student-name-center .name { font-size: 30px; }
+      /* পূর্বে এখানে .value { flex-basis: 100%; } থাকত — সেটি সরিয়ে দেয়া হয়েছে
+         যাতে মোবাইলে .value শুধুমাত্র তখনই নিচে যায় যখন প্রকৃত জায়গা না থাকে */
+      .student-name-center { font-size: 24px; }
       .header img.logo { width: 120px; height: 120px; }
     }
   </style>
 </head>
 <body>
   <div class="header">
-    <img src="png/logo.png" alt="লোগো" class="logo" />
+    <img src="png/logo .png" alt="লোগো" class="logo" />
     <h1>শিক্ষার্থী তথ্য</h1>
   </div>
 
@@ -324,15 +288,9 @@
 
         yearDiv.innerHTML = `শিক্ষাবর্ষ: ${student['শিক্ষাবর্ষ'] || 'উল্লেখ নেই'}`;
 
-        function formatValue(val) {
-          return val && val.trim() !== ''
-            ? `<span class="value">${val}</span>`
-            : `<span class="value empty">উল্লেখ নেই</span>`;
-        }
-
         infoDiv.innerHTML = `
-            <div class="title">শিক্ষার্থীর নাম</div>  
-        <div class="student-name-center">
+          <div class="title">শিক্ষার্থীর নাম</div>  
+          <div class="student-name-center">
             <div class="name">${student['শিক্ষার্থীর নাম'] || 'উল্লেখ নেই'}</div>
           </div>
           <div class="row"><div class="label">রেজিস্ট্রেশন নম্বর</div><div class="value">${student['রেজিস্ট্রেশন/আইডি নম্বর'] || '<span class="value empty">উল্লেখ নেই</span>'}</div></div>
@@ -346,7 +304,6 @@
           <div class="row"><div class="label">ঠিকানা</div><div class="value">${student['ঠিকানা'] || '<span class="value empty">উল্লেখ নেই</span>'}</div></div>
           <div class="row"><div class="label">শিক্ষার্থী ধরণ/স্ট্যাটাস</div><div class="value">${student['শিক্ষার্থী ধরণ/স্ট্যাটাস'] || '<span class="value empty">উল্লেখ নেই</span>'}</div></div>
         `;
-
       })
       .catch(err => {
         document.getElementById('studentInfo').innerHTML = '<div class="not-found">⚠️ ডেটা লোড করতে সমস্যা হয়েছে।</div>';
@@ -354,6 +311,7 @@
       });
   </script>
   <div class="footer">
-  © ২০২৫ দারুল উলূম মাদানিয়া মহিলা মাদরাসা। সর্বস্বত্ব সংরক্ষিত।
+    © ২০২৫ দারুল উলূম মাদানিয়া মহিলা মাদরাসা। সর্বস্বত্ব সংরক্ষিত।
+  </div>
 </body>
 </html>
