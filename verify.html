@@ -79,10 +79,15 @@
       color: #004a87; /* ✅ কোলনের পর সামান্য gap */
     }
     .value {
-        font-size: 19px;
-        color: #3c6200;
-      }
-
+      font-size: 19px;
+      color: #3c6200;
+    }
+    .value.empty {
+      color: #888;
+      font-style: italic;
+      font-family: 'kalpurush';
+      font-size: 15px;
+    }
     
     /* শিক্ষার্থীর নামের বড় বক্স */
     .student-name-center {
@@ -180,7 +185,8 @@
         flex: 1 1 100%; /* ✅ প্রয়োজন হলে পুরো লাইন নেবে */
         white-space: nowrap; /* ✅ value-ও ভাঙবে না */
         overflow: hidden;
-        text-overflow: ellipsis; /* ✅ বেশি বড় হলে ... দেখাবে *
+        text-overflow: ellipsis; /* ✅ বেশি বড় হলে ... দেখাবে */
+
       }
     }
 
@@ -193,13 +199,6 @@
         white-space: normal; /* ✅ মোবাইলে ভাঙতে পারবে */
       }
 
-
-    .value.empty {
-      color: #888;
-      font-style: italic;
-      font-family: 'kalpurush';
-      font-size: 15px;
-    }
   }
     @keyframes footerFadeIn {
       from { opacity: 0; transform: scale(0.95) translateY(20px); }
