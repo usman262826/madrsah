@@ -75,7 +75,7 @@
       font-weight: bold;
       font-size: 19px;
       color: #016164;
-      font-family: 'kalpurush';
+      font-family: 'Li Ador Noirrit';
       position: relative;
       margin-right: 6px; /* ✅ label এর পরে gap */
       white-space: nowrap; /* ✅ label ভাঙবে না */
@@ -83,7 +83,6 @@
 
     .label::after {
       content: ":";
-      font-family: 'kalpurush';
       margin-left: 3px;
       color: #004a87; /* ✅ কোলনের পর সামান্য gap */
     }
@@ -186,29 +185,7 @@
     }
 
 /* ✅ বড় স্ক্রিনে সবসময় এক লাইনে */
-    @media (min-width: 768px) {
-      .row {
-        flex-wrap: nowrap;  /* label + value ভাঙবে না */
-      }
-      .value {
-        flex: 1 1 100%; /* ✅ প্রয়োজন হলে পুরো লাইন নেবে */
-        white-space: nowrap; /* ✅ value-ও ভাঙবে না */
-        overflow: hidden;
-        text-overflow: ellipsis; /* ✅ বেশি বড় হলে ... দেখাবে */
-
-      }
-    }
-
-    /* ✅ ছোট স্ক্রিনে জায়গা না হলে value নিচে যাবে */
-    @media (max-width: 767px) {
-      .row {
-        flex-wrap: wrap; /* value না ফিট করলে নিচে নামবে */
-      }
-      .value {
-        white-space: normal; /* ✅ মোবাইলে ভাঙতে পারবে */
-      }
-
-  }
+  
     @keyframes footerFadeIn {
       from { opacity: 0; transform: scale(0.95) translateY(20px); }
       to { opacity: 1; transform: scale(1) translateY(0); }
@@ -232,7 +209,7 @@
     @media(max-width: 600px){
       .card { padding: 20px; margin: 15px; }
       .row { flex-direction: row; }
-      .label { text-align: left; }
+      .label { text-align: left;font-family: 'Li Ador Noirrit'; }
       /* পূর্বে এখানে .value { flex-basis: 100%; } থাকত — সেটি সরিয়ে দেয়া হয়েছে
          যাতে মোবাইলে .value শুধুমাত্র তখনই নিচে যায় যখন প্রকৃত জায়গা না থাকে */
       .student-name-center { font-size: 24px; }
