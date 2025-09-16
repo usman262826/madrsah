@@ -32,10 +32,10 @@
       display: flex;
       align-items: center;
       flex-wrap: wrap; /* এক লাইনে না হলে value নিচে যাবে */
-      margin-bottom: 16px;
+      margin-bottom: 5px;
       padding: 12px 18px;
       border-radius: 12px;
-      border: 1px solid #c8e6c9;
+      border: 1px solid #d6db9a;
       background: linear-gradient(90deg, #e8f5e9, #ffffff);
       box-shadow: 0 4px 10px rgba(0,0,0,0.05);
       transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
@@ -66,7 +66,7 @@
       min-width: auto;
       font-weight: bold;
       font-size: 19px;
-      color: #004b4e;
+      color: #016164;
       font-family: 'kalpurush';
       position: relative;
       margin-right: 6px; /* ✅ label এর পরে gap */
@@ -75,49 +75,22 @@
 
     .label::after {
       content: ":";
-      margin-left: 3px; /* ✅ কোলনের পর সামান্য gap */
+      margin-left: 3px;
+      color: #004a87; /* ✅ কোলনের পর সামান্য gap */
     }
-
-    /* ✅ বড় স্ক্রিনে সবসময় এক লাইনে */
-    @media (min-width: 768px) {
-      .row {
-        flex-wrap: nowrap;  /* label + value ভাঙবে না */
+    .value {
+        font-size: 19px;
+        color: #3c6200;
       }
-      .value {
-        flex: 1 1 100%; /* ✅ প্রয়োজন হলে পুরো লাইন নেবে */
-        white-space: nowrap; /* ✅ value-ও ভাঙবে না */
-        overflow: hidden;
-        text-overflow: ellipsis; /* ✅ বেশি বড় হলে ... দেখাবে */
-     
-      }
-    }
 
-    /* ✅ ছোট স্ক্রিনে জায়গা না হলে value নিচে যাবে */
-    @media (max-width: 767px) {
-      .row {
-        flex-wrap: wrap; /* value না ফিট করলে নিচে নামবে */
-      }
-      .value {
-        white-space: normal; /* ✅ মোবাইলে ভাঙতে পারবে */
-        color: #006c58;
-      }
-    }
-
-
-    .value.empty {
-      color: #888;
-      font-style: italic;
-      font-family: 'kalpurush';
-      font-size: 15px;
-    }
-
+    
     /* শিক্ষার্থীর নামের বড় বক্স */
     .student-name-center {
       text-align: center;
       margin-bottom: 25px;
       font-size: 28px;
       font-family: 'Sheikh Hasina';
-      color: #fff;
+      color: #ffea00;
       background: linear-gradient(90deg, #00507f, rgb(0, 48, 59));
       border-radius: 5px;
       padding: 10px 25px;
@@ -198,6 +171,36 @@
       animation: footerFadeIn 1s ease forwards 1.2s;
     }
 
+/* ✅ বড় স্ক্রিনে সবসময় এক লাইনে */
+    @media (min-width: 768px) {
+      .row {
+        flex-wrap: nowrap;  /* label + value ভাঙবে না */
+      }
+      .value {
+        flex: 1 1 100%; /* ✅ প্রয়োজন হলে পুরো লাইন নেবে */
+        white-space: nowrap; /* ✅ value-ও ভাঙবে না */
+        overflow: hidden;
+        text-overflow: ellipsis; /* ✅ বেশি বড় হলে ... দেখাবে *
+      }
+    }
+
+    /* ✅ ছোট স্ক্রিনে জায়গা না হলে value নিচে যাবে */
+    @media (max-width: 767px) {
+      .row {
+        flex-wrap: wrap; /* value না ফিট করলে নিচে নামবে */
+      }
+      .value {
+        white-space: normal; /* ✅ মোবাইলে ভাঙতে পারবে */
+      }
+
+
+    .value.empty {
+      color: #888;
+      font-style: italic;
+      font-family: 'kalpurush';
+      font-size: 15px;
+    }
+  }
     @keyframes footerFadeIn {
       from { opacity: 0; transform: scale(0.95) translateY(20px); }
       to { opacity: 1; transform: scale(1) translateY(0); }
