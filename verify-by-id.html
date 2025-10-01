@@ -2,18 +2,20 @@
 <html lang="bn">
 <head>
   <meta charset="UTF-8">
-  <title>উস্তাদদের তথ্য</title>
+  <title>ওস্তাদ ভেরিফিকেশন</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Custom Fonts -->
   <style>
-    @font-face { font-family: 'Qayyum book'; src: url('ফন্ট/Qayyum Book.ttf'); }
-    @font-face { font-family: 'JunudullahZami'; src: url('ফন্ট/FN Junudullah Zami.ttf') format('truetype'); }
-    @font-face { font-family: 'Sheikh Hasina'; src: url('ফন্ট/Li Sheikh Hasina 2 Unicode.ttf'); }
-    @font-face { font-family: 'Kalpurush'; src: url('ফন্ট/Kalpurush.ttf'); }
+    @font-face { font-family: 'Qayyum book'; src: url('fonts/Qayyum Book.ttf'); }
+    @font-face { font-family: 'JunudullahZami'; src: url('fonts/FN Junudullah Zami.ttf') format('truetype'); }
+    @font-face { font-family: 'Sheikh Hasina'; src: url('fonts/Li Sheikh Hasina 2 Unicode.ttf'); }
+    @font-face { font-family: 'Kalpurush'; src: url('fonts/Kalpurush.ttf'); }
     
     body {
       margin: 0;
       background: linear-gradient(to bottom, #eefaf7, #dcf4f0);
-      font-family: 'Qayyum book', sans-serif;
+      font-family: 'Qayyum book', 'Kalpurush', 'Hind Siliguri', sans-serif;
       color: #002b29;
     }
 
@@ -27,34 +29,31 @@
     .name-block {
       text-align: center;
       margin: 20px 10px 15px 10px;
-
     }
     .title-block {
-      font-family: 'Kalpurush';
+      font-family: 'Kalpurush', sans-serif;
       font-size: 22px;
       color: #000000;
       font-weight: bold;
       margin-bottom: -10px;
     }
     .student-name {
-    text-align: center;
-    margin: 10px auto 25px auto; /* top, left/right auto, bottom */
-    font-size: 28px;
-    font-family: 'Sheikh Hasina';
-    color: #ffffff;
-    background: linear-gradient(90deg, #007f2c, rgb(0, 59, 18));
-    border-radius: 5px;
-    padding: 10px 25px;
-    display: block;
-    max-width: 700px;
-    box-sizing: border-box;
-    opacity: 0;
-    overflow: hidden;
-    animation: fadeInUp 0.8s ease forwards;
+      text-align: center;
+      margin: 10px auto 25px auto;
+      font-size: 28px;
+      font-family: 'Sheikh Hasina', 'Kalpurush';
+      color: #ffffff;
+      background: linear-gradient(90deg, #007f2c, rgb(0, 59, 18));
+      border-radius: 5px;
+      padding: 10px 25px;
+      display: block;
+      max-width: 700px;
+      box-sizing: border-box;
+      opacity: 0;
+      animation: fadeInUp 0.8s ease forwards;
     }
-
     .teacher-type {
-      font-family: 'Kalpurush';
+      font-family: 'Kalpurush', sans-serif;
       font-size: 18px;
       margin-top: -20px;
       color: #006d60;
@@ -70,73 +69,54 @@
       border-radius: 15px;
       padding: 25px 30px;
       box-shadow: 0 8px 24px rgba(0,0,0,0.1);
-      position: relative;
       overflow: hidden;
       animation: fadeIn 1.3s ease-in-out;
       text-align: left;
     }
-
     .row {
-    display: flex;
-    align-items:left;
-    flex-wrap: wrap; /* সব একই লাইনে রাখবে */
-    margin-bottom: 10px;
-    padding: 4px 18px;
-    border-radius: 8px;
-    border: 1px solid #edd3d3;
-    background: linear-gradient(90deg, #f8ffff, #ffffff);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-    transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
-    opacity: 0;
-    animation: fadeInUp 0.6s ease forwards;
+      display: flex;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+      padding: 6px 18px;
+      border-radius: 8px;
+      border: 1px solid #edd3d3;
+      background: linear-gradient(90deg, #f8ffff, #ffffff);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+      opacity: 0;
+      animation: fadeInUp 0.6s ease forwards;
     }
-
     .label {
-    flex: 0 0 150px; /* fixed width */
-    font-weight: bold;
-    font-size: 19px;
-    color: #016422;
-    font-family: 'Kalpurush';
-    margin-right: 8px;
-    white-space: nowrap;
-    position: relative; /* colon জন্য relative */
-    
+      flex: 0 0 150px;
+      font-weight: bold;
+      font-size: 19px;
+      color: #016422;
+      font-family: 'Kalpurush', sans-serif;
+      margin-right: 12px;
+      white-space: nowrap;
+      position: relative;
     }
-
     .label::after {
-    content: ":";
-    position: absolute;
-    right: 35px ; /* label এর right edge এ colon থাকবে */
-    color: #8b0303;
+      content: ":";
+      position: absolute;
+      right: -12px;
+      color: #8b0303;
     }
-
     .value {
-    flex: 1;
-    font-size: 19px;
-    color: #000000;
-    white-space: nowrap;
-    overflow: hidden;
-    right: 2200px ;
-    text-overflow: ellipsis;
+      flex: 1;
+      font-size: 19px;
+      color: #000000;
+      margin-left: 18px; /* value টাকে ডানদিকে চাপানোর জন্য */
+      white-space: normal;
+      word-break: break-word;
     }
-    .value.empty {
-    color: #888;
-    font-style: italic;
-    font-family: 'Kalpurush';
-    font-size: 15px;
+    .row:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+      background: linear-gradient(90deg, #d0f0e8, #ffffff);
     }
 
-    .row:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 8px 18px rgba(0,0,0,0.12);
-        background: linear-gradient(90deg, #d0f0e8, #ffffff);
-        }
-    .row:nth-of-type(1) { animation-delay: 0.2s; }
-    .row:nth-of-type(2) { animation-delay: 0.3s; }
-    .row:nth-of-type(3) { animation-delay: 0.4s; }
-    .row:nth-of-type(4) { animation-delay: 0.5s; }
-    .row:nth-of-type(5) { animation-delay: 0.6s; }
-    .row:nth-of-type(6) { animation-delay: 0.7s; }
     /* ============================= */
     /* হেডার ও ফুটার */
     /* ============================= */
@@ -146,9 +126,7 @@
       height: auto;
       display: block;
       margin: 30px auto 20px;
-      border-radius: 0 0 15px 15px;
       opacity: 0;
-      transform: scale(0.95);
       animation: footerFadeIn 1s ease forwards 1.2s;
     }
     footer {
@@ -161,23 +139,28 @@
       height: auto;
       display: block;
       margin: 0 auto 80px;
-      border-radius: 0 0 15px 15px;
       opacity: 0;
-      transform: scale(0.95);
       animation: footerFadeIn 1s ease forwards 1.2s;
     }
-    footer img:hover {
-      transform: scale(1.02);
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
+
+    /* ============================= */
+    /* শিক্ষাবর্ষ ফুটার */
+    /* ============================= */
+    .year-footer {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 18px;
+      font-family: 'Kalpurush', sans-serif;
+      color: #004d40;
     }
 
     /* ============================= */
     /* রেসপন্সিভ */
     /* ============================= */
-
     @media (max-width: 767px){
-      .value { white-space: normal; }
-      .student-name { font-size: 24px;width:normal; }
+      .value { white-space: normal; font-size: 17px; }
+      .student-name { font-size: 24px; }
+      .label { flex: 0 0 120px; font-size: 17px; }
     }
   </style>
 </head>
@@ -188,73 +171,67 @@
 
   <!-- নাম ব্লক -->
   <div class="name-block">
-    <div class="title-block" id="titleBlock">পদবী</div>
-    <div class="student-name" id="studentName">শিক্ষার্থীর নাম</div>
-    <div class="teacher-type" id="teacherType">ওস্তাদের ধরন</div>
+    <div class="title-block" id="titleBlock"></div>
+    <div class="student-name" id="studentName"></div>
+    <div class="teacher-type" id="teacherType"></div>
   </div>
 
   <!-- কার্ড -->
   <div class="card" id="studentCard">
-    <div id="studentInfo">তথ্য লোড হচ্ছে...</div>
-    <div id="yearDisplay" class="year-footer-display"></div> 
+    <div id="studentInfo">🔄 তথ্য লোড হচ্ছে...</div>
+    <div id="yearDisplay" class="year-footer"></div>
   </div>
+
   <footer>
     <img src="png/madrasa head.png" alt="মাদরাসা হেডার">
   </footer>
 
   <script>
     const params = new URLSearchParams(window.location.search);
-    const year = params.get('year');
-    const nid = params.get('nid'); // এনআইডি/জন্মনং দিয়ে কল করা
-    const sheetURL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vS-1PkOrG-xcZdgVD1qENB7Gq9fbJLSRUr93RKq9P35UqLHYsW4nBLOnOQCq6NCK3HmsclT4H3HlTY3/pub?output=csv';
+    const yearParam = params.get('year');
+    const idParam = params.get('id');
+
+    const sheetURL = 'https://opensheet.elk.sh/1Vzq9bRiJKQHJ4j0SwoOw9P74Ad9k6wvajJogAkgBkBU/Sheet1';
 
     fetch(sheetURL)
-      .then(res => res.text())
-      .then(csvText => {
-        const lines = csvText.split('\n');
-        const headers = lines[0].split(',');
-        const data = lines.slice(1).map(line => {
-          const values = line.split(',');
-          const obj = {};
-          headers.forEach((h,i) => obj[h.trim()] = values[i]?values[i].trim(): '');
-          return obj;
-        });
-
-        const student = data.find(s =>
-          s['এন আইডি নং'] === nid || s['জন্ম নিবন্ধন নং'] === nid
+      .then(res => res.json())
+      .then(data => {
+        const ustad = data.find(s =>
+          s['শিক্ষা বর্ষ'] === yearParam && s['আইডি নং'] === idParam
         );
 
         const infoDiv = document.getElementById('studentInfo');
         const titleDiv = document.getElementById('titleBlock');
         const nameDiv = document.getElementById('studentName');
         const typeDiv = document.getElementById('teacherType');
+        const yearDiv = document.getElementById('yearDisplay');
 
-        if(!student){
-          infoDiv.innerHTML = '<div class="not-found">⚠️ শিক্ষার্থীর তথ্য পাওয়া যায়নি।</div>';
-          titleDiv.innerText = '';
-          nameDiv.innerText = '';
-          typeDiv.innerText = '';
+        if(!ustad){
+          infoDiv.innerHTML = '<div class="not-found">⚠️ কোনো তথ্য পাওয়া যায়নি।</div>';
           return;
         }
 
         // নাম ব্লক
-        titleDiv.innerText = student['টাইটেল'] || '';
-        nameDiv.innerText = student['নাম'] || '';
-        typeDiv.innerText = student['ধরন'] || '';
+        titleDiv.innerText = ustad['পদবী'] || '';
+        nameDiv.innerText = ustad['পূর্ণ নাম'] || '';
+        typeDiv.innerText = ustad['পদ/ধরন'] || '';
 
-        // কার্ডের তথ্য
-        infoDiv.innerHTML = `
-          <div class="row"><div class="label">এন আইডি নং</div><div class="value">${student['এন আইডি নং']||'<span class="value empty">উল্লেখ নেই</span>'}</div></div>
-          <div class="row"><div class="label">জন্ম নিবন্ধন নং</div><div class="value">${student['জন্ম নিবন্ধন নং']||'<span class="value empty">উল্লেখ নেই</span>'}</div></div>
-          <div class="row"><div class="label">রক্তের গ্রুপ</div><div class="value">${student['রক্তের গ্রুপ']||'<span class="value empty">উল্লেখ নেই</span>'}</div></div>
-          <div class="row"><div class="label">মোবাইল</div><div class="value">${student['মোবাইল']||'<span class="value empty">উল্লেখ নেই</span>'}</div></div>
-          <div class="row"><div class="label">লোকেশন</div><div class="value">${student['লোকেশন']||'<span class="value empty">উল্লেখ নেই</span>'}</div></div>
-        `;
+        // কার্ড তথ্য
+        let rows = '';
+        if(ustad['স্ট্যাটাস']) rows += `<div class="row"><div class="label">স্ট্যাটাস</div><div class="value">${ustad['স্ট্যাটাস']}</div></div>`;
+        if(ustad['জন্ম নিবন্ধন নং']) rows += `<div class="row"><div class="label">জন্ম নিবন্ধন নং</div><div class="value">${ustad['জন্ম নিবন্ধন নং']}</div></div>`;
+        if(ustad['এনআইডি নং']) rows += `<div class="row"><div class="label">এনআইডি নং</div><div class="value">${ustad['এনআইডি নং']}</div></div>`;
+        if(ustad['জন্মতারিখ']) rows += `<div class="row"><div class="label">জন্মতারিখ</div><div class="value">${ustad['জন্মতারিখ']}</div></div>`;
+        if(ustad['রক্তের গ্রুপ']) rows += `<div class="row"><div class="label">রক্তের গ্রুপ</div><div class="value">${ustad['রক্তের গ্রুপ']}</div></div>`;
+        if(ustad['মোবাইল']) rows += `<div class="row"><div class="label">মোবাইল</div><div class="value">${ustad['মোবাইল']}</div></div>`;
+        if(ustad['ঠিকানা']) rows += `<div class="row"><div class="label">ঠিকানা</div><div class="value">${ustad['ঠিকানা']}</div></div>`;
+
+        infoDiv.innerHTML = rows;
+        yearDiv.innerText = ustad['শিক্ষা বর্ষ'] || '';
       })
-      
       .catch(err=>{
         console.error(err);
-        document.getElementById('studentInfo').innerHTML='<div class="not-found">⚠️ ডেটা লোড করতে সমস্যা হয়েছে।</div>';
+        document.getElementById('studentInfo').innerHTML='<div class="not-found">⚠️ ডেটা লোড করতে সমস্যা হয়েছে।</div>';
       });
   </script>
 </body>
