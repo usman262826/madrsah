@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <title>শিক্ষার্থী তথ্য</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    @font-face { font-family: 'Qayyum book'; src: url('ফন্ট/Qayyum Book.ttf'); }
+    @font-face { font-family: 'JunudullahZami'; src: url('ফন্ট/FN Junudullah Zami.ttf') format('truetype'); }
+    @font-face { font-family: 'Sheikh Hasina'; src: url('ফন্ট/Li Sheikh Hasina 2 Unicode.ttf'); }
+    @font-face { font-family: 'Kalpurush'; src: url('ফন্ট/Kalpurush.ttf'); }
+    
+    body {
+      margin: 0;
+      background: linear-gradient(to bottom, #eefaf7, #dcf4f0);
+      font-family: 'Qayyum book', sans-serif;
+      color: #002b29;
+    }
+
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes footerFadeIn { from { opacity:0; transform: scale(0.95) translateY(20px);} to {opacity:1; transform: scale(1) translateY(0);} }
+
+    /* ============================= */
+    /* নাম ব্লক */
+    /* ============================= */
+    .name-block {
+      text-align: center;
+      margin: 20px 10px 15px 10px;
+    }
+    .title-block {
+      font-family: 'Kalpurush';
+      font-size: 16px;
+      color: #004a87;
+      margin-bottom: 5px;
+    }
+    .student-name {
+      font-family: 'Sheikh Hasina';
+      font-size: 28px;
+      color: #ffea00;
+      background: linear-gradient(90deg, #00507f, #00303b);
+      display: inline-block;
+      padding: 10px 25px;
+      border-radius: 5px;
+      margin-bottom: 5px;
+      animation: fadeInUp 0.8s ease forwards;
+    }
+    .teacher-type {
+      font-family: 'Kalpurush';
+      font-size: 16px;
+      color: #006d60;
+    }
+
+    /* ============================= */
+    /* কার্ড */
+    /* ============================= */
+    .card {
+      max-width: 700px;
+      background: #fff;
+      margin: 0 auto 30px auto;
+      border-radius: 15px;
+      padding: 25px 30px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+      animation: fadeIn 1.3s ease-in-out;
+    }
+
+    .row {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+      padding: 12px 18px;
+      border-radius: 12px;
+      border: 1px solid #d6db9a;
+      background: linear-gradient(90deg, #e8f5e9, #ffffff);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+      opacity: 0;
+      animation: fadeInUp 0.6s ease forwards;
+    }
+    .row:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+      background: linear-gradient(90deg, #d0f0e8, #ffffff);
+    }
+    .row:nth-of-type(1) { animation-delay: 0.2s; }
+    .row:nth-of-type(2) { animation-delay: 0.3s; }
+    .row:nth-of-type(3) { animation-delay: 0.4s; }
+    .row:nth-of-type(4) { animation-delay: 0.5s; }
+    .row:nth-of-type(5) { animation-delay: 0.6s; }
+    .row:nth-of-type(6) { animation-delay: 0.7s; }
+
+    .label {
+      min-width: auto;
+      font-weight: bold;
+      font-size: 19px;
+      color: #016164;
+      font-family: 'Li Ador Noirrit';
+      margin-right: 8px;
+      white-space: nowrap;
+    }
+    .label::after {
+      content: ":";
+      margin-left: 3px;
+      color: #004a87;
+    }
+    .value {
+      font-size: 19px;
+      color: #3c6200;
+      flex:1 1 100%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .value.empty {
+      color: #888;
+      font-style: italic;
+      font-family: 'Kalpurush';
+      font-size: 15px;
+    }
+
+    /* ============================= */
+    /* হেডার ও ফুটার */
+    /* ============================= */
+    .header img.logo {
+      width: 20%;
+      max-width: 680px;
+      height: auto;
+      display: block;
+      margin: 30px auto 20px;
+      border-radius: 0 0 15px 15px;
+      opacity: 0;
+      transform: scale(0.95);
+      animation: footerFadeIn 1s ease forwards 1.2s;
+    }
+    footer {
+      text-align: center;
+      margin-top: 30px;
+    }
+    footer img {
+      width: 82%;
+      max-width: 680px;
+      height: auto;
+      display: block;
+      margin: 0 auto 80px;
+      border-radius: 0 0 15px 15px;
+      opacity: 0;
+      transform: scale(0.95);
+      animation: footerFadeIn 1s ease forwards 1.2s;
+    }
+    footer img:hover {
+      transform: scale(1.02);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    /* ============================= */
+    /* রেসপন্সিভ */
+    /* ============================= */
+    @media (min-width: 768px){
+      .row { flex-wrap: nowrap; }
+    }
+    @media (max-width: 767px){
+      .row { flex-wrap: wrap; }
+      .value { white-space: normal; }
+      .student-name { font-size: 24px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <img src="png/logo.png" alt="লোগো" class="logo">
+  </div>
+
+  <!-- নাম ব্লক -->
+  <div class="name-block">
+    <div class="title-block" id="titleBlock">পদবী</div>
+    <div class="student-name" id="studentName">শিক্ষার্থীর নাম</div>
+    <div class="teacher-type" id="teacherType">ওস্তাদের ধরন</div>
+  </div>
+
+  <!-- কার্ড -->
+  <div class="card" id="studentCard">
+    <div id="studentInfo">তথ্য লোড হচ্ছে...</div>
+  </div>
+
+  <footer>
+    <img src="png/madrasa head.png" alt="মাদরাসা হেডার">
+  </footer>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const year = params.get('year');
+    const nid = params.get('nid'); // এনআইডি/জন্মনং দিয়ে কল করা
+    const sheetURL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vS-1PkOrG-xcZdgVD1qENB7Gq9fbJLSRUr93RKq9P35UqLHYsW4nBLOnOQCq6NCK3HmsclT4H3HlTY3/pub?output=csv';
+
+    fetch(sheetURL)
+      .then(res => res.text())
+      .then(csvText => {
+        const lines = csvText.split('\n');
+        const headers = lines[0].split(',');
+        const data = lines.slice(1).map(line => {
+          const values = line.split(',');
+          const obj = {};
+          headers.forEach((h,i) => obj[h.trim()] = values[i]?values[i].trim(): '');
+          return obj;
+        });
+
+        const student = data.find(s =>
+          s['এন আইডি নং'] === nid || s['জন্ম নিবন্ধন নং'] === nid
+        );
+
+        const infoDiv = document.getElementById('studentInfo');
+        const titleDiv = document.getElementById('titleBlock');
+        const nameDiv = document.getElementById('studentName');
+        const typeDiv = document.getElementById('teacherType');
+
+        if(!student){
+          infoDiv.innerHTML = '<div class="not-found">⚠️ শিক্ষার্থীর তথ্য পাওয়া যায়নি।</div>';
+          titleDiv.innerText = '';
+          nameDiv.innerText = '';
+          typeDiv.innerText = '';
+          return;
+        }
+
+        // নাম ব্লক
+        titleDiv.innerText = student['টাইটেল'] || '';
+        nameDiv.innerText = student['নাম'] || '';
+        typeDiv.innerText = student['ধরন'] || '';
+
+        // কার্ডের তথ্য
+        infoDiv.innerHTML = `
+          <div class="row"><div class="label">শিক্ষাবর্ষ</div><div class="value">${student['শিক্ষাবর্ষ']||'<span class="value empty">উল্লেখ নেই</span>'}</div></div>
+          <div class="row"><div class="label">জন্ম নিবন্ধন নং</div><div class="value">${student['জন্ম নিবন্ধন নং']||'<span class="value empty">উল্লেখ নেই</span>'}</div></div>
+          <div class="row"><div class="label">এন আইডি নং</div><div class="value">${student['এন আইডি নং']||'<span class="value empty">উল্লেখ নেই</span>'}</div></div>
+          <div class="row"><div class="label">রক্তের গ্রুপ</div><div class="value">${student['রক্তের গ্রুপ']||'<span class="value empty">উল্লেখ নেই</span>'}</div></div>
+          <div class="row"><div class="label">মোবাইল</div><div class="value">${student['মোবাইল']||'<span class="value empty">উল্লেখ নেই</span>'}</div></div>
+          <div class="row"><div class="label">লোকেশন</div><div class="value">${student['লোকেশন']||'<span class="value empty">উল্লেখ নেই</span>'}</div></div>
+        `;
+      })
+      .catch(err=>{
+        console.error(err);
+        document.getElementById('studentInfo').innerHTML='<div class="not-found">⚠️ ডেটা লোড করতে সমস্যা হয়েছে।</div>';
+      });
+  </script>
+</body>
+</html>
