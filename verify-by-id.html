@@ -2,7 +2,7 @@
 <html lang="bn">
 <head>
   <meta charset="UTF-8">
-  <title>শিক্ষার্থী তথ্য</title>
+  <title>উস্তাদদের তথ্য</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     @font-face { font-family: 'Qayyum book'; src: url('ফন্ট/Qayyum Book.ttf'); }
@@ -27,6 +27,11 @@
     .name-block {
       text-align: center;
       margin: 20px 10px 15px 10px;
+      font-family: 'Kalpurush';
+      font-size: 20px;
+      color: #000000;
+      font-weight: bold;
+
     }
     .title-block {
       font-family: 'Kalpurush';
@@ -34,20 +39,25 @@
       color: #004a87;
       margin-bottom: 5px;
     }
-    .student-name {
-      font-family: 'Sheikh Hasina';
+    .student-name-center {
+      text-align: center;
+      margin-bottom: 25px;
       font-size: 28px;
+      font-family: 'Sheikh Hasina';
       color: #ffea00;
-      background: linear-gradient(90deg, #00507f, #00303b);
-      display: inline-block;
-      padding: 10px 25px;
+      background: linear-gradient(90deg, #00507f, rgb(0, 48, 59));
       border-radius: 5px;
-      margin-bottom: 5px;
+      padding: 10px 25px;
+      margin-top: 10px;
+      display: block;
+      width: 100%;
+      box-sizing: border-box;
+      opacity: 0;
       animation: fadeInUp 0.8s ease forwards;
     }
     .teacher-type {
       font-family: 'Kalpurush';
-      font-size: 16px;
+      font-size: 18px;
       color: #006d60;
     }
 
@@ -181,8 +191,8 @@
   <!-- কার্ড -->
   <div class="card" id="studentCard">
     <div id="studentInfo">তথ্য লোড হচ্ছে...</div>
+    <div id="yearDisplay" class="year-footer-display"></div>
   </div>
-
   <footer>
     <img src="png/madrasa head.png" alt="মাদরাসা হেডার">
   </footer>
@@ -229,7 +239,6 @@
 
         // কার্ডের তথ্য
         infoDiv.innerHTML = `
-          <div class="row"><div class="label">শিক্ষাবর্ষ</div><div class="value">${student['শিক্ষাবর্ষ']||'<span class="value empty">উল্লেখ নেই</span>'}</div></div>
           <div class="row"><div class="label">জন্ম নিবন্ধন নং</div><div class="value">${student['জন্ম নিবন্ধন নং']||'<span class="value empty">উল্লেখ নেই</span>'}</div></div>
           <div class="row"><div class="label">এন আইডি নং</div><div class="value">${student['এন আইডি নং']||'<span class="value empty">উল্লেখ নেই</span>'}</div></div>
           <div class="row"><div class="label">রক্তের গ্রুপ</div><div class="value">${student['রক্তের গ্রুপ']||'<span class="value empty">উল্লেখ নেই</span>'}</div></div>
