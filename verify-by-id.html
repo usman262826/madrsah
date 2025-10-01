@@ -34,23 +34,29 @@
       font-size: 22px;
       color: #000000;
       font-weight: bold;
-      margin-bottom: 5px;
+      margin-bottom: -10px;
     }
     .student-name {
-      font-family: 'Sheikh Hasina';
-      font-size: 28px;
-      color: #ffea00;
-      background: linear-gradient(90deg, #00507f, #00303b);
-      display: inline-block;
-      padding: 10px 25px;
-      width: 100%;
-      border-radius: 5px;
-      margin-bottom: 5px;
-      animation: fadeInUp 0.8s ease forwards;
+    text-align: center;
+    margin: 10px auto 25px auto; /* top, left/right auto, bottom */
+    font-size: 28px;
+    font-family: 'Sheikh Hasina';
+    color: #ffffff;
+    background: linear-gradient(90deg, #007f2c, rgb(0, 59, 18));
+    border-radius: 5px;
+    padding: 10px 25px;
+    display: block;
+    max-width: 700px;
+    box-sizing: border-box;
+    opacity: 0;
+    overflow: hidden;
+    animation: fadeInUp 0.8s ease forwards;
     }
+
     .teacher-type {
       font-family: 'Kalpurush';
       font-size: 18px;
+      margin-top: -20px;
       color: #006d60;
     }
 
@@ -60,68 +66,77 @@
     .card {
       max-width: 700px;
       background: #fff;
-      margin: 0 auto 30px auto;
+      margin: 20px auto;
       border-radius: 15px;
       padding: 25px 30px;
       box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+      position: relative;
+      overflow: hidden;
       animation: fadeIn 1.3s ease-in-out;
+      text-align: left;
     }
 
     .row {
-      display: flex;
-      align-items: center;
-      flex-wrap: wrap;
-      margin-bottom: 10px;
-      padding: 12px 18px;
-      border-radius: 12px;
-      border: 1px solid #d6db9a;
-      background: linear-gradient(90deg, #e8f5e9, #ffffff);
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-      transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
-      opacity: 0;
-      animation: fadeInUp 0.6s ease forwards;
+    display: flex;
+    align-items:left;
+    flex-wrap: wrap; /* সব একই লাইনে রাখবে */
+    margin-bottom: 10px;
+    padding: 4px 18px;
+    border-radius: 8px;
+    border: 1px solid #edd3d3;
+    background: linear-gradient(90deg, #f8ffff, #ffffff);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+    opacity: 0;
+    animation: fadeInUp 0.6s ease forwards;
     }
+
+    .label {
+    flex: 0 0 150px; /* fixed width */
+    font-weight: bold;
+    font-size: 19px;
+    color: #016422;
+    font-family: 'Kalpurush';
+    margin-right: 8px;
+    white-space: nowrap;
+    position: relative; /* colon জন্য relative */
+    
+    }
+
+    .label::after {
+    content: ":";
+    position: absolute;
+    right: 35px ; /* label এর right edge এ colon থাকবে */
+    color: #8b0303;
+    }
+
+    .value {
+    flex: 1;
+    font-size: 19px;
+    color: #000000;
+    white-space: nowrap;
+    overflow: hidden;
+    right: 2200px ;
+    text-overflow: ellipsis;
+    }
+    .value.empty {
+    color: #888;
+    font-style: italic;
+    font-family: 'Kalpurush';
+    font-size: 15px;
+    }
+
     .row:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 18px rgba(0,0,0,0.12);
-      background: linear-gradient(90deg, #d0f0e8, #ffffff);
-    }
+        transform: translateY(-3px);
+        box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+        background: linear-gradient(90deg, #d0f0e8, #ffffff);
+        }
     .row:nth-of-type(1) { animation-delay: 0.2s; }
     .row:nth-of-type(2) { animation-delay: 0.3s; }
     .row:nth-of-type(3) { animation-delay: 0.4s; }
     .row:nth-of-type(4) { animation-delay: 0.5s; }
     .row:nth-of-type(5) { animation-delay: 0.6s; }
     .row:nth-of-type(6) { animation-delay: 0.7s; }
-
-    .label {
-      min-width: auto;
-      font-weight: bold;
-      font-size: 19px;
-      color: #016164;
-      font-family: 'kalpurush';
-      margin-right: 8px;
-      white-space: nowrap;
-    }
-    .label::after {
-      content: ":";
-      margin-left: 3px;
-      color: #004a87;
-    }
-    .value {
-      font-size: 19px;
-      color: #000000;
-      flex:1 1 100%;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    .value.empty {
-      color: #888;
-      font-style: italic;
-      font-family: 'Kalpurush';
-      font-size: 15px;
-    }
-
     /* ============================= */
     /* হেডার ও ফুটার */
     /* ============================= */
@@ -159,13 +174,10 @@
     /* ============================= */
     /* রেসপন্সিভ */
     /* ============================= */
-    @media (min-width: 768px){
-      .row { flex-wrap: nowrap; }
-    }
+
     @media (max-width: 767px){
-      .row { flex-wrap: wrap; }
       .value { white-space: normal; }
-      .student-name { font-size: 24px; }
+      .student-name { font-size: 24px;width:normal; }
     }
   </style>
 </head>
@@ -184,7 +196,7 @@
   <!-- কার্ড -->
   <div class="card" id="studentCard">
     <div id="studentInfo">তথ্য লোড হচ্ছে...</div>
-    <div id="yearDisplay" class="year-footer-display"></div>
+    <div id="yearDisplay" class="year-footer-display"></div> 
   </div>
   <footer>
     <img src="png/madrasa head.png" alt="মাদরাসা হেডার">
@@ -232,13 +244,14 @@
 
         // কার্ডের তথ্য
         infoDiv.innerHTML = `
-          <div class="row"><div class="label">জন্ম নিবন্ধন নং</div><div class="value">${student['জন্ম নিবন্ধন নং']||'<span class="value empty">উল্লেখ নেই</span>'}</div></div>
           <div class="row"><div class="label">এন আইডি নং</div><div class="value">${student['এন আইডি নং']||'<span class="value empty">উল্লেখ নেই</span>'}</div></div>
+          <div class="row"><div class="label">জন্ম নিবন্ধন নং</div><div class="value">${student['জন্ম নিবন্ধন নং']||'<span class="value empty">উল্লেখ নেই</span>'}</div></div>
           <div class="row"><div class="label">রক্তের গ্রুপ</div><div class="value">${student['রক্তের গ্রুপ']||'<span class="value empty">উল্লেখ নেই</span>'}</div></div>
           <div class="row"><div class="label">মোবাইল</div><div class="value">${student['মোবাইল']||'<span class="value empty">উল্লেখ নেই</span>'}</div></div>
           <div class="row"><div class="label">লোকেশন</div><div class="value">${student['লোকেশন']||'<span class="value empty">উল্লেখ নেই</span>'}</div></div>
         `;
       })
+      
       .catch(err=>{
         console.error(err);
         document.getElementById('studentInfo').innerHTML='<div class="not-found">⚠️ ডেটা লোড করতে সমস্যা হয়েছে।</div>';
