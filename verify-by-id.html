@@ -7,15 +7,55 @@
 
   <!-- Custom Fonts -->
   <style>
-    @font-face { font-family: 'Qayyum book'; src: url('fonts/Qayyum Book.ttf'); }
-    @font-face { font-family: 'JunudullahZami'; src: url('fonts/FN Junudullah Zami.ttf') format('truetype'); }
-    @font-face { font-family: 'Sheikh Hasina'; src: url('fonts/Li Sheikh Hasina 2 Unicode.ttf'); }
-    @font-face { font-family: 'Kalpurush'; src: url('fonts/Kalpurush.ttf'); }
-    
+    @font-face {
+      font-family: 'Qayyum Book';
+      src: url('/fonts/Qayyum-Book.woff2') format('woff2'),
+          url('/fonts/Qayyum-Book.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: 'Junudullah Zami';
+      src: url('/ফন্ট/FN Junudullah Zami.ttf') format('woff2'),
+          url('/fonts/FN-Junudullah-Zami.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: 'Sheikh Hasina';
+      src: url('/ফন্ট/Li Sheikh Hasina 2 Unicode.ttf') format('woff2'),
+          url('/fonts/Li-Sheikh-Hasina.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: 'Ador Noirrit Light';
+      src: url('/fonts/Li-Ador-Noirrit-Light.woff2') format('woff2'),
+          url('/fonts/Li-Ador-Noirrit-Light.ttf') format('truetype');
+      font-weight: 300;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: 'Ador Noirrit';
+      src: url('/fonts/Li-Ador-Noirrit-Regular.woff2') format('woff2'),
+          url('/fonts/Li-Ador-Noirrit-Regular.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    /* উদাহরণ ব্যবহার */
+    body {
+      font-family: 'Qayyum Book';
+    }
+
     body {
       margin: 0;
       background: linear-gradient(to bottom, #eefaf7, #dcf4f0);
-      font-family: 'Qayyum book', 'Kalpurush', 'Hind Siliguri', sans-serif;
+      font-family: 'Qayyum book', 'Kalpurush';
       color: #002b29;
     }
 
@@ -31,17 +71,17 @@
       margin: 20px 10px 15px 10px;
     }
     .title-block {
-      font-family: 'Kalpurush', sans-serif;
+      font-family: 'Junudullah Zami';
       font-size: 22px;
       color: #000000;
-      font-weight: bold;
+      font-weight: normal;
       margin-bottom: -10px;
     }
     .student-name {
       text-align: center;
       margin: 10px auto 25px auto;
       font-size: 28px;
-      font-family: 'Sheikh Hasina', 'Kalpurush';
+      font-family: 'Sheikh Hasina';
       color: #ffffff;
       background: linear-gradient(90deg, #007f2c, rgb(0, 59, 18));
       border-radius: 5px;
@@ -53,10 +93,10 @@
       animation: fadeInUp 0.8s ease forwards;
     }
     .teacher-type {
-      font-family: 'Kalpurush', sans-serif;
+      font-family: 'Kalpurush';
       font-size: 18px;
       margin-top: -20px;
-      color: #006d60;
+      color: #00476e;
     }
 
     /* ============================= */
@@ -80,8 +120,8 @@
       margin-bottom: 10px;
       padding: 6px 18px;
       border-radius: 8px;
-      border: 1px solid #edd3d3;
-      background: linear-gradient(90deg, #f8ffff, #ffffff);
+      border: 1px solid #fce5e5;
+      background: linear-gradient(90deg, #ffffff, #f0fffa);
       box-shadow: 0 4px 10px rgba(0,0,0,0.05);
       transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
       opacity: 0;
@@ -92,7 +132,7 @@
       font-weight: bold;
       font-size: 19px;
       color: #016422;
-      font-family: 'Kalpurush', sans-serif;
+      font-family: 'Kalpurush';
       margin-right: 12px;
       white-space: nowrap;
       position: relative;
@@ -159,7 +199,7 @@
     /* ============================= */
     @media (max-width: 767px){
       .value { white-space: normal; font-size: 17px; }
-      .student-name { font-size: 24px; }
+      .student-name { font-size: 24px;}
       .label { flex: 0 0 120px; font-size: 17px; }
     }
   </style>
@@ -218,12 +258,12 @@
 
         // কার্ড তথ্য
         let rows = '';
-        if(ustad['স্ট্যাটাস']) rows += `<div class="row"><div class="label">স্ট্যাটাস</div><div class="value">${ustad['স্ট্যাটাস']}</div></div>`;
         if(ustad['জন্ম নিবন্ধন নং']) rows += `<div class="row"><div class="label">জন্ম নিবন্ধন নং</div><div class="value">${ustad['জন্ম নিবন্ধন নং']}</div></div>`;
         if(ustad['এনআইডি নং']) rows += `<div class="row"><div class="label">এনআইডি নং</div><div class="value">${ustad['এনআইডি নং']}</div></div>`;
         if(ustad['জন্মতারিখ']) rows += `<div class="row"><div class="label">জন্মতারিখ</div><div class="value">${ustad['জন্মতারিখ']}</div></div>`;
         if(ustad['রক্তের গ্রুপ']) rows += `<div class="row"><div class="label">রক্তের গ্রুপ</div><div class="value">${ustad['রক্তের গ্রুপ']}</div></div>`;
         if(ustad['মোবাইল']) rows += `<div class="row"><div class="label">মোবাইল</div><div class="value">${ustad['মোবাইল']}</div></div>`;
+        if(ustad['স্ট্যাটাস']) rows += `<div class="row"><div class="label">স্ট্যাটাস</div><div class="value">${ustad['স্ট্যাটাস']}</div></div>`;
         if(ustad['ঠিকানা']) rows += `<div class="row"><div class="label">ঠিকানা</div><div class="value">${ustad['ঠিকানা']}</div></div>`;
 
         infoDiv.innerHTML = rows;
