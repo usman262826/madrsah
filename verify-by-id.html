@@ -65,7 +65,7 @@
     }
     .title-block {
       font-family: 'Junudullah Zami';
-      font-size: 22px;
+      font-size: 18px;
       color: #000000;
       font-weight: normal;
       margin-bottom: -10px;
@@ -87,7 +87,7 @@
     }
     .teacher-type {
       font-family: 'Bornomala';
-      font-size: 18px;
+      font-size: 14px;
       margin-top: -20px;
       color: #00476e;
     }
@@ -143,6 +143,16 @@
       margin-left: 18px; /* value টাকে ডানদিকে চাপানোর জন্য */
       white-space: normal;
       word-break: break-word;
+    }
+    .value.empty {
+      flex: 1;
+      margin-left: 18px; /* value টাকে ডানদিকে চাপানোর জন্য */
+      color: #888;
+      font-style: italic;
+      font-family: 'kalpurush';
+      font-size: 15px;
+      word-break: break-word;
+      white-space: normal;
     }
     .row:hover {
       transform: translateY(-3px);
@@ -250,14 +260,21 @@
         typeDiv.innerText = ustad['পদ/ধরন'] || '';
 
         // কার্ড তথ্য
-        let rows = '';
-        if(ustad['জন্ম নিবন্ধন নং']) rows += `<div class="row"><div class="label">জন্ম নিবন্ধন নং</div><div class="value">${ustad['জন্ম নিবন্ধন নং']}</div></div>`;
-        if(ustad['এনআইডি নং']) rows += `<div class="row"><div class="label">এনআইডি নং</div><div class="value">${ustad['এনআইডি নং']}</div></div>`;
-        if(ustad['জন্মতারিখ']) rows += `<div class="row"><div class="label">জন্মতারিখ</div><div class="value">${ustad['জন্মতারিখ']}</div></div>`;
-        if(ustad['রক্তের গ্রুপ']) rows += `<div class="row"><div class="label">রক্তের গ্রুপ</div><div class="value">${ustad['রক্তের গ্রুপ']}</div></div>`;
-        if(ustad['মোবাইল']) rows += `<div class="row"><div class="label">মোবাইল</div><div class="value">${ustad['মোবাইল']}</div></div>`;
-        if(ustad['স্ট্যাটাস']) rows += `<div class="row"><div class="label">স্ট্যাটাস</div><div class="value">${ustad['স্ট্যাটাস']}</div></div>`;
-        if(ustad['ঠিকানা']) rows += `<div class="row"><div class="label">ঠিকানা</div><div class="value">${ustad['ঠিকানা']}</div></div>`;
+          let rows = '';
+
+        
+        // বাকি সব ফিল্ড
+        rows += `<div class="row"><div class="label">এনআইডি নং</div><div class="value">${ustad['এনআইডি নং'] || '<span class="value empty">উল্লেখ নেই</span>'}</div></div>`;
+        // জন্ম নিবন্ধন নং (আগের মতো)
+        if(ustad['জন্ম নিবন্ধন নং'])  
+            rows += `<div class="row"><div class="label">জন্ম নিবন্ধন নং</div><div class="value">${ustad['জন্ম নিবন্ধন নং']}</div></div>`;
+        // জন্মতারিখ (fallback সহ)
+        if(ustad['জন্মতারিখ'])   rows += `<div class="row"><div class="label">জন্মতারিখ</div><div class="value">${ustad['জন্মতারিখ'] || '<span class="value empty">উল্লেখ নেই</span>'}</div></div>`;
+        rows += `<div class="row"><div class="label">রক্তের গ্রুপ</div><div class="value">${ustad['রক্তের গ্রুপ'] || '<span class="value empty">উল্লেখ নেই</span>'}</div></div>`;
+        rows += `<div class="row"><div class="label">মোবাইল</div><div class="value">${ustad['মোবাইল'] || '<span class="value empty">উল্লেখ নেই</span>'}</div></div>`;
+        rows += `<div class="row"><div class="label">স্ট্যাটাস</div><div class="value">${ustad['স্ট্যাটাস'] || '<span class="value empty">উল্লেখ নেই</span>'}</div></div>`;
+        rows += `<div class="row"><div class="label">ঠিকানা</div><div class="value">${ustad['ঠিকানা'] || '<span class="value empty">উল্লেখ নেই</span>'}</div></div>`;
+
 
         infoDiv.innerHTML = rows;
         yearDiv.innerText = ustad['শিক্ষা বর্ষ'] || '';
