@@ -1072,15 +1072,36 @@
       background-color: #f4f4f4;
       font-family: 'sheikh hasina', sans-serif;
     }
+    .admit-highlight-btn {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 10px;
+          background: linear-gradient(135deg, #fffdf4, #f9feff);
+          color: white;
+          font-size: 30px;
+          font-weight: 0;
+          padding: 14px 28px;
+          border-radius: 5px;
+          cursor: pointer;
+          font-family: "sheikh hasina";
+          border: none;
+          text-transform: uppercase;
+          box-shadow: 0 6px 12px rgba(0, 117, 159, 0.3);
+          animation: glow-pulse 3s infinite ease-in-out;
+          transition: all 0.3s ease-in-out;
+        }
+
   </style>
-    <div></a>
-        </a>
-        <a href=" https://almadania.netlify.app/admistion.html" target="_blank">
-          <i class="fab link">   </i>        অনলাইন ভর্তি ফরম
-        </a>
-      </div>
+  
+  <div style="text-align:center;">
+    <button class="admit-highlight-btn" onclick="document.getElementById('student-search').style.display='block'; 
+    this.style.display='none';">
+      <a href="https://almadania.netlify.app/admistion.html"><i class="fas fa-link"></i> অনলাইন ভর্তি ফরম</a> 
+    </button>
+  </div>
     
-    <div class="section">
+      <div class="section">
     <h4>ভর্তি তথ্যাবলী</h4>
     <ul>
       <li>ভর্তি শুরু ১ম পর্ব ১লা রমজান থেকে এবং ২য় পর্ব ১লা ডিসেম্বর থেকে ১ জানুয়ারী পর্যন্ত।</li>
@@ -1581,13 +1602,10 @@ function showPage(pageId) {
         <a href="https://darululoom-deoband.com/home/" target="_blank">
             <i class="fas fa-globe"></i> দারুল উলূম দেওবন্দ, ভারত
         </a>
-
-        </a>
         <a href="https://www.facebook.com/profile.php?id=100092195414779" target="_blank">
           <i class="fab fa-facebook">   </i>        ফেসবুক পেইজ
         </a>
       </div>
-
       <div class="map-link">
         <a href="https://maps.app.goo.gl/o4F2Mo4VdpT3QiLc6" target="_blank">
           <i class="fas fa-map-location-dot"></i> গুগল ম্যাপে দেখুন
@@ -1878,9 +1896,9 @@ function showPage(pageId) {
           <a href="mailto:almadani8060@gmail.com">  <i class="fas fa-envelope">  </i>  ইমেইল</a>
 
           <div class="social-icons">
-            <a href="https://www.facebook.com/profile.php?id=100092195414779"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-google"></i></a>
-            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+              <a href="https://www.facebook.com/profile.php?id=100092195414779"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://maps.app.goo.gl/o4F2Mo4VdpT3QiLc6"><i class="fas fa-map-marker-alt"></i></a>
+            <a href=" https://almadania.netlify.app"><i class="fas fa-globe"></i></a>
           </div>
         </div>
 
