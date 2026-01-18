@@ -1,0 +1,1710 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>দারুল উলূম মাদানিয়া মহিলা মাদরাসা - অনলাইন ভর্তি ফরম</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #1a5f7a;
+            --secondary-color: #159895;
+            --accent-color: #57c5b6;
+            --light-color: #f8f9fa;
+            --dark-color: #2d3748;
+            --success-color: #38a169;
+            --warning-color: #dd6b20;
+            --error-color: #e53e3e;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans Bengali', sans-serif;
+            background-color: #f5f7fa;
+            color: var(--dark-color);
+            line-height: 1.6;
+            direction: ltr;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header Styles */
+        .header1  {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            margin-bottom: 2rem;
+            text-align: center;
+            box-shadow: var(--box-shadow);
+            
+        }
+
+        .header h1 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        /* Madrasa Info */
+        .madrasa-info {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--box-shadow);
+            border-left: 5px solid var(--accent-color);
+        }
+
+        .madrasa-info h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.8rem;
+            font-size: 1.2rem;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #555;
+        }
+
+        .info-item i {
+            color: var(--secondary-color);
+            width: 20px;
+        }
+
+        /* Form Container */
+        .form-container {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            box-shadow: var(--box-shadow);
+            margin-bottom: 2rem;
+        }
+
+        /* Progress Indicator */
+        .progress-container {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 2.5rem;
+            position: relative;
+        }
+
+        .progress-container::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background-color: #e0e0e0;
+            transform: translateY(-50%);
+            z-index: 1;
+        }
+
+        .progress-bar {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            height: 4px;
+            background-color: var(--secondary-color);
+            transform: translateY(-50%);
+            z-index: 2;
+            transition: var(--transition);
+            width: 0%;
+        }
+
+        .progress-step {
+            background-color: white;
+            color: #777;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 3px solid #e0e0e0;
+            position: relative;
+            z-index: 3;
+            transition: var(--transition);
+            font-weight: 600;
+        }
+
+        .progress-step.active {
+            border-color: var(--secondary-color);
+            background-color: var(--secondary-color);
+            color: white;
+        }
+
+        .progress-step.completed {
+            border-color: var(--success-color);
+            background-color: var(--success-color);
+            color: white;
+        }
+
+        .step-label {
+            position: absolute;
+            top: 45px;
+            left: 50%;
+            transform: translateX(-50%);
+            white-space: nowrap;
+            font-size: 0.85rem;
+            color: var(--dark-color);
+        }
+
+        /* Form Sections */
+        .form-section {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .form-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #f0f0f0;
+            font-weight: 600;
+        }
+
+        .section-subtitle {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 1.5rem;
+            padding: 0.8rem;
+            background-color: #f9f9f9;
+            border-radius: var(--border-radius);
+            border-left: 4px solid var(--accent-color);
+        }
+
+        /* Form Grid */
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .form-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 992px) {
+            .form-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .full-width {
+                grid-column: 1 / -1;
+            }
+        }
+
+        /* Form Groups */
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #444;
+        }
+
+        .required::after {
+            content: ' *';
+            color: var(--error-color);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 2px solid #ddd;
+            border-radius: var(--border-radius);
+            font-family: 'Noto Sans Bengali', sans-serif;
+            font-size: 1rem;
+            transition: var(--transition);
+            background-color: white;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 3px rgba(87, 197, 182, 0.2);
+        }
+
+        .form-control.error {
+            border-color: var(--error-color);
+        }
+
+        .error-message {
+            color: var(--error-color);
+            font-size: 0.85rem;
+            margin-top: 0.3rem;
+            display: none;
+        }
+
+        .error-message.show {
+            display: block;
+        }
+
+        /* Radio and Checkbox Styles */
+        .radio-group, .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .radio-option, .checkbox-option {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+        }
+
+        .radio-option input, .checkbox-option input {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        /* Address Same Checkbox */
+        .same-address-container {
+            background-color: #f9f9f9;
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--accent-color);
+        }
+
+        /* Old Student Info */
+        .old-student-info {
+            background-color: #fff8e1;
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--warning-color);
+            display: none;
+        }
+
+        .old-student-info.active {
+            display: block;
+        }
+
+        /* Button Styles */
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #eee;
+        }
+
+        .btn {
+            padding: 0.8rem 1.8rem;
+            border-radius: var(--border-radius);
+            font-family: 'Noto Sans Bengali', sans-serif;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-prev {
+            background-color: #f1f1f1;
+            color: var(--dark-color);
+        }
+
+        .btn-prev:hover {
+            background-color: #e5e5e5;
+        }
+
+        .btn-next, .btn-submit {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+
+        .btn-next:hover, .btn-submit:hover {
+            background-color: var(--primary-color);
+        }
+
+        .btn-submit {
+            background-color: var(--success-color);
+        }
+
+        .btn-submit:hover {
+            background-color: #2f855a;
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* Success Message */
+        .success-message {
+            text-align: center;
+            padding: 3rem 1rem;
+            display: none;
+        }
+
+        .success-message i {
+            font-size: 4rem;
+            color: var(--success-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .success-message h2 {
+            color: var(--success-color);
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 1.5rem;
+            color: #666;
+            font-size: 0.9rem;
+            border-top: 1px solid #eee;
+            margin-top: 2rem;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 767px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .form-container {
+                padding: 1.5rem;
+            }
+            
+            .header h1 {
+                font-size: 1.5rem;
+            }
+            
+            .progress-step {
+                width: 35px;
+                height: 35px;
+                font-size: 0.9rem;
+            }
+            
+            .step-label {
+                font-size: 0.75rem;
+                top: 40px;
+            }
+            
+            .button-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .radio-group, .checkbox-group {
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+        }
+
+        /* Utility Classes */
+        .hidden {
+            display: none !important;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .mb-3 {
+            margin-bottom: 1.5rem;
+        }
+        
+        .note {
+            font-size: 0.85rem;
+            color: #666;
+            margin-top: 0.3rem;
+            font-style: italic;
+        }
+        .Header{
+            max-width: 800px;
+            width: 100%;
+            align-items: center;   
+        }
+       
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+         <div><header class="header">
+            <img src="jpg/ওয়েব-সাইট.png" alt="header" class="animated-img">
+            <p>অনলাইন ভর্তি ফরম</p>
+        </header> </div>
+        
+
+        <!-- Madrasa Information -->
+        <div class="madrasa-info">
+            <h3><i class="fas fa-info-circle"></i> মাদরাসা সম্পর্কিত তথ্য</h3>
+            <div class="info-grid">
+                <div class="info-item">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>ভর্তি চলছে: ১লা রমজান থেকে  ৭ শাওয়াল</span>
+                    <span>ভর্তি চলছে: ১লা ডিসেম্বর থেকে  ১ জানুয়ারী</span>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <span>যোগাযোগ: +৮৮০১৬৪৭৩৮২২৪১</span>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>ইমেইল: almadani8060@gmail.com</span>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>নয়া কান্দারগাঁও, লুটের চর-৩৫১৬, মেঘনা, কুমিল্লা।</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Form Container -->
+        <div class="form-container">
+            <!-- Progress Indicator -->
+            <div class="progress-container">
+                <div class="progress-bar" id="progressBar"></div>
+                <div class="progress-step completed" id="step1">
+                    <span>১</span>
+                    <div class="step-label">ব্যক্তিগত তথ্য</div>
+                </div>
+                <div class="progress-step active" id="step2">
+                    <span>২</span>
+                    <div class="step-label">ভর্তি সংক্রান্ত</div>
+                </div>
+                <div class="progress-step" id="step3">
+                    <span>৩</span>
+                    <div class="step-label">পূর্ববর্তী শিক্ষা</div>
+                </div>
+                <div class="progress-step" id="step4">
+                    <span>৪</span>
+                    <div class="step-label">স্থায়ী ঠিকানা</div>
+                </div>
+                <div class="progress-step" id="step5">
+                    <span>৫</span>
+                    <div class="step-label">অস্থায়ী ঠিকানা</div>
+                </div>
+            </div>
+
+            <!-- Form Sections -->
+            <form id="admissionForm">
+                <!-- Step 1: Personal Information -->
+                <div class="form-section active" id="section1">
+                    <h2 class="section-title">ব্যক্তিগত তথ্য</h2>
+                    <p class="section-subtitle">অনুগ্রহ করে আপনার ব্যক্তিগত তথ্যগুলো সঠিকভাবে পূরণ করুন। যেসব ঘরের পাশে তারকাচিহ্ন (*) আছে সেগুলো অবশ্যই পূরণ করতে হবে।</p>
+                    
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="fullName" class="required">পূর্ণ নাম (বাংলায়)</label>
+                            <input type="text" id="fullName" class="form-control" placeholder="আপনার পূর্ণ নাম লিখুন" required>
+                            <div class="error-message" id="fullNameError">অনুগ্রহ করে আপনার পূর্ণ নাম লিখুন</div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="fatherName" class="required">পিতার নাম (বাংলায়) </label>
+                            <input type="text" id="fatherName" class="form-control" placeholder="পিতার পূর্ণ নাম লিখুন" required>
+                            <div class="error-message" id="fatherNameError">অনুগ্রহ করে পিতার নাম লিখুন</div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="motherName" class="required">মাতার নাম</label>
+                            <input type="text" id="motherName" class="form-control" placeholder="মাতার পূর্ণ নাম লিখুন" required>
+                            <div class="error-message" id="motherNameError">অনুগ্রহ করে মাতার নাম লিখুন</div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="required">লিঙ্গ</label>
+
+                            <!-- Display (User দেখতে পাবে) -->
+                            <input 
+                                type="text" 
+                                class="form-control" 
+                                value="মহিলা" 
+                                readonly
+                            >
+
+                            <!-- Hidden value (Form submit হবে) -->
+                            <input 
+                                type="hidden" 
+                                name="gender" 
+                                value="মহিলা"
+                            >
+                            </div>
+
+                        
+                        <div class="form-group">
+                            <label for="birthDate" class="required">জন্ম তারিখ</label>
+                            <input type="date" id="birthDate" class="form-control" required>
+                            <div class="error-message" id="birthDateError">অনুগ্রহ করে জন্ম তারিখ নির্বাচন করুন</div>
+                            <div class="note">ছাত্রীর বয়স কমপক্ষে ৫ বছর হতে হবে</div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="nid" class="required">জন্ম নিবন্ধন নম্বর/Nid</label>
+                            <input type="text" id="nid" class="form-control" placeholder="জন্ম নিবন্ধন নম্বর/Nid নাম্বার">
+                            <div class="note">উদাহরণ: 175436459848456</div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="mobile" class="required">মোবাইল নম্বর</label>
+                            <input type="tel" id="mobile" class="form-control" placeholder="01XXXXXXXXX" required>
+                            <div class="error-message" id="mobileError">সঠিক মোবাইল নম্বর লিখুন (১১ ডিজিট)</div>
+                            <div class="note">এই নম্বরে এসএমএস পাঠানো হবে</div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="altMobile">বিকল্প মোবাইল নম্বর</label>
+                            <input type="tel" id="altMobile" class="form-control" placeholder="01XXXXXXXXX">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">ইমেইল এড্রেস</label>
+                            <input type="email" id="email" class="form-control" placeholder="example@email.com">
+                            <div class="error-message" id="emailError">সঠিক ইমেইল এড্রেস লিখুন</div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="bloodGroup">রক্তের গ্রুপ</label>
+                            <select id="bloodGroup" class="form-control">
+                                <option value="">রক্তের গ্রুপ নির্বাচন করুন</option>
+                                <option value="A+">A+ (এ পজিটিভ)</option>
+                                <option value="A-">A- (এ নেগেটিভ)</option>
+                                <option value="B+">B+ (বি পজিটিভ)</option>
+                                <option value="B-">B- (বি নেগেটিভ)</option>
+                                <option value="AB+">AB+ (এবি পজিটিভ)</option>
+                                <option value="AB-">AB- (এবি নেগেটিভ)</option>
+                                <option value="O+">O+ (ও পজিটিভ)</option>
+                                <option value="O-">O- (ও নেগেটিভ)</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="button-container">
+                        <div></div> <!-- Empty div for spacing -->
+                        <button type="button" class="btn btn-next" id="nextToStep2">পরবর্তী ধাপ <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+
+                <!-- Step 2: Admission Information -->
+                <div class="form-section" id="section2">
+                    <h2 class="section-title">ভর্তি সংক্রান্ত তথ্য</h2>
+                    <p class="section-subtitle">আপনি নতুন না পুরাতন ছাত্রী তা নির্বাচন করুন এবং সংশ্লিষ্ট তথ্যগুলো পূরণ করুন।</p>
+                    
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="academicYear" class="required">বর্তমান শিক্ষাবর্ষ</label>
+                            <select id="academicYear" class="form-control" required>
+                                <option value="">শিক্ষাবর্ষ নির্বাচন করুন</option>
+                                <option value="1443-44/2023-24">১৪৪৩-৪৪ হিজরী / ২০২৪-২৫ ঈসায়ী</option>
+                                <option value="1443-44/2023-24">১৪৪৩-৪৪ হিজরী / ২০২৩-২৪ ঈসায়ী</option>
+                                <option value="1442-43/2022-23">১৪৪২-৪৩ হিজরী / ২০২২-২৩ ঈসায়ী</option>
+                                <option value="1441-42/2021-22">১৪৪১-৪২ হিজরী / ২০২১-২২ ঈসায়ী</option>
+                                <option value="1445-46/2025-26" selected>১৪৪৫-৪৬ হিজরী / ২০২৫-২৬ ঈসায়ী</option>
+                            </select>
+                            <div class="error-message" id="academicYearError">অনুগ্রহ করে শিক্ষাবর্ষ নির্বাচন করুন</div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="required">ভর্তির ধরন</label>
+                            <div class="radio-group">
+                                <div class="radio-option">
+                                    <input type="radio" id="admissionTypeNew" name="admissionType" value="new" checked>
+                                    <label for="admissionTypeNew">নতুন ছাত্রী</label>
+                                </div>
+                                <div class="radio-option">
+                                    <input type="radio" id="admissionTypeOld" name="admissionType" value="old">
+                                    <label for="admissionTypeOld">পুরাতন ছাত্রী</label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Old Student Information (Hidden by default) -->
+                        <div class="old-student-info" id="oldStudentInfo">
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="previousStudentId" class="required">পূর্ববর্তী রোল নম্বর</label>
+                                    <input type="text" id="previousStudentId" class="form-control" placeholder="পূর্ববর্তী বছর আপনার রোল নম্বর">
+                                </div>
+                                <div class="form-group">
+                                    <label for="previousStudentId" class="required">পূর্ববর্তী রোল নম্বর</label>
+                                    <input type="text" id="previousStudentId" class="form-control" placeholder="পূর্ববর্তী বছর আপনার রোল নম্বর">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="previousAcademicYear" class="required">পূর্ববর্তী শিক্ষাবর্ষ</label>
+                                    <select id="previousAcademicYear" class="form-control">
+                                           <option value="">শিক্ষাবর্ষ নির্বাচন করুন</option>
+                                            <option value="1443-44/2023-24">১৪৪৩-৪৪ হিজরী / ২০২৫-২৬ ঈসায়ী</option>
+                                            <option value="1443-44/2023-24">১৪৪৩-৪৪ হিজরী / ২০২৪-২৫ ঈসায়ী</option>
+                                            <option value="1443-44/2023-24">১৪৪৩-৪৪ হিজরী / ২০২৩-২৪ ঈসায়ী</option>
+                                            <option value="1442-43/2022-23">১৪৪২-৪৩ হিজরী / ২০২২-২৩ ঈসায়ী</option>
+                                            <option value="1441-42/2021-22">১৪৪১-৪২ হিজরী / ২০২১-২২ ঈসায়ী</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="jamat" class="required">পূর্ববর্তী জামাত নির্বাচন করুন</label>
+                                    <select id="jamat" class="form-control" required>
+                                        <option value="">-- জামাত নির্বাচন করুন --</option>
+                                        <option value="আতফাল (শিশু শ্রেণী)">আতফাল (শিশু শ্রেণী)</option>
+                                        <option value="আওয়াল (১ম শ্রেণী)">আওয়াল (১ম শ্রেণী)</option>
+                                        <option value="ছানী (২য় শ্রেণী)">ছানী (২য় শ্রেণী)</option>
+                                        <option value="ছালেছ (৩য় শ্রেণী)">ছালেছ (৩য় শ্রেণী)</option>
+                                        <option value="খুসুছি (ইবতেদায়ি রাবে)">খুসুছি (ইবতেদায়ি রাবে)</option>
+                                        <option value="খামেস (ইবতেদায়ি খামেছ)">খামেস (ইবতেদায়ি খামেছ)</option>
+                                        <option value="মিযান (মুতাওয়াসসিতাহ আওয়াল)">মিযান (মুতাওয়াসসিতাহ আওয়াল)</option>
+                                        <option value="নাহবেমীর (মুতাওয়াসসিতাহ ছানি)">নাহবেমীর (মুতাওয়াসসিতাহ ছানি)</option>
+                                        <option value="কুদূরী (সানাবিয়্যা আউয়াল)">কুদূরী (সানাবিয়্যা আউয়াল)</option>
+                                        <option value="শরহে বেকায়া (সানাবিয়্যা ছানী)">শরহে বেকায়া (সানাবিয়্যা ছানী)</option>
+                                        <option value="হেদায়া (ফজিলত আউয়াল)">হেদায়া (ফজিলত আউয়াল)</option>
+                                        <option value="মেশকাত (ফজিলত ছানী)">মেশকাত (ফজিলত ছানী)</option>
+                                        <option value="দাওরায়ে হাদিস (তাকমিল)">দাওরায়ে হাদিস (তাকমিল)</option>
+                                    </select>
+                                <div class="error-message" id="jamatError">অনুগ্রহ করে জামাত নির্বাচন করুন</div>
+                                    </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group full-width">
+                            <label for="jamat" class="required">জামাত নির্বাচন করুন</label>
+                            <select id="jamat" class="form-control" required>
+                                <option value="">-- জামাত নির্বাচন করুন --</option>
+                                <option value="আতফাল (শিশু শ্রেণী)">আতফাল (শিশু শ্রেণী)</option>
+                                <option value="আওয়াল (১ম শ্রেণী)">আওয়াল (১ম শ্রেণী)</option>
+                                <option value="ছানী (২য় শ্রেণী)">ছানী (২য় শ্রেণী)</option>
+                                <option value="ছালেছ (৩য় শ্রেণী)">ছালেছ (৩য় শ্রেণী)</option>
+                                <option value="খুসুছি (ইবতেদায়ি রাবে)">খুসুছি (ইবতেদায়ি রাবে)</option>
+                                <option value="খামেস (ইবতেদায়ি খামেছ)">খামেস (ইবতেদায়ি খামেছ)</option>
+                                <option value="মিযান (মুতাওয়াসসিতাহ আওয়াল)">মিযান (মুতাওয়াসসিতাহ আওয়াল)</option>
+                                <option value="নাহবেমীর (মুতাওয়াসসিতাহ ছানি)">নাহবেমীর (মুতাওয়াসসিতাহ ছানি)</option>
+                                <option value="কুদূরী (সানাবিয়্যা আউয়াল)">কুদূরী (সানাবিয়্যা আউয়াল)</option>
+                                <option value="শরহে বেকায়া (সানাবিয়্যা ছানী)">শরহে বেকায়া (সানাবিয়্যা ছানী)</option>
+                                <option value="হেদায়া (ফজিলত আউয়াল)">হেদায়া (ফজিলত আউয়াল)</option>
+                                <option value="মেশকাত (ফজিলত ছানী)">মেশকাত (ফজিলত ছানী)</option>
+                                <option value="দাওরায়ে হাদিস (তাকমিল)">দাওরায়ে হাদিস (তাকমিল)</option>
+                            </select>
+                            <div class="error-message" id="jamatError">অনুগ্রহ করে জামাত নির্বাচন করুন</div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="department" class="required">শাখা / বিভাগ</label>
+                            <select id="department" class="form-control" required>
+                                <option value="">শাখা নির্বাচন করুন</option>
+                                <option value="general">সাধারণ</option>
+                                <option value="hifz">হিফজুল কুরআন</option>
+                                <option value="tajweed">তাজবীদ বিভাগ</option>
+                                <option value="qiraat">কিরাত বিভাগ</option>
+                                <option value="arabic">আরবি ভাষা ও সাহিত্য</option>
+                                <option value="islamic_studies">ইসলামিক স্টাডিজ</option>
+                            </select>
+                            <div class="error-message" id="departmentError">অনুগ্রহ করে শাখা নির্বাচন করুন</div>
+                        </div>
+                    </div>
+                    
+                    <div class="button-container">
+                        <button type="button" class="btn btn-prev" id="prevToStep1"><i class="fas fa-arrow-left"></i> পূর্ববর্তী ধাপ</button>
+                        <button type="button" class="btn btn-next" id="nextToStep3">পরবর্তী ধাপ <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+
+                <!-- Step 3: Previous Education -->
+                <div class="form-section" id="section3">
+                    <h2 class="section-title">পূর্ববর্তী শিক্ষা তথ্য</h2>
+                    <p class="section-subtitle">আপনি পূর্বে অন্য কোন মাদরাসায় পড়েছেন কিনা তার তথ্য দিন। নতুন ছাত্রীদের জন্য এই অংশটি পূরণ করা আবশ্যক।</p>
+                    
+                    <div class="form-grid">
+                        <div class="form-group full-width">
+                            <label for="previousMadrasa">পূর্বে কোন মাদরাসায় পড়েছেন?</label>
+                            <input type="text" id="previousMadrasa" class="form-control" placeholder="মাদরাসার নাম ও ঠিকানা লিখুন">
+                            <div class="note">যদি পূর্বে অন্য মাদরাসায় পড়ে থাকেন</div>
+                            <select id="previousAcademicYear" class="form-control">
+                                        <option value="">শিক্ষাবর্ষ নির্বাচন করুন</option>
+                                        <option value="1443-44/2023-24">১৪৪৩-৪৪ হিজরী / ২০২৫-২৬ ঈসায়ী</option>
+                                        <option value="1443-44/2023-24">১৪৪৩-৪৪ হিজরী / ২০২৪-২৫ ঈসায়ী</option>
+                                        <option value="1443-44/2023-24">১৪৪৩-৪৪ হিজরী / ২০২৩-২৪ ঈসায়ী</option>
+                                        <option value="1442-43/2022-23">১৪৪২-৪৩ হিজরী / ২০২২-২৩ ঈসায়ী</option>
+                                        <option value="1441-42/2021-22">১৪৪১-৪২ হিজরী / ২০২১-২২ ঈসায়ী</option>
+                                    </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="previousYear">কোন শিক্ষাবর্ষে পড়েছেন?</label>
+                            <input type="text" id="previousYear" class="form-control" placeholder="যেমন: ১৪৪৩-৪৪ হিজরী">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="previousClass">কোন জামাতে পড়েছেন?</label>
+                            <select id="previousClass" class="form-control">
+                                <option value="">জামাত নির্বাচন করুন</option>
+                                <option value="আতফাল (শিশু শ্রেণী)">আতফাল (শিশু শ্রেণী)</option>
+                                <option value="আওয়াল (১ম শ্রেণী)">আওয়াল (১ম শ্রেণী)</option>
+                                <option value="ছানী (২য় শ্রেণী)">ছানী (২য় শ্রেণী)</option>
+                                <option value="ছালেছ (৩য় শ্রেণী)">ছালেছ (৩য় শ্রেণী)</option>
+                                <option value="খুসুছি (ইবতেদায়ি রাবে)">খুসুছি (ইবতেদায়ি রাবে)</option>
+                                <option value="খামেস (ইবতেদায়ি খামেছ)">খামেস (ইবতেদায়ি খামেছ)</option>
+                                <option value="মিযান (মুতাওয়াসসিতাহ আওয়াল)">মিযান (মুতাওয়াসসিতাহ আওয়াল)</option>
+                                <option value="নাহবেমীর (মুতাওয়াসসিতাহ ছানি)">নাহবেমীর (মুতাওয়াসসিতাহ ছানি)</option>
+                                <option value="কুদূরী (সানাবিয়্যা আউয়াল)">কুদূরী (সানাবিয়্যা আউয়াল)</option>
+                                <option value="শরহে বেকায়া (সানাবিয়্যা ছানী)">শরহে বেকায়া (সানাবিয়্যা ছানী)</option>
+                                <option value="হেদায়া (ফজিলত আউয়াল)">হেদায়া (ফজিলত আউয়াল)</option>
+                                <option value="মেশকাত (ফজিলত ছানী)">মেশকাত (ফজিলত ছানী)</option>
+                                <option value="দাওরায়ে হাদিস (তাকমিল)">দাওরায়ে হাদিস (তাকমিল)</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="button-container">
+                        <button type="button" class="btn btn-prev" id="prevToStep2"><i class="fas fa-arrow-left"></i> পূর্ববর্তী ধাপ</button>
+                        <button type="button" class="btn btn-next" id="nextToStep4">পরবর্তী ধাপ <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+
+                <!-- Step 4: Permanent Address -->
+                <div class="form-section" id="section4">
+                    <h2 class="section-title">স্থায়ী ঠিকানা</h2>
+                    <p class="section-subtitle">আপনার স্থায়ী ঠিকানার তথ্য দিন। বিভাগ নির্বাচন করলে জেলা এবং জেলা নির্বাচন করলে উপজেলা স্বয়ংক্রিয়ভাবে লোড হবে।</p>
+                    
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="division" class="required">বিভাগ</label>
+                            <select id="division" class="form-control" required>
+                                <option value="">বিভাগ নির্বাচন করুন</option>
+                                <option value="dhaka">ঢাকা</option>
+                                <option value="chattogram">চট্টগ্রাম</option>
+                                <option value="rajshahi">রাজশাহী</option>
+                                <option value="khulna">খুলনা</option>
+                                <option value="barishal">বরিশাল</option>
+                                <option value="sylhet">সিলেট</option>
+                                <option value="rangpur">রংপুর</option>
+                                <option value="mymensingh">ময়মনসিংহ</option>
+                            </select>
+                            <div class="error-message" id="divisionError">অনুগ্রহ করে বিভাগ নির্বাচন করুন</div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="district" class="required">জেলা</label>
+                            <select id="district" class="form-control" required disabled>
+                                <option value="">প্রথমে বিভাগ নির্বাচন করুন</option>
+                            </select>
+                            <div class="error-message" id="districtError">অনুগ্রহ করে জেলা নির্বাচন করুন</div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="upazila" class="required">উপজেলা / থানা</label>
+                            <select id="upazila" class="form-control" required disabled>
+                                <option value="">প্রথমে জেলা নির্বাচন করুন</option>
+                            </select>
+                            <div class="error-message" id="upazilaError">অনুগ্রহ করে উপজেলা নির্বাচন করুন</div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="postOffice">ডাকঘর</label>
+                            <input type="text" id="postOffice" class="form-control" placeholder="ডাকঘরের নাম লিখুন">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="postCode">পোস্ট কোড</label>
+                            <input type="text" id="postCode" class="form-control" placeholder="পোস্ট কোড (যদি জানা থাকে)">
+                        </div>
+                        
+                        <div class="form-group full-width">
+                            <label for="village" class="required">গ্রাম / মহল্লা ও বাড়ির নম্বর</label>
+                            <input type="text" id="village" class="form-control" placeholder="গ্রাম/মহল্লার নাম ও বাড়ির নম্বর লিখুন" required>
+                            <div class="error-message" id="villageError">অনুগ্রহ করে গ্রাম/মহল্লার নাম লিখুন</div>
+                        </div>
+                    </div>
+                    
+                    <div class="button-container">
+                        <button type="button" class="btn btn-prev" id="prevToStep3"><i class="fas fa-arrow-left"></i> পূর্ববর্তী ধাপ</button>
+                        <button type="button" class="btn btn-next" id="nextToStep5">পরবর্তী ধাপ <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+
+                <!-- Step 5: Temporary Address -->
+                <div class="form-section" id="section5">
+                    <h2 class="section-title">অস্থায়ী ঠিকানা</h2>
+                    <p class="section-subtitle">যদি আপনার অস্থায়ী ঠিকানা স্থায়ী ঠিকানার মতো একই হয় তবে নিচের চেকবক্সটি চেক করুন। অন্যথায় আলাদাভাবে তথ্য দিন।</p>
+                    
+                    <div class="same-address-container">
+                        <div class="checkbox-option">
+                            <input type="checkbox" id="sameAsPermanent" checked>
+                            <label for="sameAsPermanent">অস্থায়ী ঠিকানা স্থায়ী ঠিকানার মতোই</label>
+                        </div>
+                    </div>
+                    
+                    <div id="temporaryAddressFields" class="hidden">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="tempDivision" class="required">বিভাগ</label>
+                                <select id="tempDivision" class="form-control" required>
+                                    <option value="">বিভাগ নির্বাচন করুন</option>
+                                    <option value="dhaka">ঢাকা</option>
+                                    <option value="chattogram">চট্টগ্রাম</option>
+                                    <option value="rajshahi">রাজশাহী</option>
+                                    <option value="khulna">খুলনা</option>
+                                    <option value="barishal">বরিশাল</option>
+                                    <option value="sylhet">সিলেট</option>
+                                    <option value="rangpur">রংপুর</option>
+                                    <option value="mymensingh">ময়মনসিংহ</option>
+                                </select>
+                                <div class="error-message" id="tempDivisionError">অনুগ্রহ করে বিভাগ নির্বাচন করুন</div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="tempDistrict" class="required">জেলা</label>
+                                <select id="tempDistrict" class="form-control" required disabled>
+                                    <option value="">প্রথমে বিভাগ নির্বাচন করুন</option>
+                                </select>
+                                <div class="error-message" id="tempDistrictError">অনুগ্রহ করে জেলা নির্বাচন করুন</div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="tempUpazila" class="required">উপজেলা / থানা</label>
+                                <select id="tempUpazila" class="form-control" required disabled>
+                                    <option value="">প্রথমে জেলা নির্বাচন করুন</option>
+                                </select>
+                                <div class="error-message" id="tempUpazilaError">অনুগ্রহ করে উপজেলা নির্বাচন করুন</div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="tempPostOffice">ডাকঘর</label>
+                                <input type="text" id="tempPostOffice" class="form-control" placeholder="ডাকঘরের নাম লিখুন">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="tempPostCode">পোস্ট কোড</label>
+                                <input type="text" id="tempPostCode" class="form-control" placeholder="পোস্ট কোড (যদি জানা থাকে)">
+                            </div>
+                            
+                            <div class="form-group full-width">
+                                <label for="tempVillage" class="required">গ্রাম / মহল্লা ও বাড়ির নম্বর</label>
+                                <input type="text" id="tempVillage" class="form-control" placeholder="গ্রাম/মহল্লার নাম ও বাড়ির নম্বর লিখুন" required>
+                                <div class="error-message" id="tempVillageError">অনুগ্রহ করে গ্রাম/মহল্লার নাম লিখুন</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="button-container">
+                        <button type="button" class="btn btn-prev" id="prevToStep4"><i class="fas fa-arrow-left"></i> পূর্ববর্তী ধাপ</button>
+                        <button type="button" class="btn btn-submit" id="submitForm">ফরম জমা দিন <i class="fas fa-check"></i></button>
+                    </div>
+                </div>
+            </form>
+
+            <!-- Success Message -->
+            <div class="success-message hidden" id="successMessage">
+                <i class="fas fa-check-circle"></i>
+                <h2>আপনার ভর্তি ফরম সফলভাবে জমা দেওয়া হয়েছে!</h2>
+                <p>আপনার আবেদন নম্বর: <strong id="applicationNumber"></strong></p>
+                <p>আপনার ভর্তি পরীক্ষা/সাক্ষাৎকারের তারিখ ও সময় সম্পর্কে শীঘ্রই আপনার মোবাইল নম্বরে এসএমএস পাঠানো হবে।</p>
+                <p class="mb-3">ধন্যবাদান্তে,<br>দারুল উলূম মাদানিয়া মহিলা মাদরাসা প্রশাসন</p>
+                <button type="button" class="btn btn-next" id="newForm">আরেকটি ফরম জমা দিন</button>
+                <button type="button" class="btn btn-prev" id="printForm" style="margin-top: 1rem;"><i class="fas fa-print"></i> আবেদন ফর্ম প্রিন্ট করুন</button>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>দারুল উলূম মাদানিয়া মহিলা মাদরাসা © ২০২৫ | সকল অধিকার সংরক্ষিত</p>
+            <p>যোগাযোগ: +৮৮০১৭১২-৩৪৫৬৭৮ | ইমেইল: info@darululummadania.edu.bd | ওয়েবসাইট: www.darululummadania.edu.bd</p>
+        </footer>
+    </div>
+
+    <script>
+        // বাংলাদেশের সম্পূর্ণ ডেটা - আপনার দেওয়া ডেটা অনুযায়ী
+        const bangladeshData = {
+            dhaka: {
+                name: "ঢাকা",
+                districts: {
+                    dhaka: { 
+                        name: "ঢাকা", 
+                        upazilas: ["সাভার", "ধামরাই", "কেরানীগঞ্জ", "নবাবগঞ্জ", "দোহার"] 
+                    },
+                    gazipur: { 
+                        name: "গাজীপুর", 
+                        upazilas: ["কালিয়াকৈর", "কালীগঞ্জ", "কাপাসিয়া", "গাজীপুর সদর", "শ্রীপুর"] 
+                    },
+                    narayanganj: { 
+                        name: "নারায়ণগঞ্জ", 
+                        upazilas: ["আড়াইহাজার", "বন্দর", "নারায়ণগঞ্জ সদর", "রূপগঞ্জ", "সোনারগাঁও"] 
+                    },
+                    narsingdi: { 
+                        name: "নরসিংদী", 
+                        upazilas: ["নরসিংদী সদর", "বেলাবো", "মনোহরদী", "রায়পুরা", "শিবপুর", "পলাশ"] 
+                    },
+                    manikganj: { 
+                        name: "মানিকগঞ্জ", 
+                        upazilas: ["মানিকগঞ্জ সদর", "সিংগাইর", "শিবালয়", "সাটুরিয়া", "হরিরামপুর", "ঘিওর", "দৌলতপুর"] 
+                    },
+                    munshiganj: { 
+                        name: "মুন্সীগঞ্জ", 
+                        upazilas: ["মুন্সীগঞ্জ সদর", "শ্রীনগর", "সিরাজদিখান", "লৌহজং", "টংগিবাড়ী", "গজারিয়া"] 
+                    },
+                    kishoreganj: { 
+                        name: "কিশোরগঞ্জ", 
+                        upazilas: ["সদর", "হোসেনপুর", "কটিয়াদী", "পাকুন্দিয়া", "তাড়াইল", "ইটনা", "মিঠামইন", "অষ্টগ্রাম", "নিকলী", "বাজিতপুর", "কুলিয়ারচর", "ভৈরব", "করিমগঞ্জ"] 
+                    },
+                    tangail: { 
+                        name: "টাঙ্গাইল", 
+                        upazilas: ["সদর", "বাসাইল", "কালিহাতী", "ঘাটাইল", "মির্জাপুর", "নাগরপুর", "মধুপুর", "সখিপুর", "দেলদুয়ার", "ধনবাড়ী", "গোপালপুর", "ভূয়াপুর"] 
+                    },
+                    faridpur: { 
+                        name: "ফরিদপুর", 
+                        upazilas: ["সদর", "মধুখালী", "বোয়ালমারী", "সালথা", "নগরকান্দা", "আলফাডাঙ্গা", "সদরপুর", "চরভদ্রাসন", "ভাঙ্গা"] 
+                    },
+                    madaripur: { 
+                        name: "মাদারীপুর", 
+                        upazilas: ["সদর", "শিবচর", "কালকিনি", "রাজৈর", "ডাসার"] 
+                    },
+                    shariatpur: { 
+                        name: "শরীয়তপুর", 
+                        upazilas: ["সদর", "ডামুড্যা", "নড়িয়া", "জাজিরা", "ভেদরগঞ্জ", "গোসাইরহাট"] 
+                    },
+                    gopalganj: { 
+                        name: "গোপালগঞ্জ", 
+                        upazilas: ["সদর", "কোটালীপাড়া", "টুঙ্গিপাড়া", "কাশিয়ানী", "মুকসুদপুর"] 
+                    },
+                    rajbari: { 
+                        name: "রাজবাড়ী", 
+                        upazilas: ["সদর", "গোয়ালন্দ", "পাংশা", "বালিয়াকান্দি", "কালুখালী"] 
+                    }
+                }
+            },
+            chattogram: {
+                name: "চট্টগ্রাম",
+                districts: {
+                    chattogram: { 
+                        name: "চট্টগ্রাম", 
+                        upazilas: ["রাঙ্গুনিয়া", "সীতাকুণ্ড", "মীরসরাই", "পটিয়া", "সন্দ্বীপ", "বাঁশখালী", "বোয়ালখালী", "আনোয়ারা", "চন্দনাইশ", "সাতকানিয়া", "লোহাগাড়া", "হাটহাজারী", "ফটিকছড়ি", "রাউজান", "কর্ণফুলী"] 
+                    },
+                    comilla: { 
+                        name: "কুমিল্লা", 
+                        upazilas: ["সদর", "সদর দক্ষিণ", "চৌদ্দগ্রাম", "লাকসাম", "বরুড়া", "চান্দিনা", "দাউদকান্দি", "মুরাদনগর", "লাঙ্গলকোট", "দেবিদ্বার", "মেঘনা", "হোমনা", "তিতাস", "বুড়িচং", "ব্রাহ্মণপাড়া", "মনোহরগঞ্জ", "লালমাই"] 
+                    },
+                    coxsBazar: { 
+                        name: "কক্সবাজার", 
+                        upazilas: ["সদর", "চকরিয়া", "কুতুবদিয়া", "উখিয়া", "মহেশখালী", "টেকনাফ", "রামু", "পেকুয়া", "ঈদগাঁও"] 
+                    },
+                    brahmanbaria: { 
+                        name: "ব্রাহ্মণবাড়িয়া", 
+                        upazilas: ["সদর", "কসবা", "নাসিরনগর", "সরাইল", "আশুগঞ্জ", "আখাউড়া", "নবীনগর", "বাঞ্ছারামপুর", "বিজয়নগর"] 
+                    },
+                    chandpur: { 
+                        name: "চাঁদপুর", 
+                        upazilas: ["সদর", "কচুয়া", "শাহরাস্তি", "হাজীগঞ্জ", "মতলব উত্তর", "মতলব দক্ষিণ", "ফরিদগঞ্জ", "হাইমচর"] 
+                    },
+                    noakhali: { 
+                        name: "নোয়াখালী", 
+                        upazilas: ["সদর", "কোম্পানীগঞ্জ", "বেগমগঞ্জ", "চাটখিল", "সেনবাগ", "হাতিয়া", "সোনাইমুড়ী", "কবিরহাট", "সুবর্ণচর"] 
+                    },
+                    lakshmipur: { 
+                        name: "লক্ষ্মীপুর", 
+                        upazilas: ["সদর", "রায়পুর", "রামগঞ্জ", "রামগতি", "কমলনগর"] 
+                    },
+                    feni: { 
+                        name: "ফেনী", 
+                        upazilas: ["সদর", "ছাগলনাইয়া", "ফুলগাজী", "পরশুরাম", "দাগনভূঞা", "সোনাগাজী"] 
+                    },
+                    khagrachhari: { 
+                        name: "খাগড়াছড়ি", 
+                        upazilas: ["সদর", "দীঘিনালা", "পানছড়ি", "মাটিরাঙ্গা", "গুইমারা", "মানিকছড়ি", "রামগড়", "মহালছড়ি", "লক্ষ্মীছড়ি"] 
+                    },
+                    rangamati: { 
+                        name: "রাঙ্গামাটি", 
+                        upazilas: ["সদর", "কাপ্তাই", "কাউখালী", "বাঘাইছড়ি", "বরকল", "ল্যাঙ্গাদু", "রাজস্থলী", "বিলাইছড়ি", "জুরাছড়ি", "নানিয়ারচর"] 
+                    },
+                    bandarban: { 
+                        name: "বান্দরবান", 
+                        upazilas: ["সদর", "থানচি", "রুমা", "রোয়াংছড়ি", "লামা", "আলীকদম", "নাইক্ষ্যংছড়ি"] 
+                    }
+                }
+            },
+            rajshahi: {
+                name: "রাজশাহী",
+                districts: {
+                    rajshahi: { 
+                        name: "রাজশাহী", 
+                        upazilas: ["পবা", "গোদাগাড়ী", "তানোর", "বাগমারা", "দুর্গাপুর", "পুঠিয়া", "চারঘাট", "বাঘা", "মোহনপুর"] 
+                    },
+                    bogura: { 
+                        name: "বগুড়া", 
+                        upazilas: ["সদর", "শিবগঞ্জ", "সোনাতলা", "গাবতলী", "সারিয়াকান্দি", "ধুনট", "শেরপুর", "নন্দীগ্রাম", "আদমদীঘি", "দুপচাঁচিয়া", "কাহালু", "শাজাহানপুর"] 
+                    },
+                    pabna: { 
+                        name: "পাবনা", 
+                        upazilas: ["সদর", "ঈশ্বরদী", "আটঘরিয়া", "চাটমোহর", "ভাঙ্গুড়া", "ফরিদপুর", "বেড়া", "সাঁথিয়া", "সুজানগর"] 
+                    },
+                    sirajganj: { 
+                        name: "সিরাজগঞ্জ", 
+                        upazilas: ["সদর", "কাজিপুর", "উল্লাপাড়া", "শাহজাদপুর", "রায়গঞ্জ", "তাড়াশ", "বেলকুচি", "চৌহালী", "কামারখন্দ"] 
+                    },
+                    naogaon: { 
+                        name: "নওগাঁ", 
+                        upazilas: ["সদর", "রানীনগর", "আত্রাই", "মহাদেবপুর", "ধামইরহাট", "পত্নীতলা", "বদলগাছী", "পোরশা", "সাপাহার", "নিয়ামতপুর", "মান্দা"] 
+                    },
+                    natore: { 
+                        name: "নাটোর", 
+                        upazilas: ["সদর", "বাগাতিপাড়া", "বড়াইগ্রাম", "লালপুর", "সিংড়া", "গুরুদাসপুর", "নলডাঙ্গা"] 
+                    },
+                    chapainawabganj: { 
+                        name: "চাঁপাইনবাবগঞ্জ", 
+                        upazilas: ["সদর", "শিবগঞ্জ", "গোমস্তাপুর", "নাচোল", "ভোলাহাট"] 
+                    },
+                    joypurhat: { 
+                        name: "জয়পুরহাট", 
+                        upazilas: ["সদর", "পাঁচবিবি", "আক্কেলপুর", "ক্ষেতলাল", "কালাই"] 
+                    }
+                }
+            },
+            khulna: {
+                name: "খুলনা",
+                districts: {
+                    khulna: { 
+                        name: "খুলনা", 
+                        upazilas: ["কয়রা", "ডুমুরিয়া", "তেরখাদা", "দাকোপ", "দিঘলিয়া", "পাইকগাছা", "ফুলতলা", "বটিয়াঘাটা", "রূপসা"] 
+                    },
+                    jessore: { 
+                        name: "যশোর", 
+                        upazilas: ["সদর", "শার্শা", "ঝিকরগাছা", "চৌগাছা", "অভয়নগর", "মণিরামপুর", "কেশবপুর", "বাঘারপাড়া"] 
+                    },
+                    satkhira: { 
+                        name: "সাতক্ষীরা", 
+                        upazilas: ["সদর", "আশাশুনি", "শ্যামনগর", "কালীগঞ্জ", "কলারোয়া", "তালা", "দেবহাটা"] 
+                    },
+                    bagerhat: { 
+                        name: "বাগেরহাট", 
+                        upazilas: ["সদর", "ফকিরহাট", "মোল্লাহাট", "কচুয়া", "চিতলমারী", "মোড়লগঞ্জ", "শরণখোলা", "রামপাল", "মোংলা"] 
+                    },
+                    kushtia: { 
+                        name: "কুষ্টিয়া", 
+                        upazilas: ["সদর", "কুমারখালী", "খোকসা", "মিরপুর", "ভেড়ামারা", "দৌলতপুর"] 
+                    },
+                    jhenaidah: { 
+                        name: "ঝিনাইদহ", 
+                        upazilas: ["সদর", "শৈলকূপা", "হরিণাকুণ্ডু", "কালীগঞ্জ", "কোটচাঁদপুর", "মহেশপুর"] 
+                    },
+                    magura: { 
+                        name: "মাগুরা", 
+                        upazilas: ["সদর", "শ্রীপুর", "শালিখা", "মহম্মদপুর"] 
+                    },
+                    narail: { 
+                        name: "নড়াইল", 
+                        upazilas: ["সদর", "লোহাগাড়া", "কালিয়া"] 
+                    },
+                    chuadanga: { 
+                        name: "চুয়াডাঙ্গা", 
+                        upazilas: ["সদর", "আলমডাঙ্গা", "দামুড়হুদা", "জীবননগর"] 
+                    },
+                    meherpur: { 
+                        name: "মেহেরপুর", 
+                        upazilas: ["সদর", "গাংনী", "মুজিবনগর"] 
+                    }
+                }
+            },
+            barishal: {
+                name: "বরিশাল",
+                districts: {
+                    barishal: { 
+                        name: "বরিশাল", 
+                        upazilas: ["সদর", "বাকেরগঞ্জ", "বাবুগঞ্জ", "উজিরপুর", "বানারীপাড়া", "গৌরনদী", "আগৈলঝাড়া", "মেহেন্দিগঞ্জ", "মুলাদী", "হিজলা"] 
+                    },
+                    bhola: { 
+                        name: "ভোলা", 
+                        upazilas: ["সদর", "বোরহানউদ্দিন", "চরফ্যাশন", "দৌলতখান", "মনপুরা", "তজুমদ্দিন", "লালমোহন"] 
+                    },
+                    patuakhali: { 
+                        name: "পটুয়াখালী", 
+                        upazilas: ["সদর", "বাউফল", "গলাচিপা", "দশমিনা", "মির্জাগঞ্জ", "কলাপাড়া", "দুমকি", "রাঙ্গাবালী"] 
+                    },
+                    pirojpur: { 
+                        name: "পিরোজপুর", 
+                        upazilas: ["সদর", "নাজিরপুর", "কাউখালী", "ভাণ্ডারিয়া", "মঠবাড়িয়া", "নেছারাবাদ", "ইন্দুরকানী"] 
+                    },
+                    barguna: { 
+                        name: "বরগুনা", 
+                        upazilas: ["সদর", "আমতলী", "তালতলী", "পাথরঘাটা", "বেতাগী", "বামনা"] 
+                    },
+                    jhalokati: { 
+                        name: "ঝালকাঠি", 
+                        upazilas: ["সদর", "নলছিটি", "রাজাপুর", "কাঁঠালিয়া"] 
+                    }
+                }
+            },
+            sylhet: {
+                name: "সিলেট",
+                districts: {
+                    sylhet: { 
+                        name: "সিলেট", 
+                        upazilas: ["সদর", "দক্ষিণ সুরমা", "বিশ্বনাথ", "ওসমানীনগর", "বালাগঞ্জ", "ফেঞ্চুগঞ্জ", "গোলাপগঞ্জ", "বিয়ানীবাজার", "জকিগঞ্জ", "কানাইঘাট", "জৈন্তাপুর", "গোয়াইনঘাট", "কোম্পানীগঞ্জ"] 
+                    },
+                    sunamganj: { 
+                        name: "সুনামগঞ্জ", 
+                        upazilas: ["সদর", "শান্তিগঞ্জ", "দোয়ারাবাজার", "ছাতক", "দিরাই", "শাল্লা", "ধর্মপাশা", "জামালগঞ্জ", "তাহিরপুর", "জগন্নাথপুর", "বিশ্বম্ভরপুর", "মধ্যনগর"] 
+                    },
+                    habiganj: { 
+                        name: "হবিগঞ্জ", 
+                        upazilas: ["সদর", "লাখাই", "মাধবপুর", "চুনারুঘাট", "বাহুবল", "নবীগঞ্জ", "আজমিরীগঞ্জ", "বানিয়াচং", "শায়েস্তাগঞ্জ"] 
+                    },
+                    maulvibazar: { 
+                        name: "মৌলভীবাজার", 
+                        upazilas: ["সদর", "শ্রীমঙ্গল", "রাজনগর", "কুলাউড়া", "বড়লেখা", "কমলগঞ্জ", "জুড়ী"] 
+                    }
+                }
+            },
+            rangpur: {
+                name: "রংপুর",
+                districts: {
+                    rangpur: { 
+                        name: "রংপুর", 
+                        upazilas: ["সদর", "মিঠাপুকুর", "গঙ্গাচড়া", "কাউনিয়া", "পীরগাছা", "পীরগঞ্জ", "তারাগঞ্জ", "বদরগঞ্জ"] 
+                    },
+                    dinajpur: { 
+                        name: "দিনাজপুর", 
+                        upazilas: ["সদর", "বিরল", "বোচাগঞ্জ", "কাহারোল", "বীরগঞ্জ", "খানসামা", "চিরিরবন্দর", "পার্বতীপুর", "ফুলবাড়ী", "বিরামপুর", "নবাবগঞ্জ", "ঘোড়াঘাট", "হাকিমপুর"] 
+                    },
+                    kurigram: { 
+                        name: "কুড়িগ্রাম", 
+                        upazilas: ["সদর", "উলিপুর", "চিলমারী", "রৌমারী", "রাজিবপুর", "রাজারহাট", "নাগেশ্বরী", "ভুরুঙ্গামারী", "ফুলবাড়ী"] 
+                    },
+                    gaibandha: { 
+                        name: "গাইবান্ধা", 
+                        upazilas: ["সদর", "সাদুল্লাপুর", "গোবিন্দগঞ্জ", "ফুলছড়ি", "সাঘাটা", "পলাশবাড়ী", "সুন্দরগঞ্জ"] 
+                    },
+                    nilphamari: { 
+                        name: "নীলফামারী", 
+                        upazilas: ["সদর", "সৈয়দপুর", "জলঢাকা", "কিশোরগঞ্জ", "ডোমার", "ডিমলা"] 
+                    },
+                    thakurgaon: { 
+                        name: "ঠাকুরগাঁও", 
+                        upazilas: ["সদর", "পীরগঞ্জ", "রাণীশংকৈল", "বালিয়াডাঙ্গী", "হরিপুর"] 
+                    },
+                    panchagarh: { 
+                        name: "পঞ্চগড়", 
+                        upazilas: ["সদর", "তেঁতুলিয়া", "দেবীগঞ্জ", "বোদা", "আটোয়ারী"] 
+                    },
+                    lalmonirhat: { 
+                        name: "লালমনিরহাট", 
+                        upazilas: ["সদর", "আদিতমারী", "কালীগঞ্জ", "হাতীবান্ধা", "পাটগ্রাম"] 
+                    }
+                }
+            },
+            mymensingh: {
+                name: "ময়মনসিংহ",
+                districts: {
+                    mymensingh: { 
+                        name: "ময়মনসিংহ", 
+                        upazilas: ["সদর", "মুক্তাগাছা", "ফুলবাড়িয়া", "ত্রিশাল", "ভালুকা", "গফরগাঁও", "নান্দাইল", "ঈশ্বরগঞ্জ", "গৌরীপুর", "ফুলপুর", "তারাকান্দা", "হালুয়াঘাট", "ধোবাউড়া"] 
+                    },
+                    netrokona: { 
+                        name: "নেত্রকোণা", 
+                        upazilas: ["সদর", "বারহাট্টা", "কলমাকান্দা", "দুর্গাপুর", "পূর্বধলা", "কেন্দুয়া", "মদন", "খালিয়াজুরী", "মোহনগঞ্জ", "আটপাড়া"] 
+                    },
+                    jamalpur: { 
+                        name: "জামালপুর", 
+                        upazilas: ["সদর", "সরিষাবাড়ী", "মেলান্দহ", "ইসলামপুর", "দেওয়ানগঞ্জ", "মাদারগঞ্জ", "বকশীগঞ্জ"] 
+                    },
+                    sherpur: { 
+                        name: "শেরপুর", 
+                        upazilas: ["সদর", "নালিতাবাড়ী", "শ্রীবরদী", "ঝিনাইগাতী", "নকলা"] 
+                    }
+                }
+            }
+        };
+
+        // ডোম এলিমেন্ট সিলেক্ট
+        const form = document.getElementById('admissionForm');
+        const formSections = document.querySelectorAll('.form-section');
+        const progressSteps = document.querySelectorAll('.progress-step');
+        const progressBar = document.getElementById('progressBar');
+        const nextButtons = document.querySelectorAll('.btn-next');
+        const prevButtons = document.querySelectorAll('.btn-prev');
+        const submitButton = document.getElementById('submitForm');
+        const sameAddressCheckbox = document.getElementById('sameAsPermanent');
+        const temporaryAddressFields = document.getElementById('temporaryAddressFields');
+        const successMessage = document.getElementById('successMessage');
+        const newFormButton = document.getElementById('newForm');
+        const printFormButton = document.getElementById('printForm');
+        const applicationNumberElement = document.getElementById('applicationNumber');
+        const oldStudentInfo = document.getElementById('oldStudentInfo');
+        const admissionTypeRadios = document.querySelectorAll('input[name="admissionType"]');
+        
+        // বর্তমান স্টেপ ট্র্যাকিং
+        let currentStep = 1;
+        const totalSteps = 5;
+        
+        // প্রোগ্রেস বার আপডেট ফাংশন
+        function updateProgressBar() {
+            const progressPercentage = ((currentStep - 1) / (totalSteps - 1)) * 100;
+            progressBar.style.width = `${progressPercentage}%`;
+            
+            // প্রোগ্রেস স্টেপ আপডেট
+            progressSteps.forEach((step, index) => {
+                const stepNumber = index + 1;
+                
+                if (stepNumber < currentStep) {
+                    step.classList.remove('active');
+                    step.classList.add('completed');
+                } else if (stepNumber === currentStep) {
+                    step.classList.add('active');
+                    step.classList.remove('completed');
+                } else {
+                    step.classList.remove('active', 'completed');
+                }
+            });
+        }
+        
+        // স্টেপ নেভিগেশন ফাংশন
+        function goToStep(step) {
+            // বর্তমান স্টেপ লুকাও
+            document.getElementById(`section${currentStep}`).classList.remove('active');
+            
+            // নতুন স্টেপ দেখাও
+            document.getElementById(`section${step}`).classList.add('active');
+            
+            // বর্তমান স্টেপ আপডেট
+            currentStep = step;
+            
+            // প্রোগ্রেস বার আপডেট
+            updateProgressBar();
+            
+            // স্ক্রল টপে নেওয়া
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        // স্টেপ ভ্যালিডেশন ফাংশন
+        function validateStep(step) {
+            let isValid = true;
+            const currentSection = document.getElementById(`section${step}`);
+            const requiredFields = currentSection.querySelectorAll('[required]');
+            
+            // সব রিকোয়ার্ড ফিল্ড চেক
+            requiredFields.forEach(field => {
+                const errorElement = document.getElementById(`${field.id}Error`);
+                
+                // ফিল্ড হিডেন থাকলে ভ্যালিডেশন করবে না
+                if (field.offsetParent === null) return;
+                
+                if (!field.value.trim()) {
+                    field.classList.add('error');
+                    if (errorElement) errorElement.classList.add('show');
+                    isValid = false;
+                } else {
+                    field.classList.remove('error');
+                    if (errorElement) errorElement.classList.remove('show');
+                    
+                    // বিশেষ ভ্যালিডেশন (মোবাইল নম্বর)
+                    if (field.id === 'mobile' || field.id === 'altMobile') {
+                        const mobileRegex = /^(?:\+88|01)?(?:\d{11}|\d{13})$/;
+                        if (field.value.trim() && !mobileRegex.test(field.value.trim())) {
+                            field.classList.add('error');
+                            if (errorElement) errorElement.classList.add('show');
+                            isValid = false;
+                        }
+                    }
+                    
+                    // বিশেষ ভ্যালিডেশন (ইমেইল)
+                    if (field.id === 'email' && field.value.trim()) {
+                        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                        if (!emailRegex.test(field.value.trim())) {
+                            field.classList.add('error');
+                            if (errorElement) errorElement.classList.add('show');
+                            isValid = false;
+                        }
+                    }
+                    
+                    // বিশেষ ভ্যালিডেশন (জন্ম তারিখ - কমপক্ষে ৫ বছর)
+                    if (field.id === 'birthDate' && field.value.trim()) {
+                        const birthDate = new Date(field.value);
+                        const today = new Date();
+                        const age = today.getFullYear() - birthDate.getFullYear();
+                        
+                        if (age < 5) {
+                            field.classList.add('error');
+                            if (errorElement) {
+                                errorElement.textContent = 'ছাত্রীর বয়স কমপক্ষে ৫ বছর হতে হবে';
+                                errorElement.classList.add('show');
+                            }
+                            isValid = false;
+                        }
+                    }
+                }
+            });
+            
+            return isValid;
+        }
+        
+        // ড্রপডাউন ডেটা লোড ফাংশন
+        function loadDistricts(divisionId, districtSelectId, upazilaSelectId) {
+            const divisionSelect = document.getElementById(divisionId);
+            const districtSelect = document.getElementById(districtSelectId);
+            const upazilaSelect = document.getElementById(upazilaSelectId);
+            
+            // জেলা ড্রপডাউন রিসেট
+            districtSelect.innerHTML = '<option value="">জেলা নির্বাচন করুন</option>';
+            districtSelect.disabled = true;
+            
+            // উপজেলা ড্রপডাউন রিসেট
+            upazilaSelect.innerHTML = '<option value="">উপজেলা নির্বাচন করুন</option>';
+            upazilaSelect.disabled = true;
+            
+            // বিভাগ নির্বাচন করা হয়েছে কিনা চেক
+            if (divisionSelect.value) {
+                const divisionData = bangladeshData[divisionSelect.value];
+                
+                if (divisionData) {
+                    districtSelect.disabled = false;
+                    
+                    // জেলা অপশন যোগ
+                    Object.keys(divisionData.districts).forEach(districtKey => {
+                        const district = divisionData.districts[districtKey];
+                        const option = document.createElement('option');
+                        option.value = districtKey;
+                        option.textContent = district.name;
+                        districtSelect.appendChild(option);
+                    });
+                }
+            }
+        }
+        
+        function loadUpazilas(districtSelectId, upazilaSelectId) {
+            const divisionSelectId = districtSelectId.includes('temp') ? 'tempDivision' : 'division';
+            const divisionSelect = document.getElementById(divisionSelectId);
+            const districtSelect = document.getElementById(districtSelectId);
+            const upazilaSelect = document.getElementById(upazilaSelectId);
+            
+            // উপজেলা ড্রপডাউন রিসেট
+            upazilaSelect.innerHTML = '<option value="">উপজেলা নির্বাচন করুন</option>';
+            upazilaSelect.disabled = true;
+            
+            // জেলা নির্বাচন করা হয়েছে কিনা চেক
+            if (divisionSelect.value && districtSelect.value) {
+                const divisionData = bangladeshData[divisionSelect.value];
+                
+                if (divisionData && divisionData.districts[districtSelect.value]) {
+                    upazilaSelect.disabled = false;
+                    
+                    // উপজেলা অপশন যোগ
+                    const districtData = divisionData.districts[districtSelect.value];
+                    districtData.upazilas.forEach(upazila => {
+                        const option = document.createElement('option');
+                        option.value = upazila;
+                        option.textContent = upazila;
+                        upazilaSelect.appendChild(option);
+                    });
+                }
+            }
+        }
+        
+        // আবেদন নম্বর জেনারেটর
+        function generateApplicationNumber() {
+            const year = new Date().getFullYear();
+            const randomNum = Math.floor(100000 + Math.random() * 900000);
+            return `DUM-${year}-${randomNum}`;
+        }
+        
+        // ফর্ম সাবমিশন ফাংশন
+        function submitForm() {
+            // সব স্টেপ ভ্যালিডেশন
+            let allValid = true;
+            for (let i = 1; i <= totalSteps; i++) {
+                if (!validateStep(i)) {
+                    allValid = false;
+                    goToStep(i);
+                    break;
+                }
+            }
+            
+            if (!allValid) {
+                alert('দয়া করে ফর্মের সব প্রয়োজনীয় তথ্য সঠিকভাবে পূরণ করুন।');
+                return;
+            }
+            
+            // ফর্ম ডেটা সংগ্রহ
+            const formData = {
+                applicationNumber: generateApplicationNumber(),
+                personalInfo: {
+                    fullName: document.getElementById('fullName').value,
+                    fatherName: document.getElementById('fatherName').value,
+                    motherName: document.getElementById('motherName').value,
+                    gender: document.getElementById('gender').value,
+                    birthDate: document.getElementById('birthDate').value,
+                    nid: document.getElementById('nid').value,
+                    mobile: document.getElementById('mobile').value,
+                    altMobile: document.getElementById('altMobile').value,
+                    email: document.getElementById('email').value,
+                    bloodGroup: document.getElementById('bloodGroup').value
+                },
+                admissionInfo: {
+                    academicYear: document.getElementById('academicYear').value,
+                    admissionType: document.querySelector('input[name="admissionType"]:checked').value,
+                    jamat: document.getElementById('jamat').value,
+                    department: document.getElementById('department').value,
+                    previousStudentId: document.getElementById('previousStudentId') ? document.getElementById('previousStudentId').value : '',
+                    previousAcademicYear: document.getElementById('previousAcademicYear') ? document.getElementById('previousAcademicYear').value : ''
+                },
+                previousEducation: {
+                    previousMadrasa: document.getElementById('previousMadrasa').value,
+                    previousYear: document.getElementById('previousYear').value,
+                    previousClass: document.getElementById('previousClass').value
+                },
+                permanentAddress: {
+                    division: document.getElementById('division').value,
+                    district: document.getElementById('district').value,
+                    upazila: document.getElementById('upazila').value,
+                    postOffice: document.getElementById('postOffice').value,
+                    postCode: document.getElementById('postCode').value,
+                    village: document.getElementById('village').value
+                },
+                temporaryAddress: {
+                    sameAsPermanent: document.getElementById('sameAsPermanent').checked,
+                    division: document.getElementById('tempDivision').value,
+                    district: document.getElementById('tempDistrict').value,
+                    upazila: document.getElementById('tempUpazila').value,
+                    postOffice: document.getElementById('tempPostOffice').value,
+                    postCode: document.getElementById('tempPostCode').value,
+                    village: document.getElementById('tempVillage').value
+                },
+                submissionDate: new Date().toISOString()
+            };
+            
+            // Production-এ এখানে API কল বা Google Sheet-এ ডেটা সাবমিট হবে
+            console.log('Form Data Submitted:', formData);
+            
+            // LocalStorage-এ সেভ (ডেমোর জন্য)
+            localStorage.setItem('lastApplication', JSON.stringify(formData));
+            
+            // Success message দেখাও
+            applicationNumberElement.textContent = formData.applicationNumber;
+            form.style.display = 'none';
+            successMessage.classList.remove('hidden');
+            
+            // সাফল্য বার্তা স্ক্রল করানো
+            successMessage.scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        // পুরাতন ছাত্রী তথ্য টগল ফাংশন
+        function toggleOldStudentInfo() {
+            const isOldStudent = document.getElementById('admissionTypeOld').checked;
+            
+            if (isOldStudent) {
+                oldStudentInfo.classList.add('active');
+                // পুরাতন ছাত্রীর জন্য পূর্বের তথ্য আবশ্যক
+                document.getElementById('previousStudentId').required = true;
+                document.getElementById('previousAcademicYear').required = true;
+            } else {
+                oldStudentInfo.classList.remove('active');
+                // নতুন ছাত্রীর জন্য পূর্বের তথ্য আবশ্যক নয়
+                document.getElementById('previousStudentId').required = false;
+                document.getElementById('previousAcademicYear').required = false;
+            }
+        }
+        
+        // ইভেন্ট লিসেনার সেটআপ
+        function setupEventListeners() {
+            // পরবর্তী ধাপ বাটন
+            nextButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    if (validateStep(currentStep)) {
+                        const nextStep = currentStep + 1;
+                        if (nextStep <= totalSteps) {
+                            goToStep(nextStep);
+                        }
+                    }
+                });
+            });
+            
+            // পূর্ববর্তী ধাপ বাটন
+            prevButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const prevStep = currentStep - 1;
+                    if (prevStep >= 1) {
+                        goToStep(prevStep);
+                    }
+                });
+            });
+            
+            // বিভাগ পরিবর্তন
+            document.getElementById('division').addEventListener('change', function() {
+                loadDistricts('division', 'district', 'upazila');
+            });
+            
+            // জেলা পরিবর্তন
+            document.getElementById('district').addEventListener('change', function() {
+                loadUpazilas('district', 'upazila');
+            });
+            
+            // অস্থায়ী ঠিকানার বিভাগ পরিবর্তন
+            document.getElementById('tempDivision').addEventListener('change', function() {
+                loadDistricts('tempDivision', 'tempDistrict', 'tempUpazila');
+            });
+            
+            // অস্থায়ী ঠিকানার জেলা পরিবর্তন
+            document.getElementById('tempDistrict').addEventListener('change', function() {
+                loadUpazilas('tempDistrict', 'tempUpazila');
+            });
+            
+            // ভর্তির ধরন পরিবর্তন
+            admissionTypeRadios.forEach(radio => {
+                radio.addEventListener('change', toggleOldStudentInfo);
+            });
+            
+            // একই ঠিকানা চেকবক্স
+            sameAddressCheckbox.addEventListener('change', function() {
+                if (this.checked) {
+                    temporaryAddressFields.classList.add('hidden');
+                    // ফিল্ডগুলোর রিকোয়ার্ড রিমুভ
+                    ['tempDivision', 'tempDistrict', 'tempUpazila', 'tempVillage'].forEach(id => {
+                        const field = document.getElementById(id);
+                        if (field) field.required = false;
+                    });
+                } else {
+                    temporaryAddressFields.classList.remove('hidden');
+                    // ফিল্ডগুলোর রিকোয়ার্ড সেট
+                    ['tempDivision', 'tempDistrict', 'tempUpazila', 'tempVillage'].forEach(id => {
+                        const field = document.getElementById(id);
+                        if (field) field.required = true;
+                    });
+                }
+            });
+            
+            // ফর্ম সাবমিট
+            submitButton.addEventListener('click', submitForm);
+            
+            // নতুন ফর্ম
+            newFormButton.addEventListener('click', () => {
+                form.reset();
+                form.style.display = 'block';
+                successMessage.classList.add('hidden');
+                goToStep(1);
+                
+                // ঠিকানা ড্রপডাউন রিসেট
+                loadDistricts('division', 'district', 'upazila');
+                loadDistricts('tempDivision', 'tempDistrict', 'tempUpazila');
+                
+                // একই ঠিকানা চেকবক্স চেকড রাখ
+                sameAddressCheckbox.checked = true;
+                temporaryAddressFields.classList.add('hidden');
+                
+                // পুরাতন ছাত্রী তথ্য হাইড
+                oldStudentInfo.classList.remove('active');
+                
+                // স্ক্রল টপে নেওয়া
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+            
+            // প্রিন্ট ফর্ম
+            printFormButton.addEventListener('click', () => {
+                window.print();
+            });
+            
+            // রিয়েল-টাইম ভ্যালিডেশন
+            const inputs = document.querySelectorAll('input, select');
+            inputs.forEach(input => {
+                input.addEventListener('blur', () => {
+                    if (input.hasAttribute('required')) {
+                        const errorElement = document.getElementById(`${input.id}Error`);
+                        // ফিল্ড হিডেন থাকলে ভ্যালিডেশন করবে না
+                        if (input.offsetParent === null) return;
+                        
+                        if (!input.value.trim()) {
+                            input.classList.add('error');
+                            if (errorElement) errorElement.classList.add('show');
+                        } else {
+                            input.classList.remove('error');
+                            if (errorElement) errorElement.classList.remove('show');
+                        }
+                    }
+                });
+            });
+        }
+        
+        // পৃষ্ঠা লোড হওয়ার পর ইনিশিয়ালাইজেশন
+        document.addEventListener('DOMContentLoaded', function() {
+            updateProgressBar();
+            setupEventListeners();
+            
+            // ঠিকানা ড্রপডাউন ইনিশিয়ালাইজ
+            loadDistricts('division', 'district', 'upazila');
+            loadDistricts('tempDivision', 'tempDistrict', 'tempUpazila');
+            
+            // তারিখ ইনপুটের সর্বোচ্চ তারিখ আজকের তারিখ সেট
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('birthDate').setAttribute('max', today);
+            
+            // ন্যূনতম তারিখ সেট (৫ বছর আগে)
+            const minDate = new Date();
+            minDate.setFullYear(minDate.getFullYear() - 50);
+            document.getElementById('birthDate').setAttribute('min', minDate.toISOString().split('T')[0]);
+            
+            // মোবাইল ফোনের জন্য নিউমেরিক কীবোর্ড সুবিধা
+            const mobileInputs = document.querySelectorAll('input[type="tel"]');
+            mobileInputs.forEach(input => {
+                input.setAttribute('inputmode', 'numeric');
+                input.setAttribute('pattern', '[0-9]*');
+            });
+            
+            // পুরাতন ছাত্রী তথ্য ইনিশিয়ালাইজ
+            toggleOldStudentInfo();
+            
+            // যদি আগে সাবমিশন করা থাকে
+            const lastApplication = localStorage.getItem('lastApplication');
+            if (lastApplication) {
+                console.log('Last application found in localStorage:', JSON.parse(lastApplication));
+            }
+        });
+    </script>
+</body>
+</html>

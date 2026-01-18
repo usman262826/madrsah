@@ -65,9 +65,10 @@
       font-weight: normal;
       font-style: normal;
     }
+    
 
     header {
-      background-color: #004658;
+      background-color: #f6fdff;
       text-align: center;
       padding: 10px;
     }
@@ -79,19 +80,19 @@
     }
 
     nav {
-      background-color: #005d73;
+      background-color: #003e4d;
       padding: -3px;
       position: relative;
     }
 
     .menu-icon {
       display: none;
-      font-size: 26px;
+      font-size: 18px;
       color: white;
       padding: 0px 16px;
       cursor: pointer;
       width: 100%;
-      background-color: #005d73;
+      background-color: #0087b1;
       text-align: right;
     }
 
@@ -234,25 +235,65 @@
   </style>
 </head>
 <body>
+  <!-- Search Bar Container -->
+  <div style= "display:flex; justify-content:flex-end; align-items:center; padding:5px 10px; background-color:#518ca3;">
+      <form action="/search" method="get" style=" max-width: 900px;
+                  width: 100%;
+                  align-items: center; display:flex; align-items:center; gap:5px;">
+          <input 
+              type="text" 
+              name="q" 
+              placeholder="Type to start searching..." 
+              style="
+                  padding:8px 12px; 
+                  border:1px solid #ffffff; 
+                  border-radius:25px 0 0 25px; 
+                  outline:none; 
+                  width:250px;
+                  transition: all 0.3s ease;
+              "
+              onfocus="this.style.borderColor='#28a745'; this.style.boxShadow='0 0 5px #28a745';"
+              onblur="this.style.borderColor='#ccc'; this.style.boxShadow='none';"
+          >
+          <button 
+              type="submit" 
+              style="
+                  background-color:#ffffff; 
+                  color:#9b0000; 
+                  border:none; 
+                  padding:8px 15px; 
+                  border-radius:0 25px 25px 0;
+                  cursor:pointer;
+                  transition: background 0.3s ease;
+              "
+              onmouseover="this.style.backgroundColor='#218838';"
+              onmouseout="this.style.backgroundColor='#28a745';"
+          >
+              Search
+          </button>
+      </form>
+  </div>
 
   <header>
     <img class="header-logo" src="jpg/ওয়েব-সাইট.png" alt="মাদ্রাসা লোগো ও নাম" />
   </header>
 
   <nav>
-    <div class="menu-icon"  onclick="toggleMenu()"> ☰</div>
-    <ul id="menuList">
-      <li><a href="#" onclick="showPage('home')">হোম</a></li>
-      <li><a href="#" onclick="showPage('porichiti')">পরিচিতি</a></li>
-      <li><a href="#" onclick="showPage('bivag')">বিভাগ সমূহ</a></li>
-      <li><a href="#" onclick="showPage('voisisso')">বৈশিষ্ট্য</a></li>
-      <li><a href="#" onclick="showPage('vorti')">ভর্তি তথ্য</a></li>
-      <li><a href="#" onclick="showPage('routine')">রুটিন</a></li> 
-      <li><a href="#" onclick="showPage('result')">রেজাল্ট</a></li>
-      <li><a href="#" onclick="showPage('gallery')">গ্যালারি</a></li>
-      <li><a href="#" onclick="showPage('contact')">যোগাযোগ</a></li>
-    </ul>
-  </nav>
+  <div class="menu-icon" onclick="toggleMenu()">☰</div>
+  <ul id="menuList">
+    <li><a href="#" onclick="showPage('home')">হোম</a></li>
+    <li><a href="#" onclick="showPage('porichiti')">পরিচিতি</a></li>
+    <li><a href="#" onclick="showPage('bivag')">বিভাগ সমূহ</a></li>
+    <li><a href="#" onclick="showPage('voisisso')">বৈশিষ্ট্য</a></li>
+    <li><a href="#" onclick="showPage('vorti')">ভর্তি তথ্য</a></li>
+    <li><a href="#" onclick="showPage('certificate')">সার্টিফিকেট</a></li>
+    <li><a href="#" onclick="showPage('routine')">রুটিন</a></li>
+    <li><a href="#" onclick="showPage('result')">ফলাফল</a></li>
+    <li><a href="#" onclick="showPage('gallery')">গ্যালারি</a></li>
+    <li><a href="#" onclick="showPage('contact')">যোগাযোগ</a></li>
+  </ul>
+</nav>
+
  
 
   <!-- Sections -->
@@ -1255,12 +1296,36 @@
     </div>
     </div>
           <li>ভর্তি ফর্ম: <a href="#">ডাউনলোড করুন</a></li> 
+          
           <li>ভর্তির সময়সূচী</li>
         </p>      ভর্তি শুরু ১ম পর্ব ১লা রমজান থেকে এবং </p>
         </p>        ভর্তি শুরু ২য় পর্ব ১লা ডিসেম্বর থেকে ১ জানুয়ারী পর্যন্ত। </p>
   </section>
 
-      
+        <!-- সার্টিফিকেট -->
+ <section id="certificate" class="page">
+  <h2 class="section-title">সার্টিফিকেট</h2>
+  <div class="card">
+    <p>এখানে শিক্ষার্থীদের সার্টিফিকেট যাচাই ও ডাউনলোড তথ্য থাকবে।</p>
+  </div>
+</section>
+<script>
+function showPage(pageId) {
+  const pages = document.querySelectorAll('.page');
+  pages.forEach(p => p.style.display = 'none');
+
+  const activePage = document.getElementById(pageId);
+  if (activePage) {
+    activePage.style.display = 'block';
+  }
+
+  // মোবাইলে মেনু অটো ক্লোজ
+  document.getElementById("menuList").classList.remove("show");
+}
+</script>
+
+
+
 <!-- রুটিন -->
   <section id="routine" class="page animated-bg">
     <h2>রুটিন</h2>
@@ -1271,11 +1336,17 @@
 
 
 
-<!-- রেজাল্ট -->
-  <section id="result" class="page animated-bg">
-    <h2>রেজাল্ট</h2>
-    <p>সর্বশেষ পরীক্ষার ফলাফল এখানে প্রকাশ করা হয়।</p>
-  </section>
+<!-- ফলাফল -->
+<section id="result" class="page animated-bg" style="padding: 20px; text-align: center;">
+  <h3 style="margin-bottom: 20px;">ফলাফল</h3>
+
+  <!-- বাটন লিংকসমূহ -->
+      <div class="contact-links">
+        <a href="https://hems.alhaiatululya.org/exam-result"> <i class="fas fa-globe"></i>    হাইয়াতুল উলিয়া রেজাল্ট</a>
+        <a href="https://wifaqresult.com/"> <i class="fas fa-globe"></i>    বেফাক রেজাল্ট</a>
+      </div>
+  <p style="margin-top: 20px;">সর্বশেষ পরীক্ষার ফলাফল এখানে প্রকাশ করা হয়।</p>
+</section>
 
 
 
@@ -1326,89 +1397,7 @@
     </div>
   </section>
 
-  <!-- CSS -->
-  <style>
-    .gallery-section {
-      padding: 60px 20px;
-      background: #ffffff;
-      text-align: center;
-      font-family: 'Noto Sans Bengali', sans-serif;
-    }
-
-    .gallery-section h2 {
-      font-size: 30px;
-      color: #004561;
-      margin-bottom: 10px;
-    }
-
-    .gallery-section p {
-      font-size: 18px;
-      color: #555;
-      margin-bottom: 30px;
-    }
-
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-
-    .gallery-item {
-      display: block;
-      position: relative;
-      overflow: hidden;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-      transition: transform 0.4s ease;
-    }
-
-    .gallery-item img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      transition: transform 0.4s ease;
-      display: block;
-    }
-
-    .gallery-item:hover img {
-      transform: scale(1.08);
-    }
-
-    @media (max-width: 600px) {
-      .gallery-grid {
-        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      }
-
-      .gallery-item img {
-        height: 140px;
-      }
-    }
-  </style>
-
-  <!-- Font Awesome (for icons) -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-  <!-- Glightbox CSS & JS -->
-  <link href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
-
-  <!-- AOS CSS & JS for Scroll Animation -->
-  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
-  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-  <script>
-    AOS.init();
-    const lightbox = GLightbox({ selector: '.glightbox' });
-  </script>
-  </section>
-
-
-
-
-
-
-    <!-- যোগাযোগ সেকশন -->
+ <!-- যোগাযোগ সেকশন -->
 <section id="contact" class="page animated-bg">
       <style>
         .contact-section {
@@ -1573,8 +1562,8 @@
         <a aria-label="যোগাযোগ বিভাগ">
           <i class="fas fa-address-book"></i> যোগাযোগ</a>
       </div>
-      <h1>  <i class="fas fa-map-marker-alt">    </i> <strong>   ঠিকানা: </strong> 
-        </p>  গ্রাম: নয়া কান্দারগাঁও ইসলামি ব্যাংক সংলগ্ন ( হাজী আবদুদ দাইয়ান ভবন ৩য় তলা ), লুটের চর, মেঘনা, কুমিল্লা, বাংলাদেশ - ৭৭৮০৬০  </p>
+      <h1>  <i class="fas fa-map-marker-alt">    </i> <strong>   ঠিকানা: নয়া কান্দারগাঁও, লুটের চর-৩৫১৬, মেঘনা, কুমিল্লা।</strong> 
+
 
       <div class="contact-links">
         <a href="tel:01647382241"> <i class="fas fa-phone-alt"></i>    01647382241</a>
@@ -1582,13 +1571,18 @@
         <a href="tel:01865778060"> <i class="fas fa-phone-alt"></i>    01865778060</a>
         <a href="tel:01980817196"> <i class="fas fa-phone-alt"></i>    01980817196</a>
         <a href="mailto:almadani8060@gmail.com">  <i class="fas fa-envelope">  </i>    ইমেইল</a>
+        <a href="https://darululoom-deoband.com/home/" target="_blank">
+            <i class="fas fa-globe"></i> দারুল উলূম দেওবন্দ, ভারত
+        </a>
+
+        </a>
         <a href="https://www.facebook.com/profile.php?id=100092195414779" target="_blank">
           <i class="fab fa-facebook">   </i>        ফেসবুক পেইজ
         </a>
       </div>
 
       <div class="map-link">
-        <a href="https://www.google.com/maps/place/23.535986,90.700615" target="_blank">
+        <a href="https://maps.app.goo.gl/o4F2Mo4VdpT3QiLc6" target="_blank">
           <i class="fas fa-map-location-dot"></i> গুগল ম্যাপে দেখুন
         </a>
       </div>
@@ -1605,7 +1599,291 @@
       </div>
   </section>
 
+  <!-- CSS -->
+  <style>
+    .gallery-section {
+      padding: 60px 20px;
+      background: #ffffff;
+      text-align: center;
+      font-family: 'Noto Sans Bengali', sans-serif;
+    }
 
+    .gallery-section h2 {
+      font-size: 30px;
+      color: #004561;
+      margin-bottom: 10px;
+    }
+
+    .gallery-section p {
+      font-size: 18px;
+      color: #555;
+      margin-bottom: 30px;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .gallery-item {
+      display: block;
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      transition: transform 0.4s ease;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+      display: block;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.08);
+    }
+
+    @media (max-width: 600px) {
+      .gallery-grid {
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      }
+
+      .gallery-item img {
+        height: 140px;
+      }
+    }
+  </style>
+
+  <!-- Font Awesome (for icons) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Glightbox CSS & JS -->
+  <link href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+
+  <!-- AOS CSS & JS for Scroll Animation -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init();
+    const lightbox = GLightbox({ selector: '.glightbox' });
+  </script>
+  </section>
+
+
+    <style>
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'kalpurush', sans-serif;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    main { flex: 1; }
+
+    /* ===== FOOTER BASE ===== */
+    .footer© {
+      background: #004d4d;
+      padding: 10px 10px 2px;
+      margin-top: 0px;
+    }
+    .footer©t {
+      color: #ffffff;
+      font-size: 15px;
+    }
+    .footer {
+      background: #ebebea;
+      border-top: 2px solid #00492c;
+      padding: 20px 22px 10px;
+      margin-bottom: 20px;
+    }
+
+    .footer-container {
+      max-width: 100%;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    /* ===== LOGO AREA ===== */
+    .footer-logo {
+      text-align: center;
+    }
+    .footer-logo img {
+      width: 220px;
+      margin-bottom: 15px;
+      margin-top: 1px;
+    }
+    .footer-logo p {
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* ===== TITLES ===== */
+    .footer h3 {
+      font-size: 20px;
+      margin-bottom: 15px;
+      position: relative;
+    }
+    .footer h3::after {
+      content: "";
+      width: 40px;
+      height: 2px;
+      background: #00495f;
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+    }
+
+    /* ===== LINKS ===== */
+    .footer-links a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: #003b2f;
+      margin-bottom: 10px;
+      transition: 0.3s;
+    }
+    .footer-links a:hover {
+      transform: translateX(6px);
+      color: #0a8f5a;
+    }
+
+    /* ===== CONTACT ===== */
+    .footer-contact a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: #003b2f;
+      margin-bottom: 10px;
+      transition: 0.3s;
+    }
+    .footer-contact a:hover {
+      transform: translateX(6px);
+      color: #0a8f5a;
+    }
+
+    /* ===== SOCIAL ===== */
+    .social-icons {
+      display: flex;
+      gap: 12px;
+      margin-top: 15px;
+    }
+    .social-icons a {
+      width: 38px;
+      height: 38px;
+      background: #005679;
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ===== FLOATING BUTTON ===== */
+    .floating {
+      position: fixed;
+      right: 15px;
+      bottom: 50px;
+      z-index: 999;
+    }
+    .floating a {
+      display: block;
+      width: 50px;
+      height: 50px;
+      background: #25D366;
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 10px;
+      font-size: 22px;
+    }
+
+    /* ===== MOBILE BAR ===== */
+    .mobile-bar {
+      display: none;
+    }
+    @media (max-width: 768px) {
+      .footer-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .footer h3::after {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      .mobile-bar {
+        display: flex;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        background: #0a8f5a;
+        z-index: 998;
+      }
+      .mobile-bar a {
+        flex: 1;
+        padding: 12px;
+        text-align: center;
+        color: #fff;
+        text-decoration: none;
+      }
+    }
+    </style>
+    </head>
+
+    <!-- ===== CONTACT FOOTER ===== -->
+    <footer id="contact" class="footer">
+      <div class="footer-container">
+
+        <!-- Logo -->
+        <div class="footer-logo">
+          <img src="png/Asset 4.png" alt="Logo">
+        </div>
+
+        <!-- Important Links -->
+        <div class="footer-links">
+          <h3>গুরুত্বপূর্ণ লিংক</h3>
+          <a href="https://shed.portal.gov.bd/"><i class="fas fa-link"></i> শিক্ষা মন্ত্রণালয়</a>
+          <a href="https://hems.alhaiatululya.org/"><i class="fas fa-link"></i> আল-হাইআতুল উলইয়া</a>
+          <a href="https://darululoom-deoband.com/home/"><i class="fas fa-link"></i> দারুল উলূম দেওবন্দ</a>
+          <a href="https://darululoomkarachi.edu.pk/"><i class="fas fa-link"></i> দারুল উলূম করাচি</a>
+        </div>
+        <!-- Contact -->
+        <div class="footer-contact">
+          <h3>যোগাযোগ</h3>
+          <a><i class="fas fa-map-marker-alt"></i>    নয়াকান্দারগাঁও, মেঘনা, কুমিল্লা
+          </a>
+          <a href="tel:01647382241"> <i class="fas fa-mobile-alt"></i>    01647382241</a>
+          <a href="tel:01814853884"> <i class="fas fa-mobile-alt"></i>    01814853884</a>
+          <a href="tel:01865778060"> <i class="fas fa-mobile-alt"></i>    01865778060</a>
+          <a href="mailto:almadani8060@gmail.com">  <i class="fas fa-envelope">  </i>  ইমেইল</a>
+
+          <div class="social-icons">
+            <a href="https://www.facebook.com/profile.php?id=100092195414779"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-google"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+
+      </div>
+    </footer>
+
+    <!-- Floating -->
+    <div class="floating">
+      <a href="https://wa.me/8801980817196"><i class="fab fa-whatsapp"></i></a>
+    </div>
 
 <!-- Scripts -->
   <script>
@@ -1667,9 +1945,8 @@
       }
     });
   </script>
-
-<div class="footer">
-  © ২০২৫ দারুল উলূম মাদানিয়া মহিলা মাদ্রাসা। সর্বস্বত্ব সংরক্ষিত।
+<div class="footer©">  
+  <div class="footer©t"> © ২০২৫ দারুল উলূম মাদানিয়া মহিলা মাদ্রাসা। সর্বস্বত্ব সংরক্ষিত। </div>
 </body>
 </html>
 </body>
