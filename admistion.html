@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="bn">
 <head>
@@ -30,7 +31,7 @@
         }
 
         body {
-            font-family: 'Noto Sans Bengali', sans-serif;
+            font-family: 'kalpurush', 'Noto Sans Bengali', sans-serif;
             background-color: #f5f7fa;
             color: var(--dark-color);
             line-height: 1.6;
@@ -38,27 +39,34 @@
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 800px;
+            margin-top: 10px;
+            width: 100%;
+            align-items: center;
             margin: 0 auto;
             padding: 20px;
         }
 
         /* Header Styles */
-        .header1  {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        .Madrasha-header  {
+            max-width: 800px;
+            width: 100%;
+            align-items: center;
             color: white;
-            padding: 1.5rem;
+            padding: 0.5rem;
             border-radius: var(--border-radius);
-            margin-bottom: 2rem;
+            margin-bottom: 0.5rem;
             text-align: center;
             box-shadow: var(--box-shadow);
             
         }
 
         .header h1 {
+            color: #1a5f7a;
             font-size: 1.8rem;
             margin-bottom: 0.5rem;
             font-weight: 700;
+            text-align: center;
         }
 
         .header p {
@@ -68,10 +76,13 @@
 
         /* Madrasa Info */
         .madrasa-info {
+            max-width: 800px;
+            width: 100%;
+            align-items: center;
             background-color: white;
             border-radius: var(--border-radius);
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
+            padding: 0.5rem;
+            margin-bottom: 0.5rem;
             box-shadow: var(--box-shadow);
             border-left: 5px solid var(--accent-color);
         }
@@ -483,35 +494,10 @@
 <body>
     <div class="container">
         <!-- Header -->
-         <div><header class="header">
-            <img src="jpg/ওয়েব-সাইট.png" alt="header" class="animated-img">
-            <p>অনলাইন ভর্তি ফরম</p>
-        </header> </div>
-        
-
-        <!-- Madrasa Information -->
-        <div class="madrasa-info">
-            <h3><i class="fas fa-info-circle"></i> মাদরাসা সম্পর্কিত তথ্য</h3>
-            <div class="info-grid">
-                <div class="info-item">
-                    <i class="fas fa-calendar-alt"></i>
-                    <span>ভর্তি চলছে: ১লা রমজান থেকে  ৭ শাওয়াল</span>
-                    <span>ভর্তি চলছে: ১লা ডিসেম্বর থেকে  ১ জানুয়ারী</span>
-                </div>
-                <div class="info-item">
-                    <i class="fas fa-phone-alt"></i>
-                    <span>যোগাযোগ: +৮৮০১৬৪৭৩৮২২৪১</span>
-                </div>
-                <div class="info-item">
-                    <i class="fas fa-envelope"></i>
-                    <span>ইমেইল: almadani8060@gmail.com</span>
-                </div>
-                <div class="info-item">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <span>নয়া কান্দারগাঁও, লুটের চর-৩৫১৬, মেঘনা, কুমিল্লা।</span>
-                </div>
-            </div>
-        </div>
+           <header>
+                <img class="Madrasha-header" src="jpg/ওয়েব-সাইট.png" alt="মাদ্রাসা লোগো ও নাম" /> 
+            </header>
+        <div class="header h1"><h1>অনলাইন ভর্তি ফরম</h1> </div>
 
         <!-- Form Container -->
         <div class="form-container">
@@ -959,9 +945,32 @@
         <!-- Footer -->
         <footer class="footer">
             <p>দারুল উলূম মাদানিয়া মহিলা মাদরাসা © ২০২৫ | সকল অধিকার সংরক্ষিত</p>
-            <p>যোগাযোগ: +৮৮০১৭১২-৩৪৫৬৭৮ | ইমেইল: info@darululummadania.edu.bd | ওয়েবসাইট: www.darululummadania.edu.bd</p>
+            <p>যোগাযোগ: +৮৮০১৬৪৭৩৮২২৪১ | ইমেইল: almadani8060@gmail.com | ওয়েবসাইট: https://almadania.netlify.app/</p>
         </footer>
     </div>
+    <!-- Madrasa Information -->
+        <div class="madrasa-info">
+            <h3><i class="fas fa-info-circle"></i> মাদরাসা সম্পর্কিত তথ্য</h3>
+            <div class="info-grid">
+                <div class="info-item">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>ভর্তি চলছে: ১লা রমজান থেকে  ৭ শাওয়াল</span>
+                    <span>ভর্তি চলছে: ১লা ডিসেম্বর থেকে  ১ জানুয়ারী</span>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <span>যোগাযোগ: +৮৮০১৬৪৭৩৮২২৪১</span>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>ইমেইল: almadani8060@gmail.com</span>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>নয়া কান্দারগাঁও, লুটের চর-৩৫১৬, মেঘনা, কুমিল্লা।</span>
+                </div>
+            </div>
+        </div>
 
     <script>
         // বাংলাদেশের সম্পূর্ণ ডেটা - আপনার দেওয়া ডেটা অনুযায়ী
