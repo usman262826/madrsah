@@ -1,0 +1,656 @@
+<!doctype html>
+<html lang="bn">
+<head>
+  <base target="_top" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>মার্কস এন্ট্রি</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <link href="https://fonts.maateen.me/kalpurush/font.css" rel="stylesheet">
+
+  <style>
+    /* ------------------------------------
+       কাস্টম স্টাইল এবং ভ্যারিয়েবল (ডার্ক থিম)
+       ------------------------------------ */
+    :root{
+      --accent: #06b6d4; /* cyan-500-ish */
+      --muted: #002d6b;  /* gray */
+      --bg: #0b1220;     /* dark bg */
+      --card: #0f172a;
+      --input-bg: rgba(255,255,255,0.05);
+    }
+    body{ 
+        font-family: "Kalpurush", "Noto Sans Bengali", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif; 
+        background:linear-gradient(180deg, #071126 0%, #08192a 60%); 
+        color: #e2e8f0; /* Light text color */
+    }
+    /* subtle animation for card */
+    .card-anim{ 
+        transform:translateY(6px); 
+        transition: transform .35s cubic-bezier(.2,.9,.2,1), box-shadow .35s ease; 
+        background-color: var(--card); /* Base card bg */
+    }
+    .card-anim:hover{ 
+        transform:translateY(0); 
+        box-shadow: 0 12px 30px rgba(2,6,23,.6); 
+    }
+    /* input focus & style */
+    input, select {
+        background-color: var(--input-bg);
+        border: 1px solid rgba(255,255,255,0.06);
+        transition: border-color .3s, box-shadow .3s;
+    }
+    input:focus, select:focus, button:focus { 
+        outline: none; 
+        box-shadow: 0 0 0 3px rgba(6,182,212,0.25); 
+        border-color: var(--accent); 
+    }
+    /* small animation for toast */
+    .fade-in { animation: fadeIn .4s ease forwards; }
+    @keyframes fadeIn { from {opacity:0; transform:translateY(6px);} to {opacity:1; transform:translateY(0);} }
+    
+    /* Custom Scrollbar for dark theme */
+    .overflow-x-auto::-webkit-scrollbar { height: 6px; }
+    .overflow-x-auto::-webkit-scrollbar-track { background: var(--bg); }
+    .overflow-x-auto::-webkit-scrollbar-thumb { background: #475569; border-radius: 3px; }
+    .overflow-x-auto::-webkit-scrollbar-thumb:hover { background: #64748b; }
+
+    /* Teacher Profile Style */
+    #teacherCard {
+        background: linear-gradient(90deg, #0f172a, #1e293b);
+        border: 1px solid rgba(255,255,255,0.05);
+        box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+    /* Login Button Gradient */
+    .login-btn-gradient {
+        background: linear-gradient(90deg, #06b6d4, #0891b2);
+        transition: all 0.3s ease;
+    }
+    .login-btn-gradient:hover {
+        opacity: 0.9;
+    }
+    /* Submit Button Gradient */
+    .submit-btn-gradient {
+        background: linear-gradient(90deg, #4f46e5, #6366f1);
+        transition: all 0.3s ease;
+    }
+    .submit-btn-gradient:hover {
+        opacity: 0.9;
+    }
+    
+    /* Table Header */
+    #studentsTHead th {
+        background-color: #1e293b;
+    }
+    
+    /* Subject Select Item Style */
+    .subject-control-wrapper {
+      position: relative;
+    }
+    .remove-btn {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      padding: 6px 10px;
+      font-size: 0.8rem;
+      border-radius: 6px;
+      background-color: #ef4444; /* Red 500 */
+      color: white;
+      cursor: pointer;
+      z-index: 10;
+    }
+  </style>
+</head>
+<body class="min-h-screen text-gray-100">
+  <div class="max-w-xl mx-auto p-4 md:p-6">
+    <header class="mb-6">
+      <h1 class="text-3xl font-extrabold text-cyan-400 text-center">মার্কস এন্ট্রি</h1>
+      <p class="text-sm text-gray-400 mt-1 text-center">মোবাইল-ফ্রেন্ডলি ডার্ক থিম | মার্কস এন্ট্রি সিস্টেম</p>
+    </header>
+
+    <div id="toast" class="fixed left-1/2 -translate-x-1/2 bottom-8 hidden z-50">
+      <div id="toastMsg" class="bg-white/10 backdrop-blur-md text-white px-4 py-2 rounded-full shadow-lg text-sm flex items-center gap-2"></div>
+    </div>
+
+    <section id="loginCard" class="card-anim rounded-2xl p-5 mb-6 shadow-2xl">
+      <h2 class="text-xl font-semibold mb-4 text-cyan-300">লগইন করুন</h2>
+      <div class="space-y-4">
+        <div>
+          <label class="text-sm text-gray-400 block mb-1">মোবাইল নম্বর লিখুন </label>
+          <input id="mobileInput" inputmode="numeric" maxlength="20" placeholder="01XXX-XX XX XX" class="w-full p-3 rounded-lg text-white" />
+          <p class="text-xs text-gray-500 mt-1"></p>
+        </div>
+        <div>
+          <label class="text-sm text-gray-400 block mb-1">আইডি নং</label>
+          <input id="idInput" placeholder="আইডি নং লিখুন" class="w-full p-3 rounded-lg text-white" />
+        </div>
+        <div class="flex gap-3 pt-2">
+          <button id="loginBtn" class="flex-1 py-3 rounded-lg login-btn-gradient font-bold shadow-lg shadow-cyan-900/50">লগইন</button>
+          <button id="clearBtn" class="py-3 px-5 rounded-lg border border-gray-700 text-gray-300 bg-gray-800/50 hover:bg-gray-700/50 transition">ক্লিয়ার</button>
+        </div>
+        <div id="loginStatus" class="hidden mt-3 p-3 rounded-lg text-sm transition"></div>
+      </div>
+    </section>
+
+    <section id="teacherCard" class="hidden rounded-xl p-4 mb-6 shadow-xl transition-all duration-500 ease-out" style="animation: fadeIn 0.5s ease;">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-3">
+            <div class="w-12 h-12 rounded-full bg-cyan-500/10 flex items-center justify-center text-xl font-bold border border-cyan-500/50">ও</div>
+            <div>
+              <div id="teacherName" class="text-lg font-bold text-white">পূর্ণ নাম</div>
+              <div class="flex gap-2 text-xs text-gray-400">
+                  <span id="teacherTitle" class="bg-cyan-500/20 px-2 py-0.5 rounded-full">পদবী</span>
+                  <span id="teacherPosition" class="bg-indigo-500/20 px-2 py-0.5 rounded-full">পদ/ধরন</span>
+              </div>
+            </div>
+        </div>
+        <button id="logoutBtn" class="text-sm text-gray-400 hover:text-red-400 transition" onclick="resetApp()">লগআউট</button>
+      </div>
+    </section>
+
+    <section id="selectionCard" class="hidden card-anim rounded-2xl p-5 mb-6 shadow-xl transition-all duration-500 ease-out">
+      <h3 class="text-lg font-semibold mb-4 text-gray-300">বিষয় ও জামাত নির্বাচন</h3>
+      <div class="space-y-4">
+        <div>
+          <label class="text-xs text-gray-400">শিক্ষাবর্ষ</label>
+          <select id="shikkhaborsho" class="w-full mt-1 p-3 rounded-lg text-white">
+            <option value="১৪৪৫-৪৬ হিজরী/২০২৫-২৬ ঈসায়ী">১৪৪৫-৪৬ হিজরী/২০২৫-২৬ ঈসায়ী</option>
+          </select>
+        </div>
+        <div>
+          <label class="text-xs text-gray-400">পরিক্ষা নির্বাচন করুন</label>
+          <select id="shikkhaborsho" class="w-full mt-1 p-3 rounded-lg text-white">
+            <option value="১৪৪৫-৪৬ হিজরী/২০২৫-২৬ ঈসায়ী">১ম সাময়িক পরিক্ষা</option>
+            <option value="১৪৪৫-৪৬ হিজরী/২০২৫-২৬ ঈসায়ী">২য় সাময়িক পরিক্ষা</option>
+            <option value="১৪৪৫-৪৬ হিজরী/২০২৫-২৬ ঈসায়ী">বার্ষিক পরিক্ষা</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="text-xs text-gray-400">জামাত (ক্লাস) নির্বাচন</label>
+          <select id="classSelect" class="w-full mt-1 p-3 rounded-lg text-white transition-all duration-300">
+            <option value="">-- জামাত নির্বাচন করুন --</option>
+          </select>
+        </div>
+
+        <div id="subjectArea">
+          <label class="text-xs text-gray-400 block mb-2">বিষয়/কিতাব নির্বাচন (একাধিক যোগ করুন)</label>
+          <div id="subjectsWrapper" class="space-y-3">
+            </div>
+
+          <button id="addSubjectBtn" class="w-full py-2 mt-3 rounded-lg border border-cyan-600 text-cyan-300 hover:bg-cyan-900/50 transition">
+            <span class="font-medium">+ আরও বিষয় যোগ করুন</span>
+          </button>
+        </div>
+
+        <div class="flex gap-3 pt-2">
+          <button id="loadStudentsBtn" class="flex-1 py-3 rounded-lg bg-gradient-to-r from-emerald-500 to-green-400 font-bold shadow-lg shadow-emerald-900/50 transition">শিক্ষার্থীরা লোড করো</button>
+          <button id="resetSubjectsBtn" class="py-3 px-5 rounded-lg border border-gray-700 text-gray-300 bg-gray-800/50 hover:bg-gray-700/50 transition" onclick="resetSubjects()">রিসেট</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="studentsCard" class="hidden card-anim rounded-2xl p-5 mb-6 shadow-xl transition-all duration-500 ease-out">
+      <h3 class="text-lg font-semibold mb-4 text-indigo-300">নম্বর এন্ট্রি তালিকা</h3>
+      <div class="overflow-x-auto">
+        <table id="studentsTable" class="min-w-full text-sm text-gray-200">
+          <thead id="studentsTHead" class="text-left sticky top-0 bg-gray-900/90 backdrop-blur-sm z-10"></thead>
+          <tbody id="studentsTBody"></tbody>
+        </table>
+      </div>
+
+      <div class="mt-5 space-y-3">
+        <div class="text-xs text-gray-500 p-2 rounded bg-red-900/10 border border-red-900/30">
+          ⚠️ নোট: রেজিস্ট্রেশন ও রোল নম্বর পরিবর্তন করা যাবে না। শুধুমাত্র ইংরেজি সংখ্যা (0-9) গ্রহণ করা হবে।
+        </div>
+        <button id="submitMarksBtn" class="w-full py-3 rounded-lg submit-btn-gradient font-bold shadow-lg shadow-indigo-900/50 transition">সাবমিট করো</button>
+      </div>
+    </section>
+
+    <footer class="mt-8 text-center text-xs text-gray-500">
+      © মাদ্রাসা পোর্টাল — ডেভেলপড উইথ উসমান সাঈদ
+    </footer>
+  </div>
+
+<script>
+/* ===========================
+    CONFIG - এই WEBAPP_URL আপডেট করুন
+    =========================== */
+const WEBAPP_URL = "https://script.google.com/macros/s/AKfycbwh8y322YVRopEQW63q_pjRDFeMgFK-b2c6cqu0lrvG6Er_V-ACEfbSnwk2vVmJ2yp-sw/exec"; // <-- আপনার Deploy করা Apps Script Webapp URL দিন
+
+let classesData = []; 
+let studentsCache = []; // বর্তমানে লোড হওয়া শিক্ষার্থীর ডেটা
+let currentSubjectMeta = []; // { subject: "বিষয়", columnTitle: "শিরোনাম" }
+
+const ALL_KUTUB_STATIC = {
+  'আওয়াল (১ম শ্রেণী)': ['আরবি', 'বাংলা', 'গনিত', 'ইংরেজি', 'সাধারণ জ্ঞান', 'হাদীস ও মাসআলা', 'কুরআন নাজেরাৎ'],
+  'ছানী (২য় শ্রেণী)': ['আরবি', 'বাংলা', 'গনিত', 'ইংরেজি', 'সাধারণ জ্ঞান', 'হাদীস ও মাসআলা', 'কুরআন নাজেরাৎ'],
+  'ছালেছ (৩য় শ্রেণী)': ['আরবি', 'উর্দূ কায়দা', 'বাংলা', 'গনিত', 'ইতিহাস ভূগোল', 'ইংরেজি', 'সাধারণ জ্ঞান', 'কুরআন নাজেরা'],
+  'খুসুছি (ইবতেদায়ি রাবে)': ['উর্দূ পেহেলী', 'গণিত', 'আরবি', 'বাংলা', 'ইতিহাস ও ভূগোল', 'সাধারণ জ্ঞান', 'তালিমুল ইসলাম', 'ইংরেজি', 'কুরআন নাজেরা'],
+  'মিযান (মুতাওয়াসসিতাহ আওয়াল)': ['মিজানুস সরফ', 'এসো আরবি শিখি', 'বাংলা', 'ইংরেজি', 'বেহেশতে জেওর', 'তারিখুল ইসলাম', 'গণিত', 'কুরআন নাজেরা'],
+  'নাহবেমীর (মুতাওয়াসসিতাহ ছানি)': ['নাহুমীর', 'রওজাতুল আদব', 'সিরাতে খাতামুল আম্বিয়া', 'শরহে মিয়াতে আমেল', 'পাঞ্জেগাঞ্জ', 'আল ফিকহুল মুয়াসসার', 'বাংলা', 'কুরআন নাজেরা'],
+  'শরহে বেকায়া (সানাবিয়্যা ছানী)': ['শরহে বেকায়া (১ম খন্ড)', 'আত্ব তারিকু ইলাল ইনশা', 'শরহে বেকায়া (২য় খন্ড)', 'কাফিয়া', 'তরজমাতুল কুরআন', 'দুরুসুল বালাগাত', 'নুরুল আনওয়ার', 'মুখতারাত', 'কুরআন নাজেরা'],
+  'মেশকাত (ফজিলত ছানী)': ['মেশকাতুল মাসাবিহ (১ম খন্ড)', 'মেশকাতুল মাসাবিহ (২য় খন্ড)', 'হেদায়া (৩য় খন্ড)', 'হেদায়া (৪র্থ খন্ড)', 'তাফসিরে জালালাইন (১ম খন্ড)', 'তাফসিরে জালালাইন (২য় খন্ড)', 'আকীদাতুত ত্বহাবী', 'কুরআন নাজেরা']
+};
+
+/* ---------------------------
+    ইউআই রেফারেন্স
+    --------------------------- */
+const mobileInput = document.getElementById('mobileInput');
+const idInput = document.getElementById('idInput');
+const loginBtn = document.getElementById('loginBtn');
+const clearBtn = document.getElementById('clearBtn');
+const loginStatus = document.getElementById('loginStatus');
+const loginCard = document.getElementById('loginCard');
+
+const teacherCard = document.getElementById('teacherCard');
+const teacherTitle = document.getElementById('teacherName').nextElementSibling.querySelector('#teacherTitle'); // Target the span
+const teacherName = document.getElementById('teacherName');
+const teacherPosition = document.getElementById('teacherName').nextElementSibling.querySelector('#teacherPosition'); // Target the span
+
+const selectionCard = document.getElementById('selectionCard');
+const classSelect = document.getElementById('classSelect');
+const subjectsWrapper = document.getElementById('subjectsWrapper');
+const addSubjectBtn = document.getElementById('addSubjectBtn');
+const loadStudentsBtn = document.getElementById('loadStudentsBtn');
+const studentsCard = document.getElementById('studentsCard');
+const studentsTHead = document.getElementById('studentsTHead');
+const studentsTBody = document.getElementById('studentsTBody');
+const submitMarksBtn = document.getElementById('submitMarksBtn');
+
+const toast = document.getElementById('toast');
+const toastMsg = document.getElementById('toastMsg');
+
+/* ===========================
+    ইউটিলিটি: মোবাইল ইনপুট ফরম্যাট
+    =========================== */
+mobileInput.addEventListener('input', (e) => {
+  let v = e.target.value.replace(/\D/g,'').slice(0,11); 
+  const a = v.slice(0,5);
+  const b = v.slice(5,7);
+  const c = v.slice(7,9);
+  const d = v.slice(9,11);
+  let out = a;
+  if(b) out += "-" + b;
+  if(c) out += " " + c;
+  if(d) out += " " + d;
+  e.target.value = out;
+});
+
+/* ===========================
+    টোস্ট ফাংশন
+    =========================== */
+function showToast(msg, type='success', duration=3000){
+  toastMsg.innerHTML = '';
+  const icon = type === 'success' ? '✅' : type === 'error' ? '❌' : 'ℹ️';
+  toastMsg.innerHTML = `${icon} <span class="${type === 'success' ? 'text-green-300' : type === 'error' ? 'text-red-300' : 'text-cyan-300'}">${msg}</span>`;
+  toast.classList.remove('hidden');
+  toast.classList.remove('fade-in');
+  void toast.offsetWidth; // Force reflow
+  toast.classList.add('fade-in');
+  setTimeout(()=>{ toast.classList.add('hidden'); }, duration);
+}
+
+function setButtonLoading(btn, isLoading, text) {
+    btn.disabled = isLoading;
+    btn.textContent = isLoading ? "চালানো..." : text;
+    btn.classList.toggle('opacity-70', isLoading);
+    btn.classList.toggle('cursor-wait', isLoading);
+}
+
+/* ===========================
+    লগইন হ্যান্ডলার
+    =========================== */
+loginBtn.addEventListener('click', async () => {
+  const mobile = mobileInput.value.replace(/[\s-]/g,'');
+  const idno = idInput.value.trim();
+  
+  if(!mobile || !idno){ 
+    loginStatus.className="p-3 mt-3 rounded-lg text-sm bg-yellow-900/30 text-yellow-300 transition-all duration-300"; 
+    loginStatus.textContent="মোবাইল ও আইডি দিন।"; 
+    loginStatus.classList.remove('hidden'); 
+    return; 
+  }
+  setButtonLoading(loginBtn, true, "লগইন");
+  loginStatus.classList.add('hidden');
+
+  try{
+    const res = await apiPost({ action:"login", mobile, idno });
+    if(res.success){
+      loginStatus.className="p-3 mt-3 rounded-lg text-sm bg-green-900/30 text-green-300 transition-all duration-300";
+      loginStatus.textContent = res.message || "লগইন সফল";
+      
+      // শিক্ষক তথ্য দেখাও
+      teacherTitle.textContent = res.teacherInfo.postobi || "পদবী নেই";
+      teacherName.textContent = res.teacherInfo.purnonam || "নাম নেই";
+      teacherPosition.textContent = res.teacherInfo.pod_dhoron || "পদ/ধরন নেই";
+      
+      loginCard.classList.add('hidden');
+      teacherCard.classList.remove('hidden');
+      selectionCard.classList.remove('hidden');
+      
+      loadClassesAndBooks(); // ক্লাস লোড করো
+      showToast("লগইন সফল হয়েছে 🎉");
+    } else {
+      loginStatus.className="p-3 mt-3 rounded-lg text-sm bg-red-900/30 text-red-300 transition-all duration-300";
+      loginStatus.textContent = res.message || "লগইন ব্যর্থ। মোবাইল নম্বর বা আইডি নং ভুল।";
+      teacherCard.classList.add('hidden');
+      selectionCard.classList.add('hidden');
+    }
+  }catch(err){
+    loginStatus.className="p-3 mt-3 rounded-lg text-sm bg-red-900/30 text-red-300 transition-all duration-300";
+    loginStatus.textContent = "সার্ভারে যোগাযোগে সমস্যা হয়েছে।";
+    console.error("Login Error:", err);
+  } finally {
+    setButtonLoading(loginBtn, false, "লগইন");
+  }
+});
+
+/* ===========================
+    API POST helper (fetch)
+    =========================== */
+async function apiPost(payload){
+  const res = await fetch(WEBAPP_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
+  });
+  if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+  return await res.json();
+}
+
+/* ===========================
+    ক্লাস ও বই লোড (getClassesAndBooks)
+    =========================== */
+async function loadClassesAndBooks(){
+  try{
+    // সার্ভার থেকে ডেটা লোড করার চেষ্টা (যদি থাকে)
+    // const res = await apiPost({ action:"getClassesAndBooks" });
+    // if(res && res.success){
+    //   classesData = res.classes || [];
+    //   populateClassSelect();
+    // } else {
+      // Static fallback ব্যবহার করা হচ্ছে
+      classesData = Object.keys(ALL_KUTUB_STATIC).map(name => ({
+        name: name,
+        books: ALL_KUTUB_STATIC[name]
+      }));
+      populateClassSelect();
+      // showToast("ক্লাস ও বইয়ের তালিকা লোড হয়েছে।", 'info');
+    // }
+  }catch(e){
+    console.error(e);
+    showToast("ক্লাস লোডে ত্রুটি: সার্ভার থেকে ডেটা লোড করতে পারেনি, স্ট্যাটিক ডেটা ব্যবহার করা হলো।", 'error');
+  }
+}
+
+function populateClassSelect(){
+  classSelect.innerHTML = '<option value="">-- জামাত নির্বাচন করুন --</option>';
+  classesData.forEach(c => {
+    const opt = document.createElement('option');
+    opt.value = c.name; opt.textContent = c.name;
+    classSelect.appendChild(opt);
+  });
+  resetSubjects(); // ক্লাস লোড হলে সাবজেক্ট রিসেট
+}
+
+/* ===========================
+    সাবজেক্ট UI: ডাইনামিকালি সাবজেক্ট যোগ করা
+    =========================== */
+function addSubjectControl(defaultSubject){
+  const selClass = classSelect.value;
+  if (!selClass && !defaultSubject) {
+      showToast("প্রথমে জামাত নির্বাচন করুন।", 'error');
+      return;
+  }
+  
+  const classesObj = classesData.find(x=>x.name===selClass);
+  const books = (classesObj && classesObj.books) ? classesObj.books : [];
+  
+  // ইতিমধ্যে নির্বাচিত বিষয়গুলোর তালিকা
+  const selectedBooks = Array.from(subjectsWrapper.querySelectorAll('select')).map(s => s.value);
+  
+  const id = 'subject_control_' + Date.now();
+  const wrap = document.createElement('div');
+  wrap.className = 'subject-control-wrapper flex gap-2 items-center';
+  wrap.id = id;
+
+  const sel = document.createElement('select');
+  sel.className = 'flex-1 p-3 rounded-lg text-white';
+  sel.innerHTML = `<option value="">-- কিতাব/বিষয় নির্বাচন করুন --</option>`;
+  
+  books.forEach(b => {
+    // ইতোমধ্যে নির্বাচিত না হলে অপশনটি যোগ করা হবে
+    if (!selectedBooks.includes(b)) {
+        const o = document.createElement('option'); 
+        o.value = b; 
+        o.textContent = b; 
+        sel.appendChild(o);
+    }
+  });
+  
+  // যদি defaultSubject থাকে, তবে তা সিলেক্ট করা হবে
+  if(defaultSubject) sel.value = defaultSubject;
+
+  const delBtn = document.createElement('button');
+  delBtn.className = 'remove-btn bg-red-600 hover:bg-red-700 transition';
+  delBtn.textContent = 'X';
+  delBtn.type = 'button';
+  delBtn.addEventListener('click', ()=>{ wrap.remove(); });
+
+  wrap.appendChild(sel);
+  wrap.appendChild(delBtn);
+
+  subjectsWrapper.appendChild(wrap);
+}
+
+addSubjectBtn.addEventListener('click', ()=> addSubjectControl());
+
+function resetSubjects(){
+  subjectsWrapper.innerHTML = '';
+  currentSubjectMeta = [];
+  addSubjectControl();
+  studentsCard.classList.add('hidden');
+}
+
+classSelect.addEventListener('change', ()=>{
+  resetSubjects();
+});
+
+/* ===========================
+    লোড স্টুডেন্টস (getStudents)
+    =========================== */
+loadStudentsBtn.addEventListener('click', async ()=>{
+  const className = classSelect.value;
+  if(!className){ showToast("জামাত নির্বাচন করো", 'error'); return; }
+
+  const subjectControls = Array.from(subjectsWrapper.querySelectorAll('select'));
+  const validSubjects = subjectControls.filter(s=>s.value).map((s) => s.value);
+  
+  if(validSubjects.length === 0){
+    showToast("কমপক্ষে একটি বিষয় নির্বাচন করুন", 'error');
+    return;
+  }
+  
+  // বর্তমান নির্বাচিত বিষয়গুলো সেভ করা
+  currentSubjectMeta = validSubjects.map(subject => ({
+    subject: subject,
+    columnTitle: subject // কলামের শিরোনাম হিসেবে আপাতত কিতাবের নাম ব্যবহার করা হচ্ছে
+  }));
+
+  setButtonLoading(loadStudentsBtn, true, "শিক্ষার্থীরা লোড করো");
+  studentsCard.classList.add('hidden');
+  
+  try{
+    const res = await apiPost({ action:"getStudents", className });
+    if(res.success){
+      studentsCache = res.students;
+      renderStudentsTable(res.students, currentSubjectMeta);
+      studentsCard.classList.remove('hidden');
+      showToast("শিক্ষার্থীরা সফলভাবে লোড হয়েছে ✅");
+    } else {
+      showToast(res.message || "শিক্ষার্থী লোড ব্যর্থ", 'error');
+    }
+  }catch(e){
+    console.error(e); 
+    showToast("সার্ভার ত্রুটি: শিক্ষার্থী লোড করা যায়নি।", 'error');
+  } finally {
+    setButtonLoading(loadStudentsBtn, false, "শিক্ষার্থীরা লোড করো");
+  }
+});
+
+/* ===========================
+    renderStudentsTable
+    =========================== */
+function renderStudentsTable(students, subjectMeta){
+  studentsTHead.innerHTML = '';
+  studentsTBody.innerHTML = '';
+  
+  // header
+  const tr = document.createElement('tr');
+  tr.className = 'text-left';
+  ['রেজিঃ নং','রোল নং','নাম'].forEach(h=>{
+    const th = document.createElement('th');
+    th.className = 'py-3 px-3 text-xs font-semibold text-gray-300'; th.textContent = h;
+    tr.appendChild(th);
+  });
+  // subjects header
+  subjectMeta.forEach(s=>{
+    const th = document.createElement('th');
+    th.className = 'py-3 px-3 text-xs font-semibold text-cyan-400 min-w-[100px]'; 
+    th.textContent = s.columnTitle;
+    tr.appendChild(th);
+  });
+  studentsTHead.appendChild(tr);
+
+  // body rows
+  students.forEach(st=>{
+    const row = document.createElement('tr');
+    row.className = 'border-t border-gray-800 hover:bg-gray-800 transition-colors';
+    
+    // registration (A)
+    const tdReg = document.createElement('td'); tdReg.className='py-3 px-3 text-xs'; tdReg.textContent = st.registration; row.appendChild(tdReg);
+    // roll (B)
+    const tdRoll = document.createElement('td'); tdRoll.className='py-3 px-3 text-xs font-bold text-cyan-300'; tdRoll.textContent = st.roll; row.appendChild(tdRoll);
+    // name (C)
+    const tdName = document.createElement('td'); tdName.className='py-3 px-3 text-sm text-gray-200'; tdName.textContent = st.name || ''; row.appendChild(tdName);
+
+    // subject inputs (only english digits allowed)
+    subjectMeta.forEach(s=>{
+      const td = document.createElement('td'); td.className = 'py-2 px-2';
+      const inp = document.createElement('input');
+      inp.type = 'text';
+      inp.inputMode = 'numeric';
+      inp.placeholder = '0';
+      inp.className = 'p-2 rounded-md w-full max-w-[80px] text-center bg-gray-800 border border-gray-700 focus:border-cyan-500 text-sm';
+      
+      // restriction: english digits only
+      inp.addEventListener('input', (e)=>{ e.target.value = e.target.value.replace(/[^0-9]/g,''); });
+      
+      // data attributes for later submission
+      inp.dataset.roll = st.roll;
+      inp.dataset.subject = s.subject;
+      inp.dataset.columnTitle = s.columnTitle;
+      td.appendChild(inp);
+      row.appendChild(td);
+    });
+
+    studentsTBody.appendChild(row);
+  });
+}
+
+/* ===========================
+    Submit marks (collect records and call submitMarks)
+    =========================== */
+submitMarksBtn.addEventListener('click', async ()=>{
+  if(currentSubjectMeta.length === 0){ showToast("কোনো বিষয় নির্বাচন করা হয়নি।", 'error'); return; }
+
+  // collect all inputs
+  const inputs = Array.from(studentsTBody.querySelectorAll('input'));
+  if(inputs.length === 0){ showToast("কোনো শিক্ষার্থী পাওয়া যায়নি।", 'error'); return; }
+
+  // group by subjectColumnTitle
+  const grouped = {};
+  inputs.forEach(inp=>{
+    const col = inp.dataset.columnTitle; // এখানে কিতাবের নামই কলামের শিরোনাম
+    if(!grouped[col]) grouped[col] = [];
+    grouped[col].push({
+      roll: inp.dataset.roll,
+      marks: inp.value || "" // খালি থাকলে খালি স্ট্রিং পাঠাবে
+    });
+  });
+
+  setButtonLoading(submitMarksBtn, true, "সাবমিট করো");
+  let allSuccessful = true;
+  let successCount = 0;
+  
+  try{
+    for(const colTitle of Object.keys(grouped)){
+      const payload = { 
+        action: "submitMarks", 
+        className: classSelect.value, 
+        subjectColumnTitle: colTitle, 
+        records: grouped[colTitle] 
+      };
+      
+      const res = await apiPost(payload);
+      if(!res.success){
+        showToast(`"${colTitle}" সাবমিটে ত্রুটি: ${res.message || 'Error'}`, 'error');
+        allSuccessful = false;
+        // ত্রুটি হলেও অন্যগুলো সাবমিট করার জন্য লুপ চালিয়ে যাওয়া
+      } else {
+        successCount++;
+      }
+    }
+    
+    if(allSuccessful){
+      showToast("সবগুলো বিষয়ে নম্বর সফলভাবে আপডেট হয়েছে! 🎉", 'success');
+      // সাবমিট সফল হলে ফর্ম রিসেট করা
+      studentsCard.classList.add('hidden');
+      resetSubjects();
+    } else {
+      showToast(`${successCount}টি বিষয়ে সফলভাবে জমা হয়েছে, কিন্তু কিছু বিষয়ে ত্রুটি হয়েছে।`, 'error');
+    }
+
+  }catch(e){
+    console.error(e); 
+    showToast("সার্ভার যোগাযোগে ত্রুটি। পুনরায় চেষ্টা করুন।", 'error');
+  } finally {
+    setButtonLoading(submitMarksBtn, false, "সাবমিট করো");
+  }
+});
+
+/* ===========================
+    অ্যাপ্লিকেশন রিসেট (লগআউট)
+    =========================== */
+function resetApp() {
+    // UI রিসেট
+    mobileInput.value = '';
+    idInput.value = '';
+    loginStatus.classList.add('hidden');
+    
+    loginCard.classList.remove('hidden');
+    teacherCard.classList.add('hidden');
+    selectionCard.classList.add('hidden');
+    studentsCard.classList.add('hidden');
+
+    classSelect.value = '';
+    resetSubjects(); // সাবজেক্ট কন্ট্রোল ও মেটা রিসেট
+    studentsCache = [];
+    
+    showToast('আপনি সফলভাবে লগআউট করেছেন। 👋', 'info');
+}
+
+/* ===========================
+    Initial load: Add one subject control
+    =========================== */
+window.addEventListener('load', ()=>{
+  // Initial subject control added after classes are loaded/populated
+  loadClassesAndBooks();
+});
+</script>
+</body>
+</html>
