@@ -1,0 +1,1314 @@
+<!DOCTYPE html>
+<html lang="bn" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>দারুল উলূম মাদানিয়া মহিলা মাদ্রাসা | ইসলামি শিক্ষার আলোকিত প্রতিষ্ঠান</title>
+    <meta name="description" content="২০১৭ সালে প্রতিষ্ঠিত ইসলামি শিক্ষা প্রতিষ্ঠান। কুরআন, হাদিস, তাফসীর, ফিকহসহ ইসলামের মৌলিক ও উচ্চতর জ্ঞান প্রদান।">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.maateen.me/kalpurush/font.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    
+    <!-- Custom Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@300;400;500;600;700&display=swap">
+
+    <style>
+        :root {
+            --primary: #00547e;
+            --secondary: #003e4d;
+            --accent: #0087b1;
+            --light: #f6fdff;
+            --success: #28a745;
+        }
+        
+        body {
+            font-family: 'Kalpurush', 'Noto Sans Bengali', sans-serif;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(-45deg, #e0f7ff, #d9efff, #f0faff, #d3f6ff);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(rgba(0,84,126,0.85), rgba(0,62,77,0.9));
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: white;
+            left: 50%;
+            bottom: -5px;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .section-title {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 60%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            bottom: -10px;
+            left: 20%;
+            border-radius: 2px;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent), var(--primary));
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,135,177,0.3);
+        }
+        
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .fade-in {
+            animation: fadeInUp 0.8s ease-out;
+        }
+        
+        /* Custom Bengali Font Classes */
+        .font-sheikh-hasina {
+            font-family: 'Sheikh Hasina', 'Kalpurush', sans-serif;
+        }
+        
+        .font-junudullah {
+            font-family: 'JunudullahZami', 'Kalpurush', sans-serif;
+        }
+        
+        .font-bangla-bold {
+            font-family: 'Bornomala-Bold', 'Kalpurush', sans-serif;
+            font-weight: bold;
+        }
+        
+        .font-qayyum {
+            font-family: 'Qayyum book', 'Kalpurush', sans-serif;
+        }
+    </style>
+    
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#00547e',
+                        secondary: '#003e4d',
+                        accent: '#0087b1',
+                        light: '#f6fdff',
+                    },
+                    fontFamily: {
+                        'bangla': ['Kalpurush', 'Noto Sans Bengali', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-in': 'fadeInUp 0.6s ease-out',
+                        'pulse-slow': 'pulse 3s infinite',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-bangla bg-gray-50">
+
+    <!-- Search Bar -->
+    <div class="bg-gradient-to-r from-blue-600 to-cyan-600 py-2 px-4">
+        <div class="container mx-auto">
+            <div class="flex justify-end">
+                <form class="w-full max-w-md flex" action="/search" method="get">
+                    <input 
+                        type="text" 
+                        name="q" 
+                        placeholder="অনুসন্ধান করুন..." 
+                        class="flex-grow px-4 py-2 rounded-l-lg border-0 focus:ring-2 focus:ring-white focus:outline-none"
+                    >
+                    <button 
+                        type="submit" 
+                        class="bg-white text-blue-700 px-4 py-2 rounded-r-lg hover:bg-gray-100 transition"
+                    >
+                        <i class="fas fa-search"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex flex-col md:flex-row items-center justify-between">
+                <div class="mb-4 md:mb-0">
+                    <img src="jpg/ওয়েব-সাইট.png" alt="দারুল উলূম মাদানিয়া মহিলা মাদ্রাসা" class="h-20 md:h-24">
+                </div>
+                <div class="text-center md:text-right">
+                    <h1 class="text-2xl md:text-3xl font-bold text-primary font-sheikh-hasina">দারুল উলূম মাদানিয়া মহিলা মাদ্রাসা</h1>
+                    <p class="text-gray-600 mt-2">নয়া কাঁন্দারগাঁও, মেঘনা, কুমিল্লা</p>
+                    <p class="text-sm text-gray-500 mt-1">ইসলামি শিক্ষার আলোকিত প্রতিষ্ঠান</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="bg-gradient-to-r from-secondary to-primary text-white sticky top-0 z-50 shadow-lg">
+        <div class="container mx-auto px-4">
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden py-3 flex justify-between items-center">
+                <span class="font-bold">মেনু</span>
+                <button id="mobile-menu-toggle" class="text-white">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+            
+            <!-- Desktop Menu -->
+            <ul id="nav-menu" class="hidden md:flex flex-wrap justify-center space-x-1 py-3">
+                <li><a href="#home" class="nav-link px-4 py-2 hover:bg-white/10 rounded transition active">হোম</a></li>
+                <li><a href="#about" class="nav-link px-4 py-2 hover:bg-white/10 rounded transition">পরিচিতি</a></li>
+                <li><a href="#departments" class="nav-link px-4 py-2 hover:bg-white/10 rounded transition">বিভাগ সমূহ</a></li>
+                <li><a href="#features" class="nav-link px-4 py-2 hover:bg-white/10 rounded transition">বৈশিষ্ট্য</a></li>
+                <li><a href="#admission" class="nav-link px-4 py-2 hover:bg-white/10 rounded transition">ভর্তি তথ্য</a></li>
+                <li><a href="#certificate" class="nav-link px-4 py-2 hover:bg-white/10 rounded transition">সার্টিফিকেট</a></li>
+                <li><a href="#result" class="nav-link px-4 py-2 hover:bg-white/10 rounded transition">ফলাফল</a></li>
+                <li><a href="#gallery" class="nav-link px-4 py-2 hover:bg-white/10 rounded transition">গ্যালারি</a></li>
+                <li><a href="#contact" class="nav-link px-4 py-2 hover:bg-white/10 rounded transition">যোগাযোগ</a></li>
+            </ul>
+            
+            <!-- Mobile Menu (Hidden by default) -->
+            <div id="mobile-nav" class="md:hidden hidden bg-primary/95 absolute left-0 right-0 top-full z-50 shadow-lg">
+                <div class="flex flex-col p-4 space-y-2">
+                    <a href="#home" class="py-3 px-4 hover:bg-white/10 rounded transition border-b border-white/10">হোম</a>
+                    <a href="#about" class="py-3 px-4 hover:bg-white/10 rounded transition border-b border-white/10">পরিচিতি</a>
+                    <a href="#departments" class="py-3 px-4 hover:bg-white/10 rounded transition border-b border-white/10">বিভাগ সমূহ</a>
+                    <a href="#features" class="py-3 px-4 hover:bg-white/10 rounded transition border-b border-white/10">বৈশিষ্ট্য</a>
+                    <a href="#admission" class="py-3 px-4 hover:bg-white/10 rounded transition border-b border-white/10">ভর্তি তথ্য</a>
+                    <a href="#certificate" class="py-3 px-4 hover:bg-white/10 rounded transition border-b border-white/10">সার্টিফিকেট</a>
+                    <a href="#result" class="py-3 px-4 hover:bg-white/10 rounded transition border-b border-white/10">ফলাফল</a>
+                    <a href="#gallery" class="py-3 px-4 hover:bg-white/10 rounded transition border-b border-white/10">গ্যালারি</a>
+                    <a href="#contact" class="py-3 px-4 hover:bg-white/10 rounded transition">যোগাযোগ</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="min-h-screen">
+        <!-- Home/Hero Section -->
+        <section id="home" class="hero-gradient text-white py-12 md:py-20 relative overflow-hidden">
+            <div class="absolute inset-0 opacity-10">
+                <div class="absolute inset-0" style="background-image: url('jpg/dummm-campus.jpg'); background-size: cover; background-position: center;"></div>
+            </div>
+            <div class="container mx-auto px-4 relative z-10">
+                <div class="max-w-4xl mx-auto text-center">
+                    <h2 class="text-3xl md:text-5xl font-bold mb-6 font-junudullah" data-aos="fade-up">
+                        ইলমের আলোয় গড়ে তুলুন আপনার কন্যার উজ্জ্বল ভবিষ্যৎ!
+                    </h2>
+                    <p class="text-lg md:text-xl mb-8 opacity-90" data-aos="fade-up" data-aos-delay="100">
+                        নারী শিক্ষার আলোকিত পথ। আমরা কুরআন, হাদিস এবং ইসলামিক শিক্ষা প্রদানের মাধ্যমে একটি নৈতিক ও সুপথগামী সমাজ তৈরিতে প্রতিশ্রুতিবদ্ধ।
+                    </p>
+                    
+                    <!-- Student Verification Button -->
+                    <div class="mb-12" data-aos="fade-up" data-aos-delay="200">
+                        <button id="verification-btn" class="bg-white/20 backdrop-blur-sm border-2 border-white/30 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-white/30 transition-all duration-300 shadow-lg hover:shadow-xl">
+                            <i class="fas fa-search mr-2"></i> শিক্ষার্থী যাচাইকরণ
+                        </button>
+                    </div>
+                    
+                    <!-- Verification Form (Hidden by default) -->
+                    <div id="verification-form" class="hidden max-w-2xl mx-auto bg-white/10 backdrop-blur-md rounded-2xl p-6 md:p-8 shadow-2xl" data-aos="fade-up">
+                        <h3 class="text-2xl font-bold mb-6 text-center">শিক্ষার্থী তথ্য যাচাই</h3>
+                        <form id="student-verify-form" class="space-y-4">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block mb-2">শিক্ষাবর্ষ</label>
+                                    <select class="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-white">
+                                        <option value="">-- নির্বাচন করুন --</option>
+                                        <option value="1444-45">১৪৪৪-৪৫ হিজরী/২০২৪-২৫ ঈসায়ী</option>
+                                        <option value="1445-46">১৪৪৫-৪৬ হিজরী/২০২৫-২৬ ঈসায়ী</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block mb-2">জামাত</label>
+                                    <select class="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-white">
+                                        <option value="">-- নির্বাচন করুন --</option>
+                                        <option value="আতফাল">আতফাল (শিশু শ্রেণী)</option>
+                                        <option value="আওয়াল">আওয়াল (১ম শ্রেণী)</option>
+                                        <option value="ছানী">ছানী (২য় শ্রেণী)</option>
+                                        <option value="খুসুছি">খুসুছি (ইবতেদায়ি রাবে)</option>
+                                        <option value="হেদায়া">হেদায়া (ফজিলত আউয়াল)</option>
+                                        <option value="দাওরা">দাওরায়ে হাদিস (তাকমিল)</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block mb-2">রেজিস্ট্রেশন নম্বর</label>
+                                    <input type="text" class="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-white" placeholder="রেজি নম্বর">
+                                </div>
+                                <div>
+                                    <label class="block mb-2">রোল নম্বর</label>
+                                    <input type="text" class="w-full px-4 py-3 rounded-lg bg-white/20 border border-white/30 text-white" placeholder="রোল নম্বর">
+                                </div>
+                            </div>
+                            <button type="submit" class="w-full bg-white text-primary py-3 rounded-lg font-bold hover:bg-gray-100 transition">
+                                যাচাই করুন
+                            </button>
+                        </form>
+                    </div>
+                    
+                    <!-- Campus Info -->
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-12 items-center">
+                        <div class="text-left" data-aos="fade-right">
+                            <h3 class="text-2xl font-bold mb-4 font-sheikh-hasina">আমাদের লক্ষ্য ও উদ্দেশ্য</h3>
+                            <p class="mb-4 opacity-90">
+                                আল্লাহ তা'আলার সন্তুষ্টি অর্জনই আমাদের মূল লক্ষ্য। তাওহীদ ও সুন্নাহর প্রতিপত্তি, শিরক-বিদআতের নিরসন এবং বিশুদ্ধ কুরআনী শিক্ষা প্রচারের মাধ্যমে দ্বীনদার কুরআনের ধারক-বাহক গড়ে তোলা।
+                            </p>
+                            <ul class="space-y-2">
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-green-300 mt-1 mr-3"></i>
+                                    <span>ইসলামী শিক্ষা | নৈতিক উন্নতি | আধ্যাত্মিক বিকাশ</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-green-300 mt-1 mr-3"></i>
+                                    <span>সর্বোচ্চ শিক্ষামান, সর্বাধুনিক পরিবেশ</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div data-aos="fade-left">
+                            <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6">
+                                <h3 class="text-2xl font-bold mb-4 text-center font-bangla-bold">মাদ্রাসার নিজস্ব ক্যাম্পাস</h3>
+                                <img src="jpg/dummm-campus.jpg" alt="ক্যাম্পাস" class="w-full h-48 object-cover rounded-lg mb-4">
+                                <p class="opacity-90">
+                                    ২০১৭ সালে মেঘনা উপজেলার নয়া কাঁন্দারগাঁও এলাকায় প্রতিষ্ঠিত এই প্রতিষ্ঠানটি নিজস্ব ভবনে আধুনিক ও শান্ত পরিবেশে মানসম্মত জেনারেল ও দ্বীনি শিক্ষা প্রদান করছে।
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-16 bg-white">
+            <div class="container mx-auto px-4">
+                <h2 class="section-title text-3xl md:text-4xl font-bold text-center text-gray-800" data-aos="fade-up">
+                    মাদ্রাসা পরিচিতি
+                </h2>
+                
+                <div class="max-w-4xl mx-auto">
+                    <div class="bg-gradient-to-r from-blue-50 to-cyan-50 rounded-2xl p-8 md:p-10 shadow-lg" data-aos="fade-up">
+                        <h3 class="text-2xl font-bold mb-6 text-primary font-sheikh-hasina">দারুল উলূম মাদানিয়া মহিলা মাদ্রাসা</h3>
+                        
+                        <div class="space-y-4 text-gray-700">
+                            <p>
+                                ২০১৭ সালে প্রতিষ্ঠিত একটি সুপ্রতিষ্ঠিত ও নির্ভরযোগ্য ইসলামি শিক্ষা প্রতিষ্ঠান, যা মুসলিম নারীদের জন্য কুরআন, হাদীস, তাফসীর, ফিকহসহ ইসলামের মৌলিক ও উচ্চতর জ্ঞান দানে প্রতিশ্রুতিবদ্ধ।
+                            </p>
+                            <p>
+                                প্রতিষ্ঠানটি পূর্ণাঙ্গ কওমি ও আধুনিক, উভয় সিলেবাসে পরিচালিত হয়, যেখানে শিক্ষার্থীদের সর্বোচ্চ মানের পাঠদান, নৈতিক গঠন ও আমলী জিন্দেগীর বাস্তব অনুশীলন নিশ্চিত করা হয়। যুগোপযোগী পদ্ধতিতে ইসলামি জ্ঞানের পাশাপাশি বাস্তব জীবনে ইসলামের আদর্শ অনুসরণে আমরা নিবেদিত।
+                            </p>
+                            
+                            <div class="mt-6">
+                                <h4 class="text-xl font-bold mb-3 text-primary">আমাদের মূল উদ্দেশ্য:</h4>
+                                <ul class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                    <li class="flex items-start">
+                                        <i class="fas fa-star text-yellow-500 mt-1 mr-3"></i>
+                                        <span>আল্লাহ তা'আলার সন্তুষ্টি অর্জন</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-star text-yellow-500 mt-1 mr-3"></i>
+                                        <span>তাওহীদ ও সুন্নাহর নির্ভেজাল শিক্ষা প্রতিষ্ঠা</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-star text-yellow-500 mt-1 mr-3"></i>
+                                        <span>শিরক, বিদআত ও সমাজের অপসংস্কৃতি থেকে মুক্ত রাখা</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-star text-yellow-500 mt-1 mr-3"></i>
+                                        <span>আদর্শ আলেমা ও দ্বীনের খাদেমা তৈরি</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            <div class="mt-6 bg-white p-6 rounded-xl border-l-4 border-primary">
+                                <p class="italic">
+                                    আমরা বিশ্বাস করি, বিশুদ্ধ তিলাওয়াত, দ্বীনি আদর্শ, এবং পরকালীন মুক্তির সঠিক দিকনির্দেশনার মাধ্যমে শিক্ষার্থীরা শুধু একজন জ্ঞানী মুসলিম নয়, বরং একটি আলোকিত সমাজের নেতৃত্বদানকারী হিসেবেও নিজেকে গড়ে তুলতে সক্ষম হবে।
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Image Section -->
+                    <div class="mt-8" data-aos="fade-up">
+                        <img src="jpg/20240216_1342381.jpg" alt="মাদ্রাসা" class="w-full h-64 md:h-80 object-cover rounded-2xl shadow-lg">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Departments Section -->
+        <section id="departments" class="py-16 gradient-bg">
+            <div class="container mx-auto px-4">
+                <h2 class="section-title text-3xl md:text-4xl font-bold text-center text-gray-800" data-aos="fade-up">
+                    বিভাগ সমূহ
+                </h2>
+                
+                <!-- Type Tags -->
+                <div class="flex justify-center flex-wrap gap-4 mb-12" data-aos="fade-up">
+                    <span class="bg-red-600 text-white px-6 py-2 rounded-full font-bold">আবাসিক</span>
+                    <span class="bg-blue-800 text-white px-6 py-2 rounded-full font-bold">অনাবাসিক</span>
+                    <span class="bg-teal-600 text-white px-6 py-2 rounded-full font-bold">ডে-কেয়ার</span>
+                </div>
+                
+                <div class="max-w-6xl mx-auto">
+                    <!-- Nuranee Department -->
+                    <div class="bg-white rounded-2xl p-6 md:p-8 shadow-lg mb-8" data-aos="fade-up">
+                        <div class="flex items-start mb-6">
+                            <div class="bg-blue-100 p-3 rounded-xl mr-4">
+                                <i class="fas fa-book-open text-2xl text-primary"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold text-primary mb-2">আধুনিক নূরানী বিভাগ</h3>
+                                <p class="text-gray-600">শিশু শ্রেণী থেকে ৩য় শ্রেণী পর্যন্ত</p>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                            <div class="bg-blue-50 p-4 rounded-lg text-center">
+                                <div class="text-primary font-bold text-lg mb-2">শিশু শ্রেণী</div>
+                                <div class="text-sm text-gray-600">আতফাল</div>
+                            </div>
+                            <div class="bg-blue-50 p-4 rounded-lg text-center">
+                                <div class="text-primary font-bold text-lg mb-2">প্রথম শ্রেণী</div>
+                                <div class="text-sm text-gray-600">আওয়াল</div>
+                            </div>
+                            <div class="bg-blue-50 p-4 rounded-lg text-center">
+                                <div class="text-primary font-bold text-lg mb-2">দ্বিতীয় শ্রেণী</div>
+                                <div class="text-sm text-gray-600">ছানী</div>
+                            </div>
+                            <div class="bg-blue-50 p-4 rounded-lg text-center">
+                                <div class="text-primary font-bold text-lg mb-2">তৃতীয় শ্রেণী</div>
+                                <div class="text-sm text-gray-600">ছালেছ</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Nazera Department -->
+                    <div class="bg-white rounded-2xl p-6 md:p-8 shadow-lg mb-8" data-aos="fade-up" data-aos-delay="100">
+                        <div class="flex items-start mb-6">
+                            <div class="bg-green-100 p-3 rounded-xl mr-4">
+                                <i class="fas fa-quran text-2xl text-primary"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold text-primary mb-2">নাযেরা বিভাগ</h3>
+                                <p class="text-gray-600">কুরআন পরিচিতি, তাজবিদ শিক্ষা, হরফ শেখানো, মাখরাজ চর্চা, এবং শুদ্ধভাবে কুরআন দেখে তিলাওয়াত শেখানো</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Kitab Department -->
+                    <div class="bg-white rounded-2xl p-6 md:p-8 shadow-lg" data-aos="fade-up" data-aos-delay="200">
+                        <div class="flex items-start mb-6">
+                            <div class="bg-purple-100 p-3 rounded-xl mr-4">
+                                <i class="fas fa-graduation-cap text-2xl text-primary"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold text-primary mb-2">মানসম্পন্ন কিতাব বিভাগ</h3>
+                                <p class="text-gray-600"><strong>খুলুছী জামাত</strong> থেকে <strong>দাওরায়ে হাদিস</strong> পর্যন্ত সম্পূর্ণ কওমী নেসাব</p>
+                            </div>
+                        </div>
+                        
+                        <div class="overflow-x-auto">
+                            <table class="w-full border-collapse">
+                                <thead class="bg-primary text-white">
+                                    <tr>
+                                        <th class="p-3 text-left">জামাত</th>
+                                        <th class="p-3 text-left">সমমান</th>
+                                        <th class="p-3 text-left">বিস্তারিত</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-gray-200">
+                                    <tr class="hover:bg-blue-50">
+                                        <td class="p-3 font-bold">খুসুছি</td>
+                                        <td class="p-3">ইবতেদায়িয়া রাবে</td>
+                                        <td class="p-3">প্রাথমিক - চতুর্থ শ্রেণী সমমান</td>
+                                    </tr>
+                                    <tr class="hover:bg-blue-50">
+                                        <td class="p-3 font-bold">খামেস</td>
+                                        <td class="p-3">ইবতেদায়িয়া খামস</td>
+                                        <td class="p-3">প্রাথমিক - পঞ্চম শ্রেণী সমমান</td>
+                                    </tr>
+                                    <tr class="hover:bg-blue-50">
+                                        <td class="p-3 font-bold">মিযান</td>
+                                        <td class="p-3">মুতাওয়াসসিতাহ আওয়াল</td>
+                                        <td class="p-3">নিম্ন মাধ্যমিক - ষষ্ঠ শ্রেণী সমমান</td>
+                                    </tr>
+                                    <tr class="hover:bg-blue-50">
+                                        <td class="p-3 font-bold">নাহবেমীর</td>
+                                        <td class="p-3">মুতাওয়াসসিতাহ ছানি</td>
+                                        <td class="p-3">নিম্ন মাধ্যমিক - সপ্তম শ্রেণী সমমান</td>
+                                    </tr>
+                                    <tr class="hover:bg-blue-50">
+                                        <td class="p-3 font-bold">কুদূরী</td>
+                                        <td class="p-3">সানাবিয়্যা আউয়াল</td>
+                                        <td class="p-3">মাধ্যমিক- এস.এস.সি./দাখিল সমমান</td>
+                                    </tr>
+                                    <tr class="hover:bg-blue-50">
+                                        <td class="p-3 font-bold">শরহে বেকায়া</td>
+                                        <td class="p-3">সানাবিয়্যা ছানী</td>
+                                        <td class="p-3">মাধ্যমিক- এস.এস.সি./দাখিল সমমান</td>
+                                    </tr>
+                                    <tr class="hover:bg-blue-50">
+                                        <td class="p-3 font-bold">হেদায়া</td>
+                                        <td class="p-3">ফজিলত আউয়াল</td>
+                                        <td class="p-3">স্নাতক- বি.এ./ডিগ্রী/ফাযিল সমমান</td>
+                                    </tr>
+                                    <tr class="hover:bg-blue-50">
+                                        <td class="p-3 font-bold">মেশকাত</td>
+                                        <td class="p-3">ফজিলত ছানী</td>
+                                        <td class="p-3">স্নাতক- বি.এ./ডিগ্রী/ফাযিল সমমান</td>
+                                    </tr>
+                                    <tr class="hover:bg-blue-50">
+                                        <td class="p-3 font-bold">দাওরায়ে হাদিস</td>
+                                        <td class="p-3">তাকমিল</td>
+                                        <td class="p-3">স্নাতকোত্তর- এম.এ./কামিল সমমান</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="py-16 bg-gradient-to-b from-white to-blue-50">
+            <div class="container mx-auto px-4">
+                <h2 class="section-title text-3xl md:text-4xl font-bold text-center text-gray-800" data-aos="fade-up">
+                    বৈশিষ্ট্য
+                </h2>
+                
+                <div class="max-w-4xl mx-auto text-center mb-12" data-aos="fade-up">
+                    <p class="text-xl text-gray-600 font-sheikh-hasina">
+                        সর্বোচ্চ শিক্ষামান, সর্বাধুনিক পরিবেশ ও সার্বক্ষণিক আমলী জিন্দেগীর বাস্তব অনুশীলনে আমরা বদ্ধপরিকর।
+                    </p>
+                </div>
+                
+                <div class="max-w-5xl mx-auto">
+                    <!-- Goal Section -->
+                    <div class="bg-white rounded-2xl p-6 md:p-8 shadow-lg mb-8" data-aos="fade-up">
+                        <div class="flex items-center mb-6">
+                            <div class="bg-gradient-to-r from-primary to-accent p-3 rounded-xl mr-4">
+                                <i class="fas fa-bullseye text-2xl text-white"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-800">🎯 লক্ষ্য ও উদ্দেশ্য</h3>
+                        </div>
+                        
+                        <div class="text-gray-700 space-y-4">
+                            <p>
+                                আল্লাহ তা'আলার সন্তুষ্টি অর্জনই প্রতিষ্ঠানের মূল লক্ষ্য। তাওহীদ ও সুন্নাহ প্রতিষ্ঠা এবং শিরক ও বিদআতসহ সকল বাতিল অপসংস্কৃতির মূলোৎপাটন। 
+                                নৈতিকতা, কুরআন ও সুন্নাহর শিক্ষায় আদর্শ পর্দানশীল যুগোপযোগী আলেমা হিসেবে তৈরি করা।
+                            </p>
+                            <p>
+                                পরকালীন মুক্তি লাভের উদ্দেশ্যে বিশুদ্ধ তিলাওয়াত ও ইসলামী আদর্শে গড়ে তোলা পূর্ণাঙ্গ দ্বীনদার প্রজন্ম গঠনের দৃঢ় প্রত্যয়।
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- Features List -->
+                    <div class="bg-white rounded-2xl p-6 md:p-8 shadow-lg" data-aos="fade-up" data-aos-delay="100">
+                        <div class="flex items-center mb-6">
+                            <div class="bg-gradient-to-r from-primary to-accent p-3 rounded-xl mr-4">
+                                <i class="fas fa-star text-2xl text-white"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-800">⭐ মাদরাসার বৈশিষ্ট্যসমূহ</h3>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="flex items-start p-3 hover:bg-blue-50 rounded-lg transition">
+                                <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                                <span>যুগশ্রেষ্ঠ ওলামায়ে কেরামের সুচিন্তিত পরামর্শে পরিচালিত</span>
+                            </div>
+                            <div class="flex items-start p-3 hover:bg-blue-50 rounded-lg transition">
+                                <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                                <span>সুন্নাতে রাসূল (সা.)-এর আমলী জিন্দেগীর বাস্তব অনুশীলন</span>
+                            </div>
+                            <div class="flex items-start p-3 hover:bg-blue-50 rounded-lg transition">
+                                <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                                <span>অভিজ্ঞ ও দক্ষ ওলামা/শিক্ষকদের দ্বারা পাঠদান</span>
+                            </div>
+                            <div class="flex items-start p-3 hover:bg-blue-50 rounded-lg transition">
+                                <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                                <span>আলেমা ও দ্বীনের দায়ী তৈরিতে আমল, আখলাক ও তারবিয়াতের গুরুত্ব</span>
+                            </div>
+                            <div class="flex items-start p-3 hover:bg-blue-50 rounded-lg transition">
+                                <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                                <span>নিয়মিত সাপ্তাহিক ও মাসিক পরীক্ষা</span>
+                            </div>
+                            <div class="flex items-start p-3 hover:bg-blue-50 rounded-lg transition">
+                                <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                                <span>উন্নত পরিবেশে তিন বেলা সুস্বাদু খাবারের ব্যবস্থা</span>
+                            </div>
+                            <div class="flex items-start p-3 hover:bg-blue-50 rounded-lg transition">
+                                <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                                <span>আরবি শিক্ষার পাশাপাশি বাংলা, অংক ও ইংরেজি শিক্ষার সমন্বয়</span>
+                            </div>
+                            <div class="flex items-start p-3 hover:bg-blue-50 rounded-lg transition">
+                                <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                                <span>বেফাক ও হাইয়াতুল উলয়ার অধীনে পরীক্ষার সুযোগ</span>
+                            </div>
+                            <div class="flex items-start p-3 hover:bg-blue-50 rounded-lg transition">
+                                <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                                <span>পূর্ণ শরয়ী পর্দার বাস্তবায়ন (হাত মোজা, নেকাব ইত্যাদি)</span>
+                            </div>
+                            <div class="flex items-start p-3 hover:bg-blue-50 rounded-lg transition">
+                                <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                                <span>মাদরাসার ভিতরে পর্দাসম্মত হাঁটা-চলার ব্যবস্থা</span>
+                            </div>
+                            <div class="flex items-start p-3 hover:bg-blue-50 rounded-lg transition">
+                                <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                                <span>গরিব, ইয়াতিম ও মেধাবী ছাত্রীর জন্য বিশেষ সুবিধা</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Note -->
+                        <div class="mt-8 bg-yellow-50 border-l-4 border-yellow-500 p-4 rounded-r-lg">
+                            <div class="flex">
+                                <i class="fas fa-info-circle text-yellow-500 mt-1 mr-3"></i>
+                                <div>
+                                    <strong>বি:দ্র:</strong> স্কুল-কলেজের ছাত্রী, কর্মজীবী ও বয়স্ক মহিলাদের জন্য নূরানী পদ্ধতিতে কুরআন শিক্ষা, প্রয়োজনীয় দোয়া ও মাসআলা তালিমের সুব্যবস্থা রয়েছে।
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Admission Section -->
+        <section id="admission" class="py-16 bg-white">
+            <div class="container mx-auto px-4">
+                <h2 class="section-title text-3xl md:text-4xl font-bold text-center text-gray-800" data-aos="fade-up">
+                    ভর্তি তথ্য
+                </h2>
+                
+                <!-- Online Admission Button -->
+                <div class="text-center mb-12" data-aos="fade-up">
+                    <a href="https://almadania.netlify.app/admistion.html" 
+                       class="inline-flex items-center bg-gradient-to-r from-primary to-accent text-white px-8 py-4 rounded-xl font-bold text-lg hover:shadow-xl transition-all duration-300">
+                        <i class="fas fa-link mr-3"></i> অনলাইন ভর্তি ফরম
+                    </a>
+                </div>
+                
+                <div class="max-w-6xl mx-auto">
+                    <!-- Admission Information -->
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                        <!-- Info Card 1 -->
+                        <div class="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl p-6 shadow-lg card-hover" data-aos="fade-up">
+                            <div class="text-center mb-6">
+                                <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <i class="fas fa-info-circle text-2xl text-primary"></i>
+                                </div>
+                                <h3 class="text-xl font-bold text-gray-800 mb-4">ভর্তি তথ্যাবলী</h3>
+                            </div>
+                            
+                            <ul class="space-y-3">
+                                <li class="flex items-start">
+                                    <i class="fas fa-circle text-xs text-primary mt-2 mr-3"></i>
+                                    <span>ভর্তি শুরু ১ম পর্ব ১লা রমজান থেকে এবং ২য় পর্ব ১লা ডিসেম্বর থেকে ১ জানুয়ারী পর্যন্ত</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-circle text-xs text-primary mt-2 mr-3"></i>
+                                    <span>ভর্তির জন্য মাদরাসার নিয়ম-কানুন মেনে চলার যোগ্যতা থাকতে হবে</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-circle text-xs text-primary mt-2 mr-3"></i>
+                                    <span>ভর্তি হওয়ার সময় জন্ম নিবন্ধনের ফটোকপি ও আগের প্রতিষ্ঠানের ছাড়পত্র নিয়ে আসতে হবে</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-circle text-xs text-primary mt-2 mr-3"></i>
+                                    <span>ভর্তি ফরম সংগ্রহ করার সময় শিক্ষার্থীকে সাথে নিয়ে আসতে হবে</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-circle text-xs text-primary mt-2 mr-3"></i>
+                                    <span>প্রত্যেক মাসের বেতন চলতি মাসের ১ তারিখ থেকে ১২ তারিখের মধ্যে পরিশোধ করতে হবে</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-circle text-xs text-primary mt-2 mr-3"></i>
+                                    <span>অভিভাবকের আইডি কার্ডের ফটোকপি ও মোবাইল নাম্বার জমা দিতে হবে</span>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Info Card 2 -->
+                        <div class="bg-gradient-to-br from-green-50 to-teal-50 rounded-2xl p-6 shadow-lg card-hover" data-aos="fade-up" data-aos-delay="100">
+                            <div class="text-center mb-6">
+                                <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <i class="fas fa-clock text-2xl text-primary"></i>
+                                </div>
+                                <h3 class="text-xl font-bold text-gray-800 mb-4">যোগাযোগ ও সাক্ষাতের সময়</h3>
+                            </div>
+                            
+                            <div class="space-y-4">
+                                <div>
+                                    <h4 class="font-bold text-gray-700 mb-2">মোবাইল:</h4>
+                                    <p class="text-gray-600">প্রতিদিন আসরের পর থেকে মাগরিবের আযানের ১৫ মিনিট পূর্ব পর্যন্ত এবং খানার সময় যোগাযোগ করতে পারবেন</p>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-700 mb-2">সরাসরি সাক্ষাৎ ও ছুটি:</h4>
+                                    <p class="text-gray-600">প্রতিদিন আছরের পর থেকে মাগরিবের ১৫ মিনিট পূর্ব পর্যন্ত এবং শুক্রবার সকাল ৯টা থেকে মাগরিবের ১৫ মিনিট পূর্ব পর্যন্ত সাক্ষাৎ করা যাবে</p>
+                                </div>
+                                <p class="text-gray-600">১৫ দিন পর পর বৃহস্পতিবার তাকরারের পর থেকে শুক্রবার মাগরিব পর্যন্ত ছুটি থাকবে</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Info Card 3 -->
+                        <div class="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl p-6 shadow-lg card-hover" data-aos="fade-up" data-aos-delay="200">
+                            <div class="text-center mb-6">
+                                <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <i class="fas fa-calendar-alt text-2xl text-primary"></i>
+                                </div>
+                                <h3 class="text-xl font-bold text-gray-800 mb-4">বাৎসরিক ছুটির দিন</h3>
+                            </div>
+                            
+                            <ul class="space-y-3 mb-6">
+                                <li class="flex justify-between items-center">
+                                    <span>প্রতি পরীক্ষার পর ৫ দিন করে</span>
+                                    <span class="font-bold text-primary">১৫ দিন</span>
+                                </li>
+                                <li class="flex justify-between items-center">
+                                    <span>ঈদুল ফিতর</span>
+                                    <span class="font-bold text-primary">১২ দিন</span>
+                                </li>
+                                <li class="flex justify-between items-center">
+                                    <span>ঈদুল আযহা</span>
+                                    <span class="font-bold text-primary">১২ দিন</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-star text-xs text-yellow-500 mt-1 mr-3"></i>
+                                    <span>এ ছাড়া ধর্মীয় ও জাতীয় দিবস সমূহ উদযাপন করা হয়</span>
+                                </li>
+                            </ul>
+                            
+                            <div class="bg-red-50 p-4 rounded-lg border-l-4 border-red-500">
+                                <p class="text-red-700 text-sm">
+                                    <strong>বি:দ্র:</strong> বিশেষ কারণ বশত কর্তৃপক্ষ ছুটির তালিকা পরিবর্তন করতে পারেন
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Cost Tables -->
+                    <div class="mt-12" data-aos="fade-up">
+                        <h3 class="text-2xl font-bold text-center text-gray-800 mb-8">💰 খরচের তালিকা</h3>
+                        
+                        <!-- Tabs -->
+                        <div class="flex justify-center space-x-4 mb-8">
+                            <button id="tab1" class="tab-btn active bg-primary text-white px-6 py-2 rounded-full font-bold">ভর্তি কালীন খরচ</button>
+                            <button id="tab2" class="tab-btn bg-gray-200 text-gray-700 px-6 py-2 rounded-full font-bold">মাসিক প্রদেয়</button>
+                        </div>
+                        
+                        <!-- Tab Content 1 -->
+                        <div id="tab-content-1" class="tab-content active">
+                            <div class="overflow-x-auto">
+                                <table class="w-full border-collapse bg-white rounded-xl shadow-lg">
+                                    <thead class="bg-primary text-white">
+                                        <tr>
+                                            <th class="p-4 text-left">বিবরণ</th>
+                                            <th class="p-4 text-center">শিশু শ্রেণী - ৪র্থ শ্রেণী</th>
+                                            <th class="p-4 text-center">খুসুছি - দাওরায়ে হাদীস</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="divide-y divide-gray-200">
+                                        <tr class="hover:bg-blue-50">
+                                            <td class="p-4 font-medium">ভর্তি ফরম</td>
+                                            <td class="p-4 text-center">৫০/-</td>
+                                            <td class="p-4 text-center">৫০/-</td>
+                                        </tr>
+                                        <tr class="hover:bg-blue-50">
+                                            <td class="p-4 font-medium">বেতন কার্ড</td>
+                                            <td class="p-4 text-center">৫০/-</td>
+                                            <td class="p-4 text-center">৫০/-</td>
+                                        </tr>
+                                        <tr class="hover:bg-blue-50">
+                                            <td class="p-4 font-medium">ভর্তি ফি</td>
+                                            <td class="p-4 text-center">১০০০/-</td>
+                                            <td class="p-4 text-center">১৫০০/-</td>
+                                        </tr>
+                                        <tr class="hover:bg-blue-50">
+                                            <td class="p-4 font-medium">বাৎসরিক চাঁদা</td>
+                                            <td class="p-4 text-center">২০০/-</td>
+                                            <td class="p-4 text-center">২০০/-</td>
+                                        </tr>
+                                        <tr class="hover:bg-blue-50">
+                                            <td class="p-4 font-medium">আইডি কার্ড</td>
+                                            <td class="p-4 text-center">২০০/-</td>
+                                            <td class="p-4 text-center">২০০/-</td>
+                                        </tr>
+                                        <tr class="bg-blue-50 font-bold">
+                                            <td class="p-4">মোট</td>
+                                            <td class="p-4 text-center text-primary">১৫০০/-</td>
+                                            <td class="p-4 text-center text-primary">২০০০/-</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        
+                        <!-- Tab Content 2 -->
+                        <div id="tab-content-2" class="tab-content hidden">
+                            <div class="overflow-x-auto">
+                                <table class="w-full border-collapse bg-white rounded-xl shadow-lg">
+                                    <thead class="bg-primary text-white">
+                                        <tr>
+                                            <th class="p-4 text-left">বিবরণ</th>
+                                            <th class="p-4 text-center">শিশু শ্রেণী - ৪র্থ শ্রেণী</th>
+                                            <th class="p-4 text-center">খুসুছি - দাওরায়ে হাদীস</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="divide-y divide-gray-200">
+                                        <tr class="hover:bg-blue-50">
+                                            <td class="p-4 font-medium">আবাসিক বেতন</td>
+                                            <td class="p-4 text-center">৬০০/-</td>
+                                            <td class="p-4 text-center">১০০০/-</td>
+                                        </tr>
+                                        <tr class="hover:bg-blue-50">
+                                            <td class="p-4 font-medium">আবাসিক খানা</td>
+                                            <td class="p-4 text-center">২০০০/-</td>
+                                            <td class="p-4 text-center">২০০০/-</td>
+                                        </tr>
+                                        <tr class="hover:bg-blue-50">
+                                            <td class="p-4 font-medium">অনাবাসিক বেতন</td>
+                                            <td class="p-4 text-center">৬০০/-</td>
+                                            <td class="p-4 text-center">১০০০/-</td>
+                                        </tr>
+                                        <tr class="hover:bg-blue-50">
+                                            <td class="p-4 font-medium">বিদ্যুৎ বিল</td>
+                                            <td class="p-4 text-center">১০০/-</td>
+                                            <td class="p-4 text-center">১০০/-</td>
+                                        </tr>
+                                        <tr class="bg-green-50 font-bold">
+                                            <td class="p-4">মোট (আবাসিক)</td>
+                                            <td class="p-4 text-center text-primary">২৬০০/-</td>
+                                            <td class="p-4 text-center text-primary">৩০০০/-</td>
+                                        </tr>
+                                        <tr class="bg-yellow-50 font-bold">
+                                            <td class="p-4">মোট (অনাবাসিক)</td>
+                                            <td class="p-4 text-center text-primary">৭০০/-</td>
+                                            <td class="p-4 text-center text-primary">১১০০/-</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Rules -->
+                    <div class="mt-12 bg-red-50 rounded-2xl p-6 border-l-4 border-red-600" data-aos="fade-up">
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">ছাত্রীদের জন্য নিয়মাবলী</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <i class="fas fa-times-circle text-red-500 mt-1 mr-3"></i>
+                                <span>মাদ্রাসা কর্তৃপক্ষের প্রণীত তালিকা বহির্ভূত কোনো পোশাক-পরিচ্ছেদ, খেলনা সামগ্রী বা অন্য কোনো জিনিস মাদ্রাসায় আনা যাবে না</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-times-circle text-red-500 mt-1 mr-3"></i>
+                                <span>কর্তৃপক্ষের অনুমতি ব্যতীত মাদ্রাসার গেইট এর বাইরে কোনো অবস্থাতেই যাওয়া যাবে না</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-times-circle text-red-500 mt-1 mr-3"></i>
+                                <span>মাদ্রাসার ভিতরে ছাত্রী এবং শিক্ষককের মধ্যে কোনো ব্যক্তিগত আচার-ব্যবহার সম্পূর্ণ নিষেধ</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-times-circle text-red-500 mt-1 mr-3"></i>
+                                <span>ছাত্রীদের নিকট মোবাইল ফোন, মেমোরি, সিম, ইন্টারনেট সম্পূর্ণ নিষেধ</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certificate Section -->
+        <section id="certificate" class="py-16 bg-gradient-to-b from-blue-50 to-white">
+            <div class="container mx-auto px-4">
+                <h2 class="section-title text-3xl md:text-4xl font-bold text-center text-gray-800" data-aos="fade-up">
+                    সার্টিফিকেট
+                </h2>
+                
+                <div class="max-w-3xl mx-auto text-center" data-aos="fade-up">
+                    <div class="bg-white rounded-2xl p-8 shadow-lg">
+                        <div class="w-24 h-24 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <i class="fas fa-certificate text-4xl text-primary"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4">সার্টিফিকেট যাচাই ও ডাউনলোড</h3>
+                        <p class="text-gray-600 mb-6">
+                            শিক্ষার্থীদের সার্টিফিকেট অনলাইনে যাচাই ও ডাউনলোডের সুবিধা শীঘ্রই চালু হবে। বর্তমানে সরাসরি অফিস থেকে সংগ্রহ করা যাবে।
+                        </p>
+                        <div class="space-y-4">
+                            <div class="flex justify-center space-x-4">
+                                <a href="#" class="bg-primary text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition">
+                                    <i class="fas fa-download mr-2"></i> ডাউনলোড ফরম
+                                </a>
+                                <a href="#" class="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition">
+                                    <i class="fas fa-check-circle mr-2"></i> সার্টিফিকেট যাচাই
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Result Section -->
+        <section id="result" class="py-16 bg-white">
+            <div class="container mx-auto px-4">
+                <h2 class="section-title text-3xl md:text-4xl font-bold text-center text-gray-800" data-aos="fade-up">
+                    ফলাফল
+                </h2>
+                
+                <div class="max-w-4xl mx-auto" data-aos="fade-up">
+                    <div class="bg-gradient-to-r from-blue-50 to-cyan-50 rounded-2xl p-8 shadow-lg">
+                        <h3 class="text-2xl font-bold text-center text-gray-800 mb-8">ফলাফল পরীক্ষা করুন</h3>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <!-- Result Link 1 -->
+                            <a href="https://hems.alhaiatululya.org/exam-result" 
+                               target="_blank"
+                               class="bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-all duration-300 group">
+                                <div class="flex items-center mb-4">
+                                    <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-4 group-hover:bg-blue-200 transition">
+                                        <i class="fas fa-globe text-xl text-primary"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-lg font-bold text-gray-800">হাইয়াতুল উলিয়া</h4>
+                                        <p class="text-sm text-gray-600">অফিসিয়াল ওয়েবসাইট</p>
+                                    </div>
+                                </div>
+                                <p class="text-gray-600">হাইয়াতুল উলিয়ার অধীনে পরীক্ষার ফলাফল দেখুন</p>
+                            </a>
+                            
+                            <!-- Result Link 2 -->
+                            <a href="https://wifaqresult.com/" 
+                               target="_blank"
+                               class="bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-all duration-300 group">
+                                <div class="flex items-center mb-4">
+                                    <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mr-4 group-hover:bg-green-200 transition">
+                                        <i class="fas fa-globe text-xl text-primary"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-lg font-bold text-gray-800">বেফাকুল মাদারিস</h4>
+                                        <p class="text-sm text-gray-600">অফিসিয়াল ওয়েবসাইট</p>
+                                    </div>
+                                </div>
+                                <p class="text-gray-600">বেফাকুল মাদারিসের পরীক্ষার ফলাফল দেখুন</p>
+                            </a>
+                        </div>
+                        
+                        <div class="mt-8 text-center">
+                            <p class="text-gray-600">
+                                সর্বশেষ পরীক্ষার ফলাফল এখানে প্রকাশ করা হয়। কোন সমস্যা হলে অফিসে যোগাযোগ করুন।
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section id="gallery" class="py-16 gradient-bg">
+            <div class="container mx-auto px-4">
+                <h2 class="section-title text-3xl md:text-4xl font-bold text-center text-gray-800" data-aos="fade-up">
+                    গ্যালারি
+                </h2>
+                
+                <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto" data-aos="fade-up">
+                    মাদ্রাসার কিছু স্মরণীয় মুহূর্ত উপভোগ করুন:
+                </p>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                    <!-- Gallery Items -->
+                    <div class="rounded-xl overflow-hidden shadow-lg card-hover" data-aos="zoom-in">
+                        <img src="jpg/Asset 1-100.jpg" alt="ছবি ১" class="w-full h-48 object-cover">
+                        <div class="bg-white p-4">
+                            <h4 class="font-bold text-gray-800">মাদ্রাসা ভবন</h4>
+                        </div>
+                    </div>
+                    
+                    <div class="rounded-xl overflow-hidden shadow-lg card-hover" data-aos="zoom-in" data-aos-delay="100">
+                        <img src="jpg/20240216_1342381.jpg" alt="ছবি ২" class="w-full h-48 object-cover">
+                        <div class="bg-white p-4">
+                            <h4 class="font-bold text-gray-800">শিক্ষা কার্যক্রম</h4>
+                        </div>
+                    </div>
+                    
+                    <div class="rounded-xl overflow-hidden shadow-lg card-hover" data-aos="zoom-in" data-aos-delay="200">
+                        <img src="jpg/473834899_1703614356863522_3412771631677724907_n.jpg" alt="ছবি ৩" class="w-full h-48 object-cover">
+                        <div class="bg-white p-4">
+                            <h4 class="font-bold text-gray-800">সামাজিক অনুষ্ঠান</h4>
+                        </div>
+                    </div>
+                    
+                    <div class="rounded-xl overflow-hidden shadow-lg card-hover" data-aos="zoom-in" data-aos-delay="300">
+                        <img src="jpg/473843620_1703614170196874_8932438696129570475_n.jpg" alt="ছবি ৪" class="w-full h-48 object-cover">
+                        <div class="bg-white p-4">
+                            <h4 class="font-bold text-gray-800">প্রার্থনা সভা</h4>
+                        </div>
+                    </div>
+                    
+                    <div class="rounded-xl overflow-hidden shadow-lg card-hover" data-aos="zoom-in">
+                        <img src="jpg/4.jpg" alt="ছবি ৫" class="w-full h-48 object-cover">
+                        <div class="bg-white p-4">
+                            <h4 class="font-bold text-gray-800">পাঠদান</h4>
+                        </div>
+                    </div>
+                    
+                    <div class="rounded-xl overflow-hidden shadow-lg card-hover" data-aos="zoom-in" data-aos-delay="100">
+                        <img src="jpg/অফিস-ক্যানভাস1.jpg" alt="ছবি ৬" class="w-full h-48 object-cover">
+                        <div class="bg-white p-4">
+                            <h4 class="font-bold text-gray-800">অফিস ক্যানভাস</h4>
+                        </div>
+                    </div>
+                    
+                    <div class="rounded-xl overflow-hidden shadow-lg card-hover" data-aos="zoom-in" data-aos-delay="200">
+                        <img src="jpg/অফিস-ক্যানভাস2.jpg" alt="ছবি ৭" class="w-full h-48 object-cover">
+                        <div class="bg-white p-4">
+                            <h4 class="font-bold text-gray-800">অফিস ব্যবস্থা</h4>
+                        </div>
+                    </div>
+                    
+                    <div class="rounded-xl overflow-hidden shadow-lg card-hover" data-aos="zoom-in" data-aos-delay="300">
+                        <img src="jpg/dummm-campus.jpg" alt="ছবি ১১" class="w-full h-48 object-cover">
+                        <div class="bg-white p-4">
+                            <h4 class="font-bold text-gray-800">ক্যাম্পাস</h4>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-12">
+                    <button class="bg-primary text-white px-8 py-3 rounded-full font-bold hover:bg-blue-700 transition">
+                        আরও ছবি দেখুন
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-16 bg-white">
+            <div class="container mx-auto px-4">
+                <h2 class="section-title text-3xl md:text-4xl font-bold text-center text-gray-800" data-aos="fade-up">
+                    যোগাযোগ
+                </h2>
+                
+                <div class="max-w-6xl mx-auto">
+                    <!-- Address -->
+                    <div class="text-center mb-12" data-aos="fade-up">
+                        <div class="inline-flex items-center bg-gradient-to-r from-primary to-accent text-white px-6 py-3 rounded-full mb-4">
+                            <i class="fas fa-map-marker-alt mr-3"></i>
+                            <span class="font-bold">ঠিকানা: নয়া কান্দারগাঁও, লুটের চর-৩৫১৬, মেঘনা, কুমিল্লা</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Contact Cards -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+                        <div class="bg-blue-50 rounded-xl p-6 text-center card-hover" data-aos="fade-up">
+                            <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-phone-alt text-2xl text-primary"></i>
+                            </div>
+                            <h4 class="font-bold text-gray-800 mb-2">মোবাইল নম্বর</h4>
+                            <a href="tel:01647382241" class="text-primary hover:underline block">০১৬৪৭৩৮২২৪১</a>
+                            <a href="tel:01814853884" class="text-primary hover:underline block">০১৮১৪৮৫৩৮৮৪</a>
+                        </div>
+                        
+                        <div class="bg-green-50 rounded-xl p-6 text-center card-hover" data-aos="fade-up" data-aos-delay="100">
+                            <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-envelope text-2xl text-primary"></i>
+                            </div>
+                            <h4 class="font-bold text-gray-800 mb-2">ইমেইল</h4>
+                            <a href="mailto:almadani8060@gmail.com" class="text-primary hover:underline">almadani8060@gmail.com</a>
+                        </div>
+                        
+                        <div class="bg-purple-50 rounded-xl p-6 text-center card-hover" data-aos="fade-up" data-aos-delay="200">
+                            <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fas fa-globe text-2xl text-primary"></i>
+                            </div>
+                            <h4 class="font-bold text-gray-800 mb-2">ওয়েবসাইট</h4>
+                            <a href="https://darululoom-deoband.com/home/" target="_blank" class="text-primary hover:underline block">দারুল উলূম দেওবন্দ</a>
+                            <a href="https://almadania.netlify.app" target="_blank" class="text-primary hover:underline block">আমাদের ওয়েবসাইট</a>
+                        </div>
+                        
+                        <div class="bg-yellow-50 rounded-xl p-6 text-center card-hover" data-aos="fade-up" data-aos-delay="300">
+                            <div class="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i class="fab fa-facebook text-2xl text-primary"></i>
+                            </div>
+                            <h4 class="font-bold text-gray-800 mb-2">সামাজিক যোগাযোগ</h4>
+                            <a href="https://www.facebook.com/profile.php?id=100092195414779" target="_blank" class="text-primary hover:underline">ফেসবুক পেইজ</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Map -->
+                    <div class="mb-12" data-aos="fade-up">
+                        <div class="bg-gray-100 rounded-2xl p-6">
+                            <h3 class="text-xl font-bold text-gray-800 mb-4 text-center">আমাদের অবস্থান</h3>
+                            <div class="text-center">
+                                <a href="https://maps.app.goo.gl/o4F2Mo4VdpT3QiLc6" target="_blank" 
+                                   class="inline-flex items-center bg-primary text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition">
+                                    <i class="fas fa-map-marker-alt mr-2"></i> গুগল ম্যাপে দেখুন
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Transport Info -->
+                    <div class="bg-gradient-to-r from-blue-50 to-cyan-50 rounded-2xl p-8" data-aos="fade-up">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6 text-center">যাতায়াত</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <h4 class="font-bold text-gray-700 mb-3">কুমিল্লা বা ঢাকা থেকে:</h4>
+                                <p class="text-gray-600">সরাসরি ঢাকা চট্রগ্রাম হাইওয়ে ভাটেরচর নতুন রাস্তা নেমে অটো বা সিএনজি যুগে ইসলামি ব্যাংক সংলগ্ন নয়া কান্দারগাঁও মহিলা মাদরাসা।</p>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-700 mb-3">মেঘনা উপজেলা থেকে:</h4>
+                                <p class="text-gray-600">সিএনজি বা অটো করে ১৫-২০ মিনিটে পৌঁছানো যায়। যাত্রীবাহী বাস মেঘনা ব্রিজ পার হওয়ার পর ভাটেরচর নতুন রাস্তা নিকটবর্তী লোকেশন: নয়া কান্দারগাঁও।</p>
+                            </div>
+                        </div>
+                        <div class="mt-6 text-center">
+                            <p class="text-gray-600 font-bold">স্থানীয় পরিবহন সহজলভ্য ও নিরাপদ।</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gradient-to-r from-secondary to-primary text-white">
+        <!-- Main Footer -->
+        <div class="container mx-auto px-4 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Logo Section -->
+                <div>
+                    <img src="png/Asset 4.png" alt="লোগো" class="h-20 mb-4">
+                    <p class="opacity-90">
+                        নারী শিক্ষার আলোকিত পথ। কুরআন, হাদিস এবং ইসলামিক শিক্ষা প্রদানের মাধ্যমে একটি নৈতিক ও সুপথগামী সমাজ তৈরিতে প্রতিশ্রুতিবদ্ধ।
+                    </p>
+                </div>
+                
+                <!-- Important Links -->
+                <div>
+                    <h4 class="text-xl font-bold mb-6 border-b border-white/20 pb-2">গুরুত্বপূর্ণ লিংক</h4>
+                    <div class="space-y-3">
+                        <a href="https://shed.portal.gov.bd/" target="_blank" class="flex items-center hover:text-blue-200 transition">
+                            <i class="fas fa-link mr-3"></i> শিক্ষা মন্ত্রণালয়
+                        </a>
+                        <a href="https://hems.alhaiatululya.org/" target="_blank" class="flex items-center hover:text-blue-200 transition">
+                            <i class="fas fa-link mr-3"></i> আল-হাইআতুল উলইয়া
+                        </a>
+                        <a href="https://darululoom-deoband.com/home/" target="_blank" class="flex items-center hover:text-blue-200 transition">
+                            <i class="fas fa-link mr-3"></i> দারুল উলূম দেওবন্দ
+                        </a>
+                        <a href="https://darululoomkarachi.edu.pk/" target="_blank" class="flex items-center hover:text-blue-200 transition">
+                            <i class="fas fa-link mr-3"></i> দারুল উলূম করাচি
+                        </a>
+                        <a href="https://maps.app.goo.gl/o4F2Mo4VdpT3QiLc6" target="_blank" class="flex items-center hover:text-blue-200 transition">
+                            <i class="fas fa-map-marker-alt mr-3"></i> গুগল ম্যাপ
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Contact Info -->
+                <div>
+                    <h4 class="text-xl font-bold mb-6 border-b border-white/20 pb-2">যোগাযোগ</h4>
+                    <div class="space-y-3">
+                        <div class="flex items-center">
+                            <i class="fas fa-phone-alt mr-3"></i>
+                            <div>
+                                <a href="tel:01647382241" class="block hover:text-blue-200">০১৬৪৭৩৮২২৪১</a>
+                                <a href="tel:01814853884" class="block hover:text-blue-200">০১৮১৪৮৫৩৮৮৪</a>
+                                <a href="tel:01865778060" class="block hover:text-blue-200">০১৮৬৫৭৭৮০৬০</a>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-envelope mr-3"></i>
+                            <a href="mailto:almadani8060@gmail.com" class="hover:text-blue-200">almadani8060@gmail.com</a>
+                        </div>
+                        
+                        <!-- Social Icons -->
+                        <div class="flex space-x-4 mt-6">
+                            <a href="https://www.facebook.com/profile.php?id=100092195414779" target="_blank" 
+                               class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="https://maps.app.goo.gl/o4F2Mo4VdpT3QiLc6" target="_blank"
+                               class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </a>
+                            <a href="https://almadania.netlify.app" target="_blank"
+                               class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center hover:bg-white/30 transition">
+                                <i class="fas fa-globe"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- WhatsApp Button -->
+        <div class="fixed bottom-6 right-6 z-50">
+            <a href="https://wa.me/8801980817196" target="_blank" 
+               class="w-14 h-14 bg-green-500 rounded-full flex items-center justify-center text-white shadow-lg hover:bg-green-600 transition hover:scale-110">
+                <i class="fab fa-whatsapp text-2xl"></i>
+            </a>
+        </div>
+        
+        <!-- Copyright -->
+        <div class="bg-gray-900 py-4">
+            <div class="container mx-auto px-4">
+                <div class="text-center text-gray-400">
+                    © ২০২৫ দারুল উলূম মাদানিয়া মহিলা মাদ্রাসা। সর্বস্বত্ব সংরক্ষিত।
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100
+        });
+        
+        // Mobile Menu Toggle
+        document.getElementById('mobile-menu-toggle').addEventListener('click', function() {
+            const mobileNav = document.getElementById('mobile-nav');
+            mobileNav.classList.toggle('hidden');
+            this.querySelector('i').classList.toggle('fa-bars');
+            this.querySelector('i').classList.toggle('fa-times');
+        });
+        
+        // Student Verification Toggle
+        document.getElementById('verification-btn').addEventListener('click', function() {
+            const form = document.getElementById('verification-form');
+            form.classList.toggle('hidden');
+            if (!form.classList.contains('hidden')) {
+                form.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+        
+        // Tab Switching
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const tabContents = document.querySelectorAll('.tab-content');
+        
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const tabId = this.id;
+                
+                // Remove active class from all buttons and contents
+                tabBtns.forEach(b => b.classList.remove('active', 'bg-primary', 'text-white'));
+                tabBtns.forEach(b => b.classList.add('bg-gray-200', 'text-gray-700'));
+                tabContents.forEach(c => c.classList.add('hidden'));
+                tabContents.forEach(c => c.classList.remove('active'));
+                
+                // Add active class to clicked button
+                this.classList.remove('bg-gray-200', 'text-gray-700');
+                this.classList.add('active', 'bg-primary', 'text-white');
+                
+                // Show corresponding content
+                const contentId = `tab-content-${tabId.slice(-1)}`;
+                document.getElementById(contentId).classList.remove('hidden');
+                document.getElementById(contentId).classList.add('active');
+            });
+        });
+        
+        // Smooth Scrolling for Navigation Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    // Close mobile menu if open
+                    const mobileNav = document.getElementById('mobile-nav');
+                    const menuToggle = document.getElementById('mobile-menu-toggle');
+                    if (!mobileNav.classList.contains('hidden')) {
+                        mobileNav.classList.add('hidden');
+                        menuToggle.querySelector('i').classList.remove('fa-times');
+                        menuToggle.querySelector('i').classList.add('fa-bars');
+                    }
+                    
+                    // Scroll to target
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Form Submission
+        document.getElementById('student-verify-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('যাচাইকরণ প্রক্রিয়া শীঘ্রই চালু হবে। বর্তমানে অফিসে যোগাযোগ করুন।');
+        });
+    </script>
+</body>
+</html>
