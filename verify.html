@@ -149,8 +149,8 @@
     }
     .header h1 {
       font-family: 'JunudullahZami', 'Kalpurush', serif;
-      font-size: 32px;
-      color: #00382e;
+      font-size: 29px;
+      color: #00724e;
       margin: 5px 0 0;
       text-align: center;
       opacity: 0;
@@ -160,10 +160,10 @@
     /* ========== কার্ড ========== */
     .card {
       max-width: 800px;
-      background: rgba(255, 255, 255, 0.9);
+      background: linear-gradient(#e9fffc,#e2f6e2);
       backdrop-filter: blur(8px);
-      margin: 25px auto;
-      border-radius: 50px;
+      margin: 19px auto;
+      border-radius: 15px;
       padding: 35px 40px;
       box-shadow: 0 20px 30px -5px #00382e60, 0 0 0 2px #c5e0d8 inset;
       animation: fadeInUp 0.9s ease forwards 0.3s;
@@ -172,13 +172,12 @@
 
     /* টাইটেল "শিক্ষার্থীর নাম" */
     .title {
-      font-family: 'Kalpurush';
+      font-family: 'Qayyum book', serif;
       font-size: 22px;
       color: #00695c;
       text-align: center;
-      margin: 10px 0 5px;
       letter-spacing: 0px;
-      margin-bottom: 2px;
+      margin-bottom: 1px;
     }
 
     /* শিক্ষার্থীর নামের বড় বক্স */
@@ -186,10 +185,11 @@
       display: block;
       width: fit-content;
       min-width: 80%;
+      margin-top: 0%;
       margin: 02px auto;
       text-align: center;
-      font-family: 'Sheikh Hasina', serif;
-      color: #a3005a;
+      font-family: 'Sheikh Hasina','kalpurush', serif;
+      color: #004d37;
       padding: 10px 10px;
       font-size: 35px !important;
       /* এনিমেশন */
@@ -204,11 +204,11 @@
       display: flex;
       align-items: center;
       flex-wrap: wrap;
-      margin-bottom: 12px;
+      margin-bottom: 5px;
       padding: 14px 25px;
-      border-radius: 50px;
-      background: #ffffffd9;
-      border-left: 8px solid #01796b;
+      border-radius: 15px;
+      background: #ffffff;
+      border-left: 5px solid #01796b;
       box-shadow: 0 6px 12px #003d331a;
       transition: all 0.3s ease;
       opacity: 0;
@@ -237,31 +237,37 @@
     .label {
       min-width: auto;
       font-weight: 700;
-      font-size: 20px;
+      font-size: 15px;
       color: #026b5c;
-      font-family: 'Li Ador Noirrit', 'Kalpurush', sans-serif;
+      font-family: 'Li Ador Noirrit';
       position: relative;
       margin-right: 10px;
+      word-break: break-word;
       white-space: nowrap;
     }
-    .label::after {
+   .label::after {
       content: ":";
-      margin-left: 4px;
-      color: #b33f00;
-      font-weight: bold;
+      position: absolute;
+      right: -7.5px;
+      color: #8b0303;
     }
     .value {
       font-size: 20px;
-      color: #2c5a2c;
+      color: #76026c;
       font-family: 'Qayyum book', 'Kalpurush', sans-serif;
-      margin-left: 5px;
+      margin-left: 8px;
       word-break: break-word;
       flex: 1;
     }
     .value.empty {
+      flex: 1;
+      margin-left: 18px; /* value টাকে ডানদিকে চাপানোর জন্য */
       color: #888;
       font-style: italic;
-      font-size: 18px;
+      font-family: 'kalpurush';
+      font-size: 15px;
+      word-break: break-word;
+      white-space: normal;
     }
 
     /* 404 স্টাইলের ব্লকড বার্তা */
@@ -287,14 +293,14 @@
       line-height: 1.4;
     }
     .blocked-sub {
-      font-family: 'Li Ador Noirrit', sans-serif;
+      font-family: 'kalpurush', sans-serif;
       font-size: 26px;
       color: #8b0000;
       margin-top: 20px;
     }
     .blocked-small {
       font-size: 18px;
-      color: #b33f00;
+      color: #b32d00;
       margin-top: 25px;
       border-top: 2px dashed red;
       padding-top: 15px;
@@ -302,14 +308,11 @@
 
     .year-footer-display {
       text-align: center;
-      font-size: 22px;
-      margin-top: 30px;
+      font-size: 18px;
+      margin-top: 0px;
+      margin-bottom: 0px;
       color: #1b6b50;
-      font-family: 'JunudullahZami', serif;
-      background: #e0f2f1;
-      padding: 12px 20px;
-      border-radius: 60px;
-      border: 2px solid #47967d;
+      font-family: 'kalpurush', serif;  
     }
 
     footer {
@@ -349,6 +352,11 @@
     }
 
     /* রেসপন্সিভ */
+    @media (max-width: 767px){
+      .value { white-space: normal; font-size: 17px; }
+      .student-name { font-size: 24px;}
+      .label { flex: 0 0 120px; font-size: 17px; }
+    }
     @media (max-width: 700px) {
       .overlay-main { font-size: 2.8rem; }
       .overlay-sub { font-size: 1.6rem; }
@@ -364,21 +372,21 @@
   <div class="main-wrapper">
     <div class="header">
       <img src="png/logo.png" alt="লোগো" class="logo" />
-      <h1>শিক্ষার্থী তথ্য</h1>
+      <h1>শিক্ষার্থী ভেরিফিকেশন তথ্য</h1>
+      <div id="yearDisplay" class="year-footer-display"></div>
     </div>
     <div class="card">
       <div id="studentInfo">তথ্য লোড হচ্ছে...</div>
-      <div id="yearDisplay" class="year-footer-display"></div>
     </div>
   <!-- ভাসমান হোম বাটন -->
   <a href="index.html" style="
     position: fixed;
     bottom: 30px;
     right: 30px;
-    background: #00695c;
+    background: #006951;
     color: white;
-    width: 70px;
-    height: 70px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -386,7 +394,7 @@
     text-decoration: none;
     font-size: 35px;
     box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-    border: 3px solid #ffb74d;
+    border: 0.5px solid #eafcff;
     z-index: 9999;
     transition: all 0.3s ease;
     font-weight: bold;
@@ -398,7 +406,7 @@
 <div style="text-align: center; margin: 20px 0 10px;">
   <a href="index.html" style="
     color: #00695c;
-    font-family: 'Li Ador Noirrit', sans-serif;
+    font-family: ' kalpurush', Ador Noirrit', sans-serif;
     font-size: 18px;
     text-decoration: none;
     padding: 8px 20px;
@@ -417,7 +425,7 @@
       <img src="png/madrasa head.png" alt="মাদরাসা হেডার">
     </footer>
     <div class="footer">
-      © ২০২৫-২৬ দারুল উলূম মাদানিয়া মহিলা মাদরাসা। সর্বস্বত্ব সংরক্ষিত।
+      © ২০২৫-২৬ উসমান সাঈদ । সর্বস্বত্ব সংরক্ষিত।
     </div>
   </div>
 
