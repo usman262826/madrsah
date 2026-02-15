@@ -138,7 +138,7 @@
 
     /* ========== হেডার ও লোগো ========== */
     .header img.logo {
-      width: 60%;
+      width: 200px;
       max-width: 500px;
       height: auto;
       display: block;
@@ -179,24 +179,18 @@
       letter-spacing: 0px;
       margin-bottom: 1px;
     }
-
-    /* শিক্ষার্থীর নামের বড় বক্স */
-   .student-name-center {
+     /* শিক্ষার্থীর নামের বড় বক্স */
+    .student-name-center {
       display: block;
       width: fit-content;
       min-width: 80%;
-      margin-top: 0%;
-      margin: 02px auto;
       text-align: center;
-      font-family: 'Sheikh Hasina','kalpurush', serif;
+      font-family: 'Sheikh Hasina', 'kalpurush', serif;
       color: #004d37;
-      padding: 10px 10px;
-      font-size: 35px !important;
-      /* এনিমেশন */
+      padding: 15px 25px;
+      font-size: 32px;
       opacity: 0;
-      animation: 
-        fadeInUp 0.8s ease-out forwards, 
-        float 3s ease-in-out infinite 0.8s;
+      animation: fadeInUp 0.8s ease-out forwards;
     }
 
     /* তথ্যের সারি (row) */
@@ -234,21 +228,23 @@
     .row:nth-of-type(10) { animation-delay: 1.4s; }
     .row:nth-of-type(11) { animation-delay: 1.5s; }
 
+    /* লেবেল ঠিক করা */
     .label {
       min-width: auto;
       font-weight: 700;
-      font-size: 15px;
+      font-size: 19px;
       color: #026b5c;
-      font-family: 'Li Ador Noirrit';
+      font-family: 'Li Ador Noirrit', 'Kalpurush', sans-serif;
       position: relative;
-      margin-right: 10px;
-      word-break: break-word;
+      margin-right: 15px;
       white-space: nowrap;
+      padding-right: 5px;
     }
-   .label::after {
+    
+    .label::after {
       content: ":";
       position: absolute;
-      right: -7.5px;
+      right: -5px;
       color: #8b0303;
     }
     .value {
@@ -378,48 +374,48 @@
     <div class="card">
       <div id="studentInfo">তথ্য লোড হচ্ছে...</div>
     </div>
-  <!-- ভাসমান হোম বাটন -->
-  <a href="index.html" style="
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    background: #006951;
-    color: white;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    font-size: 35px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-    border: 0.5px solid #eafcff;
-    z-index: 9999;
-    transition: all 0.3s ease;
-    font-weight: bold;
-  " onmouseover="this.style.transform='scale(1.1)'; this.style.background='#004d40';" 
-    onmouseout="this.style.transform='scale(1)'; this.style.background='#00695c';">
-    🏠
-  </a>
-  <!-- ফুটারের আগে হোম লিংক -->
-<div style="text-align: center; margin: 20px 0 10px;">
-  <a href="index.html" style="
-    color: #00695c;
-    font-family: ' kalpurush', Ador Noirrit', sans-serif;
-    font-size: 18px;
-    text-decoration: none;
-    padding: 8px 20px;
-    border: 2px solid #00695c;
-    border-radius: 40px;
-    transition: all 0.3s;
-    display: inline-block;
-    background: rgba(255,255,255,0.8);
-  " onmouseover="this.style.background='#00695c'; this.style.color='white';" 
-     onmouseout="this.style.background='rgba(255,255,255,0.8)'; this.style.color='#00695c';">
-    ← মূল পেইজে ফিরে যান
-  </a>
-</div>
+      <!-- ভাসমান হোম বাটন -->
+      <a href="index.html" style="
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        background: #006951;
+        color: white;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        font-size: 35px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        border: 0.5px solid #eafcff;
+        z-index: 9999;
+        transition: all 0.3s ease;
+        font-weight: bold;
+      " onmouseover="this.style.transform='scale(1.1)'; this.style.background='#004d40';" 
+        onmouseout="this.style.transform='scale(1)'; this.style.background='#00695c';">
+        🏠
+      </a>
+      <!-- ফুটারের আগে হোম লিংক -->
+    <div style="text-align: center; margin: 20px 0 10px;">
+      <a href="index.html" style="
+        color: #00695c;
+        font-family: ' kalpurush', Ador Noirrit', sans-serif;
+        font-size: 18px;
+        text-decoration: none;
+        padding: 8px 20px;
+        border: 2px solid #00695c;
+        border-radius: 40px;
+        transition: all 0.3s;
+        display: inline-block;
+        background: rgba(255,255,255,0.8);
+      " onmouseover="this.style.background='#00695c'; this.style.color='white';" 
+        onmouseout="this.style.background='rgba(255,255,255,0.8)'; this.style.color='#00695c';">
+        ← মূল পেইজে ফিরে যান
+      </a>
+    </div>
 
     <footer>
       <img src="png/madrasa head.png" alt="মাদরাসা হেডার">
