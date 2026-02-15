@@ -366,17 +366,58 @@
       <img src="png/logo.png" alt="লোগো" class="logo" />
       <h1>শিক্ষার্থী তথ্য</h1>
     </div>
-
     <div class="card">
       <div id="studentInfo">তথ্য লোড হচ্ছে...</div>
       <div id="yearDisplay" class="year-footer-display"></div>
     </div>
+  <!-- ভাসমান হোম বাটন -->
+  <a href="index.html" style="
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: #00695c;
+    color: white;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 35px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    border: 3px solid #ffb74d;
+    z-index: 9999;
+    transition: all 0.3s ease;
+    font-weight: bold;
+  " onmouseover="this.style.transform='scale(1.1)'; this.style.background='#004d40';" 
+    onmouseout="this.style.transform='scale(1)'; this.style.background='#00695c';">
+    🏠
+  </a>
+  <!-- ফুটারের আগে হোম লিংক -->
+<div style="text-align: center; margin: 20px 0 10px;">
+  <a href="index.html" style="
+    color: #00695c;
+    font-family: 'Li Ador Noirrit', sans-serif;
+    font-size: 18px;
+    text-decoration: none;
+    padding: 8px 20px;
+    border: 2px solid #00695c;
+    border-radius: 40px;
+    transition: all 0.3s;
+    display: inline-block;
+    background: rgba(255,255,255,0.8);
+  " onmouseover="this.style.background='#00695c'; this.style.color='white';" 
+     onmouseout="this.style.background='rgba(255,255,255,0.8)'; this.style.color='#00695c';">
+    ← মূল পেইজে ফিরে যান
+  </a>
+</div>
 
     <footer>
       <img src="png/madrasa head.png" alt="মাদরাসা হেডার">
     </footer>
     <div class="footer">
-      © ২০২৫ দারুল উলূম মাদানিয়া মহিলা মাদরাসা। সর্বস্বত্ব সংরক্ষিত।
+      © ২০২৫-২৬ দারুল উলূম মাদানিয়া মহিলা মাদরাসা। সর্বস্বত্ব সংরক্ষিত।
     </div>
   </div>
 
