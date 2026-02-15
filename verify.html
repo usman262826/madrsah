@@ -8,26 +8,31 @@
   <link href="https://fonts.maateen.me/kalpurush/font.css" rel="stylesheet">
   
   <style>
-    /* ========== ফন্ট ডিক্লারেশন ========== */
+    /* ========== ফন্ট ডিক্লারেশন (বিকল্প ফন্ট সহ) ========== */
     @font-face {
       font-family: 'Qayyum Book';
       src: url('ফন্ট/Qayyum Book.ttf') format('truetype');
+      font-display: swap;
     }
     @font-face {
       font-family: 'JunudullahZami';
       src: url('ফন্ট/FN Junudullah Zami.ttf') format('truetype');
+      font-display: swap;
     }
     @font-face {
       font-family: 'Sheikh Hasina';
       src: url('ফন্ট/Li Sheikh Hasina 2 Unicode.ttf') format('truetype');
+      font-display: swap;
     }
     @font-face {
       font-family: 'Bornomala';
       src: url('ফন্ট/Bornomala-Regular.ttf') format('truetype');
+      font-display: swap;
     }
     @font-face {
       font-family: 'Ador Noirrit';
       src: url('ফন্ট/Li Ador Noirrit A-V2 Light.ttf') format('truetype');
+      font-display: swap;
     }
 
     /* ========== রুট ভেরিয়েবল ========== */
@@ -68,6 +73,10 @@
       0%, 100% { opacity: 1; }
       50% { opacity: 0.7; }
     }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
 
     /* ========== গ্লোবাল স্টাইল ========== */
     * {
@@ -78,7 +87,7 @@
 
     body {
       background: linear-gradient(135deg, #d2fffa 0%, #faffdb 100%);
-      font-family: 'Kalpurush', 'Qayyum Book', sans-serif;
+      font-family: 'Kalpurush', 'Qayyum Book', Arial, sans-serif;
       min-height: 100vh;
       display: flex;
       align-items: center;
@@ -101,9 +110,10 @@
 
     .main-container {
       width: 100%;
-      max-width: 900px;
+      max-width: 850px; /* পরিবর্তিত: 900px থেকে 850px */
       position: relative;
       z-index: 10;
+      animation: fadeInUp 0.8s ease-out;
     }
 
     /* ========== স্ট্যাটাস ওভারলে ========== */
@@ -113,7 +123,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(26, 95, 180, 0.85);
+      background: rgba(1, 79, 83, 0.85);
       backdrop-filter: blur(10px);
       display: flex;
       align-items: center;
@@ -128,7 +138,7 @@
       visibility: visible;
     }
     .status-overlay.warning {
-      background: rgba(183, 28, 28, 0.9);
+      background: rgba(201, 13, 13, 0.9);
     }
     .overlay-card {
       background: rgba(255, 255, 255, 0.15);
@@ -146,10 +156,10 @@
     .overlay-main {
       font-family: 'Sheikh Hasina', serif;
       font-size: clamp(2.5rem, 8vw, 5rem);
-      color: #fff3e0;
+      color: #ffffff;
       text-shadow: 4px 4px 0 #0d3b6f;
       display: block;
-      border-bottom: 4px solid gold;
+      border-bottom: 4px solid rgb(224, 224, 224);
       padding-bottom: 20px;
       margin-bottom: 20px;
       line-height: 1.3;
@@ -157,18 +167,18 @@
     .overlay-sub {
       font-family: 'Bornomala', sans-serif;
       font-size: clamp(1.5rem, 4vw, 2.5rem);
-      color: #ffe0b0;
+      color: #f9c372;
       display: block;
       font-weight: 500;
     }
     .overlay-sub.warning-sub {
-      color: #ffd180;
+      color: #ede9e3;
       animation: pulse 1.5s infinite;
     }
 
-    /* ========== হেডার ========== */
+    /* ========== হেডার সেকশন ========== */
     .header-card {
-      background: rgba(221, 248, 255, 0.95);
+      background: rgb(249, 255, 255);
       backdrop-filter: blur(10px);
       border-radius: var(--border-radius) var(--border-radius) 0 0;
       padding: 30px 30px 20px;
@@ -176,6 +186,7 @@
       margin-bottom: 2px;
       text-align: center;
       animation: fadeInUp 0.8s ease forwards;
+      border-bottom: 2px solid #eee; /* নতুন যোগ করা */
     }
     .logo {
       max-width: 200px;
@@ -195,19 +206,18 @@
     }
     .year-badge {
       display: inline-block;
-      background:linear-gradient(#0d3b6f, #1a5fb4);
-      color: white;
-      padding: 8px 25px;
-      width: 100%;
-      font-size: 18px;
-      margin-top: 15px;
-      box-shadow: 0 4px 10px rgba(16, 16, 17, 0.3);
+      color: rgb(0, 121, 89);
+      padding: 10px 30px; /* পরিবর্তিত */
+      border-radius: 50px; /* পরিবর্তিত */
+      font-size: 20px;
+      margin-top: 0px;
+      letter-spacing: 1px; /* নতুন যোগ করা */
+      font-weight: bold; /* নতুন যোগ করা */
     }
 
     /* ========== প্রধান কার্ড ========== */
     .student-card {
-      background: rgb(255, 255, 255);
-      backdrop-filter: blur(10px);
+      background: white; /* পরিবর্তিত: rgba থেকে সাদা */
       border-radius: 0 0 var(--border-radius) var(--border-radius);
       padding: 30px;
       box-shadow: var(--card-shadow);
@@ -217,8 +227,9 @@
     /* নাম ব্লক */
     .name-block {
       background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-      border-radius: 20px;
-      padding: 25px 30px;
+      color: white; /* নতুন যোগ করা */
+      border-radius: 15px; /* পরিবর্তিত */
+      padding: 25px; /* পরিবর্তিত */
       margin-bottom: 30px;
       text-align: center;
       box-shadow: 0 10px 20px rgba(26, 95, 180, 0.3);
@@ -237,70 +248,79 @@
     }
     .student-name {
       font-family: 'Sheikh Hasina', serif;
-      font-size: clamp(30px, 6vw, 50px);
+      font-size: clamp(24px, 5vw, 40px); /* পরিবর্তিত */
       color: white;
       font-style: normal;
-      margin-bottom: 1px;
+      margin-bottom: 5px; /* পরিবর্তিত */
       position: relative;
     }
     .student-id-badge {
       display: inline-block;
       background: rgba(0, 172, 175, 0.2);
       padding: 5px 20px;
-      border-radius: 3px;
+      border-radius: 30px; /* পরিবর্তিত */
       color: white;
       font-size: 16px;
       backdrop-filter: blur(5px);
     }
 
-    /* তথ্য সারি */
+    /* ========== ইনফো গ্রিড (সংশোধিত) ========== */
     .info-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 8px;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* পরিবর্তিত */
+      gap: 8px; /* পরিবর্তিত */
       margin-top: 20px;
     }
-    /* ========== ইনফো রো বেস ========== */
+
     .info-row {
       display: flex;
-      align-items: flex-start;
-      gap: 15px;
-      margin-bottom: 12px;
-      padding: 14px 20px;
-      background: #ffffff;
-      border-left: 5px solid #01796b;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-      transition: all 0.3s ease;
+      align-items: center; /* পরিবর্তিত */
+      gap: 0; /* পরিবর্তিত */
+      margin-bottom: 0; /* পরিবর্তিত */
+      padding: 15px; /* পরিবর্তিত */
+      background: #f8fbff; /* নতুন যোগ করা */
+      border-left: 4px solid var(--primary); /* নতুন যোগ করা */
+      border-radius: 10px; /* নতুন যোগ করা */
+      box-shadow: none; /* পরিবর্তিত */
+      transition: var(--transition);
       width: 100%;
       box-sizing: border-box;
     }
+    .info-row:hover {
+      transform: translateX(8px); /* নতুন যোগ করা */
+      background: #fff; /* নতুন যোগ করা */
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08); /* নতুন যোগ করা */
+      border-left-color: var(--accent); /* বিদ্যমান */
+    }
 
-    /* ========== লেবেল অংশ (কখনো ভাঙবে না) ========== */
     .label-section {
       display: flex;
-      align-items: flex-start;
-      gap: 8px;
-      min-width: 140px;
+      align-items: center; /* পরিবর্তিত */
+      gap: 5; /* পরিবর্তিত */
+      min-width: 140px; /* নতুন যোগ করা */
+      color: var(--primary-dark); /* নতুন যোগ করা */
+      font-weight: 600; /* নতুন যোগ করা */
     }
 
     .info-icon {
-      color: #01796b;
-      font-size: 16px;
-      min-width: 22px;
+      width: 30px; /* নতুন যোগ করা */
+      color: var(--primary);
+      font-size: 18px; /* নতুন যোগ করা */
+      min-width: 30px; /* নতুন যোগ করা */
       text-align: center;
       line-height: 1.5;
     }
 
     .info-label {
       flex: 1;
-      font-weight: bold;
-      color: #00526f;
-      font-family: 'Li Ador Noirrit';
+      font-weight: 600; /* পরিবর্তিত */
+      color: var(--primary-dark); /* পরিবর্তিত */
+      font-family:'li Ador Noirrit', 'Kalpurush', sans-serif;
       font-size: 18px;
       position: relative;
-      word-break: keep-all; /* লেবেল ভাঙতে দেবে না */
-      white-space: nowrap; /* এক লাইনে রাখবে */
+      word-break: keep-all;
+      white-space: nowrap;
+      font-weight: bold;
       line-height: 1.5;
       padding-right: 5px;
       margin-right: 5%;
@@ -313,131 +333,28 @@
       color: #8b0303;
     }
 
-    /* ========== ভ্যালু অংশ (প্রয়োজনে ভাঙবে) ========== */
     .info-value {
       flex: 1;
-      font-size: 19px;
-      color: #000000;
-      margin-left: 18px; /* value টাকে ডানদিকে চাপানোর জন্য */
+      font-size: 17px; /* পরিবর্তিত */
+      color: #005b20; /* পরিবর্তিত */
+      margin-left: 20px; /* পরিবর্তিত */
       white-space: normal;
+      font-family: 'Qayyum book';
       word-break: break-word;
     }
-
-    /* ========== রেসপন্সিভ ডিজাইন ========== */
-
-    /* ডেস্কটপ (1200px+) */
-    @media (min-width: 1200px) {
-      .label-section {
-        min-width: 160px;
-      }
-      .info-label {
-        font-size: 19px;
-      }
-      .info-value {
-        font-size: 19px;
-      }
+    .info-value.empty {
+      color: #999;
+      font-style: italic;
     }
 
-    /* নরমাল ডেস্কটপ (992px - 1199px) */
-    @media (min-width: 992px) and (max-width: 1199px) {
-      .label-section {
-        min-width: 150px;
-      }
-    }
-
-    /* ট্যাবলেট (768px - 991px) */
-    @media (min-width: 768px) and (max-width: 991px) {
-      .label-section {
-        min-width: 140px;
-      }
-      .info-label {
-        font-size: 19px;
-      }
-      .info-value {
-        font-size: 19px;
-      }
-    }
-
-    /* মোবাইল (767px এর নিচে) */
-    @media (max-width: 767px) {
-      .info-row {
-        flex-wrap: wrap;
-        gap: -15px;
-        padding: 12px 15px;
-      }
-      
-      /* লেবেল সেকশন পুরো width নেবে */
-      .label-section {
-        min-width: 100%;
-        width: 100%;
-      }
-      
-      /* লেবেল এবং আইকন একসাথে */
-      .info-label {
-        font-family: 'Li Ador Noirrit';
-        white-space: normal; /* খুব প্রয়োজনে ভাঙতে পারে */
-        word-break: keep-all;
-        font-size: 19px;
-      }
-      
-      /* ভ্যালু পুরো width নেবে, ইন্ডেন্ট সহ */
-      .info-value {
-        width: 100%;
-        margin-left: 10px; /* আইকনের জায়গা রেখে */
-        font-size: 19px;
-        font-family: 'kalpurush';
-      }
-    }
-
-    /* খুব ছোট মোবাইল (480px এর নিচে) */
-    @media (max-width: 480px) {
-      .info-row {
-        padding: 10px 12px;
-      }
-      
-      .info-icon {
-        font-size: 19px;
-        min-width: 20px;
-      }
-      
-      .info-label {
-        font-size: 19px;
-        padding-right: 12px;
-      }
-      
-      .info-label::after {
-        font-size: 19px;
-      }
-      
-      .info-value {
-        font-size: 19px;
-        margin-left: 1px;
-      }
-    }
-
-    /* ========== হোভার ইফেক্ট ========== */
-    .info-row:hover {
-      transform: translateX(5px) translateY(-3px);
-      box-shadow: 0 8px 20px rgba(0,105,81,0.15);
-      background: linear-gradient(135deg, #ffffff, #f0fff8);
-      border-left-color: #d4a017;
-    }
-
-    .info-row:hover .info-icon {
-      color: #d4a017;
-      transform: scale(1.1);
-    }
-
-    .info-row:hover .info-label {
-      color: #01796b;
-    }
-
-    .info-row:hover .info-label::after {
-      color: #d4a017;
-    }
-
-    .info-row:hover .info-value {
-      color: #01796b;
+    /* স্ট্যাটাস ব্যাজ */
+    .status-badge {
+      display: inline-block;
+      padding: 3px 8px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: bold;
+      margin-left: 8px;
     }
     .status-badge.success { background: #e8f5e9; color: #2e7d32; }
     .status-badge.warning { background: #fff3e0; color: #e65100; }
@@ -594,20 +511,55 @@
       animation: spin 1s linear infinite;
       margin: 0 auto 20px;
     }
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
 
-    /* রেসপন্সিভ */
-    @media (max-width: 768px) {
+    /* ========== মোবাইল রেসপন্সিভ (সংশোধিত) ========== */
+    @media (max-width: 600px) {
       body { padding: 10px; }
+      .main-container { max-width: 100%; }
+      
       .header-card { padding: 20px; }
-      .student-card { padding: 20px; }
+      .student-card { padding: 15px; } /* পরিবর্তিত */
+      
       .info-grid { grid-template-columns: 1fr; }
-      .info-row { flex-wrap: wrap; }
-      .info-label { min-width: 100px; }
-      .info-value { margin-left: 45px; }
+      
+      /* নতুন: মোবাইলের জন্য নির্দিষ্ট স্টাইল */
+      .info-row {
+        flex-direction: column; /* পরিবর্তিত */
+        align-items: flex-start; /* পরিবর্তিত */
+        gap: 5px; /* নতুন যোগ করা */
+        padding: 15px;
+      }
+      
+      .label-section {
+        min-width: 100%; /* পরিবর্তিত */
+        border-bottom: 1px dashed #ddd; /* নতুন যোগ করা */
+        padding-bottom: 5px; /* নতুন যোগ করা */
+        margin-bottom: 5px; /* নতুন যোগ করা */
+      }
+      
+      .info-label {
+        font-family: 'li Ador noirrit';
+        white-space: normal;
+        font-size: 19px;
+      }
+    .info-label::after {
+        display: none;
+    }
+      
+      .info-value {
+        width: 100%;
+        padding-left: 30px; /* নতুন যোগ করা: আইকনের সাথে সামঞ্জস্য রেখে */
+        font-weight: 500; /* নতুন যোগ করা */
+        font-size: 19px;
+        font-family: 'Qayyum book';
+        margin-left: 0;
+      }
+      
+      .info-icon {
+        width: 25px;
+        font-size: 18px;
+      }
+      
       .overlay-card { padding: 30px 20px; }
       .floating-home {
         width: 50px;
@@ -616,14 +568,28 @@
         bottom: 20px;
         right: 20px;
       }
-    }
-
-    @media (max-width: 480px) {
-      .info-label { min-width: 80px; font-size: 18px;  }
-      .info-value { font-size: 19px; margin-left: 1px; font-family: 'Kalpurush', 'Qayyum Book', sans-serif; }
-      .info-icon { font-size: 16px; margin-right: 1%; }
       .blocked-title { font-size: 28px; }
       .blocked-subtitle { font-size: 18px; }
+    }
+
+    /* খুব ছোট মোবাইল (480px এর নিচে) */
+    @media (max-width: 480px) {
+      .info-label { font-size: 18px; }
+      .info-value { 
+        font-size: 18px; 
+        padding-left: 25px;
+      }
+      .info-icon { font-size: 16px; width: 22px; }
+    }
+
+    /* ট্যাবলেটের জন্য (601px - 767px) */
+    @media (min-width: 601px) and (max-width: 767px) {
+      .info-row {
+        flex-direction: row;
+        align-items: center;
+      }
+      .label-section { min-width: 140px; }
+      .info-value { margin-left: 10px; }
     }
   </style>
 </head>
@@ -632,8 +598,8 @@
     <!-- হেডার -->
     <div class="header-card">
       <img src="png/logo.png" alt="লোগো" class="logo">
-      <h1 class="header-title">শিক্ষার্থী ভেরিফিকেশন সিস্টেম</h1>
-      <p class="header-subtitle">মাদরাসা শিক্ষার্থীদের তথ্য যাচাইকরণ পোর্টাল</p>
+        <p class="header-subtitle">শিক্ষার্থীদের তথ্য</p>
+      <h1 class="header-title">ভেরিফিকেশন সিস্টেম</h1>
       <div id="yearDisplay" class="year-badge">শিক্ষাবর্ষ: লোড হচ্ছে...</div>
     </div>
 
@@ -745,26 +711,6 @@
           // শিক্ষাবর্ষ দেখানো
           yearDiv.innerHTML = `শিক্ষাবর্ষ: ${student['শিক্ষাবর্ষ'] || 'উল্লেখ নেই'}`;
 
-          // আইকন ম্যাপিং
-          const getIcon = (label) => {
-            const icons = {
-              'রেজিস্ট্রেশন': 'id-card',
-              'রোল': 'sort-numeric-up',
-              'পিতার নাম': 'user-tie',
-              'মারহালা': 'graduation-cap',
-              'জামাত': 'users',
-              'অভিভাবকের': 'phone',
-              'জন্ম নিবন্ধন': 'calendar-alt',
-              'জন্ম তারিখ': 'birthday-cake',
-              'ঠিকানা': 'map-marker-alt',
-              'স্ট্যাটাস': 'info-circle'
-            };
-            for (let key in icons) {
-              if (label.includes(key)) return icons[key];
-            }
-            return 'circle-info';
-          };
-
           // স্ট্যাটাস ব্যাজ ক্লাস
           const getStatusBadgeClass = (status) => {
             if (status.includes('ত্যাগকৃত') || status.includes('বহিষ্কৃত') || status.includes('বাতিল')) 
@@ -786,53 +732,73 @@
             </div>
             <div class="info-grid">
               <div class="info-row">
-                <i class="fas fa-id-card info-icon"></i>
-                <span class="info-label">রেজিস্ট্রেশন নম্বর</span>
+                <div class="label-section">
+                  <i class="fas fa-id-card info-icon"></i>
+                  <span class="info-label">রেজিস্ট্রেশন নম্বর</span>
+                </div>
                 <span class="info-value">${student['রেজিস্ট্রেশন/আইডি নম্বর'] || '<span class="info-value empty">উল্লেখ নেই</span>'}</span>
               </div>
               <div class="info-row">
-                <i class="fas fa-sort-numeric-up info-icon"></i>
-                <span class="info-label">রোল নম্বর</span>
+                <div class="label-section">
+                  <i class="fas fa-sort-numeric-up info-icon"></i>
+                  <span class="info-label">রোল নম্বর</span>
+                </div>
                 <span class="info-value">${student['রোল নম্বর'] || '<span class="info-value empty">উল্লেখ নেই</span>'}</span>
               </div>
               <div class="info-row">
-                <i class="fas fa-user-tie info-icon"></i>
-                <span class="info-label">পিতার নাম</span>
+                <div class="label-section">
+                  <i class="fas fa-user-tie info-icon"></i>
+                  <span class="info-label">পিতার নাম</span>
+                </div>
                 <span class="info-value">${student['পিতার নাম'] || '<span class="info-value empty">উল্লেখ নেই</span>'}</span>
               </div>
               <div class="info-row">
-                <i class="fas fa-graduation-cap info-icon"></i>
-                <span class="info-label">মারহালা</span>
+                <div class="label-section">
+                  <i class="fas fa-graduation-cap info-icon"></i>
+                  <span class="info-label">মারহালা</span>
+                </div>
                 <span class="info-value">${student['মারহালা'] || '<span class="info-value empty">উল্লেখ নেই</span>'}</span>
               </div>
               <div class="info-row">
-                <i class="fas fa-users info-icon"></i>
-                <span class="info-label">জামাত/শ্রেণী</span>
+                <div class="label-section">
+                  <i class="fas fa-users info-icon"></i>
+                  <span class="info-label">জামাত/শ্রেণী</span>
+                </div>
                 <span class="info-value">${student['জামাত/শ্রেণী'] || '<span class="info-value empty">উল্লেখ নেই</span>'}</span>
               </div>
               <div class="info-row">
-                <i class="fas fa-phone info-icon"></i>
-                <span class="info-label">অভিভাবকের মোবাইল</span>
+                <div class="label-section">
+                  <i class="fas fa-phone info-icon"></i>
+                  <span class="info-label">অভিভাবকের মোবাইল</span>
+                </div>
                 <span class="info-value">${student['অভিভাবকের মোবাইল'] || '<span class="info-value empty">উল্লেখ নেই</span>'}</span>
               </div>
               <div class="info-row">
-                <i class="fas fa-calendar-alt info-icon"></i>
-                <span class="info-label">জন্ম নিবন্ধন নম্বর</span>
+                <div class="label-section">
+                  <i class="fas fa-calendar-alt info-icon"></i>
+                  <span class="info-label">জন্ম নিবন্ধন নম্বর</span>
+                </div>
                 <span class="info-value">${student['জন্ম নিবন্ধন নাম্বার'] || '<span class="info-value empty">উল্লেখ নেই</span>'}</span>
               </div>
               <div class="info-row">
-                <i class="fas fa-birthday-cake info-icon"></i>
-                <span class="info-label">জন্ম তারিখ</span>
+                <div class="label-section">
+                  <i class="fas fa-birthday-cake info-icon"></i>
+                  <span class="info-label">জন্ম তারিখ</span>
+                </div>
                 <span class="info-value">${student['জন্ম তারিখ'] || '<span class="info-value empty">উল্লেখ নেই</span>'}</span>
               </div>
               <div class="info-row">
-                <i class="fas fa-map-marker-alt info-icon"></i>
-                <span class="info-label">ঠিকানা</span>
+                <div class="label-section">
+                  <i class="fas fa-map-marker-alt info-icon"></i>
+                  <span class="info-label">ঠিকানা</span>
+                </div>
                 <span class="info-value">${student['ঠিকানা'] || '<span class="info-value empty">উল্লেখ নেই</span>'}</span>
               </div>
               <div class="info-row">
-                <i class="fas fa-info-circle info-icon"></i>
-                <span class="info-label">শিক্ষার্থী ধরণ</span>
+                <div class="label-section">
+                  <i class="fas fa-info-circle info-icon"></i>
+                  <span class="info-label">শিক্ষার্থী ধরণ</span>
+                </div>
                 <span class="info-value">
                   ${student['শিক্ষার্থী ধরণ/স্ট্যাটাস'] || '<span class="info-value empty">উল্লেখ নেই</span>'}
                   ${student['শিক্ষার্থী ধরণ/স্ট্যাটাস'] ? `<span class="status-badge ${getStatusBadgeClass(student['শিক্ষার্থী ধরণ/স্ট্যাটাস'])}">${student['শিক্ষার্থী ধরণ/স্ট্যাটাস'].split(/[-–—]/)[0]}</span>` : ''}
