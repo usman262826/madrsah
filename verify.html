@@ -709,7 +709,44 @@
           }
 
           // শিক্ষাবর্ষ দেখানো
-          yearDiv.innerHTML = `শিক্ষাবর্ষ: ${student['শিক্ষাবর্ষ'] || 'উল্লেখ নেই'}`;
+          function bnToEnNumber(str) {
+            const bn = '০১২৩৪৫৬৭৮৯';
+            const en = '0123456789';
+            return str.replace(/[০-৯]/g, d => en[bn.indexOf(d)]);
+          }
+
+          function enToBnNumber(str) {
+            const bn = '০১২৩৪৫৬৭৮৯';
+            const en = '0123456789';
+            return str.replace(/[0-9]/g, d => bn[en.indexOf(d)]);
+          }
+
+          function fixHijriYear(text) {
+            if (!text) return text;
+
+            // বাংলা সংখ্যা → ইংরেজি
+            let converted = bnToEnNumber(text);
+
+            // ধরছে: 1445-46 হিজরী/2025-26 ঈসায়ী
+            const match = converted.match(/(\d+)-(\d+)\s*হিজরী\/(.+)/);
+
+            if (match) {
+              let first = parseInt(match[1]) + 1;
+              let second = parseInt(match[2]) + 1;
+
+              let newHijri = `${first}-${second} হিজরী/${match[3]}`;
+
+              // আবার বাংলা সংখ্যায় ফেরত
+              return enToBnNumber(newHijri);
+            }
+
+            return text;
+          }
+
+          const originalYear = student['শিক্ষাবর্ষ'] || 'উল্লেখ নেই';
+          const updatedYear = fixHijriYear(originalYear);
+
+          yearDiv.innerHTML = `শিক্ষাবর্ষ: ${updatedYear}`;
 
           // স্ট্যাটাস ব্যাজ ক্লাস
           const getStatusBadgeClass = (status) => {
