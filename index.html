@@ -1,1966 +1,1522 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>দারুল উলূম মাদানিয়া মহিলা মাদ্রাসা</title>
-  <link href="https://fonts.maateen.me/kalpurush/font.css" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.1/dist/tailwind.min.css" rel="stylesheet">
-<style>
-  body {
-    font-family: 'kalpurush', 'Noto Sans Bengali', sans-serif;
-  }
-</style>
-  <style>
-    *
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>দারুল উলূম মাদানিয়া মহিলা মাদ্রাসা</title>
     
-     {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Bornomala';
-      background-color: #00547e;
-    }
-    @font-face {
-      font-family: 'JunudullahZami';
-      src: url('ফন্ট/FN Junudullah Zami.ttf') format('truetype');
-      font-weight: normal;
-      font-style: normal;
-    }
-
-    @font-face {
-      font-family: 'Qayyum book';
-      src: url('ফন্ট/Qayyum Book.ttf') format('truetype');
-      font-weight: normal;
-      font-style: normal;
-    }
-
-    @font-face {
-      font-family: 'Sheikh Hasina';
-      src: url('ফন্ট/Li Sheikh Hasina 2 Unicode.ttf') format('truetype');
-      font-weight: normal;
-      font-style: normal;
-    }
-
-    @font-face {
-      font-family: 'Headline Bangla';
-      src: url('ফন্ট/Headline Bangla Unicode Italic.ttf') format('truetype');
-      font-weight: normal;
-      font-style: normal;
-    }
-
-    @font-face {
-      font-family: 'Bornomala-Bold';
-      src: url('ফন্ট/Bornomala-Bold.ttf') format('truetype');
-      font-weight: normal;
-      font-style: normal;
-    }
-
-    @font-face {
-      font-family: 'Bornomala';
-      src: url('ফন্ট/Bornomala-Regular.ttf') format('truetype');
-      font-weight: normal;
-      font-style: normal;
-    }
+    <!-- Fonts -->
+    <link href="https://fonts.maateen.me/kalpurush/font.css" rel="stylesheet">
+    <link href="https://fonts.maateen.me/solaiman-lipi/font.css" rel="stylesheet">
     
-
-    header {
-      background-color: #f6fdff;
-      text-align: center;
-      padding: 10px;
-    }
-
-    .header-logo {
-      max-width: 800px;
-      width: 100%;
-      align-items: center;
-    }
-
-    nav {
-      background-color: #003e4d;
-      padding: -3px;
-      position: relative;
-    }
-
-    .menu-icon {
-      display: none;
-      font-size: 18px;
-      color: white;
-      padding: 0px 16px;
-      cursor: pointer;
-      width: 100%;
-      background-color: #0087b1;
-      text-align: right;
-    }
-
-    nav ul {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      list-style: none;
-      padding: 10px;
-      margin: 0;
-    }
-
-    nav ul li {
-      margin: 5px 10px;
-    }
-
-    nav ul li a {
-      color: white;
-      text-decoration: none;
-      font-size: 16px;
-      padding: 8px 12px;
-      border-radius: 5px;
-      transition: all 0.3s ease;
-      position: relative;
-    }
-
-    nav ul li a:hover,
-    nav ul li a.active {
-      background-color: #007d9c;
-      font-weight: bold;
-    }
-
-    nav ul li a::after {
-      content: '';
-      position: absolute;
-      width: 0;
-      height: 2px;
-      background: linear-gradient(90deg, #a2ebff, #ffffff);
-      left: 0;
-      bottom: 0;
-      transition: 0.4s;
-    }
-
-    nav ul li a:hover::after {
-      width: 100%;
-    }
-
-    .page {
-      display: none;
-      padding: 30px;
-      max-width: 1000px;
-      margin: auto;
-      background-color: rgba(255, 255, 255, 0.95);
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      position: relative;
-      overflow: hidden;
-    }
-
-    h2 {
-      text-align: center;
-      color: #222;
-      margin-bottom: 15px;
-    }
-
-    p {
-      font-size: 16px;
-      color: #333;
-      text-align: justify;
-    }
-
-    /* Gallery styles */
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 15px;
-      margin-top: 20px;
-    }
-
-    .gallery-grid img {
-      width: 100%;
-      height: auto;
-      border-radius: 10px;
-      object-fit: cover;
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-      transform: scale(1);
-      opacity: 0;
-      transition: transform 0.5s ease, box-shadow 0.5s ease, opacity 0.8s ease;
-    }
-
-    .gallery-grid img:hover {
-      transform: scale(1.06);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-    }
-
-    .gallery-grid img.visible {
-      opacity: 1;
-      transform: scale(1);
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      .menu-icon {
-        display: block;
-      }
-
-      nav ul {
-        display: none;
-        flex-direction: column;
-        align-items: center;
-        width: 100%;
-        position: absolute;
-        background-color: #005d73;
-        z-index: 100;
-      }
-
-      nav ul.show {
-        display: flex;
-      }
-    }
-
-    /* Background Animation */
-    .animated-bg::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0;
-      width: 200%;
-      height: 200%;
-      background: linear-gradient(-45deg, #e0f7ff, #d9efff, #f0faff, #d3f6ff);
-      background-size: 400% 400%;
-      z-index: -1;
-      animation: gradientFlow 20s ease infinite;
-    }
-
-    @keyframes gradientFlow {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-  </style>
-</head>
-<body>
-  <!-- Search Bar Container -->
-  <div style= "display:flex; justify-content:flex-end; align-items:center; padding:5px 10px; background-color:#518ca3;">
-      <form action="/search" method="get" style=" max-width: 900px;
-                  width: 100%;
-                  align-items: center; display:flex; align-items:center; gap:5px;">
-          <input 
-              type="text" 
-              name="q" 
-              placeholder="Type to start searching..." 
-              style="
-                  padding:8px 12px; 
-                  border:1px solid #ffffff; 
-                  border-radius:25px 0 0 25px; 
-                  outline:none; 
-                  width:250px;
-                  transition: all 0.3s ease;
-              "
-              onfocus="this.style.borderColor='#28a745'; this.style.boxShadow='0 0 5px #28a745';"
-              onblur="this.style.borderColor='#ccc'; this.style.boxShadow='none';"
-          >
-          <button 
-              type="submit" 
-              style="
-                  background-color:#ffffff; 
-                  color:#9b0000; 
-                  border:none; 
-                  padding:8px 15px; 
-                  border-radius:0 25px 25px 0;
-                  cursor:pointer;
-                  transition: background 0.3s ease;
-              "
-              onmouseover="this.style.backgroundColor='#218838';"
-              onmouseout="this.style.backgroundColor='#28a745';"
-          >
-              Search
-          </button>
-      </form>
-  </div>
-
-  <header>
-    <img class="header-logo" src="jpg/ওয়েব-সাইট.png" alt="মাদ্রাসা লোগো ও নাম" />
-  </header>
-
-  <nav>
-  <div class="menu-icon" onclick="toggleMenu()">☰</div>
-  <ul id="menuList">
-    <li><a href="#" onclick="showPage('home')">হোম</a></li>
-    <li><a href="#" onclick="showPage('porichiti')">পরিচিতি</a></li>
-    <li><a href="#" onclick="showPage('bivag')">বিভাগ সমূহ</a></li>
-    <li><a href="#" onclick="showPage('voisisso')">বৈশিষ্ট্য</a></li>
-    <li><a href="#" onclick="showPage('vorti')">ভর্তি তথ্য</a></li>
-    <li><a href="#" onclick="showPage('certificate')">সার্টিফিকেট</a></li>
-    <li><a href="#" onclick="showPage('routine')">রুটিন</a></li>
-    <li><a href="#" onclick="showPage('result')">ফলাফল</a></li>
-    <li><a href="#" onclick="showPage('gallery')">গ্যালারি</a></li>
-    <li><a href="#" onclick="showPage('contact')">যোগাযোগ</a></li>
-  </ul>
-</nav>
-
- 
-
-  <!-- Sections -->
-
-  <!-- হোম -->
-  <section id="home" class="page animated-bg">
-     
-<style>.highlight-btn {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          gap: 10px;
-          background: linear-gradient(135deg, #00759f, #00bcd4);
-          color: white;
-          font-size: 30px;
-          font-weight: 0;
-          width: 100%;
-          padding: 14px 28px;
-          border-radius: 5px;
-          cursor: pointer;
-          font-family: "sheikh hasina";
-          border: none;
-          text-transform: uppercase;
-          box-shadow: 0 6px 12px rgba(0, 117, 159, 0.3);
-          animation: glow-pulse 3s infinite ease-in-out;
-          transition: all 0.3s ease-in-out;
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        .highlight-btn:hover {
-          background: linear-gradient(135deg, #005a78, #0097a7);
-          transform: scale(1.05);
-          box-shadow: 0 8px 18px rgba(0, 117, 159, 0.5);
+        :root {
+            --primary: #00547e;
+            --secondary: #003e4d;
+            --accent: #0087b1;
+            --light: #f6fdff;
         }
 
-        @keyframes glow-pulse {
-          0% { box-shadow: 0 0 0 0 rgba(0, 188, 212, 0.6); }
-          70% { box-shadow: 0 0 0 15px rgba(0, 188, 212, 0); }
-          100% { box-shadow: 0 0 0 0 rgba(0, 188, 212, 0); }
+        body {
+            font-family: 'Kalpurush', 'Solaiman Lipi', sans-serif;
+            background: linear-gradient(135deg, #f8fcff 0%, #eef9ff 100%);
+            color: #1e2a3a;
+            line-height: 1.6;
+            overflow-x: hidden;
         }
 
-        .search-box {
-          display: none;
-          max-width: 600px;
-          margin: 30px auto;
-          background: linear-gradient(145deg, #ffffff, #e6f7ff);
-          padding: 30px;
-          border-radius: 16px;
-          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-          animation: fadeIn 0.8s ease forwards;
+        /* Custom Fonts */
+        @font-face {
+            font-family: 'JunudullahZami';
+            src: url('ফন্ট/FN Junudullah Zami.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
         }
 
-        @keyframes fadeIn {
-          from { opacity: 0; transform: translateY(20px); }
-          to { opacity: 1; transform: translateY(0); }
+        @font-face {
+            font-family: 'Qayyum book';
+            src: url('ফন্ট/Qayyum Book.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
         }
 
-        .headverify {
-          text-align: center;
-          font-size: 30px;
-          font-weight: normal;
-          font-family: "sheikh hasina";
-          color: #006699;
-          margin-bottom: 20px;
+        @font-face {
+            font-family: 'Sheikh Hasina';
+            src: url('ফন্ট/Li Sheikh Hasina 2 Unicode.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Bornomala-Bold';
+            src: url('ফন্ট/Bornomala-Bold.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Bornomala';
+            src: url('ফন্ট/Bornomala-Regular.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        .font-junudullah { font-family: 'JunudullahZami', 'Kalpurush', sans-serif; }
+        .font-sheikh-hasina { font-family: 'Sheikh Hasina', 'Kalpurush', sans-serif; }
+        .font-qayyum { font-family: 'Qayyum book', 'Kalpurush', sans-serif; }
+        .font-bornomala { font-family: 'Bornomala', 'Kalpurush', sans-serif; }
+        .font-bornomala-bold { font-family: 'Bornomala-Bold', 'Kalpurush', sans-serif; }
+
+        /* Header */
+        header {
+            background: white;
+            text-align: center;
+            padding: 15px;
+            box-shadow: 0 4px 20px rgba(0,84,126,0.08);
+        }
+
+        .header-logo {
+            max-width: 100%;
+            height: auto;
+            max-height: 100px;
+            object-fit: contain;
+        }
+
+        /* Search Bar */
+        .search-container {
+            background: linear-gradient(135deg, #00547e, #0087b1);
+            padding: 12px 20px;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .search-wrapper {
+            display: flex;
+            max-width: 400px;
+            width: 100%;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-radius: 50px;
+            overflow: hidden;
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 12px 20px;
+            border: none;
+            font-family: 'Kalpurush', sans-serif;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .search-btn {
+            background: #ffb347;
+            border: none;
+            padding: 12px 25px;
+            color: #003e4d;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .search-btn:hover {
+            background: #ffa01c;
+        }
+
+        /* Navigation */
+        nav {
+            background: linear-gradient(135deg, #003e4d, #00547e);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .menu-icon {
+            display: none;
+            font-size: 24px;
+            color: white;
+            padding: 15px 20px;
+            cursor: pointer;
+            background: rgba(255,255,255,0.1);
+            text-align: right;
+        }
+
+        nav ul {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            padding: 15px 20px;
+            display: block;
+            transition: 0.3s;
+            position: relative;
+        }
+
+        nav ul li a:hover,
+        nav ul li a.active {
+            background: rgba(255,255,255,0.15);
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            background: #ffb347;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover::after,
+        nav ul li a.active::after {
+            width: 70%;
+        }
+
+        /* Sections */
+        section {
+            scroll-margin-top: 70px;
+        }
+
+        .section-title {
+            font-size: 32px;
+            color: #00547e;
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #00547e, #0087b1);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(rgba(0,84,126,0.9), rgba(0,62,77,0.95)), url('jpg/dummm-campus.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            padding: 60px 20px;
+            position: relative;
+        }
+
+        /* Cards */
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0,84,126,0.1);
+            transition: 0.3s;
+            height: 100%;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,84,126,0.15);
+        }
+
+        /* Buttons */
+        .btn-primary {
+            background: linear-gradient(135deg, #00547e, #0087b1);
+            color: white;
+            padding: 14px 30px;
+            border-radius: 50px;
+            border: none;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 8px 20px rgba(0,135,177,0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(0,135,177,0.4);
+        }
+
+        /* Verification Form */
+        .verification-form {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            max-width: 600px;
+            margin: 30px auto;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            display: none;
+        }
+
+        .verification-form.active {
+            display: block;
+            animation: slideDown 0.5s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .form-group {
-          margin-bottom: 20px;
+            margin-bottom: 20px;
         }
 
         .form-group label {
-          display: block;
-          margin-bottom: 8px;
-          color: #004865;
-          font-weight: bold;
+            display: block;
+            margin-bottom: 8px;
+            color: #00547e;
+            font-weight: 600;
         }
 
         .form-group select,
         .form-group input {
-          width: 100%;
-          font-family: "Qayyum book";
-          padding: 12px;
-          border: 1px solid #cce7f3;
-          border-radius: 8px;
-          font-size: 16px;
-        }
-
-        .search-button {
-          width: 100%;
-          padding: 14px;
-          background-color: #00759f;
-          color: #fff;
-          border: none;
-          border-radius: 10px;
-          font-size: 18px;
-          font-weight: bold;
-          cursor: pointer;
-          transition: background-color 0.3s ease;
-        }
-
-        .search-button-font{
-          font-family: "kalpurush";
-        }
-
-        .search-button:hover {
-          background-color: #004f6e;
-        }
-
-        @media (max-width: 600px) {
-          .highlight-btn {
+            width: 100%;
+            padding: 14px 18px;
+            border: 2px solid #e0f0ff;
+            border-radius: 12px;
+            font-family: 'Kalpurush', sans-serif;
             font-size: 16px;
-            padding: 12px 20px;
-          }
-          .search-box {
+            transition: 0.3s;
+        }
+
+        .form-group select:focus,
+        .form-group input:focus {
+            border-color: #00547e;
+            outline: none;
+            box-shadow: 0 0 0 4px rgba(0,84,126,0.1);
+        }
+
+        /* Notice Panel */
+        .notice-panel {
+            background: #fff9e6;
+            border-right: 6px solid #ff9800;
+            border-radius: 20px;
             padding: 20px;
-          }
-          .headverify {
-            font-size: 22px;
-          }
-        }
-        </style>
-
-<body>
-   <div style="text-align:center;">
-    <button class="highlight-btn" onclick="document.getElementById('student-search').style.display='block'; 
-    this.style.display='none';">
-      🔍 শিক্ষার্থী যাচাইকরণ
-    </button>
-  </div>
-
-  <div id="student-search" class="search-box">
-    <div class="headverify">শিক্ষার্থী যাচাইকরণ</div>
-    <div class="form-group">
-      <label for="session">শিক্ষাবর্ষ নির্বাচন করুন</label>
-      <select id="session">
-        <option value="">-- শিক্ষাবর্ষ নির্বাচন করুন --</option>
-        <option value="১৪৪৪-৪৫ হিজরী/২০২৪-২৫ ঈসায়ী">১৪৪৪-৪৫ হিজরী/২০২৪-২৫ ঈসায়ী</option>
-        <option value="১৪৪৫-৪৬ হিজরী/২০২৫-২৬ ঈসায়ী">১৪৪৫-৪৬ হিজরী/২০২৫-২৬ ঈসায়ী</option>
-        <option value="১৪৪৬-৪৭ হিজরী/২০২৬-২৭ ঈসায়ী">১৪৪৬-৪৭ হিজরী/২০২৬-২৭ ঈসায়ী</option>
-      </select>
-    </div>
-    <div class="form-group">
-      <label for="jamat">জামাত নির্বাচন করুন</label>
-      <select id="jamat" required>
-        <option value="">-- জামাত নির্বাচন করুন --</option>
-        <option value="আতফাল (শিশু শ্রেণী)">আতফাল (শিশু শ্রেণী)</option>
-        <option value="আওয়াল (১ম শ্রেণী)">আওয়াল (১ম শ্রেণী)</option>
-        <option value="ছানী (২য় শ্রেণী)">ছানী (২য় শ্রেণী)</option>
-        <option value="ছালেছ (৩য় শ্রেণী)">ছালেছ (৩য় শ্রেণী)</option>
-        <option value="খুসুছি (ইবতেদায়ি রাবে)">খুসুছি (ইবতেদায়ি রাবে)</option>
-        <option value="খামেস (ইবতেদায়ি খামেছ)">খামেস (ইবতেদায়ি খামেছ)</option>
-        <option value="মিযান (মুতাওয়াসসিতাহ আওয়াল)">মিযান (মুতাওয়াসসিতাহ আওয়াল)</option>
-        <option value="নাহবেমীর (মুতাওয়াসসিতাহ ছানি)">নাহবেমীর (মুতাওয়াসসিতাহ ছানি)</option>
-        <option value="কুদূরী (সানাবিয়্যা আউয়াল)">কুদূরী (সানাবিয়্যা আউয়াল)</option>
-        <option value="শরহে বেকায়া (সানাবিয়্যা ছানী)">শরহে বেকায়া (সানাবিয়্যা ছানী)</option>
-        <option value="হেদায়া (ফজিলত আউয়াল)">হেদায়া (ফজিলত আউয়াল)</option>
-        <option value="মেশকাত (ফজিলত ছানী)">মেশকাত (ফজিলত ছানী)</option>
-        <option value="দাওরায়ে হাদিস (তাকমিল)">দাওরায়ে হাদিস (তাকমিল)</option>
-      </select>
-    </div>
-
-    <div class="form-group">
-      <label for="reg">রেজিস্ট্রেশন/আইডি নম্বর</label>
-      <input type="text" id="reg" placeholder="রেজি/আইডি দিন">
-    </div>
-    <div class="form-group">
-      <label for="roll">রোল নম্বর</label>
-      <input type="text" id="roll" placeholder="রোল নম্বর দিন">
-    </div>
-       <div class="search-button-font"> <button class="search-button" onclick="searchResult()"> <div class="search-button-font" > যাচাই করুন</div></button> </div>
-  </div>
-<script>
-  // Form hide/show
-  document.addEventListener('click', function (e) {
-    const form = document.getElementById('student-search');
-    const trigger = document.querySelector('.highlight-btn');
-
-    if (
-      form.style.display === 'block' &&
-      !form.contains(e.target) &&
-      !trigger.contains(e.target)
-    ) {
-      form.style.display = 'none';
-      trigger.style.display = 'inline-flex';
-    }
-  });
-
-  // Animation on scroll
-  document.addEventListener('DOMContentLoaded', function () {
-    const animatedImages = document.querySelectorAll('.animated-img');
-
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, {
-      threshold: 0.1
-    });
-
-    animatedImages.forEach(img => observer.observe(img));
-  });
-
-  // Form submission
-       function searchResult() {
-      const session = document.getElementById('session').value.trim();
-      const jamat = document.getElementById('jamat').value.trim();
-      const reg = document.getElementById('reg').value.trim();
-      const roll = document.getElementById('roll').value.trim();
-
-      if (!session || !jamat || !reg || !roll) {
-        alert('সব তথ্য সঠিকভাবে পূরণ করুন');
-        return;
-      }
-
-      window.location.href = `verify.html?year=${session}&jamat=${jamat}&reg=${reg}&roll=${roll}`;
-    }
-
-</script>
-     
-     <style>
-        .animated-img {
-          width: 100%;
-          max-width: 800px;
-          margin: 30px auto;
-          display: block;
-          border-radius: 12px;
-          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-          opacity: 0;
-          transform: translateY(30px);
-          transition: all 0.2s ease;
+            margin: 20px auto;
+            max-width: 1200px;
         }
 
-        .animated-img.visible {
-          opacity: 1;
-          transform: translateY(0);
+        .notice-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 15px;
+            background: white;
+            border-radius: 12px;
+            margin-bottom: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.03);
+            border-right: 3px solid #ff9800;
         }
 
-        .animated-img:hover {
-          transform: scale(1.03);
-          box-shadow: 0 14px 30px rgba(0, 0, 0, 0.25);
+        .notice-dot {
+            width: 10px;
+            height: 10px;
+            background: #ff9800;
+            border-radius: 50%;
         }
 
-        body {
-          font-family: 'kalpurush';
-          background: linear-gradient(to right, #e0f7fa, #e0f2f1);
-          margin: 0;
-          padding: 0;
-        } 
-        .headline {
-          font-size: 40px;
-          font-family: 'JunudullahZami';
-          text-align: center;
-          color: #006699;
-          margin-bottom: 0px;
-          margin-top: 30px;
-        }
-    
-        .campus-title {
-          text-align: center;
-          line-height: 30px;
-          font-family: 'bornomala';
-          font-size: 35px;
-          font-weight: bold;
-          color: #d60000;
-          margin-bottom: 15px;
-        }
-    
-        .left p, .left li {
-          font-size: 19px;
-          line-height: 1.2;
-          height: auto; ;
-          color: #333;
-        }
-    
-        .highlight {
-          font-size: 30px;
-          color: #ccc;
-          font-family: 'sheikh hasina' ;
-          text-align: center;
-          margin-top: 20px;
-          line-height: 38px;
-          margin-bottom: 10px;
-          background-color: #d35400;
-        }
-        .right img {
-          max-width: 100%;
-          border-radius: 7px;
-          box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-        }
-    
-        .right p {
-          font-size: 18px ;
-          margin-top: 10px;
-          color: #000000;
-          line-height: 20px;
-        }
-        body {
-          font-family: 'kalpurush', sans-serif;
-          background: #eef5f9;
-          margin: 0;
-          padding: 20px;
-        }
-  </style>
-
-</head>
-    <div class="headline">  <a> ইলমের আলোয় গড়ে তুলুন আপনার কন্যার উজ্জ্বল ভবিষ্যৎ! </a> </div>
-    <div class="container">
-      <div class="left">
-        <p>নারী শিক্ষার আলোকিত পথ<br>
-        আমরা কুরআন, হাদিস এবং ইসলামীক শিক্ষা প্রদানের মাধ্যমে একটি নৈতিক ও সুপথগামী সমাজ তৈরিতে প্রতিশ্রুতিবদ্ধ।</p>
-        <ul>
-          <li>ইসলামী শিক্ষা | নৈতিক উন্নতি | আধ্যাত্মিক বিকাশ</li>
-          <li>সর্বোচ্চ শিক্ষামান, সর্বাধুনিক পরিবেশ ও সর্বক্ষণিক আমলী জিন্দেগীর বাইরে অনুপমভাবে আমরা বন্ধপরিকর</li>
-        </ul>
-         <div class="highlight" > আমাদের লক্ষ্য ও উদ্দেশ্য: </div>
-        <p> আল্লাহ তা’আলার সন্তুষ্টি অর্জনই আমাদের মূল লক্ষ্য। তাওহীদ ও সুন্নাহর প্রতিপত্তি,
-           শিরক-বিদআতের নিরসন এবং বিশুদ্ধ কুরআনী শিক্ষা প্রচারের মাধ্যমে দ্বীনদার কুরআনের ধারক-বাহক গড়ে তোলা।</p>
-      </div>
-    
-
-      <div class="right">
-        <div class="campus-title">মাদারসার নিজস্ব ক্যাম্পাস</div>
-        <img src="jpg/dummm-campus.jpg" alt="মাদ্রাসা ছবি" class="animated-img">
-        <p>২০১৭ সালে মেঘনা উপজেলার নয়া কাঁন্দারগাঁও এলাকায় প্রতিষ্ঠিত এই প্রতিষ্ঠানটি নিজস্ব ভবনে আধুনিক ও শান্ত পরিবেশে মানসম্মত জেনারেল ও দ্বীনি শিক্ষা প্রদান করছে।</p>
-      </div>
-    </div>
-    <h1>ভবিষ্যৎ পরিকল্পনা </h>
-    <p>
-      আমরা ইনশাআল্লাহ মাদ্রাসাটিকে আন্তর্জাতিক মানের দ্বীনি শিক্ষা প্রতিষ্ঠানে রূপান্তর করার লক্ষ্যে কাজ করছি। প্রযুক্তির সহায়তায় পাঠদান, অনলাইন রেজাল্ট সিস্টেম এবং আধুনিক পাঠ্য উপকরণ প্রবর্তনের উদ্যোগ নেওয়া হচ্ছে।
-    </p>
-  </section>
-
- 
-
-<!-- পরিচিতি -->
-  <section id="porichiti" class="page animated-bg">
-  
-    <style>
-      .PORICHITY {
-        font-size: 30px;
-        color: #bd0000;
-        text-align: center;
-      }
-
-      .uddesso {
-        text-align: left;
-        font-size: 20px;
-        color: #000000;
-        margin-left: 35px;
-        margin-right: 40px;
-      }
-    </style>
-      <div class="PORICHITY" > 
-        <h3> মাদরাসা পরিচিতি </h3> 
-      <div>
-        
-      <div class="uddesso" > 
-        <h3> দারুল উলূম মাদানিয়া মহিলা মাদ্রাসা </h3>
-        <p> ২০১৭ সালে প্রতিষ্ঠিত একটি সুপ্রতিষ্ঠিত ও নির্ভরযোগ্য ইসলামি শিক্ষা প্রতিষ্ঠান, যা মুসলিম নারীদের জন্য কুরআন, হাদীস, তাফসীর, 
-          ফিকহসহ ইসলামের মৌলিক ও উচ্চতর জ্ঞান দানে প্রতিশ্রুতিবদ্ধ।
-            প্রতিষ্ঠানটি পূর্ণাঙ্গ কওমি ও আধুনিক , উভয় সিলেবাসে পরিচালিত হয়, যেখানে শিক্ষার্থীদের সর্বোচ্চ মানের পাঠদান,
-             নৈতিক গঠন ও আমলী জিন্দেগীর বাস্তব অনুশীলন নিশ্চিত করা হয়। যুগোপযোগী পদ্ধতিতে ইসলামি জ্ঞানের পাশাপাশি বাস্তব জীবনে 
-             ইসলামের আদর্শ অনুসরণে আমরা নিবেদিত।আমাদের মূল উদ্দেশ্য: </p>
-        <li>আল্লাহ তা'আলার সন্তুষ্টি অর্জন।</li>
-        <li>তাওহীদ ও সুন্নাহর নির্ভেজাল শিক্ষা প্রতিষ্ঠা।</li>
-        <li>শিরক, বিদআত ও সমাজের অপসংস্কৃতি থেকে শিক্ষার্থীদের মুক্ত রাখা।</li>
-        <li>আদর্শ আলেমা ও দ্বীনের খাদেমা তৈরি।</li>
-      <div>
-        </p>
-          আমরা বিশ্বাস করি, বিশুদ্ধ তিলাওয়াত, দ্বীনি আদর্শ, এবং পরকালীন মুক্তির সঠিক দিকনির্দেশনার মাধ্যমে শিক্ষার্থীরা শুধু একজন জ্ঞানী মুসলিম নয়, বরং একটি আলোকিত সমাজের নেতৃত্বদানকারী হিসেবেও নিজেকে গড়ে তুলতে সক্ষম হবে।
-        </p>
-      </div>   
-    <style>
-      .animated-img {
-        width: 100%;
-        max-width: 800px;
-        margin: 30px auto;
-        display: block;
-        border-radius: 12px;
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-        opacity: 0;
-        transform: translateY(30px);
-        transition: all 0.33s ease;
-      }
-    
-      .animated-img.visible {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    
-      .animated-img:hover {
-        transform: scale(1.03);
-        box-shadow: 0 14px 30px rgba(0, 0, 0, 0.25);
-      }
-    </style>     
-    <img src="jpg/20240216_1342381.jpg" alt="মাদ্রাসা ছবি" class="animated-img">
-  </section>
-
-
-
-
-
- <!-- বিভাগ সমূহ -->
-  <section id="bivag" class="page animated-bg">
-    <style>
-      body {
-        font-family: 'kalpurush';
-        background-color: #fffefb;
-        color: #222;
-        margin: 0;
-        padding: 20px;
-      }
-
-      .section {
-        background: #fff;
-        padding: 30px;
-        border-radius: 10px;
-        max-width: 900px;
-        margin: auto;
-        box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      }
-
-      h4 {
-        background: lab(28.26% -8.33 -21.88);
-        color: rgb(255, 255, 255);
-        display: inline-block;
-        padding: 0px 100px;
-        border-radius: 5px;
-        margin-bottom: 10px;
-        font-size: 30px; 
-      }
-
-      .division {
-        margin-bottom: 25px;
-      }
-
-      .division h3 {
-        color: #bb0000;
-        margin-bottom: 0px;
-        font-size: 20px;
-      }
-
-      .division p {
-        margin-left: 20px;
-      }
-
-      .division ul {
-        margin-left: 40px;
-        line-height: 22px;
-        list-style: "► ";
-      }
-      .rules h3 {
-        background: #00589e;
-        color: white;
-        display: inline-block;
-        padding: 6px 16px;
-        border-radius: 5px;
-        font-size: 18px;
-        margin-bottom: 10px;
-      }
-
-      .rules ul {
-        padding-left: 25px;
-        margin-top: 10px;
-      }
-
-      .rules ul li {
-        font-size: 18px;
-        margin-bottom: 5px;
-      }
-      .tag-container {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin: 40x 40;
-      margin-bottom: 25px;
-      gap: 10px;
-      animation: fadeIn 1s ease-in;
-    }
-
-    .tag {
-      font-size: 25px;
-      background-color: #c0392b;
-      font-family: 'sheikh hasina' ;
-      color: #ffffff;
-      padding: 6px 30px;
-      font-weight: normal;
-      border: none;
-      border-radius: 5px;
-      transition: background-color 0.3s ease, transform 0.2s ease;
-      cursor: pointer;
-    }
-
-    .tag:nth-child(2) {
-      background-color: #004e66;
-    }
-
-    .tag:nth-child(3) {
-      background-color: #00759f;
-    }
-
-    .tag:hover {
-      background-color: #003c5a;
-      transform: scale(1.05);
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    </style>
-    <div class="tag-container">
-      <span class="tag">আবাসিক</span>
-      <span class="tag">অনাবাসিক</span>
-      <span class="tag">ডে-কেয়ার</span>
-    </div>
-
-    <div class="section">
-    <h4>বিভাগ সমূহ</h4>
-    <div class="division">
-      <h3>▸ আধুনিক নূরানী বিভাগ :</h3>
-      <p>শিশু শ্রেণী থেকে ৩য় শ্রেণী পর্যন্ত।</p>
-      <ul>
-        <li>শিশু শ্রেণী</li>
-        <li>প্রথম শ্রেণী</li>
-        <li>দ্বিতীয় শ্রেণী</li>
-        <li>তৃতীয় শ্রেণী</li>
-      </ul>
-    </div>
-
-    <div class="division">
-      <h3>▸ নাযেরা বিভাগ:</h3>
-      <p>কুরআন পরিচিতি, তাজবিদ শিক্ষা, হরফ শেখানো, মাখরাজ চর্চা, এবং শুদ্ধভাবে কুরআন দেখে তিলাওয়াত শেখানো।</p>
-    </div>
-
-    <div class="division">
-      <h3>▸ মানসম্পন্ন কিতাব বিভাগ:</h3>
-      <p><strong>খুলুছী জামাত</strong> থেকে <strong>দাওরায়ে হাদিস</strong> পর্যন্ত সম্পূর্ণ কওমী নেসাব।</p>
-      <ul>
-        <li><strong>খুসুছি:</strong> ইবতেদায়িয়া রাবে (প্রাথমিক - চতুর্থ শ্রেণী সমমান)</li>
-        <li><strong>খামেস:</strong> ইবতেদায়িয়া খামস (প্রাথমিক - পঞ্চম শ্রেণী সমমান)</li>
-        <li><strong>মিযান:</strong> মুতাওয়াসসিতাহ আওয়াল (নিম্ন মাধ্যমিক - ষষ্ঠ শ্রেণী সমমান)</li>
-        <li><strong>নাহবেমীর:</strong> মুতাওয়াসসিতাহ ছানি (নিম্ন মাধ্যমিক - সপ্তম শ্রেণী সমমান)</li>
-        <li><strong>কুদূরী:</strong> সানাবিয়্যা আউয়াল (মাধ্যমিক- এস.এস.সি./দাখিল সমমান)</li>
-        <li><strong>শরহে বেকায়া:</strong> সানাবিয়্যা ছানী (মাধ্যমিক- এস.এস.সি./দাখিল সমমান):</li>
-        <li><strong>হেদায়া:</strong> ফজিলত আউয়াল (স্নাতক- বি.এ./ডিগ্রী/ফাযিল সমমান)</li>
-        <li><strong>মেশকাত:</strong> ফজিলত ছানী (স্নাতক- বি.এ./ডিগ্রী/ফাযিল সমমান)</li>
-        <li><strong>দাওরায়ে হাদিস:</strong> তাকমিল (স্নাতকোত্তর- এম.এ./কামিল সমমান)</li>
-      </ul>
-    </div>
-
-   
-  </section>
-
-
-
-
-
-  <!-- বৈশিষ্ট্য --> 
-  <section id="voisisso" class="page animated-bg">
-      <div class="animated-bg"></div>
-      <div class="feature-container">
-        <h1 class="headline">
-          সর্বোচ্চ শিক্ষামান, সর্বাধুনিক পরিবেশ ও সার্বক্ষণিক আমলী জিন্দেগীর বাস্তব অনুশীলনে আমরা বদ্ধপরিকর।
-        </h1>
-
-        <div class="section-box">
-          <h3 class="section-title">🎯 লক্ষ্য ও উদ্দেশ্য</h3>
-          <p class="section-text">
-            আল্লাহ তা'আলার সন্তুষ্টি অর্জনই প্রতিষ্ঠানের মূল লক্ষ্য। তাওহীদ ও সুন্নাহ প্রতিষ্ঠা এবং শিরক ও বিদআতসহ সকল বাতিল অপসংস্কৃতির মূলোৎপাটন। নৈতিকতা, কুরআন ও সুন্নাহর শিক্ষায় আদর্শ পর্দানশীল যুগোপযোগী আলেমা হিসেবে তৈরি করা। 
-            পরকালীন মুক্তি লাভের উদ্দেশ্যে বিশুদ্ধ তিলাওয়াত ও ইসলামী আদর্শে গড়ে তোলা পূর্ণাঙ্গ দ্বীনদার প্রজন্ম গঠনের দৃঢ় প্রত্যয়।
-          </p>
-        </div>
-
-        <div class="section-box">
-          <h3 class="section-title">⭐ মাদরাসার বৈশিষ্ট্যসমূহ</h3>
-          <ul class="feature-list">
-            <li>📘 যুগশ্রেষ্ঠ ওলামায়ে কেরামের সুচিন্তিত পরামর্শে পরিচালিত।</li>
-            <li>🕌 সুন্নাতে রাসূল (সা.)-এর আমলী জিন্দেগীর বাস্তব অনুশীলন।</li>
-            <li>👨‍🏫 অভিজ্ঞ ও দক্ষ ওলামা/শিক্ষকদের দ্বারা পাঠদান।</li>
-            <li>💡 আলেমা ও দ্বীনের দায়ী তৈরিতে আমল, আখলাক ও তারবিয়াতের গুরুত্ব।</li>
-            <li>📝 নিয়মিত সাপ্তাহিক ও মাসিক পরীক্ষা।</li>
-            <li>🍛 উন্নত পরিবেশে তিন বেলা সুস্বাদু খাবারের ব্যবস্থা।</li>
-            <li>📚 আরবি শিক্ষার পাশাপাশি বাংলা, অংক ও ইংরেজি শিক্ষার সমন্বয়।</li>
-            <li>📜 বেফাক ও হাইয়াতুল উলয়ার অধীনে পরীক্ষার সুযোগ।</li>
-            <li>🧕 পূর্ণ শরয়ী পর্দার বাস্তবায়ন (হাত মোজা, নেকাব ইত্যাদি)।</li>
-            <li>🏞️ মাদরাসার ভিতরে পর্দাসম্মত হাঁটা-চলার ব্যবস্থা।</li>
-            <li>🎓 গরিব, ইয়াতিম ও মেধাবী ছাত্রীর জন্য বিশেষ সুবিধা।</li>
-          </ul>
-        </div>
-
-        <div class="section-note">
-          🔔 <strong>বি:দ্র:</strong> স্কুল-কলেজের ছাত্রী, কর্মজীবী ও বয়স্ক মহিলাদের জন্য নূরানী পদ্ধতিতে কুরআন শিক্ষা, প্রয়োজনীয় দোয়া ও মাসআলা তালিমের সুব্যবস্থা রয়েছে।
-        </div>
-      </div>
-    </section>
-
-    <style>
-      html {
-        scroll-behavior: smooth;
-      }
-
-      .feature-section {
-        position: relative;
-        overflow: hidden;
-        font-family: 'Kalpurush', sans-serif;
-        padding: 60px 20px;
-        z-index: 1;
-      }
-
-      @keyframes gradientBG {
-        0% { background-position: 0% 50%; }
-        50% { background-position: 100% 50%; }
-        100% { background-position: 0% 50%; }
-      }
-
-      .feature-container {
-        max-width: 900px;
-        margin: 0 auto;
-        background: rgba(255, 255, 255, 0.95);
-        padding: 40px;
-        border-radius: 16px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-      }
-
-      .headline {
-        text-align: center;
-        color: #004561;
-        font-size: 26px;
-        font-weight: bold;
-        line-height: 1.6;
-        margin-bottom: 30px;
-      }
-
-      .section-box {
-        margin-bottom: 35px;
-      }
-
-      .section-title {
-        background-color: #00749c;
-        color: white;
-        padding: 10px 20px;
-        font-size: 22px;
-        font-weight: bold;
-        border-radius: 6px;
-        margin-bottom: 15px;
-        display: inline-block;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      }
-
-      .section-text {
-        font-size: 18px;
-        color: #222;
-        line-height: 1.7;
-        text-align: justify;
-      }
-
-      .feature-list {
-        list-style: none;
-        padding-left: 0;
-      }
-
-      .feature-list li {
-        font-size: 18px;
-        padding: 10px;
-        border-bottom: 1px dashed #ccc;
-        color: #333;
-        display: flex;
-        gap: 10px;
-        align-items: center;
-        transition: background-color 0.3s, transform 0.3s;
-      }
-
-      .feature-list li:hover {
-        background-color: #f0faff;
-        transform: translateX(5px);
-      }
-
-      .section-note {
-        background: #e6faff;
-        border-left: 5px solid #00749c;
-        padding: 15px 20px;
-        font-size: 17px;
-        color: #00415c;
-        border-radius: 6px;
-        margin-top: 30px;
-      }
-
-      @media (max-width: 600px) {
-        .headline {
-          font-size: 20px;
+        /* Gallery Grid */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
         }
 
-        .section-title {
-          font-size: 18px;
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 16px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            cursor: pointer;
         }
 
-        .section-text,
-        .feature-list li,
-        .section-note {
-          font-size: 16px;
+        .gallery-item img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            transition: 0.6s;
+            display: block;
         }
 
-        .feature-container {
-          padding: 20px;
-        }
-      }
-    </style>
-  </section>
-
-
-
-
-<!-- ভর্তি -->
-  <section id="vorti" class="page animated-bg">
-    <style>
-    body {
-      font-family: 'kalpurush';
-      background: linear-gradient(to bottom right, #fdf6e3, #fefcea);
-      color: #222;
-      padding: 20px;
-      line-height: 1.8;
-    }
-    .section {
-      background-color: #ffffffdd;
-      border-radius: 12px;
-      padding: 20px;
-      line-height: normal; 
-      text-align: left;
-      margin-bottom: 20px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
-    h2 {
-      background: linear-gradient(to right, #c0392b, #d35400);
-      color: white;
-      padding: 10px 20px;
-      border-radius: 8px;
-      font-size: 20px;
-      margin-bottom: 15px;
-      display: inline-block;
-    }
-    ul {
-      padding-left: 20px;
-    }
-    li::marker {
-      color: #00a9d3;
-    }
-    .highlight {
-      background-color: #f39c12;
-      color: white;
-      padding: 0px 8px;
-      border-radius: 4px;
-    }
-    .important {
-      color: red;
-      font-weight: bold;
-      margin-top: 15px;
-    }
-
-    body {
-      margin: 0;
-      padding: 0;
-      background-color: #f4f4f4;
-      font-family: 'sheikh hasina', sans-serif;
-    }
-    .admit-highlight-btn {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          gap: 10px;
-          background: linear-gradient(135deg, #fffdf4, #f9feff);
-          color: white;
-          font-size: 30px;
-          font-weight: 0;
-          padding: 14px 28px;
-          border-radius: 5px;
-          cursor: pointer;
-          font-family: "sheikh hasina";
-          border: none;
-          text-transform: uppercase;
-          box-shadow: 0 6px 12px rgba(0, 117, 159, 0.3);
-          animation: glow-pulse 3s infinite ease-in-out;
-          transition: all 0.3s ease-in-out;
+        .gallery-item:hover img {
+            transform: scale(1.1);
         }
 
-  </style>
-  
-  <div style="text-align:center;">
-    <button class="admit-highlight-btn" onclick="document.getElementById('student-search').style.display='block'; 
-    this.style.display='none';">
-      <a href="https://almadania.netlify.app/admistion.html"><i class="fas fa-link"></i> অনলাইন ভর্তি ফরম</a> 
-    </button>
-  </div>
-    
-      <div class="section">
-    <h4>ভর্তি তথ্যাবলী</h4>
-    <ul>
-      <li>ভর্তি শুরু ১ম পর্ব ১লা রমজান থেকে এবং ২য় পর্ব ১লা ডিসেম্বর থেকে ১ জানুয়ারী পর্যন্ত।</li>
-      <li>ভর্তির জন্য মাদরাসার নিয়ম-কানুন মেনে চলার যোগ্যতা থাকতে হবে।</li>
-      <li>ভর্তি হওয়ার সময় জন্ম নিবন্ধনের ফটোকপি ও আগের প্রতিষ্ঠানের ছাড়পত্র নিয়ে আসতে হবে।</li>
-      <li>ভর্তি ফরম সংগ্রহ করার সময় শিক্ষর্থীকে সাথে নিয়ে আসতে হবে।</li>
-      <li>প্রত্যেক মাসের বেতন চলতি মাসের ১ তারিখ থেকে ১২ তারিখের মধ্যে পরিশোধ করতে হবে।</li>
-      <li>অভিভাবকের আইডি কার্ডের ফটোকপি ও মোবাইল নাম্বার জমা দিতে হবে।</li>
-    </ul>
-    </div>
-
-    <div class="section">
-    <h2>যোগাযোগ ও সাক্ষাতের সময়</h2>
-    <p><strong>মোবাইল:</strong> প্রতিদিন আসরের পর থেকে মাগরিবের আযানের ১৫ মিনিট পূর্ব পর্যন্ত এবং খানার সময় যোগাযোগ করতে পারবেন।</p>
-    <p><strong>সরাসরি সাক্ষাৎ ও ছুটি:</strong> প্রতিদিন আছরের পর থেকে মাগরিবের ১৫ মিনিট পূর্ব পর্যন্ত এবং শুক্রবার সকাল ৯টা থেকে মাগরিবের ১৫ মিনিট পূর্ব পর্যন্ত সাক্ষাৎ করা যাবে।</p>
-    <p>১৫ দিন পর পর বৃহস্পতিবার তাকরারের পর থেকে শুক্রবার মাগরিব পর্যন্ত ছুটি থাকবে।</p>
-    </div>
-
-    <div class="section">
-    <h2>বাৎসরিক ছুটির দিন</h2>
-    <ul>
-      <li>প্রতি পরীক্ষার পর ৫ দিন করে:   ১৫ দিন 
-      <li>ঈদুল ফিতর: ১২ দিন
-      <li>ঈদুল আযহা: ১২ দিন
-      <li>এ ছাড়া ধর্মীয় ও জাতীয় দিবস সমূহ উদযাপন করা হয়।</li>
-    </ul>
-    <p class="important">বিশেষ কারণ বশত কর্তৃপক্ষ ছুটির তালিকা পরিবর্তন করতে পারেন।</p>
-    </div>
-   
-   <style>
-      body {
-        font-family: 'kalpurush';
-        background: linear-gradient(to bottom, #eaf6ff, #ffffff);
-        color: #333;
-        padding: 20px;
-      }
-    
-      .cost-section {
-        max-width: 1000px;
-        margin: auto;
-        background: linear-gradient(135deg, #ffffff, #e3f4ff);
-        border-radius: 20px;
-        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
-        padding: 40px 30px;
-        animation: fadeInUp 0.8s ease;
-      }
-    
-      @keyframes fadeInUp {
-        from { opacity: 0; transform: translateY(30px); }
-        to { opacity: 1; transform: translateY(0); }
-      }
-    
-      .cost-section h2 {
-        text-align: center;
-        font-size: 32px;
-        margin-bottom: 35px;
-        color: #004864;
-        position: relative;
-        display: inline-block;
-        border-bottom: 3px solid #004864;
-        padding-bottom: 8px;
-      }
-    
-      .tabs {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        margin-bottom: 30px;
-        gap: 12px;
-      }
-    
-      .tab {
-        padding: 12px 24px;
-        background: #d0ecf8;
-        color: #004864;
-        border: 1px solid #a3d3ea;
-        border-radius: 10px;
-        font-weight: 600;
-        cursor: pointer;
-        transition: all 0.3s ease, transform 0.2s;
-      }
-    
-      .tab:hover {
-        background-color: #b4e4f8;
-        transform: translateY(-2px);
-      }
-    
-      .tab.active {
-        background-color: #004864;
-        color: #fff;
-        border-color: #004864;
-      }
-    
-      .tab-content {
-        display: none;
-        animation: fadeIn 0.5s ease;
-      }
-    
-      .tab-content.active {
-        display: block;
-      }
-    
-      @keyframes fadeIn {
-        from { opacity: 0; transform: scale(0.97); }
-        to { opacity: 1; transform: scale(1); }
-      }
-    
-      table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 10px;
-        border-radius: 10px;
-        overflow: hidden;
-        background-color: white;
-      }
-    
-      th, td {
-        border: 1px solid #d0e6f5;
-        padding: 14px 12px;
-        text-align: center;
-        font-size: 16px;
-      }
-    
-      th {
-        background: #004864;
-        color: white;
-        font-weight: bold;
-      }
-    
-      tr:nth-child(even) {
-        background-color: #f4fbff;
-      }
-    
-      tr:hover {
-        background-color: #e6f4fb;
-      }
-    
-      @media (max-width: 600px) {
-        .tabs {
-          flex-direction: column;
-          align-items: center;
-        }
-      }
-      .talika{
-        font-size: 30px;
-        color: #bb0000;
-        margin-bottom: 30px;
-      }
-      .rules {
-        margin-top: 40px;
-        padding: 20px;
-        background-color: #e8f0fc;
-        border-left: 5px solid #00589e;
-        border-radius: 6px;
-      }
-    </style>
-    
-    <section class="cost-section">
-      <div class="talika">
-        <h3 aria-label="খরচের তালিকা">💰 খরচের তালিকা</h3>
-      </div>
-    
-      <div class="tabs">
-        <div class="tab active" onclick="showTab(0)">📄 ভর্তি কালীন খরচের তালিকা </div>
-        <div class="tab" onclick="showTab(1)">📆 মাসিক প্রদেয় তালিকা </div>
-      </div>
-    
-      <div class="tab-content active">
-        <table>
-          <tr>
-            <th>বিবরণ</th>
-            <th>শিশু শ্রেণী - ৪র্থ শ্রেণী</th>
-            <th>খুসুছি - দাওরায়ে হাদীস</th>
-          </tr>
-          <tr><td>ভর্তি ফরম</td><td>৫০/-</td><td>৫০/-</td></tr>
-          <tr><td>বেতন কার্ড</td><td>৫০/-</td><td>৫০/-</td></tr>
-          <tr><td>ভর্তি ফি</td><td>১০০০/-</td><td>১৫০০/-</td></tr>
-          <tr><td>বাৎসরিক চাঁদা</td><td>২০০/-</td><td>২০০/-</td></tr>
-          <tr><td>আইডি কার্ড</td><td>২০০/-</td><td>২০০/-</td></tr>
-          <tr><th>মোট</th><th>১৫০০/-</th><th>২০০০/-</th></tr>
-        </table>
-      </div>
-    
-      <div class="tab-content">
-        <table>
-          <tr>
-            <th>বিবরণ</th>
-            <th>শিশু শ্রেণী - ৪র্থ শ্রেণী</th>
-            <th>খুসুছি - দাওরায়ে হাদীস</th>
-          </tr>
-          <tr><td>আবাসিক বেতন</td><td>৬০০/-</td><td>১০০০/-</td></tr>
-          <tr><td>আবাসিক খানা</td><td>২০০০/-</td><td>২০০০/-</td></tr>
-          <tr><td>অনাবাসিক বেতন</td><td>৬০০/-</td><td>১০০০/-</td></tr>
-          <tr><td>বিদ্যুৎ বিল</td><td>১০০/-</td><td>১০০/-</td></tr>
-          <tr><th>মোট (আবাসিক)</th><th>২৬০০/-</th><th>৩০০০/-</th></tr>
-          <tr><th>মোট (অনাবাসিক)</th><th>৭০০/-</th><th>১১০০/-</th></tr>
-        </table>
-      </div>
-    </section>
-    
-    <script>
-      function showTab(index) {
-        const tabs = document.querySelectorAll('.tab');
-        const contents = document.querySelectorAll('.tab-content');
-        tabs.forEach(t => t.classList.remove('active'));
-        contents.forEach(c => c.classList.remove('active'));
-        tabs[index].classList.add('active');
-        contents[index].classList.add('active');
-      }
-    </script> 
-    
-    <div class="rules">
-      <h3>ছাত্রীদের জন্য নিয়মাবলী</h3>
-      <ul>
-        <li>মাদ্রাসা কর্তৃপক্ষের প্রণীত তালিকা বহির্ভূত কোনো পোশাক-পরিচ্ছেদ, খেলনা সামগ্রী বা অন্য কোনো জিনিস মাদ্রাসায় আনা যাবে না।</li>
-        <li>কর্তৃপক্ষের অনুমতি ব্যতীত মাদ্রাসার গেইট এর বাইরে কোনো অবস্থাতেই যাওয়া যাবে না।</li>
-        <li>মাদ্রাসার ভিতরে ছাত্রী এবং শিক্ষককের মধ্যে কোনো ব্যক্তিগত আচার-ব্যবহার সম্পূর্ণ নিষেধ।</li>
-        <li>ছাত্রীদের নিকট মোবাইল ফোন, মেমোরি, সিম, ইন্টারনেট সম্পূর্ণ নিষেধ।</li>
-      </ul>
-    </div>
-    </div>
-          <li>ভর্তি ফর্ম: <a href="#">ডাউনলোড করুন</a></li> 
-          
-          <li>ভর্তির সময়সূচী</li>
-        </p>      ভর্তি শুরু ১ম পর্ব ১লা রমজান থেকে এবং </p>
-        </p>        ভর্তি শুরু ২য় পর্ব ১লা ডিসেম্বর থেকে ১ জানুয়ারী পর্যন্ত। </p>
-  </section>
-
-        <!-- সার্টিফিকেট -->
- <section id="certificate" class="page">
-  <h2 class="section-title">সার্টিফিকেট</h2>
-  <div class="card">
-    <p>এখানে শিক্ষার্থীদের সার্টিফিকেট যাচাই ও ডাউনলোড তথ্য থাকবে।</p>
-  </div>
-</section>
-<script>
-function showPage(pageId) {
-  const pages = document.querySelectorAll('.page');
-  pages.forEach(p => p.style.display = 'none');
-
-  const activePage = document.getElementById(pageId);
-  if (activePage) {
-    activePage.style.display = 'block';
-  }
-
-  // মোবাইলে মেনু অটো ক্লোজ
-  document.getElementById("menuList").classList.remove("show");
-}
-</script>
-
-
-
-<!-- রুটিন -->
-  <section id="routine" class="page animated-bg">
-    <h2>রুটিন</h2>
-    <p>পাঠদানের রুটিন সপ্তাহের প্রতি দিন নির্ধারিত আছে।</p>
-  </section>
-
-
-
-
-
-<!-- ফলাফল -->
-<section id="result" class="page animated-bg" style="padding: 20px; text-align: center;">
-  <h3 style="margin-bottom: 20px;">ফলাফল</h3>
-
-  <!-- বাটন লিংকসমূহ -->
-      <div class="contact-links">
-        <a href="https://hems.alhaiatululya.org/exam-result"> <i class="fas fa-globe"></i>    হাইয়াতুল উলিয়া রেজাল্ট</a>
-        <a href="https://wifaqresult.com/"> <i class="fas fa-globe"></i>    বেফাক রেজাল্ট</a>
-      </div>
-  <p style="margin-top: 20px;">সর্বশেষ পরীক্ষার ফলাফল এখানে প্রকাশ করা হয়।</p>
-</section>
-
-
-
-
-
-<!-- গ্যালারি -->
-  <section id="gallery" class="page animated-bg">
-    <h2><i class="fas fa-images"></i> আমাদের গ্যালারি</h2>
-    <p>মাদ্রাসার কিছু স্মরণীয় মুহূর্ত উপভোগ করুন:</p>
-
-    <div class="gallery-grid">
-      <a href="jpg/photo11.jpg" class="gallery-item glightbox" data-gallery="gallery" data-aos="zoom-in">
-        <img src="jpg/Asset 1-100.jpg" alt="ছবি ১">
-      </a>
-      <a href="jpg/photo2.jpg" class="gallery-item glightbox" data-gallery="gallery" data-aos="fade-up">
-        <img src="jpg/20240216_1342381.jpg" alt="ছবি ২">
-      </a>
-      <a href="jpg/photo3.jpg" class="gallery-item glightbox" data-gallery="gallery" data-aos="zoom-in">
-        <img src="jpg/473834899_1703614356863522_3412771631677724907_n.jpg" alt="ছবি ৩">
-      </a>
-      <a href="jpg/photo4.jpg" class="gallery-item glightbox" data-gallery="gallery" data-aos="fade-up">
-        <img src="jpg/473843620_1703614170196874_8932438696129570475_n.jpg" alt="ছবি ৪">
-      </a>
-      <a href="jpg/photo5.jpg" class="gallery-item glightbox" data-gallery="gallery" data-aos="zoom-in">
-        <img src="jpg/4.jpg" alt="ছবি ৫">
-      </a>
-      <a href="jpg/photo6.jpg" class="gallery-item glightbox" data-gallery="gallery" data-aos="fade-up">
-        <img src="jpg/অফিস-ক্যানভাস1.jpg" alt="ছবি ৬">
-      </a>
-      <a href="jpg/photo7.jpg" class="gallery-item glightbox" data-gallery="gallery" data-aos="zoom-in">
-        <img src="jpg/অফিস-ক্যানভাস2.jpg" alt="ছবি ৭">
-      </a>
-      <a href="jpg/photo8.jpg" class="gallery-item glightbox" data-gallery="gallery" data-aos="fade-up">
-        <img src="jpg/অফিস-ক্যানভাস3.jpg" alt="ছবি ৮">
-      </a>
-      <a href="jpg/photo9.jpg" class="gallery-item glightbox" data-gallery="gallery" data-aos="zoom-in">
-        <img src="jpg/অফিস-ক্যানভাস5.jpg" alt="ছবি ৯">
-      </a>
-      <a href="jpg/photo10.jpg" class="gallery-item glightbox" data-gallery="gallery" data-aos="fade-up">
-        <img src="jpg/অফিস-ক্যানভাস6.jpg" alt="ছবি ১০">
-      </a>
-      <a href="jpg/photo1.jpg" class="gallery-item glightbox" data-gallery="gallery" data-aos="zoom-in">
-        <img src="jpg/dummm-campus.jpg" alt="ছবি ১১" >
-      </a>
-      <a href="jpg/photo12.jpg" class="gallery-item glightbox" data-gallery="gallery" data-aos="fade-up">
-        <img src="jpg/eid-poster.jpg" alt="ছবি ১২">
-      </a>
-    </div>
-  </section>
-
- <!-- যোগাযোগ সেকশন -->
-<section id="contact" class="page animated-bg">
-      <style>
-        .contact-section {
-          font-family: 'kalpurush';' !important;
-          background: linear-gradient(145deg, #ffffff, #f2f7fb) !important;
-          padding: 40px 25px !important;
-          border-radius: 16px !important;
-          max-width: 900px;
-          margin: 20px auto !important;
-          box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08) !important;
-          animation: fadeIn 0.8s ease-in-out;
-          position: relative;
-          overflow: hidden;
-          color: #333 !important;
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,84,126,0.9), transparent);
+            color: white;
+            padding: 20px;
+            transform: translateY(100%);
+            transition: 0.4s;
         }
 
-        .contact-section::before {
-          content: "";
-          position: absolute;
-          top: -50px;
-          right: -50px;
-          width: 150px;
-          height: 150px;
-          background: radial-gradient(circle, #0077cc33, transparent 70%);
-          border-radius: 50%;
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+
+        /* Routine Tabs */
+        .routine-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin: 30px 0;
+        }
+
+        .routine-tab {
+            padding: 14px 28px;
+            background: #e1f0fa;
+            border: none;
+            border-radius: 50px;
+            font-family: 'Kalpurush', sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            color: #00547e;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .routine-tab.active,
+        .routine-tab:hover {
+            background: #00547e;
+            color: white;
+        }
+
+        .routine-content {
+            display: none;
+            background: white;
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            margin-top: 20px;
+        }
+
+        .routine-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
         }
 
         @keyframes fadeIn {
-          from { opacity: 0; transform: translateY(10px); }
-          to { opacity: 1; transform: translateY(0); }
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
-        .contact-section h2 {
-          font-size: 30px;
-          text-align: center;
-          color: #002d5d !important;
-          margin-bottom: 30px;
-          border-bottom: 2px solid #0077cc;
-          display: inline-block;
-          padding-bottom: 6px;
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
         }
 
-        .contact-section p {
-          font-size: 18px;
-          margin: 15px 0;
-          color: #444 !important;
-          line-height: 1.6;
+        th {
+            background: #00547e;
+            color: white;
+            padding: 15px;
+            font-weight: 600;
         }
 
-        .contact-section i {
-          margin-right: 8px;
-          transition: transform 0.3s ease;
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e0f0ff;
         }
 
-        .contact-section a {
-          text-decoration: none;
-          color: #005b96 !important;
-          display: inline-flex;
-          align-items: center;
-          gap: 8px;
-          font-weight: 500;
+        tr:hover {
+            background: #f0f9ff;
         }
 
-        .contact-section a:hover i {
-          transform: scale(1.3);
+        /* Contact Cards */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
         }
 
-        .contact-links {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 14px;
-          margin-top: 20px;
+        .contact-card {
+            background: linear-gradient(145deg, #f0f9ff, #ffffff);
+            padding: 25px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.03);
+            transition: 0.3s;
+            border: 1px solid rgba(0,84,126,0.1);
         }
 
-        .contact-links a {
-          background: linear-gradient(to right, #e7f5ff, #ffffff);
-          padding: 12px 14px;
-          border-radius: 8px;
-          font-size: 20px;
-          color: #007aaf;
-          transition: all 0.3s ease;
-          box-shadow: 0 5px 8px rgba(0, 119, 204, 0.05);
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,84,126,0.1);
         }
 
-        .contact-links a:hover {
-          background: #d0f2ff;
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #00547e, #0087b1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            color: white;
+            font-size: 24px;
         }
 
-        .map-link {
-          margin-top: 28px;
-          text-align: center;
+        .contact-card a {
+            color: #00547e;
+            text-decoration: none;
+            font-size: 18px;
+            display: block;
+            margin: 5px 0;
         }
 
-        .map-link a {
-          display: inline-block;
-          border: 1px solid #0077cc;
-          color: #0077cc !important;
-          padding: 10px 18px;
-          border-radius: 8px;
-          text-decoration: none;
-          font-weight: bold;
-          background: #f0f8ff;
-          transition: all 0.3s ease;
+        .contact-card a:hover {
+            color: #0087b1;
         }
 
-        .map-link a:hover {
-          background-color: hsl(201, 100%, 17%);
-          color: #fff !important;
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, #003e4d, #002b36);
+            color: white;
+            padding: 50px 20px 20px;
+            margin-top: 50px;
         }
 
-        .transport-info {
-          margin-top: 35px;
-          padding: 20px;
-          background-color: #f9fcff;
-          border-left: 5px solid #0077cc;
-          border-radius: 10px;
-          box-shadow: 0 2px 10px rgba(0, 119, 204, 0.05);
+        .footer-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
         }
 
-        .transport-info h3 {
-          font-size: 20px;
-          margin-bottom: 12px;
-          color: #003366;
+        .footer-logo img {
+            max-width: 180px;
+            background: white;
+            padding: 15px;
+            border-radius: 16px;
+            margin-bottom: 15px;
         }
 
-        .transport-info ul {
-          padding-left: 20px;
-          color: #333;
+        .footer h3 {
+            font-size: 22px;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 12px;
         }
 
-        .transport-info ul li {
-          margin-bottom: 8px;
+        .footer h3::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 3px;
+            background: #ffb347;
+            bottom: 0;
+            right: 0;
         }
 
-        @media (max-width: 600px) {
-          .contact-links {
-            grid-template-columns: 1fr;
-          }
+        .footer-links a,
+        .footer-contact a {
+            color: #b0e0ff;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 15px;
+            transition: 0.3s;
         }
 
-        .info-contect {
-          color: #003154 !important;
-          padding: 10px 18px;
-          font-family: 'JunudullahZami';
-          font-size: 30px;
-          border-radius: 8px;
-          text-decoration: none;
-          font-weight: bold;
-          background-color: #f9fcff;
-          transition: all 0.9s ease;
+        .footer-links a:hover,
+        .footer-contact a:hover {
+            color: #ffb347;
+            transform: translateX(-5px);
         }
 
-        @font-face {
-          font-family: 'JunudullahZami';
-          src: url('ফন্ট/FN Junudullah Zami.ttf') format('truetype');
-          font-weight: normal;
-          font-style: normal;
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
         }
 
-      </style>
-      <div class="info-contect"> 
-        <a aria-label="যোগাযোগ বিভাগ">
-          <i class="fas fa-address-book"></i> যোগাযোগ</a>
-      </div>
-      <h1>  <i class="fas fa-map-marker-alt">    </i> <strong>   ঠিকানা: নয়া কান্দারগাঁও, লুটের চর-৩৫১৬, মেঘনা, কুমিল্লা।</strong> 
+        .social-icons a {
+            width: 45px;
+            height: 45px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+            transition: 0.3s;
+        }
 
+        .social-icons a:hover {
+            background: #ffb347;
+            transform: translateY(-5px);
+        }
 
-      <div class="contact-links">
-        <a href="tel:01647382241"> <i class="fas fa-phone-alt"></i>    01647382241</a>
-        <a href="tel:01814853884"> <i class="fas fa-phone-alt"></i>    01814853884</a>
-        <a href="tel:01865778060"> <i class="fas fa-phone-alt"></i>    01865778060</a>
-        <a href="tel:01980817196"> <i class="fas fa-phone-alt"></i>    01980817196</a>
-        <a href="mailto:almadani8060@gmail.com">  <i class="fas fa-envelope">  </i>    ইমেইল</a>
-        <a href="https://darululoom-deoband.com/home/" target="_blank">
-            <i class="fas fa-globe"></i> দারুল উলূম দেওবন্দ, ভারত
-        </a>
-        <a href="https://www.facebook.com/profile.php?id=100092195414779" target="_blank">
-          <i class="fab fa-facebook">   </i>        ফেসবুক পেইজ
-        </a>
-      </div>
-      <div class="map-link">
-        <a href="https://maps.app.goo.gl/o4F2Mo4VdpT3QiLc6" target="_blank">
-          <i class="fas fa-map-location-dot"></i> গুগল ম্যাপে দেখুন
-        </a>
-      </div>
+        /* Floating WhatsApp */
+        .floating-whatsapp {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            z-index: 999;
+        }
 
-      <div class="transport-info">
-        <h3><i class="fas fa-bus"></i> যাতায়াত</h3>
-        <ul>
-          <li>কুমিল্লা বা ঢাকা থেকে সরাসরি ঢাকা চট্রগ্রাম হাইওয়ে ভাটেরচর নতুন রাস্তা নেমে অটো বা সিএনজি যুগে ইসলামি ব্যাংক সংলগ্ন 
-            নয়া কান্দারগাঁও মহিলা মাদরাসা।</li>
-          <li>মেঘনা উপজেলা থেকে সিএনজি বা অটো করে ১৫-২০ মিনিটে পৌঁছানো যায়। </li>
-          <li>যাত্রীবাহী বাস মেঘনা ব্রিজ পার হওয়ার পর ভাটেরচর নতুন রাস্তা নিকটবর্তী লোকেশন: নয়া কান্দারগাঁও।</li>
-          <li>স্থানীয় পরিবহন সহজলভ্য ও নিরাপদ।</li>
-        </ul>
-      </div>
-  </section>
+        .floating-whatsapp a {
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 30px;
+            box-shadow: 0 10px 25px rgba(37,211,102,0.4);
+            transition: 0.3s;
+        }
 
-  <!-- CSS -->
-  <style>
-    .gallery-section {
-      padding: 60px 20px;
-      background: #ffffff;
-      text-align: center;
-      font-family: 'Noto Sans Bengali', sans-serif;
-    }
+        .floating-whatsapp a:hover {
+            transform: scale(1.1);
+            box-shadow: 0 15px 35px rgba(37,211,102,0.5);
+        }
 
-    .gallery-section h2 {
-      font-size: 30px;
-      color: #004561;
-      margin-bottom: 10px;
-    }
+        /* Mobile Bottom Bar */
+        .mobile-bottom-bar {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            box-shadow: 0 -5px 20px rgba(0,0,0,0.1);
+            z-index: 998;
+            padding: 8px 0;
+        }
 
-    .gallery-section p {
-      font-size: 18px;
-      color: #555;
-      margin-bottom: 30px;
-    }
+        .mobile-bottom-bar a {
+            flex: 1;
+            text-align: center;
+            color: #00547e;
+            text-decoration: none;
+            font-size: 12px;
+        }
 
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
+        .mobile-bottom-bar i {
+            font-size: 22px;
+            display: block;
+            margin-bottom: 3px;
+        }
 
-    .gallery-item {
-      display: block;
-      position: relative;
-      overflow: hidden;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-      transition: transform 0.4s ease;
-    }
+        /* Responsive */
+        @media (max-width: 768px) {
+            .menu-icon {
+                display: block;
+            }
 
-    .gallery-item img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      transition: transform 0.4s ease;
-      display: block;
-    }
+            nav ul {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+            }
 
-    .gallery-item:hover img {
-      transform: scale(1.08);
-    }
+            nav ul.show {
+                display: flex;
+            }
 
-    @media (max-width: 600px) {
-      .gallery-grid {
-        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      }
+            nav ul li a {
+                text-align: center;
+            }
 
-      .gallery-item img {
-        height: 140px;
-      }
-    }
-  </style>
+            .mobile-bottom-bar {
+                display: flex;
+            }
 
-  <!-- Font Awesome (for icons) -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+            body {
+                padding-bottom: 70px;
+            }
 
-  <!-- Glightbox CSS & JS -->
-  <link href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+            .footer-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
 
-  <!-- AOS CSS & JS for Scroll Animation -->
-  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
-  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-  <script>
-    AOS.init();
-    const lightbox = GLightbox({ selector: '.glightbox' });
-  </script>
-  </section>
+            .footer h3::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
 
+            .footer-links a,
+            .footer-contact a {
+                justify-content: center;
+            }
+        }
 
-    <style>
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      font-family: 'kalpurush', sans-serif;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-    }
-    main { flex: 1; }
+        @media (max-width: 480px) {
+            .section-title {
+                font-size: 26px;
+            }
 
-    /* ===== FOOTER BASE ===== */
-    .footer© {
-      background: #004d4d;
-      padding: 10px 10px 2px;
-      margin-top: 0px;
-    }
-    .footer©t {
-      color: #ffffff;
-      font-size: 15px;
-    }
-    .footer {
-      background: #ebebea;
-      border-top: 2px solid #00492c;
-      padding: 20px 22px 10px;
-      margin-bottom: 20px;
-    }
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+        }
 
-    .footer-container {
-      max-width: 100%;
-      margin: auto;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
+        /* Animations */
+        [data-aos] {
+            opacity: 0;
+            transition-property: opacity, transform;
+        }
 
-    /* ===== LOGO AREA ===== */
-    .footer-logo {
-      text-align: center;
-    }
-    .footer-logo img {
-      width: 220px;
-      margin-bottom: 15px;
-      margin-top: 1px;
-    }
-    .footer-logo p {
-      font-size: 15px;
-      line-height: 1.7;
-    }
+        [data-aos].aos-animate {
+            opacity: 1;
+        }
 
-    /* ===== TITLES ===== */
-    .footer h3 {
-      font-size: 20px;
-      margin-bottom: 15px;
-      position: relative;
-    }
-    .footer h3::after {
-      content: "";
-      width: 40px;
-      height: 2px;
-      background: #00495f;
-      position: absolute;
-      left: 0;
-      bottom: -5px;
-    }
+        /* Rules Section */
+        .rules-section {
+            background: #fff5f5;
+            border-right: 6px solid #e74c3c;
+            padding: 25px;
+            border-radius: 20px;
+            margin: 30px 0;
+        }
 
-    /* ===== LINKS ===== */
-    .footer-links a {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      text-decoration: none;
-      color: #003b2f;
-      margin-bottom: 10px;
-      transition: 0.3s;
-    }
-    .footer-links a:hover {
-      transform: translateX(6px);
-      color: #0a8f5a;
-    }
+        .rules-section h3 {
+            color: #c0392b;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
 
-    /* ===== CONTACT ===== */
-    .footer-contact a {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      text-decoration: none;
-      color: #003b2f;
-      margin-bottom: 10px;
-      transition: 0.3s;
-    }
-    .footer-contact a:hover {
-      transform: translateX(6px);
-      color: #0a8f5a;
-    }
+        .rules-section li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
 
-    /* ===== SOCIAL ===== */
-    .social-icons {
-      display: flex;
-      gap: 12px;
-      margin-top: 15px;
-    }
-    .social-icons a {
-      width: 38px;
-      height: 38px;
-      background: #005679;
-      color: #fff;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+        .rules-section li i {
+            color: #e74c3c;
+        }
 
-    /* ===== FLOATING BUTTON ===== */
-    .floating {
-      position: fixed;
-      right: 15px;
-      bottom: 50px;
-      z-index: 999;
-    }
-    .floating a {
-      display: block;
-      width: 50px;
-      height: 50px;
-      background: #25D366;
-      color: #fff;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 10px;
-      font-size: 22px;
-    }
-
-    /* ===== MOBILE BAR ===== */
-    .mobile-bar {
-      display: none;
-    }
-    @media (max-width: 768px) {
-      .footer-container {
-        grid-template-columns: 1fr;
-        text-align: center;
-      }
-      .footer h3::after {
-        left: 50%;
-        transform: translateX(-50%);
-      }
-      .mobile-bar {
-        display: flex;
-        position: fixed;
-        bottom: 0;
-        width: 100%;
-        background: #0a8f5a;
-        z-index: 998;
-      }
-      .mobile-bar a {
-        flex: 1;
-        padding: 12px;
-        text-align: center;
-        color: #fff;
-        text-decoration: none;
-      }
-    }
+        /* Copyright */
+        .copyright {
+            background: #00212b;
+            color: #8bb5c9;
+            text-align: center;
+            padding: 15px;
+            font-size: 14px;
+        }
     </style>
-    </head>
-
-    <!-- ===== CONTACT FOOTER ===== -->
-    <footer id="contact" class="footer">
-      <div class="footer-container">
-
-        <!-- Logo -->
-        <div class="footer-logo">
-          <img src="png/Asset 4.png" alt="Logo">
+</head>
+<body>
+    <!-- Search Bar -->
+    <div class="search-container">
+        <div class="search-wrapper">
+            <input type="text" id="searchInput" class="search-input" placeholder="সার্চ করুন...">
+            <button class="search-btn" onclick="performSearch()">
+                <i class="fas fa-search"></i>
+            </button>
         </div>
-
-        <!-- Important Links -->
-        <div class="footer-links">
-          <h3>গুরুত্বপূর্ণ লিংক</h3>
-          <a href="https://shed.portal.gov.bd/"><i class="fas fa-link"></i> শিক্ষা মন্ত্রণালয়</a>
-          <a href="https://hems.alhaiatululya.org/"><i class="fas fa-link"></i> আল-হাইআতুল উলইয়া</a>
-          <a href="https://darululoom-deoband.com/home/"><i class="fas fa-link"></i> দারুল উলূম দেওবন্দ</a>
-          <a href="https://darululoomkarachi.edu.pk/"><i class="fas fa-link"></i> দারুল উলূম করাচি</a>
-          <a href="https://maps.app.goo.gl/o4F2Mo4VdpT3QiLc6"><i class="fas fa-map-marker-alt"></i> নয়াকান্দারগাঁও, লুটেরচর-৩৫১৬</a>
-        </div>
-        <!-- Contact -->
-        <div class="footer-contact">
-          <h3>যোগাযোগ</h3>
-          </a>
-          <a href="tel:01647382241"> <i class="fas fa-mobile-alt"></i>    01647382241</a>
-          <a href="tel:01814853884"> <i class="fas fa-mobile-alt"></i>    01814853884</a>
-          <a href="tel:01865778060"> <i class="fas fa-mobile-alt"></i>    01865778060</a>
-          <a href="mailto:almadani8060@gmail.com">  <i class="fas fa-envelope">  </i>  ইমেইল</a>
-
-          <div class="social-icons">
-              <a href="https://www.facebook.com/profile.php?id=100092195414779"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://maps.app.goo.gl/o4F2Mo4VdpT3QiLc6"><i class="fas fa-map-marker-alt"></i></a>
-            <a href=" https://almadania.netlify.app"><i class="fas fa-globe"></i></a>
-          </div>
-        </div>
-
-      </div>
-    </footer>
-
-    <!-- Floating -->
-    <div class="floating">
-      <a href="https://wa.me/8801980817196"><i class="fab fa-whatsapp"></i></a>
     </div>
 
-<!-- Scripts -->
-  <script>
-    // মেনু ক্লিক করলে সংশ্লিষ্ট পেজ দেখাবে
-    function showPage(pageId) {
-      // সব পেজ লুকিয়ে ফেলি
-      const pages = document.querySelectorAll('.page');
-      pages.forEach(page => page.style.display = 'none');
+    <!-- Header -->
+    <header>
+        <img class="header-logo" src="jpg/ওয়েব-সাইট.png" alt="মাদ্রাসা লোগো">
+    </header>
 
-      // পেজ আইডি অনুযায়ী টার্গেট পেজ দেখাই
-      const targetPage = document.getElementById(pageId);
-      if (targetPage) {
-        targetPage.style.display = 'block';
-        // উপরে স্ক্রল করবে যেন মোবাইলে নিচে আটকে না থাকে
-        window.scrollTo({ top: 0, behavior: 'instant' });
-      }
+    <!-- Navigation -->
+    <nav>
+        <div class="menu-icon" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i> মেনু
+        </div>
+        <ul id="menuList">
+            <li><a href="#home" class="active">হোম</a></li>
+            <li><a href="#porichiti">পরিচিতি</a></li>
+            <li><a href="#bivag">বিভাগ সমূহ</a></li>
+            <li><a href="#voisisso">বৈশিষ্ট্য</a></li>
+            <li><a href="#vorti">ভর্তি তথ্য</a></li>
+            <li><a href="#certificate">সার্টিফিকেট</a></li>
+            <li><a href="#routine">রুটিন</a></li>
+            <li><a href="#result">ফলাফল</a></li>
+            <li><a href="#gallery">গ্যালারি</a></li>
+            <li><a href="#contact">যোগাযোগ</a></li>
+        </ul>
+    </nav>
 
-      // মেনুতে active ক্লাস হালনাগাদ
-      const menuLinks = document.querySelectorAll('nav ul li a');
-      menuLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('onclick')?.includes(pageId)) {
-          link.classList.add('active');
+    <!-- Notice Panel (Editable by Admin) -->
+    <div class="notice-panel">
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px;">
+            <i class="fas fa-bullhorn" style="color: #ff9800; font-size: 24px;"></i>
+            <h3 style="color: #b45f06; font-size: 22px;">নোটিশ বোর্ড</h3>
+        </div>
+        <div id="noticeBoard">
+            <div class="notice-item">
+                <span class="notice-dot"></span>
+                <span>📢 ১লা রমজান থেকে ভর্তি কার্যক্রম শুরু হবে</span>
+            </div>
+            <div class="notice-item">
+                <span class="notice-dot"></span>
+                <span>📢 বার্ষিক পরীক্ষার রুটিন প্রকাশিত হয়েছে</span>
+            </div>
+            <div class="notice-item">
+                <span class="notice-dot"></span>
+                <span>📢 আগামীকাল অফিস বন্ধ থাকবে</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Home Section -->
+        <section id="home" class="hero-section">
+            <div style="max-width: 1200px; margin: 0 auto;">
+                <div style="text-align: center;" data-aos="fade-up">
+                    <h1 class="font-junudullah" style="font-size: clamp(28px, 5vw, 48px); margin-bottom: 20px;">
+                        ইলমের আলোয় গড়ে তুলুন আপনার কন্যার উজ্জ্বল ভবিষ্যৎ!
+                    </h1>
+                    <p style="font-size: clamp(16px, 3vw, 20px); margin-bottom: 30px; opacity: 0.9;">
+                        নারী শিক্ষার আলোকিত পথ। আমরা কুরআন, হাদিস এবং ইসলামিক শিক্ষা প্রদানের মাধ্যমে একটি নৈতিক ও সুপথগামী সমাজ তৈরিতে প্রতিশ্রুতিবদ্ধ।
+                    </p>
+                    
+                    <button class="btn-primary" onclick="toggleVerification()">
+                        <i class="fas fa-search"></i>
+                        শিক্ষার্থী যাচাইকরণ
+                    </button>
+                </div>
+
+                <!-- Verification Form -->
+                <div id="verificationForm" class="verification-form">
+                    <h3 style="font-size: 28px; color: #00547e; text-align: center; margin-bottom: 25px;">শিক্ষার্থী যাচাইকরণ</h3>
+                    
+                    <div class="form-group">
+                        <label>শিক্ষাবর্ষ নির্বাচন করুন</label>
+                        <select id="session">
+                            <option value="">-- শিক্ষাবর্ষ নির্বাচন করুন --</option>
+                            <option value="১৪৪৪-৪৫ হিজরী/২০২৪-২৫ ঈসায়ী">১৪৪৪-৪৫ হিজরী/২০২৪-২৫ ঈসায়ী</option>
+                            <option value="১৪৪৫-৪৬ হিজরী/২০২৫-২৬ ঈসায়ী">১৪৪৫-৪৬ হিজরী/২০২৫-২৬ ঈসায়ী</option>
+                            <option value="১৪৪৬-৪৭ হিজরী/২০২৬-২৭ ঈসায়ী">১৪৪৬-৪৭ হিজরী/২০২৬-২৭ ঈসায়ী</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>জামাত নির্বাচন করুন</label>
+                        <select id="jamat">
+                            <option value="">-- জামাত নির্বাচন করুন --</option>
+                            <option value="আতফাল (শিশু শ্রেণী)">আতফাল (শিশু শ্রেণী)</option>
+                            <option value="আওয়াল (১ম শ্রেণী)">আওয়াল (১ম শ্রেণী)</option>
+                            <option value="ছানী (২য় শ্রেণী)">ছানী (২য় শ্রেণী)</option>
+                            <option value="ছালেছ (৩য় শ্রেণী)">ছালেছ (৩য় শ্রেণী)</option>
+                            <option value="খুসুছি (ইবতেদায়ি রাবে)">খুসুছি (ইবতেদায়ি রাবে)</option>
+                            <option value="খামেস (ইবতেদায়ি খামেছ)">খামেস (ইবতেদায়ি খামেছ)</option>
+                            <option value="মিযান (মুতাওয়াসসিতাহ আওয়াল)">মিযান (মুতাওয়াসসিতাহ আওয়াল)</option>
+                            <option value="নাহবেমীর (মুতাওয়াসসিতাহ ছানি)">নাহবেমীর (মুতাওয়াসসিতাহ ছানি)</option>
+                            <option value="কুদূরী (সানাবিয়্যা আউয়াল)">কুদূরী (সানাবিয়্যা আউয়াল)</option>
+                            <option value="শরহে বেকায়া (সানাবিয়্যা ছানী)">শরহে বেকায়া (সানাবিয়্যা ছানী)</option>
+                            <option value="হেদায়া (ফজিলত আউয়াল)">হেদায়া (ফজিলত আউয়াল)</option>
+                            <option value="মেশকাত (ফজিলত ছানী)">মেশকাত (ফজিলত ছানী)</option>
+                            <option value="দাওরায়ে হাদিস (তাকমিল)">দাওরায়ে হাদিস (তাকমিল)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>রেজিস্ট্রেশন/আইডি নম্বর</label>
+                        <input type="text" id="reg" placeholder="রেজি/আইডি দিন">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>রোল নম্বর</label>
+                        <input type="text" id="roll" placeholder="রোল নম্বর দিন">
+                    </div>
+                    
+                    <button class="btn-primary" style="width: 100%;" onclick="verifyStudent()">যাচাই করুন</button>
+                </div>
+
+                <!-- Campus Info -->
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 60px; align-items: center;">
+                    <div data-aos="fade-left">
+                        <h3 class="font-sheikh-hasina" style="font-size: 28px; margin-bottom: 20px;">আমাদের লক্ষ্য ও উদ্দেশ্য</h3>
+                        <p style="margin-bottom: 20px;">আল্লাহ তা'আলার সন্তুষ্টি অর্জনই আমাদের মূল লক্ষ্য। তাওহীদ ও সুন্নাহর প্রতিপত্তি, শিরক-বিদআতের নিরসন এবং বিশুদ্ধ কুরআনী শিক্ষা প্রচারের মাধ্যমে দ্বীনদার কুরআনের ধারক-বাহক গড়ে তোলা।</p>
+                        <ul style="list-style: none;">
+                            <li style="margin: 10px 0;"><i class="fas fa-check-circle" style="color: #ffb347; margin-left: 10px;"></i> ইসলামী শিক্ষা | নৈতিক উন্নতি | আধ্যাত্মিক বিকাশ</li>
+                            <li style="margin: 10px 0;"><i class="fas fa-check-circle" style="color: #ffb347; margin-left: 10px;"></i> সর্বোচ্চ শিক্ষামান, সর্বাধুনিক পরিবেশ</li>
+                        </ul>
+                    </div>
+                    <div data-aos="fade-right">
+                        <div style="background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border-radius: 20px; padding: 20px;">
+                            <h3 class="font-bornomala-bold" style="font-size: 24px; color: #ffb347; text-align: center; margin-bottom: 15px;">মাদ্রাসার নিজস্ব ক্যাম্পাস</h3>
+                            <img src="jpg/dummm-campus.jpg" alt="ক্যাম্পাস" style="width: 100%; height: 250px; object-fit: cover; border-radius: 16px; margin-bottom: 15px;">
+                            <p>২০১৭ সালে মেঘনা উপজেলার নয়া কাঁন্দারগাঁও এলাকায় প্রতিষ্ঠিত এই প্রতিষ্ঠানটি নিজস্ব ভবনে আধুনিক ও শান্ত পরিবেশে মানসম্মত জেনারেল ও দ্বীনি শিক্ষা প্রদান করছে।</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- পরিচিতি Section -->
+        <section id="porichiti" style="padding: 60px 20px; max-width: 1200px; margin: 0 auto;">
+            <h2 class="section-title">মাদ্রাসা পরিচিতি</h2>
+            
+            <div class="card" data-aos="fade-up">
+                <h3 class="font-sheikh-hasina" style="font-size: 28px; color: #00547e; margin-bottom: 20px;">দারুল উলূম মাদানিয়া মহিলা মাদ্রাসা</h3>
+                
+                <p style="margin-bottom: 15px;">২০১৭ সালে প্রতিষ্ঠিত একটি সুপ্রতিষ্ঠিত ও নির্ভরযোগ্য ইসলামি শিক্ষা প্রতিষ্ঠান, যা মুসলিম নারীদের জন্য কুরআন, হাদীস, তাফসীর, ফিকহসহ ইসলামের মৌলিক ও উচ্চতর জ্ঞান দানে প্রতিশ্রুতিবদ্ধ।</p>
+                
+                <p style="margin-bottom: 20px;">প্রতিষ্ঠানটি পূর্ণাঙ্গ কওমি ও আধুনিক, উভয় সিলেবাসে পরিচালিত হয়, যেখানে শিক্ষার্থীদের সর্বোচ্চ মানের পাঠদান, নৈতিক গঠন ও আমলী জিন্দেগীর বাস্তব অনুশীলন নিশ্চিত করা হয়। যুগোপযোগী পদ্ধতিতে ইসলামি জ্ঞানের পাশাপাশি বাস্তব জীবনে ইসলামের আদর্শ অনুসরণে আমরা নিবেদিত।</p>
+                
+                <h4 style="font-size: 22px; color: #00547e; margin: 20px 0 15px;">আমাদের মূল উদ্দেশ্য:</h4>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px;">
+                    <div><i class="fas fa-star" style="color: #ffb347; margin-left: 10px;"></i> আল্লাহ তা'আলার সন্তুষ্টি অর্জন</div>
+                    <div><i class="fas fa-star" style="color: #ffb347; margin-left: 10px;"></i> তাওহীদ ও সুন্নাহর নির্ভেজাল শিক্ষা প্রতিষ্ঠা</div>
+                    <div><i class="fas fa-star" style="color: #ffb347; margin-left: 10px;"></i> শিরক, বিদআত ও সমাজের অপসংস্কৃতি থেকে মুক্ত রাখা</div>
+                    <div><i class="fas fa-star" style="color: #ffb347; margin-left: 10px;"></i> আদর্শ আলেমা ও দ্বীনের খাদেমা তৈরি</div>
+                </div>
+                
+                <div style="background: #e8f4fd; padding: 20px; border-radius: 16px; border-right: 4px solid #00547e; margin: 20px 0;">
+                    <p class="font-italic">আমরা বিশ্বাস করি, বিশুদ্ধ তিলাওয়াত, দ্বীনি আদর্শ, এবং পরকালীন মুক্তির সঠিক দিকনির্দেশনার মাধ্যমে শিক্ষার্থীরা শুধু একজন জ্ঞানী মুসলিম নয়, বরং একটি আলোকিত সমাজের নেতৃত্বদানকারী হিসেবেও নিজেকে গড়ে তুলতে সক্ষম হবে।</p>
+                </div>
+                
+                <img src="jpg/20240216_1342381.jpg" alt="মাদ্রাসা" style="width: 100%; height: 400px; object-fit: cover; border-radius: 16px; margin-top: 20px;">
+            </div>
+        </section>
+
+        <!-- বিভাগ সমূহ Section -->
+        <section id="bivag" style="padding: 60px 20px; max-width: 1200px; margin: 0 auto;">
+            <h2 class="section-title">বিভাগ সমূহ</h2>
+            
+            <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-bottom: 30px;">
+                <span style="background: #c0392b; color: white; padding: 12px 30px; border-radius: 50px; font-size: 20px;">আবাসিক</span>
+                <span style="background: #00547e; color: white; padding: 12px 30px; border-radius: 50px; font-size: 20px;">অনাবাসিক</span>
+                <span style="background: #0087b1; color: white; padding: 12px 30px; border-radius: 50px; font-size: 20px;">ডে-কেয়ার</span>
+            </div>
+            
+            <div class="card" data-aos="fade-up">
+                <!-- নূরানী বিভাগ -->
+                <div style="margin-bottom: 40px;">
+                    <h3 style="color: #00547e; font-size: 24px; margin-bottom: 15px;">▸ আধুনিক নূরানী বিভাগ :</h3>
+                    <p style="margin-bottom: 15px;">শিশু শ্রেণী থেকে ৩য় শ্রেণী পর্যন্ত।</p>
+                    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px;">
+                        <div style="background: #e1f0fa; padding: 15px; border-radius: 10px; text-align: center;">শিশু শ্রেণী</div>
+                        <div style="background: #e1f0fa; padding: 15px; border-radius: 10px; text-align: center;">প্রথম শ্রেণী</div>
+                        <div style="background: #e1f0fa; padding: 15px; border-radius: 10px; text-align: center;">দ্বিতীয় শ্রেণী</div>
+                        <div style="background: #e1f0fa; padding: 15px; border-radius: 10px; text-align: center;">তৃতীয় শ্রেণী</div>
+                    </div>
+                </div>
+                
+                <!-- নাযেরা বিভাগ -->
+                <div style="margin-bottom: 40px;">
+                    <h3 style="color: #00547e; font-size: 24px; margin-bottom: 15px;">▸ নাযেরা বিভাগ:</h3>
+                    <p>কুরআন পরিচিতি, তাজবিদ শিক্ষা, হরফ শেখানো, মাখরাজ চর্চা, এবং শুদ্ধভাবে কুরআন দেখে তিলাওয়াত শেখানো।</p>
+                </div>
+                
+                <!-- কিতাব বিভাগ -->
+                <div>
+                    <h3 style="color: #00547e; font-size: 24px; margin-bottom: 15px;">▸ মানসম্পন্ন কিতাব বিভাগ:</h3>
+                    <p style="margin-bottom: 20px;"><strong>খুলুছী জামাত</strong> থেকে <strong>দাওরায়ে হাদিস</strong> পর্যন্ত সম্পূর্ণ কওমী নেসাব।</p>
+                    
+                    <div style="overflow-x: auto;">
+                        <table>
+                            <thead>
+                                <tr><th>জামাত</th><th>মারহালা</th><th>সমমান</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>খুসুছি</td><td>ইবতেদায়িয়া রাবে</td><td>প্রাথমিক - চতুর্থ শ্রেণী</td></tr>
+                                <tr><td>খামেস</td><td>ইবতেদায়িয়া খামস</td><td>প্রাথমিক - পঞ্চম শ্রেণী</td></tr>
+                                <tr><td>মিযান</td><td>মুতাওয়াসসিতাহ আওয়াল</td><td>নিম্ন মাধ্যমিক - ষষ্ঠ শ্রেণী</td></tr>
+                                <tr><td>নাহবেমীর</td><td>মুতাওয়াসসিতাহ ছানি</td><td>নিম্ন মাধ্যমিক - সপ্তম শ্রেণী</td></tr>
+                                <tr><td>কুদূরী</td><td>সানাবিয়্যা আউয়াল</td><td>মাধ্যমিক সমমান</td></tr>
+                                <tr><td>শরহে বেকায়া</td><td>সানাবিয়্যা ছানী</td><td>মাধ্যমিক সমমান</td></tr>
+                                <tr><td>হেদায়া</td><td>ফজিলত আউয়াল</td><td>স্নাতক সমমান</td></tr>
+                                <tr><td>মেশকাত</td><td>ফজিলত ছানী</td><td>স্নাতক সমমান</td></tr>
+                                <tr><td>দাওরায়ে হাদিস</td><td>তাকমিল</td><td>স্নাতকোত্তর সমমান</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- বৈশিষ্ট্য Section -->
+        <section id="voisisso" style="padding: 60px 20px; max-width: 1200px; margin: 0 auto;">
+            <h2 class="section-title">বৈশিষ্ট্য</h2>
+            
+            <div class="card" data-aos="fade-up">
+                <p style="font-size: 20px; color: #00547e; text-align: center; margin-bottom: 30px;">সর্বোচ্চ শিক্ষামান, সর্বাধুনিক পরিবেশ ও সার্বক্ষণিক আমলী জিন্দেগীর বাস্তব অনুশীলনে আমরা বদ্ধপরিকর।</p>
+                
+                <div style="margin-bottom: 30px;">
+                    <h3 style="background: linear-gradient(135deg, #00547e, #0087b1); color: white; padding: 12px 25px; border-radius: 50px; display: inline-block; margin-bottom: 20px;">🎯 লক্ষ্য ও উদ্দেশ্য</h3>
+                    <p>আল্লাহ তা'আলার সন্তুষ্টি অর্জনই প্রতিষ্ঠানের মূল লক্ষ্য। তাওহীদ ও সুন্নাহ প্রতিষ্ঠা এবং শিরক ও বিদআতসহ সকল বাতিল অপসংস্কৃতির মূলোৎপাটন। নৈতিকতা, কুরআন ও সুন্নাহর শিক্ষায় আদর্শ পর্দানশীল যুগোপযোগী আলেমা হিসেবে তৈরি করা। পরকালীন মুক্তি লাভের উদ্দেশ্যে বিশুদ্ধ তিলাওয়াত ও ইসলামী আদর্শে গড়ে তোলা পূর্ণাঙ্গ দ্বীনদার প্রজন্ম গঠনের দৃঢ় প্রত্যয়।</p>
+                </div>
+                
+                <div>
+                    <h3 style="background: linear-gradient(135deg, #00547e, #0087b1); color: white; padding: 12px 25px; border-radius: 50px; display: inline-block; margin-bottom: 20px;">⭐ মাদরাসার বৈশিষ্ট্যসমূহ</h3>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                        <div style="display: flex; align-items: center; gap: 10px; padding: 10px; border-bottom: 1px dashed #ccc;">
+                            <i class="fas fa-check-circle" style="color: #00547e;"></i> যুগশ্রেষ্ঠ ওলামায়ে কেরামের সুচিন্তিত পরামর্শে পরিচালিত
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 10px; padding: 10px; border-bottom: 1px dashed #ccc;">
+                            <i class="fas fa-check-circle" style="color: #00547e;"></i> সুন্নাতে রাসূল (সা.)-এর আমলী জিন্দেগীর বাস্তব অনুশীলন
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 10px; padding: 10px; border-bottom: 1px dashed #ccc;">
+                            <i class="fas fa-check-circle" style="color: #00547e;"></i> অভিজ্ঞ ও দক্ষ ওলামা/শিক্ষকদের দ্বারা পাঠদান
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 10px; padding: 10px; border-bottom: 1px dashed #ccc;">
+                            <i class="fas fa-check-circle" style="color: #00547e;"></i> আলেমা ও দ্বীনের দায়ী তৈরিতে আমল, আখলাক ও তারবিয়াতের গুরুত্ব
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 10px; padding: 10px; border-bottom: 1px dashed #ccc;">
+                            <i class="fas fa-check-circle" style="color: #00547e;"></i> নিয়মিত সাপ্তাহিক ও মাসিক পরীক্ষা
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 10px; padding: 10px; border-bottom: 1px dashed #ccc;">
+                            <i class="fas fa-check-circle" style="color: #00547e;"></i> উন্নত পরিবেশে তিন বেলা সুস্বাদু খাবারের ব্যবস্থা
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 10px; padding: 10px; border-bottom: 1px dashed #ccc;">
+                            <i class="fas fa-check-circle" style="color: #00547e;"></i> আরবি শিক্ষার পাশাপাশি বাংলা, অংক ও ইংরেজি শিক্ষার সমন্বয়
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 10px; padding: 10px; border-bottom: 1px dashed #ccc;">
+                            <i class="fas fa-check-circle" style="color: #00547e;"></i> বেফাক ও হাইয়াতুল উলয়ার অধীনে পরীক্ষার সুযোগ
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 10px; padding: 10px; border-bottom: 1px dashed #ccc;">
+                            <i class="fas fa-check-circle" style="color: #00547e;"></i> পূর্ণ শরয়ী পর্দার বাস্তবায়ন (হাত মোজা, নেকাব ইত্যাদি)
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 10px; padding: 10px; border-bottom: 1px dashed #ccc;">
+                            <i class="fas fa-check-circle" style="color: #00547e;"></i> মাদরাসার ভিতরে পর্দাসম্মত হাঁটা-চলার ব্যবস্থা
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 10px; padding: 10px; border-bottom: 1px dashed #ccc;">
+                            <i class="fas fa-check-circle" style="color: #00547e;"></i> গরিব, ইয়াতিম ও মেধাবী ছাত্রীর জন্য বিশেষ সুবিধা
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="background: #fff3e0; border-right: 6px solid #f39c12; padding: 20px; border-radius: 16px; margin-top: 30px;">
+                    <p><strong>🔔 বি:দ্র:</strong> স্কুল-কলেজের ছাত্রী, কর্মজীবী ও বয়স্ক মহিলাদের জন্য নূরানী পদ্ধতিতে কুরআন শিক্ষা, প্রয়োজনীয় দোয়া ও মাসআলা তালিমের সুব্যবস্থা রয়েছে।</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ভর্তি তথ্য Section -->
+        <section id="vorti" style="padding: 60px 20px; max-width: 1200px; margin: 0 auto;">
+            <h2 class="section-title">ভর্তি তথ্য</h2>
+            
+            <div style="text-align: center; margin-bottom: 30px;">
+                <a href="https://almadania.netlify.app/admistion.html" target="_blank" class="btn-primary" style="text-decoration: none;">
+                    <i class="fas fa-link"></i> অনলাইন ভর্তি ফরম
+                </a>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px;">
+                <div class="card" data-aos="fade-up">
+                    <h3 style="color: #00547e; margin-bottom: 15px;"><i class="fas fa-info-circle"></i> ভর্তি তথ্যাবলী</h3>
+                    <ul style="list-style: none;">
+                        <li style="margin: 10px 0;"><i class="fas fa-circle" style="color: #00547e; font-size: 8px; margin-left: 10px;"></i> ভর্তি শুরু ১ম পর্ব ১লা রমজান</li>
+                        <li style="margin: 10px 0;"><i class="fas fa-circle" style="color: #00547e; font-size: 8px; margin-left: 10px;"></i> ২য় পর্ব ১লা ডিসেম্বর থেকে ১ জানুয়ারী</li>
+                        <li style="margin: 10px 0;"><i class="fas fa-circle" style="color: #00547e; font-size: 8px; margin-left: 10px;"></i> জন্ম নিবন্ধনের ফটোকপি প্রয়োজন</li>
+                        <li style="margin: 10px 0;"><i class="fas fa-circle" style="color: #00547e; font-size: 8px; margin-left: 10px;"></i> আগের প্রতিষ্ঠানের ছাড়পত্র</li>
+                        <li style="margin: 10px 0;"><i class="fas fa-circle" style="color: #00547e; font-size: 8px; margin-left: 10px;"></i> বেতন ১-১২ তারিখের মধ্যে পরিশোধ</li>
+                    </ul>
+                </div>
+                
+                <div class="card" data-aos="fade-up" data-aos-delay="100">
+                    <h3 style="color: #00547e; margin-bottom: 15px;"><i class="fas fa-clock"></i> যোগাযোগের সময়</h3>
+                    <p><strong>মোবাইল:</strong> আসরের পর থেকে মাগরিব পর্যন্ত</p>
+                    <p><strong>সাক্ষাৎ:</strong> শুক্রবার সকাল ৯টা থেকে মাগরিব পর্যন্ত</p>
+                    <p><strong>ছুটি:</strong> ১৫ দিন পর পর বৃহস্পতিবার-শুক্রবার</p>
+                </div>
+                
+                <div class="card" data-aos="fade-up" data-aos-delay="200">
+                    <h3 style="color: #00547e; margin-bottom: 15px;"><i class="fas fa-calendar-alt"></i> বাৎসরিক ছুটি</h3>
+                    <ul style="list-style: none;">
+                        <li>পরীক্ষার পর: ১৫ দিন</li>
+                        <li>ঈদুল ফিতর: ১২ দিন</li>
+                        <li>ঈদুল আযহা: ১২ দিন</li>
+                        <li>জাতীয় দিবসসমূহ</li>
+                    </ul>
+                    <p class="important" style="color: red; margin-top: 15px;">বিশেষ কারণ বশত কর্তৃপক্ষ ছুটির তালিকা পরিবর্তন করতে পারেন।</p>
+                </div>
+            </div>
+            
+            <!-- খরচের তালিকা -->
+            <div class="card" style="margin-top: 30px;">
+                <h3 style="font-size: 26px; color: #00547e; text-align: center; margin-bottom: 20px;">💰 খরচের তালিকা</h3>
+                
+                <div style="display: flex; justify-content: center; gap: 15px; margin-bottom: 20px;">
+                    <button class="routine-tab active" onclick="showCostTab(0)">📄 ভর্তি কালীন</button>
+                    <button class="routine-tab" onclick="showCostTab(1)">📆 মাসিক প্রদেয়</button>
+                </div>
+                
+                <div id="costTab0" class="routine-content active">
+                    <table>
+                        <tr><th>বিবরণ</th><th>শিশু - ৪র্থ</th><th>খুসুছি - দাওরায়ে</th></tr>
+                        <tr><td>ভর্তি ফরম</td><td>৫০/-</td><td>৫০/-</td></tr>
+                        <tr><td>বেতন কার্ড</td><td>৫০/-</td><td>৫০/-</td></tr>
+                        <tr><td>ভর্তি ফি</td><td>১০০০/-</td><td>১৫০০/-</td></tr>
+                        <tr><td>বাৎসরিক চাঁদা</td><td>২০০/-</td><td>২০০/-</td></tr>
+                        <tr><td>আইডি কার্ড</td><td>২০০/-</td><td>২০০/-</td></tr>
+                        <tr style="background: #e1f0fa;"><th>মোট</th><th>১৫০০/-</th><th>২০০০/-</th></tr>
+                    </table>
+                </div>
+                
+                <div id="costTab1" class="routine-content">
+                    <table>
+                        <tr><th>বিবরণ</th><th>শিশু - ৪র্থ</th><th>খুসুছি - দাওরায়ে</th></tr>
+                        <tr><td>আবাসিক বেতন</td><td>৬০০/-</td><td>১০০০/-</td></tr>
+                        <tr><td>আবাসিক খানা</td><td>২০০০/-</td><td>২০০০/-</td></tr>
+                        <tr><td>অনাবাসিক বেতন</td><td>৬০০/-</td><td>১০০০/-</td></tr>
+                        <tr><td>বিদ্যুৎ বিল</td><td>১০০/-</td><td>১০০/-</td></tr>
+                        <tr style="background: #e1f0fa;"><th>মোট (আবাসিক)</th><th>২৬০০/-</th><th>৩০০০/-</th></tr>
+                        <tr style="background: #fff3e0;"><th>মোট (অনাবাসিক)</th><th>৭০০/-</th><th>১১০০/-</th></tr>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- Rules -->
+            <div class="rules-section">
+                <h3><i class="fas fa-exclamation-triangle"></i> ছাত্রীদের জন্য নিয়মাবলী</h3>
+                <ul style="list-style: none;">
+                    <li><i class="fas fa-times-circle"></i> মাদ্রাসা কর্তৃপক্ষের প্রণীত তালিকা বহির্ভূত কোনো পোশাক-পরিচ্ছেদ, খেলনা সামগ্রী বা অন্য কোনো জিনিস মাদ্রাসায় আনা যাবে না।</li>
+                    <li><i class="fas fa-times-circle"></i> কর্তৃপক্ষের অনুমতি ব্যতীত মাদ্রাসার গেইট এর বাইরে কোনো অবস্থাতেই যাওয়া যাবে না।</li>
+                    <li><i class="fas fa-times-circle"></i> মাদ্রাসার ভিতরে ছাত্রী এবং শিক্ষককের মধ্যে কোনো ব্যক্তিগত আচার-ব্যবহার সম্পূর্ণ নিষেধ।</li>
+                    <li><i class="fas fa-times-circle"></i> ছাত্রীদের নিকট মোবাইল ফোন, মেমোরি, সিম, ইন্টারনেট সম্পূর্ণ নিষেধ।</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- সার্টিফিকেট Section -->
+        <section id="certificate" style="padding: 60px 20px; max-width: 1200px; margin: 0 auto;">
+            <h2 class="section-title">সার্টিফিকেট</h2>
+            
+            <div class="card" style="text-align: center;">
+                <i class="fas fa-certificate" style="font-size: 80px; color: #00547e; margin-bottom: 20px;"></i>
+                <h3 style="font-size: 28px; color: #00547e; margin-bottom: 15px;">সার্টিফিকেট যাচাই ও ডাউনলোড</h3>
+                <p style="margin-bottom: 25px;">এখানে শিক্ষার্থীদের সার্টিফিকেট যাচাই ও ডাউনলোড তথ্য থাকবে। শিক্ষার্থীদের সার্টিফিকেট অনলাইনে যাচাই ও ডাউনলোডের সুবিধা শীঘ্রই চালু হবে। বর্তমানে সরাসরি অফিস থেকে সংগ্রহ করা যাবে।</p>
+                <div style="display: flex; gap: 15px; justify-content: center;">
+                    <a href="#" class="btn-primary" style="text-decoration: none;"><i class="fas fa-download"></i> ডাউনলোড ফরম</a>
+                    <a href="#" class="btn-primary" style="background: #27ae60; text-decoration: none;"><i class="fas fa-check-circle"></i> যাচাই করুন</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- রুটিন Section -->
+        <section id="routine" style="padding: 60px 20px; max-width: 1200px; margin: 0 auto;">
+            <h2 class="section-title">রুটিন</h2>
+            
+            <div style="text-align: center; margin-bottom: 30px;">
+                <button class="routine-tab active" onclick="showRoutine('daily')">📅 দৈনিক ক্লাস</button>
+                <button class="routine-tab" onclick="showRoutine('exam')">📝 পরীক্ষার রুটিন</button>
+                <button class="routine-tab" onclick="showRoutine('awkat')">⏰ নেজামুল আওকাত</button>
+            </div>
+            
+            <div id="dailyRoutine" class="routine-content active">
+                <div style="overflow-x: auto;">
+                    <table>
+                        <tr><th>সময়</th><th>রবিবার</th><th>সোমবার</th><th>মঙ্গলবার</th><th>বুধবার</th><th>বৃহস্পতিবার</th></tr>
+                        <tr><td>৮:০০-৯:০০</td><td>কুরআন</td><td>হাদিস</td><td>ফিকহ</td><td>তাফসীর</td><td>আকাইদ</td></tr>
+                        <tr><td>৯:০০-১০:০০</td><td>উর্দু</td><td>আরবি</td><td>বাংলা</td><td>ইংরেজি</td><td>গণিত</td></tr>
+                        <tr><td>১০:০০-১০:৩০</td><td colspan="5">বিশ্রাম</td></tr>
+                        <tr><td>১০:৩০-১২:০০</td><td>তাজবিদ</td><td>সিরাত</td><td>ফিকহ</td><td>হাদিস</td><td>তাফসীর</td></tr>
+                    </table>
+                </div>
+            </div>
+            
+            <div id="examRoutine" class="routine-content">
+                <div style="background: #f0f9ff; padding: 30px; border-radius: 16px; text-align: center;">
+                    <i class="fas fa-calendar-alt" style="font-size: 40px; color: #00547e; margin-bottom: 15px;"></i>
+                    <h3 style="font-size: 22px;">পরীক্ষার রুটিন শীঘ্রই প্রকাশিত হবে</h3>
+                    <p>বর্তমানে অফিস থেকে সংগ্রহ করুন।</p>
+                </div>
+            </div>
+            
+            <div id="awkatRoutine" class="routine-content">
+                <div style="display: grid; grid-template-columns: repeat(2,1fr); gap: 15px;">
+                    <div style="background: #f0f9ff; padding: 20px; border-radius: 12px;"><strong>ফজর:</strong> ৫:০০ AM</div>
+                    <div style="background: #f0f9ff; padding: 20px; border-radius: 12px;"><strong>সূর্যোদয়:</strong> ৬:১৫ AM</div>
+                    <div style="background: #f0f9ff; padding: 20px; border-radius: 12px;"><strong>যোহর:</strong> ১:১৫ PM</div>
+                    <div style="background: #f0f9ff; padding: 20px; border-radius: 12px;"><strong>আসর:</strong> ৪:৩০ PM</div>
+                    <div style="background: #f0f9ff; padding: 20px; border-radius: 12px;"><strong>মাগরিব:</strong> সূর্যাস্ত</div>
+                    <div style="background: #f0f9ff; padding: 20px; border-radius: 12px;"><strong>ইশা:</strong> ৭:১৫ PM</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ফলাফল Section -->
+        <section id="result" style="padding: 60px 20px; max-width: 1200px; margin: 0 auto;">
+            <h2 class="section-title">ফলাফল</h2>
+            
+            <div class="card">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
+                    <a href="https://hems.alhaiatululya.org/exam-result" target="_blank" style="background: #f0f9ff; padding: 25px; border-radius: 16px; text-decoration: none; color: #00547e; text-align: center;">
+                        <i class="fas fa-globe" style="font-size: 40px; margin-bottom: 10px;"></i>
+                        <h3 style="font-size: 22px;">হাইয়াতুল উলিয়া</h3>
+                        <p>রেজাল্ট দেখুন</p>
+                    </a>
+                    <a href="https://wifaqresult.com/" target="_blank" style="background: #f0f9ff; padding: 25px; border-radius: 16px; text-decoration: none; color: #00547e; text-align: center;">
+                        <i class="fas fa-globe" style="font-size: 40px; margin-bottom: 10px;"></i>
+                        <h3 style="font-size: 22px;">বেফাকুল মাদারিস</h3>
+                        <p>রেজাল্ট দেখুন</p>
+                    </a>
+                </div>
+                <p style="text-align: center;">সর্বশেষ পরীক্ষার ফলাফল এখানে প্রকাশ করা হয়। কোন সমস্যা হলে অফিসে যোগাযোগ করুন।</p>
+            </div>
+        </section>
+
+        <!-- গ্যালারি Section -->
+        <section id="gallery" style="padding: 60px 20px; max-width: 1200px; margin: 0 auto;">
+            <h2 class="section-title">গ্যালারি</h2>
+            <p style="text-align: center; margin-bottom: 30px;">মাদ্রাসার কিছু স্মরণীয় মুহূর্ত উপভোগ করুন:</p>
+            
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="jpg/Asset 1-100.jpg" alt="ছবি ১">
+                    <div class="gallery-overlay">মাদ্রাসা ভবন</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="jpg/20240216_1342381.jpg" alt="ছবি ২">
+                    <div class="gallery-overlay">শিক্ষা কার্যক্রম</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="jpg/473834899_1703614356863522_3412771631677724907_n.jpg" alt="ছবি ৩">
+                    <div class="gallery-overlay">সামাজিক অনুষ্ঠান</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="jpg/473843620_1703614170196874_8932438696129570475_n.jpg" alt="ছবি ৪">
+                    <div class="gallery-overlay">প্রার্থনা সভা</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="jpg/4.jpg" alt="ছবি ৫">
+                    <div class="gallery-overlay">পাঠদান</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="jpg/অফিস-ক্যানভাস1.jpg" alt="ছবি ৬">
+                    <div class="gallery-overlay">অফিস ক্যানভাস</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="jpg/অফিস-ক্যানভাস2.jpg" alt="ছবি ৭">
+                    <div class="gallery-overlay">অফিস ব্যবস্থা</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="jpg/dummm-campus.jpg" alt="ছবি ১১">
+                    <div class="gallery-overlay">ক্যাম্পাস</div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 30px;">
+                <button class="btn-primary">আরও ছবি দেখুন</button>
+            </div>
+        </section>
+
+        <!-- যোগাযোগ Section -->
+        <section id="contact" style="padding: 60px 20px; max-width: 1200px; margin: 0 auto;">
+            <h2 class="section-title">যোগাযোগ</h2>
+            
+            <div style="text-align: center; margin-bottom: 30px;">
+                <div style="display: inline-block; background: linear-gradient(135deg, #00547e, #0087b1); color: white; padding: 15px 30px; border-radius: 60px;">
+                    <i class="fas fa-map-marker-alt"></i> নয়া কান্দারগাঁও, লুটের চর-৩৫১৬, মেঘনা, কুমিল্লা
+                </div>
+            </div>
+            
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
+                    <h4>মোবাইল</h4>
+                    <a href="tel:01647382241">০১৬৪৭৩৮২২৪১</a>
+                    <a href="tel:01814853884">০১৮১৪৮৫৩৮৮৪</a>
+                    <a href="tel:01865778060">০১৮৬৫৭৭৮০৬০</a>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                    <h4>ইমেইল</h4>
+                    <a href="mailto:almadani8060@gmail.com">almadani8060@gmail.com</a>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-icon"><i class="fas fa-globe"></i></div>
+                    <h4>ওয়েবসাইট</h4>
+                    <a href="https://darululoom-deoband.com/home/" target="_blank">দারুল উলূম দেওবন্দ</a>
+                    <a href="https://almadania.netlify.app" target="_blank">আমাদের ওয়েবসাইট</a>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-icon"><i class="fab fa-facebook"></i></div>
+                    <h4>ফেসবুক</h4>
+                    <a href="https://www.facebook.com/profile.php?id=100092195414779" target="_blank">আমাদের পেইজ</a>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin: 30px 0;">
+                <a href="https://maps.app.goo.gl/o4F2Mo4VdpT3QiLc6" target="_blank" class="btn-primary" style="text-decoration: none;">
+                    <i class="fas fa-map-location-dot"></i> গুগল ম্যাপে দেখুন
+                </a>
+            </div>
+            
+            <div class="card">
+                <h3 style="color: #00547e; margin-bottom: 15px;"><i class="fas fa-bus"></i> যাতায়াত</h3>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div>
+                        <h4>কুমিল্লা বা ঢাকা থেকে:</h4>
+                        <p>সরাসরি ঢাকা চট্রগ্রাম হাইওয়ে ভাটেরচর নতুন রাস্তা নেমে অটো বা সিএনজি যুগে ইসলামি ব্যাংক সংলগ্ন নয়া কান্দারগাঁও মহিলা মাদরাসা।</p>
+                    </div>
+                    <div>
+                        <h4>মেঘনা উপজেলা থেকে:</h4>
+                        <p>সিএনজি বা অটো করে ১৫-২০ মিনিটে পৌঁছানো যায়। যাত্রীবাহী বাস মেঘনা ব্রিজ পার হওয়ার পর ভাটেরচর নতুন রাস্তা নিকটবর্তী লোকেশন: নয়া কান্দারগাঁও।</p>
+                    </div>
+                </div>
+                <p style="text-align: center; margin-top: 15px; font-weight: bold;">স্থানীয় পরিবহন সহজলভ্য ও নিরাপদ।</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-logo">
+                <img src="png/Asset 4.png" alt="Logo">
+                <p>নারী শিক্ষার আলোকিত পথ। কুরআন, হাদিস এবং ইসলামিক শিক্ষা প্রদানের মাধ্যমে একটি নৈতিক ও সুপথগামী সমাজ তৈরিতে প্রতিশ্রুতিবদ্ধ।</p>
+            </div>
+            
+            <div class="footer-links">
+                <h3>গুরুত্বপূর্ণ লিংক</h3>
+                <a href="https://shed.portal.gov.bd/" target="_blank"><i class="fas fa-link"></i> শিক্ষা মন্ত্রণালয়</a>
+                <a href="https://hems.alhaiatululya.org/" target="_blank"><i class="fas fa-link"></i> আল-হাইআতুল উলইয়া</a>
+                <a href="https://darululoom-deoband.com/home/" target="_blank"><i class="fas fa-link"></i> দারুল উলূম দেওবন্দ</a>
+                <a href="https://darululoomkarachi.edu.pk/" target="_blank"><i class="fas fa-link"></i> দারুল উলূম করাচি</a>
+                <a href="https://maps.app.goo.gl/o4F2Mo4VdpT3QiLc6" target="_blank"><i class="fas fa-map-marker-alt"></i> নয়াকান্দারগাঁও</a>
+            </div>
+            
+            <div class="footer-contact">
+                <h3>যোগাযোগ</h3>
+                <a href="tel:01647382241"><i class="fas fa-phone-alt"></i> ০১৬৪৭৩৮২২৪১</a>
+                <a href="tel:01814853884"><i class="fas fa-phone-alt"></i> ০১৮১৪৮৫৩৮৮৪</a>
+                <a href="tel:01865778060"><i class="fas fa-phone-alt"></i> ০১৮৬৫৭৭৮০৬০</a>
+                <a href="mailto:almadani8060@gmail.com"><i class="fas fa-envelope"></i> ইমেইল</a>
+                
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/profile.php?id=100092195414779" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://maps.app.goo.gl/o4F2Mo4VdpT3QiLc6" target="_blank"><i class="fas fa-map-marker-alt"></i></a>
+                    <a href="https://almadania.netlify.app" target="_blank"><i class="fas fa-globe"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Floating WhatsApp -->
+    <div class="floating-whatsapp">
+        <a href="https://wa.me/8801980817196" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    </div>
+    
+    <!-- Mobile Bottom Bar -->
+    <div class="mobile-bottom-bar">
+        <a href="#home"><i class="fas fa-home"></i> হোম</a>
+        <a href="#vorti"><i class="fas fa-pen"></i> ভর্তি</a>
+        <a href="#gallery"><i class="fas fa-image"></i> গ্যালারি</a>
+        <a href="#contact"><i class="fas fa-phone"></i> যোগাযোগ</a>
+    </div>
+    
+    <!-- Copyright -->
+    <div class="copyright">
+        © ২০২৫ দারুল উলূম মাদানিয়া মহিলা মাদ্রাসা। সর্বস্বত্ব সংরক্ষিত।
+    </div>
+    
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100
+        });
+        
+        // Mobile Menu Toggle
+        function toggleMenu() {
+            const menu = document.getElementById('menuList');
+            menu.classList.toggle('show');
         }
-      });
-
-      // মোবাইল মেনু বন্ধ করে দাও
-      const menu = document.getElementById('menuList');
-      if (menu.classList.contains('show')) {
-        menu.classList.remove('show');
-      }
-    }
-
-    // মোবাইলের মেনু টগল
-    function toggleMenu() {
-      const menu = document.getElementById('menuList');
-      menu.classList.toggle('show');
-    }
-
-    // যখন পেজ প্রথমবার লোড হবে
-    window.addEventListener('load', function () {
-      showPage('home'); // হোম পেজ দেখাও
-
-      // গ্যালারি ছবির lazy load animation
-      const galleryImages = document.querySelectorAll('.gallery-grid img');
-      if ('IntersectionObserver' in window) {
-        const observer = new IntersectionObserver(entries => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('visible');
-              observer.unobserve(entry.target);
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('#menuList a').forEach(link => {
+            link.addEventListener('click', function() {
+                document.getElementById('menuList').classList.remove('show');
+            });
+        });
+        
+        // Active menu on scroll
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('#menuList a');
+            
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                const sectionHeight = section.clientHeight;
+                if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+        
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+        
+        // Toggle Verification Form
+        function toggleVerification() {
+            const form = document.getElementById('verificationForm');
+            form.classList.toggle('active');
+            if (form.classList.contains('active')) {
+                form.scrollIntoView({ behavior: 'smooth' });
             }
-          });
-        }, { threshold: 0.1 });
-
-        galleryImages.forEach(img => observer.observe(img));
-      } else {
-        galleryImages.forEach(img => img.classList.add('visible'));
-      }
-    });
-  </script>
-<div class="footer©">  
-  <div class="footer©t"> © ২০২৫ দারুল উলূম মাদানিয়া মহিলা মাদ্রাসা। সর্বস্বত্ব সংরক্ষিত। </div>
-</body>
-</html>
+        }
+        
+        // Close verification form when clicking outside
+        document.addEventListener('click', function(e) {
+            const form = document.getElementById('verificationForm');
+            const btn = document.querySelector('.btn-primary');
+            
+            if (form && btn && form.classList.contains('active') && 
+                !form.contains(e.target) && !btn.contains(e.target)) {
+                form.classList.remove('active');
+            }
+        });
+        
+        // Verify Student
+        function verifyStudent() {
+            const session = document.getElementById('session').value;
+            const jamat = document.getElementById('jamat').value;
+            const reg = document.getElementById('reg').value;
+            const roll = document.getElementById('roll').value;
+            
+            if (!session || !jamat || !reg || !roll) {
+                alert('সব তথ্য সঠিকভাবে পূরণ করুন');
+                return;
+            }
+            
+            window.location.href = `verify.html?year=${encodeURIComponent(session)}&jamat=${encodeURIComponent(jamat)}&reg=${encodeURIComponent(reg)}&roll=${encodeURIComponent(roll)}`;
+        }
+        
+        // Show Routine Tabs
+        function showRoutine(type) {
+            document.querySelectorAll('.routine-tab').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            document.querySelectorAll('#dailyRoutine, #examRoutine, #awkatRoutine').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            if (type === 'daily') document.getElementById('dailyRoutine').classList.add('active');
+            else if (type === 'exam') document.getElementById('examRoutine').classList.add('active');
+            else if (type === 'awkat') document.getElementById('awkatRoutine').classList.add('active');
+        }
+        
+        // Show Cost Tabs
+        function showCostTab(index) {
+            document.querySelectorAll('.routine-tab').forEach((btn, i) => {
+                if (i < 2) {
+                    if (i === index) btn.classList.add('active');
+                    else btn.classList.remove('active');
+                }
+            });
+            
+            document.getElementById('costTab0').classList.toggle('active', index === 0);
+            document.getElementById('costTab1').classList.toggle('active', index === 1);
+        }
+        
+        // Global Search
+        function performSearch() {
+            const query = document.getElementById('searchInput').value.toLowerCase().trim();
+            if (!query) {
+                alert('অনুগ্রহ করে সার্চ টেক্সট লিখুন');
+                return;
+            }
+            
+            const sections = document.querySelectorAll('section');
+            let found = false;
+            
+            sections.forEach(section => {
+                if (section.innerText.toLowerCase().includes(query)) {
+                    found = true;
+                    section.scrollIntoView({ behavior: 'smooth' });
+                    section.style.background = '#fff3cd';
+                    setTimeout(() => section.style.background = '', 2000);
+                }
+            });
+            
+            if (!found) {
+                alert('কিছু পাওয়া যায়নি');
+            }
+        }
+        
+        // Check URL hash on load
+        window.addEventListener('load', function() {
+            if (window.location.hash) {
+                const target = document.querySelector(window.location.hash);
+                if (target) {
+                    setTimeout(() => {
+                        target.scrollIntoView({ behavior: 'smooth' });
+                    }, 500);
+                }
+            }
+        });
+    </script>
 </body>
 </html>
