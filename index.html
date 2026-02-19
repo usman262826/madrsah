@@ -578,7 +578,7 @@
         .program-badges {
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 8px;
             flex-wrap: wrap;
             margin-bottom: 50px;
         }
@@ -587,7 +587,7 @@
             background: linear-gradient(145deg, #c0392b, #a8322a);
             color: white;
             padding: 14px 40px;
-            border-radius: 60px;
+            border-radius: 10px;
             font-size: clamp(18px, 4vw, 22px);
             font-weight: 600;
             box-shadow: 0 10px 20px rgba(192, 57, 43, 0.3);
@@ -598,7 +598,7 @@
             background: linear-gradient(145deg, #00547e, #003b5c);
             color: white;
             padding: 14px 40px;
-            border-radius: 60px;
+            border-radius: 10px;
             font-size: clamp(18px, 4vw, 22px);
             font-weight: 600;
             box-shadow: 0 10px 20px rgba(0, 84, 126, 0.3);
@@ -609,7 +609,7 @@
             background: linear-gradient(145deg, #0087b1, #006988);
             color: white;
             padding: 14px 40px;
-            border-radius: 60px;
+            border-radius: 10px;
             font-size: clamp(18px, 4vw, 22px);
             font-weight: 600;
             box-shadow: 0 10px 20px rgba(0, 135, 177, 0.3);
@@ -619,7 +619,7 @@
         /* Department Cards */
         .dept-main-card {
             background: white;
-            border-radius: 40px;
+            border-radius: 10px;
             padding: clamp(30px, 6vw, 50px);
             box-shadow: 0 30px 50px -20px rgba(0,0,0,0.3), 0 0 0 1px rgba(0,0,0,0.05);
         }
@@ -1048,9 +1048,10 @@
         /* Floating WhatsApp */
         .floating-whatsapp {
             position: fixed;
-            bottom: clamp(15px, 4vw, 20px);
-            left: clamp(15px, 4vw, 20px);
+            bottom: clamp(9%, 4vw, 20px);
+            left: clamp(82%, 4vw, 20px);
             z-index: 999;
+
         }
 
         .floating-whatsapp a {
@@ -1485,7 +1486,7 @@
                             <div style="flex: 1; min-width: 150px;">
                                 <div style="font-size: 60px; line-height: 1;">📖</div>
                             </div>
-                            <div style="flex: 4;">
+                            <div style="flex:;">
                                 <div class="feature-tags">
                                     <span class="feature-tag">🔹 কুরআন পরিচিতি</span>
                                     <span class="feature-tag">🔹 তাজবিদ শিক্ষা</span>
@@ -1506,7 +1507,7 @@
                     </div>
                     
                     <div class="kitab-badge">
-                        <strong style="color: #00547e;">খুলুছী জামাত</strong> থেকে <strong style="color: #c0392b;">দাওরায়ে হাদিস</strong> পর্যন্ত সম্পূর্ণ কওমী নেসাব
+                        <strong style="color: #00547e;">খুসুছি জামাত</strong> থেকে <strong style="color: #c0392b;">দাওরায়ে হাদিস</strong> পর্যন্ত সম্পূর্ণ কওমী নেসাব
                     </div>
                     
                     <div class="table-container">
@@ -1535,7 +1536,7 @@
                     <!-- Additional note with style -->
                     <div class="note-card">
                         <span style="font-size: 24px;">✨</span>
-                        <p style="margin: 0; color: #1e293b; font-weight: 500;">দাওরায়ে হাদিস শেষে শিক্ষার্থীরা দেশ-বিদেশের উচ্চ শিক্ষা ও গবেষণায় অংশগ্রহণের সুযোগ পায়।</p>
+                        <p style="margin: 0; color: #1e293b; font-weight: 500;">বাংলাদেশ কওমি মাদরাসা শিক্ষাবোর্ড কর্তৃক সিলেবাসে পরিচালিত</p>
                     </div>
                 </div>
             </div>
@@ -1715,11 +1716,542 @@
                     </div>
                 </div>
                 
-                <div id="examRoutine" class="routine-content">
+                <div id="examRoutine" class="routine-content">              
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+                    <title>বার্ষিক পরীক্ষা ১৪৪৭ হিজরী | পরীক্ষার রুটিন</title>
+                    
+                    <!-- Fonts -->
+                    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Noto+Nastaliq+Urdu:wght@400;700&family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+                    
+                    <!-- Font Awesome -->
+                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+                    
+                    <style>
+                        * {
+                            margin: 0;
+                            padding: 0;
+                            box-sizing: border-box;
+                        }
+
+                        /* Header */
+                        .header {
+                            background: linear-gradient(145deg, #0a2a44, #1b4f6e);
+                            color: white;
+                            padding: 35px 20px 40px 20px;
+                            text-align: center;
+                            border-bottom: 5px solid #f9b23f;
+                            position: relative;
+                        }
+
+                        .header h1 {
+                            font-size: 26px;
+                            font-weight: 700;
+                            line-height: 1.4;
+                            margin-bottom: 10px;
+                        }
+
+                        .header h2 {
+                            font-size: 22px;
+                            font-weight: 500;
+                            background: rgba(255,255,255,0.15);
+                            display: inline-block;
+                            padding: 8px 30px;
+                            border-radius: 50px;
+                            margin: 10px 0;
+                        }
+
+                        .time-badge {
+                            background: #f9b23f;
+                            color: #0a2a44;
+                            padding: 12px 30px;
+                            border-radius: 60px;
+                            font-weight: 700;
+                            font-size: 20px;
+                            display: inline-flex;
+                            align-items: center;
+                            gap: 10px;
+                            margin-top: 10px;
+                            box-shadow: 0 10px 20px -5px rgba(0,0,0,0.3);
+                        }
+
+                        /* Stats */
+                        .stats {
+                            display: flex;
+                            justify-content: space-around;
+                            background: white;
+                            padding: 15px;
+                            border-bottom: 1px solid #e2ecf9;
+                            flex-wrap: wrap;
+                            gap: 10px;
+                        }
+
+                        .stat-item {
+                            background: #ecf5ff;
+                            padding: 8px 18px;
+                            border-radius: 40px;
+                            font-size: 14px;
+                            font-weight: 600;
+                            color: #1b4f6e;
+                            display: flex;
+                            align-items: center;
+                            gap: 8px;
+                        }
+
+                        /* Routine Cards */
+                        .routine-stack {
+                            padding: 16px 16px 24px 16px;
+                            display: flex;
+                            flex-direction: column;
+                            gap: 18px;
+                        }
+
+                        .day-card {
+                            background: white;
+                            border-radius: 30px;
+                            border: 1px solid #dbe8f5;
+                            box-shadow: 0 8px 20px -8px rgba(0,40,80,0.1);
+                            overflow: hidden;
+                        }
+
+                        .card-header {
+                            background: #f3f9ff;
+                            padding: 16px 18px;
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                            border-bottom: 2px solid #c9ddf2;
+                        }
+
+                        .date-info {
+                            display: flex;
+                            flex-direction: column;
+                        }
+
+                        .gregorian {
+                            font-size: 20px;
+                            font-weight: 700;
+                            color: #0a2a44;
+                            display: flex;
+                            align-items: center;
+                            gap: 8px;
+                        }
+
+                        .hijri {
+                            font-size: 15px;
+                            color: #557a9a;
+                            font-weight: 500;
+                            margin-top: 4px;
+                            font-family: 'Amiri', serif;
+                        }
+
+                        .day-badge {
+                            background: #1b4f6e;
+                            color: white;
+                            padding: 6px 20px;
+                            border-radius: 40px;
+                            font-size: 18px;
+                            font-weight: 600;
+                            white-space: nowrap;
+                        }
+
+                        /* Subjects Grid */
+                        .subjects-grid {
+                            display: grid;
+                            grid-template-columns: repeat(2, 1fr);
+                            gap: 12px;
+                            padding: 18px;
+                            background: white;
+                        }
+
+                        .subject-item {
+                            background: #fafdff;
+                            border: 1px solid #e0edfd;
+                            border-radius: 20px;
+                            padding: 16px 8px;
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                            text-align: center;
+                            min-height: 95px;
+                            justify-content: center;
+                        }
+
+                        .class-label {
+                            font-size: 13px;
+                            font-weight: 600;
+                            color: #5f7e9e;
+                            text-transform: uppercase;
+                            margin-bottom: 6px;
+                            background: #e8f0fa;
+                            padding: 3px 12px;
+                            border-radius: 30px;
+                        }
+
+                        .subject-name {
+                            font-size: 17px;
+                            font-weight: 600;
+                            line-height: 1.4;
+                        }
+
+                        /* Font Classes */
+                        .arabic {
+                            font-family: 'Amiri', serif;
+                            font-size: 18px;
+                            font-weight: 700;
+                            color: #0d4b6e;
+                        }
+
+                        .urdu {
+                            font-family: 'Noto Nastaliq Urdu', serif;
+                            font-size: 18px;
+                            color: #8b5a2b;
+                            line-height: 1.8;
+                            direction: rtl;
+                            unicode-bidi: embed;
+                        }
+
+                        .bangla {
+                            font-family: 'Hind Siliguri', sans-serif;
+                            font-weight: 600;
+                            color: #145a8c;
+                        }
+
+                        /* Special Card */
+                        .special-card {
+                            background: #fef7ed;
+                            border: 2px solid #f9d9b5;
+                            border-radius: 30px;
+                            padding: 24px 20px;
+                            text-align: center;
+                        }
+
+                        .special-header {
+                            display: flex;
+                            justify-content: center;
+                            gap: 15px;
+                            align-items: center;
+                            flex-wrap: wrap;
+                            margin-bottom: 15px;
+                        }
+
+                        .special-date {
+                            background: #ffe6c9;
+                            padding: 6px 20px;
+                            border-radius: 40px;
+                            font-weight: 700;
+                            color: #754e24;
+                        }
+
+                        .special-badge {
+                            background: #8b6b4d;
+                            color: white;
+                            padding: 6px 20px;
+                            border-radius: 40px;
+                            font-family: 'Amiri', serif;
+                        }
+
+                        .special-title {
+                            font-size: 24px;
+                            font-weight: 800;
+                            color: #5d3a1a;
+                            margin: 10px 0;
+                        }
+
+                        .break-icons {
+                            display: flex;
+                            justify-content: center;
+                            gap: 25px;
+                            font-size: 30px;
+                            color: #9b7a55;
+                            margin: 15px 0;
+                        }
+
+                        .result-card {
+                            background: linear-gradient(145deg, #fff1f0, #ffe4e0);
+                            border-color: #ffb5aa;
+                        }
+
+                        .result-title {
+                            color: #b13e3e;
+                            font-size: 26px;
+                        }
+
+                        /* Footer */
+                        .footer {
+                            background: #00414d;
+                            padding: 25px 20px;
+                            border-top: 2px solid #f9b23f;
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                            flex-wrap: wrap;
+                            gap: 20px;
+                        }
+
+                        .signature {
+                            flex: 1;
+                            text-align: center;
+                        }
+
+                        .signature-line {
+                            width: 100%;
+                            height: 2px;
+                            background: repeating-linear-gradient(90deg, #1b4f6e 0px, #1b4f6e 8px, transparent 8px, transparent 16px);
+                            margin: 10px 0 5px;
+                        }
+
+                        .signature-text {
+                            font-weight: 700;
+                            color: #0a2a44;
+                        }
+
+                        .stamp {
+                            background: #fff2d7;
+                            border: 2px dashed #c49a6c;
+                            padding: 10px 25px;
+                            border-radius: 50px;
+                            font-family: 'Noto Nastaliq Urdu', serif;
+                            font-size: 20px;
+                            color: #7b623e;
+                            transform: rotate(-3deg);
+                        }
+
+                        .dots {
+                            text-align: center;
+                            padding: 0 20px 20px;
+                            font-size: 22px;
+                            letter-spacing: 8px;
+                            color: #5a7c9c;
+                        }
+
+                        @media (max-width: 400px) {
+                            .subjects-grid {
+                                grid-template-columns: 1fr;
+                            }
+                        }
+                    </style>
+                </head>
+                <body>
+
+                <div class="container">
+                    <!-- Header - সম্পূর্ণ বাংলায় -->
+                    <div class="header">
+                        <h1>বার্ষিক পরিক্ষা ১৪৪৭ হিজরী<br>২০২৫-২৬ ইং শিক্ষাবর্ষ</h1>
+                        <h2>পরিক্ষার রুটিন</h2>  <!-- শুধু বাংলা, আরবি মিক্সড নয় -->
+                        <div class="time-badge">
+                            <i class="fas fa-clock"></i> সকাল ৮.৩০ – ১১.০০
+                        </div>
+                    </div>
+
+                    <!-- Stats - সম্পূর্ণ বাংলায় -->
+                    <div class="stats">
+                        <div class="stat-item"><i class="fas fa-calendar"></i> ২১ ফেব্রু - ১ মার্চ</div>
+                        <div class="stat-item"><i class="fas fa-moon"></i> ৩ - ১১ রমজান</div>  <!-- শুধু বাংলা -->
+                    </div>
+
+                    <!-- Routine Cards -->
+                    <div class="routine-stack">
+
+                        <!-- ২১ ফেব্রুয়ারি - শনিবার (৩ রমজান) -->
+                        <div class="day-card">
+                            <div class="card-header">
+                                <div class="date-info">
+                                    <span class="gregorian"><i class="far fa-calendar"></i> ২১ ফেব্রুয়ারি ২০২৫</span>
+                                    <span class="hijri">৩ রমজান ১৪৪৭</span>  <!-- শুধু বাংলা -->
+                                </div>
+                                <div class="day-badge">শনিবার</div>  <!-- বাংলা -->
+                            </div>
+                            <div class="subjects-grid">
+                                <div class="subject-item"><span class="class-label">মেশকাত</span><span class="subject-name arabic">مشكاة المصابح -1</span></div>
+                                <div class="subject-item"><span class="class-label">নাহবেমীর</span><span class="subject-name arabic">نحومير</span></div>
+                                <div class="subject-item"><span class="class-label">মিযান</span><span class="subject-name urdu">ميزانُ الصرف و منشعب</span></div>  <!-- উর্দু -->
+                                <div class="subject-item"><span class="class-label">খুছুছি (৪র্থ)</span><span class="subject-name bangla">আরবি</span></div>
+                                <div class="subject-item"><span class="class-label">ছালেছ (৩য়)</span><span class="subject-name bangla">আরবি</span></div>
+                                <div class="subject-item"><span class="class-label">আওয়াল (১ম)</span><span class="subject-name bangla">আরবি</span></div>
+                            </div>
+                        </div>
+
+                        <!-- ২২ ফেব্রুয়ারি - রবিবার (৪ রমজান) -->
+                        <div class="day-card">
+                            <div class="card-header">
+                                <div class="date-info">
+                                    <span class="gregorian"><i class="far fa-calendar"></i> ২২ ফেব্রুয়ারি ২০২৫</span>
+                                    <span class="hijri">৪ রমজান ১৪৪৭</span>  <!-- বাংলা -->
+                                </div>
+                                <div class="day-badge" style="background:#3f6b8c;">রবিবার</div>  <!-- বাংলা -->
+                            </div>
+                            <div class="subjects-grid">
+                                <div class="subject-item"><span class="class-label">মেশকাত</span><span class="subject-name arabic">العقيدة الطحاوية</span></div>
+                                <div class="subject-item"><span class="class-label">নাহবেমীর</span><span class="subject-name arabic">روضة الادب</span></div>
+                                <div class="subject-item"><span class="class-label">মিযান</span><span class="subject-name arabic">الطريق إلى العربية</span></div>
+                                <div class="subject-item"><span class="class-label">খুছুছি (৪র্থ)</span><span class="subject-name urdu">اردو کی پہلی کتاب</span></div>  <!-- উর্দু -->
+                                <div class="subject-item"><span class="class-label">ছালেছ (৩য়)</span><span class="subject-name urdu">اردو قاعدہ</span></div>  <!-- উর্দু -->
+                                <div class="subject-item"><span class="class-label">আওয়াল (১ম)</span><span class="subject-name bangla">হাদীস ও মাসআলা</span></div>
+                            </div>
+                        </div>
+
+                        <!-- ২৩ ফেব্রুয়ারি - সোমবার (৫ রমজান) -->
+                        <div class="day-card">
+                            <div class="card-header">
+                                <div class="date-info">
+                                    <span class="gregorian"><i class="far fa-calendar"></i> ২৩ ফেব্রুয়ারি ২০২৫</span>
+                                    <span class="hijri">৫ রমজান ১৪৪৭</span>  <!-- বাংলা -->
+                                </div>
+                                <div class="day-badge" style="background:#2e7a6e;">সোমবার</div>  <!-- বাংলা -->
+                            </div>
+                            <div class="subjects-grid">
+                                <div class="subject-item"><span class="class-label">মেশকাত</span><span class="subject-name arabic">تفسيرالجلالين -1</span></div>
+                                <div class="subject-item"><span class="class-label">নাহবেমীর</span><span class="subject-name urdu">سیرتِ خاتمُ الانبیاء</span></div>  <!-- উর্দু -->
+                                <div class="subject-item"><span class="class-label">মিযান</span><span class="subject-name bangla">বাংলা ও ব্যাকরণ</span></div>
+                                <div class="subject-item"><span class="class-label">খুছুছি (৪র্থ)</span><span class="subject-name bangla">ইতিহাস ও ভূগোল</span></div>
+                                <div class="subject-item"><span class="class-label">ছালেছ (৩য়)</span><span class="subject-name bangla">ইংরেজি</span></div>
+                                <div class="subject-item"><span class="class-label">আওয়াল (১ম)</span><span class="subject-name bangla">ইংরেজি</span></div>
+                            </div>
+                        </div>
+
+                        <!-- ২৪ ফেব্রুয়ারি - মঙ্গলবার (৬ রমজান) -->
+                        <div class="day-card">
+                            <div class="card-header">
+                                <div class="date-info">
+                                    <span class="gregorian"><i class="far fa-calendar"></i> ২৪ ফেব্রুয়ারি ২০২৫</span>
+                                    <span class="hijri">৬ রমজান ১৪৪৭</span>  <!-- বাংলা -->
+                                </div>
+                                <div class="day-badge" style="background:#a8724a;">মঙ্গলবার</div>  <!-- বাংলা -->
+                            </div>
+                            <div class="subjects-grid">
+                                <div class="subject-item"><span class="class-label">মেশকাত</span><span class="subject-name arabic">هداية - 3</span></div>
+                                <div class="subject-item"><span class="class-label">নাহবেমীর</span><span class="subject-name arabic">الفقه الميسر</span></div>
+                                <div class="subject-item"><span class="class-label">মিযান</span><span class="subject-name urdu">تاریخ الاسلام</span></div>  <!-- উর্দু -->
+                                <div class="subject-item"><span class="class-label">খুছুছি (৪র্থ)</span><span class="subject-name bangla">বাংলা</span></div>
+                                <div class="subject-item"><span class="class-label">ছালেছ (৩য়)</span><span class="subject-name bangla">ইতিহাস ও ভূগোল</span></div>
+                                <div class="subject-item"><span class="class-label">আওয়াল (১ম)</span><span class="subject-name bangla">গণিত</span></div>
+                            </div>
+                        </div>
+
+                        <!-- ২৫ ফেব্রুয়ারি - বুধবার (৭ রমজান) -->
+                        <div class="day-card">
+                            <div class="card-header">
+                                <div class="date-info">
+                                    <span class="gregorian"><i class="far fa-calendar"></i> ২৫ ফেব্রুয়ারি ২০২৫</span>
+                                    <span class="hijri">৭ রমজান ১৪৪৭</span>  <!-- বাংলা -->
+                                </div>
+                                <div class="day-badge" style="background:#9c5470;">বুধবার</div>  <!-- বাংলা -->
+                            </div>
+                            <div class="subjects-grid">
+                                <div class="subject-item"><span class="class-label">মেশকাত</span><span class="subject-name arabic">مشكاة المصابح -2</span></div>
+                                <div class="subject-item"><span class="class-label">নাহবেমীর</span><span class="subject-name urdu">پنجگانج</span></div>  <!-- উর্দু -->
+                                <div class="subject-item"><span class="class-label">মিযান</span><span class="subject-name bangla">ইংরেজি ও গ্রামার</span></div>
+                                <div class="subject-item"><span class="class-label">খুছুছি (৪র্থ)</span><span class="subject-name bangla">গণিত</span></div>
+                                <div class="subject-item"><span class="class-label">ছালেছ (৩য়)</span><span class="subject-name bangla">বাংলা</span></div>
+                                <div class="subject-item"><span class="class-label">আওয়াল (১ম)</span><span class="subject-name bangla">সাধারণ জ্ঞান</span></div>
+                            </div>
+                        </div>
+
+                        <!-- ২৬ ফেব্রুয়ারি - বৃহস্পতিবার (৮ রমজান) -->
+                        <div class="day-card">
+                            <div class="card-header">
+                                <div class="date-info">
+                                    <span class="gregorian"><i class="far fa-calendar"></i> ২৬ ফেব্রুয়ারি ২০২৫</span>
+                                    <span class="hijri">৮ রমজান ১৪৪৭</span>  <!-- বাংলা -->
+                                </div>
+                                <div class="day-badge" style="background:#5a6b99;">বৃহস্পতিবার</div>  <!-- বাংলা -->
+                            </div>
+                            <div class="subjects-grid">
+                                <div class="subject-item"><span class="class-label">মেশকাত</span><span class="subject-name arabic">هداية -4</span></div>
+                                <div class="subject-item"><span class="class-label">নাহবেমীর</span><span class="subject-name arabic">شرح مئة عامل</span></div>
+                                <div class="subject-item"><span class="class-label">মিযান</span><span class="subject-name urdu">بہشتی زیور</span></div>  <!-- উর্দু -->
+                                <div class="subject-item"><span class="class-label">খুছুছি (৪র্থ)</span><span class="subject-name bangla">ইংরেজি ও গ্রামার</span></div>
+                                <div class="subject-item"><span class="class-label">ছালেছ (৩য়)</span><span class="subject-name bangla">গণিত</span></div>
+                                <div class="subject-item"><span class="class-label">আওয়াল (১ম)</span><span class="subject-name bangla">বাংলা</span></div>
+                            </div>
+                        </div>
+
+                        <!-- ২৭ ফেব্রুয়ারি - শুক্রবার (৯ রমজান) - বিশেষ: শুধু খুছুছি (৪র্থ) এর ক্লাস -->
+                        <div class="special-card">
+                            <div class="special-header">
+                                <span class="special-date"><i class="far fa-calendar"></i> ২৭ ফেব্রুয়ারি ২০২৫</span>
+                                <span class="special-badge">৯ রমজান ১৪৪৭</span>  <!-- বাংলা -->
+                            </div>
+                            <div class="break-icons">
+                                <i class="fas fa-mosque"></i>
+                                <i class="fas fa-book-open"></i>
+                                <i class="fas fa-coffee"></i>
+                            </div>
+                            <div class="special-title">বিরতি</div>
+                            <div style="background: #fef0dd; max-width: 300px; margin: 10px auto; padding: 12px; border-radius: 20px;">
+                                <span style="font-size: 13px; font-weight: 600; color: #5f7e9e; display: block; margin-bottom: 5px;">খুছুছি (৪র্থ)</span>
+                                <span class="urdu" style="font-size: 22px;">تعلیمُ الاسلام</span>  <!-- উর্দু -->
+                            </div>
+                            <div style="color: #6f4e2e; margin-top: 5px;">অন্যান্য জামাতের জন্য পূর্ণ বিরতি</div>
+                        </div>
+
+                        <!-- ২৮ ফেব্রুয়ারি - শনিবার (১০ রমজান) -->
+                        <div class="day-card">
+                            <div class="card-header">
+                                <div class="date-info">
+                                    <span class="gregorian"><i class="far fa-calendar"></i> ২৮ ফেব্রুয়ারি ২০২৫</span>
+                                    <span class="hijri">১০ রমজান ১৪৪৭</span>  <!-- বাংলা -->
+                                </div>
+                                <div class="day-badge">শনিবার</div>  <!-- বাংলা -->
+                            </div>
+                            <div class="subjects-grid">
+                                <div class="subject-item"><span class="class-label">মেশকাত</span><span class="subject-name arabic">تفسيرالجلالين -2</span></div>
+                                <div class="subject-item"><span class="class-label">নাহবেমীর</span><span class="subject-name bangla">বাংলা ও ব্যাকরণ</span></div>
+                                <div class="subject-item"><span class="class-label">মিযান</span><span class="subject-name bangla">গণিত</span></div>
+                                <div class="subject-item"><span class="class-label">খুছুছি (৪র্থ)</span><span class="subject-name bangla">সাধারণ জ্ঞান</span></div>
+                                <div class="subject-item"><span class="class-label">ছালেছ (৩য়)</span><span class="subject-name bangla">সাধারণ জ্ঞান</span></div>
+                                <div class="subject-item"><span class="class-label">আওয়াল (১ম)</span><span class="subject-name arabic">۞۞۞۞۞</span></div>
+                            </div>
+                        </div>
+
+                        <!-- ২৮ ফেব্রুয়ারি - রবিবার (১০ রমজান) - কুরআন -->
+                        <div class="special-card" style="background: #e3f0e8; border-color: #a0c9b5;">
+                            <div class="special-header">
+                                <span class="special-date"><i class="far fa-calendar"></i> ২৮ ফেব্রুয়ারি ২০২৫</span>
+                                <span class="special-badge" style="background: #2f6b4d;">রবিবার</span>  <!-- বাংলা -->
+                            </div>
+                            <div class="special-title" style="color: #1e6b4c;">القرآن الكريم (شفهيّ)</div>  <!-- আরবি -->
+                            <div style="font-size: 24px; font-weight: 600; margin: 10px 0;">কুরআন শরীফ (মৌখিক)</div>  <!-- বাংলা -->
+                            <div style="font-size: 40px; margin: 10px 0;">📖</div>
+                        </div>
+
+                        <!-- ০১ মার্চ - সোমবার (১১ রমজান) - ফলাফল -->
+                        <div class="special-card result-card">
+                            <div class="special-header">
+                                <span class="special-date"><i class="far fa-calendar"></i> ০১ মার্চ ২০২৫</span>
+                                <span class="special-badge">১১ রমজান ১৪৪৭</span>  <!-- বাংলা -->
+                            </div>
+                            <div class="result-title">🎉 বার্ষিক পরিক্ষার ফলাফল প্রকাশ 🎉</div>  <!-- সম্পূর্ণ বাংলা -->
+                            <div style="font-size: 20px; margin-top: 10px;">সোমবার</div>  <!-- বাংলা -->
+                        </div>
+                    </div>
+
+                    <!-- Footer - সম্পূর্ণ বাংলায় -->
+                    <div class="footer">
+                        <div class="signature">
+                            <div class="signature-line"></div>
+                            <div class="signature-text">পরিক্ষা নিয়ন্ত্রক</div>
+                        </div>
+                        <div class="stamp">
+                            معتمد  <!-- উর্দু/আরবি স্ট্যাম্প -->
+                        </div>
+                        <div class="signature">
+                            <div class="signature-line"></div>
+                            <div class="signature-text">দফতরে তালিমাত</div>
+                        </div>
+                    </div>
+
+                    <!-- Dots -->
+                    <div class="dots">
+                        …………………… &nbsp;&nbsp;&nbsp; …………………………
+                    </div>
+                </div>
+
                     <div style="background: var(--gray-100); padding: 20px; border-radius: 12px; text-align: center;">
                         <i class="fas fa-calendar-alt" style="font-size: 40px; color: var(--primary); margin-bottom: 10px;"></i>
-                        <h3 style="font-size: clamp(20px, 4.5vw, 22px);">পরীক্ষার রুটিন শীঘ্রই প্রকাশিত হবে</h3>
-                        <p>বর্তমানে অফিস থেকে সংগ্রহ করুন।</p>
+                        <h3 style="font-size: clamp(20px, 4.5vw, 22px);">পরবির্তী পরীক্ষার রুটিন এখনেই প্রকাশিত হবে</h3>
+                        <p>বর্তমান শিক্ষাবর্ষ</p>
                     </div>
                 </div>
                 
