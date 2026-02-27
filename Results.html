@@ -16,9 +16,9 @@
         }
 
         body {
-            background: linear-gradient(135deg, #eaeeff 0%, #ffb4d3 100%);
+            background: linear-gradient(135deg, #ffffff 0%, #ffdbea 100%);
             min-height: 100vh;
-            padding: 20px;
+            padding: 1px;
         }
 
         .container {
@@ -26,42 +26,8 @@
             margin: 0 auto;
         }
 
-        /* Main Button */
-        .main-btn-container {
-            text-align: center;
-            margin: 40px 0;
-        }
-
-        .main-btn {
-            background: linear-gradient(45deg, #005168, #7b0897);
-            color: white;
-            border: none;
-            padding: 20px 50px;
-            font-size: 28px;
-            font-weight: bold;
-            border-radius: 60px;
-            cursor: pointer;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            transition: all 0.3s ease;
-            border: 2px solid rgba(255,255,255,0.3);
-        }
-
-        .main-btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
-            background: linear-gradient(45deg, #16944b, #005e7d);
-        }
-
         /* Result System */
-        .result-system {
-            background: white;
-            border-radius: 30px;
-            padding: 40px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            display: none;
-            animation: slideUp 0.5s ease;
-            margin-bottom: 30px;
-        }
+       
 
         @keyframes slideUp {
             from { opacity: 0; transform: translateY(50px); }
@@ -74,14 +40,13 @@
         }
 
         .section-title h1 {
-            color: #2c3e50;
+            color: #005060;
             font-size: 42px;
             margin-bottom: 15px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
         }
 
         .section-title p {
-            color: #666;
+            color: #a60000;
             font-size: 20px;
             background: #f8f9fa;
             display: inline-block;
@@ -93,8 +58,8 @@
         .exam-selection {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
-            margin-bottom: 40px;
+            gap: 15px;
+            margin-bottom: 20px;
         }
 
         .exam-card {
@@ -834,15 +799,9 @@
     </div>
 
     <div class="container">
-        <div class="main-btn-container">
-            <button id="mainButton" class="main-btn">
-                <i class="fas fa-graduation-cap"></i> মাদরাসার পরীক্ষার ফলাফল
-            </button>
-        </div>
-
         <div id="resultSystem" class="result-system">
             <div class="section-title">
-                <h1>📚 ব্যক্তিগত ফলাফল</h1>
+                <h1>📚 মাদরাসার পরীক্ষার ব্যক্তিগত ফলাফল</h1>
                 <p id="examTitleText">প্রথম সাময়িক পরীক্ষা</p>
             </div>
 
@@ -1064,7 +1023,6 @@
         };
 
         // DOM Elements
-        const mainBtn = document.getElementById('mainButton');
         const resultSystem = document.getElementById('resultSystem');
         const examCards = document.querySelectorAll('.exam-card');
         const examTitleText = document.getElementById('examTitleText');
@@ -1101,12 +1059,7 @@
             loadExamConfigFromStorage();
             updateExamCardsFromConfig();
             checkUrlParams();
-            
-            mainBtn.addEventListener('click', () => {
-                resultSystem.style.display = 'block';
-                window.scrollTo({ top: resultSystem.offsetTop - 20, behavior: 'smooth' });
-            });
-
+           
             examCards.forEach(card => {
                 card.addEventListener('click', () => {
                     examCards.forEach(c => c.classList.remove('active'));
@@ -1234,6 +1187,8 @@
             }
 
             loadingSpinner.style.display = 'block';
+            loadingSpinner.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            
             errorMessage.style.display = 'none';
             resultContainer.style.display = 'none';
 
@@ -1241,7 +1196,6 @@
                 const englishRegNo = toEnglishNumber(regNo);
                 const englishRollNo = toEnglishNumber(rollNo);
 
-                // Fetch student data
                 const studentData = await fetchStudentData(jamat, englishRegNo, englishRollNo);
                 
                 if (!studentData) {
@@ -1251,48 +1205,36 @@
 
                 state.currentStudent = studentData;
                 
-                // Show status overlay
-                const rawStatus = studentData['শিক্ষার্থী ধরণ/স্ট্যাটাস'] || 'অধ্যয়নরত';
-                let mainStatus = rawStatus;
-                let subStatus = '';
-                
-                if (rawStatus.includes('–') || rawStatus.includes('—') || rawStatus.includes('-')) {
-                    const parts = rawStatus.split(/[-–—]/);
-                    mainStatus = parts[0].trim();
-                    subStatus = parts[1] ? parts[1].trim() : '';
-                }
-                
-                overlayMain.innerText = mainStatus;
-                overlaySub.innerText = subStatus;
+                // স্ট্যাটাস ওভারলে লজিক
+                const rawStatus = studentData['শিক্ষার্থী ধরণ/স্ট্যাটাস'] || 'অধ্যয়নরত';
+                overlayMain.innerText = rawStatus;
                 statusOverlay.classList.add('active');
                 
-                const isBlocked = rawStatus.includes('ত্যাগকৃত') || rawStatus.includes('বহিষ্কৃত') || rawStatus.includes('সাময়িক ভর্তি বাতিল');
-                if (isBlocked) {
-                    statusOverlay.classList.add('warning');
-                    displayBlockedMessage(studentData);
-                    setTimeout(() => statusOverlay.classList.remove('active'), 3000);
-                    return;
-                } else {
-                    statusOverlay.classList.remove('warning');
-                    setTimeout(() => statusOverlay.classList.remove('active'), 2000);
-                }
+                setTimeout(() => statusOverlay.classList.remove('active'), 2000);
 
+                // --- স্ক্রোল ধাপ ২: শিক্ষার্থীর তথ্য সেকশন ---
                 displayStudentInfo(studentData);
+                resultContainer.style.display = 'block';
+                
+                setTimeout(() => {
+                    studentInfoDiv.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 800);
 
-                // First, fetch all subjects for this jamat from the selected exam sheet
                 const jamatSubjects = await fetchJamatSubjects(jamat);
                 state.currentJamatSubjects = jamatSubjects;
-
-                // Then fetch result data for this student
                 const resultData = await fetchResultData(jamat, englishRegNo, englishRollNo);
                 
                 if (!resultData) {
-                    // Student exists but no result - show all subjects with "অনু"
                     displayEmptyResult(jamatSubjects);
                 } else {
                     state.currentResult = resultData;
                     displayResult(resultData, jamatSubjects);
                 }
+
+                // --- স্ক্রোল ধাপ ৩: রেজাল্ট টেবিল সেকশন ---
+                setTimeout(() => {
+                    marksTableContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 1800); 
                 
             } catch (error) {
                 console.error('Error:', error);
@@ -1301,7 +1243,6 @@
                 loadingSpinner.style.display = 'none';
             }
         }
-
         async function fetchStudentData(jamat, regNo, rollNo) {
             try {
                 const url = `https://docs.google.com/spreadsheets/d/${STUDENT_SHEET_ID}/gviz/tq?tqx=out:json`;
