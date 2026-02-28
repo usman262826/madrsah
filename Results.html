@@ -16,7 +16,7 @@
         }
 
         body {
-            background: linear-gradient(135deg, #ffffff 0%, #ffdbea 100%);
+            background: linear-gradient(135deg, #ffffff 0%, #ffdef2 100%);
             min-height: 100vh;
             padding: 1px;
         }
@@ -37,6 +37,7 @@
         .section-title {
             text-align: center;
             margin-bottom: 40px;
+            margin-top: 40px;
         }
 
         .section-title h1 {
@@ -46,9 +47,9 @@
         }
 
         .section-title p {
-            color: #a60000;
+            color: #ffffff;
             font-size: 20px;
-            background: #f8f9fa;
+            background: #00392d;
             display: inline-block;
             padding: 10px 30px;
             border-radius: 50px;
@@ -58,7 +59,7 @@
         .exam-selection {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
+            gap: 10px;
             margin-bottom: 20px;
         }
 
@@ -85,7 +86,7 @@
         }
 
         .exam-card i {
-            font-size: 50px;
+            font-size: 40px;
             color: #4CAF50;
             margin-bottom: 15px;
         }
@@ -97,13 +98,13 @@
         }
 
         .exam-card p {
-            color: #666;
+            color: #00638d;
             font-size: 16px;
         }
 
         /* Search Form */
         .search-form {
-            background: #f8f9fa;
+            background: linear-gradient(#f2fff9,#ffffff);
             border-radius: 20px;
             padding: 30px;
             margin-bottom: 30px;
@@ -113,7 +114,7 @@
         .form-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
+            gap: 14px;
             margin-bottom: 25px;
         }
 
@@ -175,12 +176,12 @@
         }
 
         .btn-reset {
-            background: linear-gradient(135deg, #95a5a6, #7f8c8d);
+            background: linear-gradient(135deg, #512331, #a64ba5);
             color: white;
         }
 
         .btn-reset:hover {
-            background: linear-gradient(135deg, #7f8c8d, #95a5a6);
+            background: linear-gradient(135deg, #ff0000, #011c1e);
             transform: translateY(-3px);
         }
 
@@ -294,7 +295,7 @@
         .student-name {
             font-size: 24px;
             font-weight: bold;
-            color: #2c3e50;
+            color: #000912;
             margin-bottom: 5px;
         }
 
@@ -488,7 +489,7 @@
         }
 
         .overlay-card {
-            background: linear-gradient(135deg, #4CAF50, #45a049);
+            background: linear-gradient(135deg, #1a631c, #45a049);
             color: white;
             padding: 15px 25px;
             border-radius: 50px;
@@ -795,6 +796,8 @@
             width: auto;
             object-fit: contain;
             align-items: center;
+            margin-bottom: 20px;
+            margin-top: 40px;
         }
         /* হোম বাটন */
         .floating-home {
@@ -815,13 +818,13 @@
             border: 3px solid rgb(2, 88, 124);
             z-index: 999;
             transition: var(--transition);
-            }
-            .floating-home:hover {
+        }
+        .floating-home:hover {
             transform: scale(1.1) rotate(360deg);
             background: linear-gradient(135deg, var(--primary-dark), var(--primary));
             box-shadow: 0 15px 40px rgba(26, 95, 180, 0.6);
-            }
-            .home-link {
+        }
+        .home-link {
             display: inline-flex;
             align-items: center;
             background: white;
@@ -835,17 +838,17 @@
             transition: var(--transition);
             margin: 20px 0;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            }
-            .home-link i {
+        }
+        .home-link i {
             margin-right: 10px;
             font-size: 20px;
-            }
-            .home-link:hover {
+        }
+        .home-link:hover {
             background: var(--primary);
             color: rgb(0, 93, 30);
             transform: translateY(-3px);
             box-shadow: 0 10px 25px rgba(26, 95, 180, 0.3);
-            }
+        }
 
     </style>
 </head>
@@ -863,14 +866,14 @@
         <div id="resultSystem" class="result-system">
             <div class="section-title">
                 <header>
-                <img class="header-logo" src="jpg/ওয়েব-সাইট.png" alt="দারুল উলূম মাদানিয়া মহিলা মাদ্রাসা">
-            </header>
-                <h1>📚 মাদরাসার পরীক্ষার ব্যক্তিগত ফলাফল</h1>
+                    <img class="header-logo" src="jpg/ওয়েব-সাইট.png" alt="দারুল উলূম মাদানিয়া মহিলা মাদরাসা">
+                </header>
+                <h1>মাদরাসার পরীক্ষার ব্যক্তিগত ফলাফল</h1>
                 <p id="examTitleText">প্রথম সাময়িক পরীক্ষা</p>
             </div>
 
             <div class="exam-selection">
-                <div class="exam-card active" data-exam="প্রথম সাময়িক" data-sheet-id="1XEaBQXReIMe2lEOWPcaY2jDu_SxIkPgOTzJluLbN42I">
+                <div class="exam-card" data-exam="প্রথম সাময়িক" data-sheet-id="1XEaBQXReIMe2lEOWPcaY2jDu_SxIkPgOTzJluLbN42I">
                     <i class="fas fa-file-alt"></i>
                     <h3>প্রথম সাময়িক</h3>
                     <p>প্রথম সাময়িক পরীক্ষার ফলাফল</p>
@@ -880,7 +883,7 @@
                     <h3>দ্বিতীয় সাময়িক</h3>
                     <p>দ্বিতীয় সাময়িক পরীক্ষার ফলাফল</p>
                 </div>
-                <div class="exam-card" data-exam="বার্ষিক পরীক্ষা" data-sheet-id="1bQ9GYcYNxmjbaRGHGeboOXKwgmrQSjyBjUszThnX3pg">
+                <div class="exam-card active" data-exam="বার্ষিক পরীক্ষা" data-sheet-id="1bQ9GYcYNxmjbaRGHGeboOXKwgmrQSjyBjUszThnX3pg">
                     <i class="fas fa-award"></i>
                     <h3>বার্ষিক পরীক্ষা</h3>
                     <p>বার্ষিক পরীক্ষার ফলাফল</p>
@@ -900,7 +903,7 @@
                     </div>
                     
                     <div class="form-group">
-                        <label><i class="fas fa-users"></i> জামাত</label>
+                        <label><i class="fas fa-users"></i> জামাত সিলেক্ট করুন</label>
                         <select id="jamat" class="form-control">
                             <option value="">-- জামাত নির্বাচন করুন --</option>
                             <option value="আতফাল (শিশু শ্রেণী)">আতফাল (শিশু শ্রেণী)</option>
@@ -920,12 +923,12 @@
                     </div>
                     
                     <div class="form-group">
-                        <label><i class="fas fa-id-card"></i> রেজিস্ট্রেশন নং</label>
-                        <input type="text" id="regNo" class="form-control" placeholder="রেজি. নং">
+                        <label><i class="fas fa-id-card"></i> রেজিস্ট্রেশন নং লিখুন (ইংরেজিতে) </label>
+                        <input type="text" id="regNo" class="form-control" placeholder="রেজি. নং লিখুন ">
                     </div>
                     
                     <div class="form-group">
-                        <label><i class="fas fa-sort-numeric-up"></i> রোল নং</label>
+                        <label><i class="fas fa-sort-numeric-up"></i> রোল নং লিখুন (ইংরেজিতে)</label>
                         <input type="text" id="rollNo" class="form-control" placeholder="রোল নং">
                     </div>
                 </div>
