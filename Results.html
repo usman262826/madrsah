@@ -788,7 +788,7 @@
         .bangla-number {
             font-family: 'SolaimanLipi', Arial, sans-serif;
         }
-    .header-logo {
+        .header-logo {
             max-width: 100%;
             height: auto;
             max-height: clamp(60px, 15vw, 100px);
@@ -796,13 +796,61 @@
             object-fit: contain;
             align-items: center;
         }
+        /* হোম বাটন */
+        .floating-home {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: rgb(1, 92, 168);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 28px;
+            box-shadow: 0 10px 30px rgba(26, 95, 180, 0.4);
+            border: 3px solid rgb(2, 88, 124);
+            z-index: 999;
+            transition: var(--transition);
+            }
+            .floating-home:hover {
+            transform: scale(1.1) rotate(360deg);
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+            box-shadow: 0 15px 40px rgba(26, 95, 180, 0.6);
+            }
+            .home-link {
+            display: inline-flex;
+            align-items: center;
+            background: white;
+            color: var(--primary);
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            border: 2px solid var(--primary);
+            transition: var(--transition);
+            margin: 20px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            }
+            .home-link i {
+            margin-right: 10px;
+            font-size: 20px;
+            }
+            .home-link:hover {
+            background: var(--primary);
+            color: rgb(0, 93, 30);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(26, 95, 180, 0.3);
+            }
 
     </style>
 </head>
 <body>
-    <header>
-        <img class="header-logo" src="jpg/ওয়েব-সাইট.png" alt="দারুল উলূম মাদানিয়া মহিলা মাদ্রাসা">
-    </header>
+    
     <div id="statusOverlay" class="status-overlay">
         <div class="overlay-card">
             <span class="overlay-main" id="overlayMain"></span>
@@ -811,8 +859,12 @@
     </div>
 
     <div class="container">
+        
         <div id="resultSystem" class="result-system">
             <div class="section-title">
+                <header>
+                <img class="header-logo" src="jpg/ওয়েব-সাইট.png" alt="দারুল উলূম মাদানিয়া মহিলা মাদ্রাসা">
+            </header>
                 <h1>📚 মাদরাসার পরীক্ষার ব্যক্তিগত ফলাফল</h1>
                 <p id="examTitleText">প্রথম সাময়িক পরীক্ষা</p>
             </div>
@@ -941,10 +993,22 @@
                 </div>
             </div>
         </div>
-
+        <!-- হোম লিংক (মূল পেইজে ফিরে যেতে) -->
+            <div style="text-align: center;">
+                <a href="index.html" class="home-link">
+                <i class="fas fa-home"></i> মূল পেইজে ফিরে যান
+                </a>
+            </div>
+            </div>
         <div class="footer">
-            <p>© ২০২৫-২৬ মাদরাসা ফলাফল ব্যবস্থাপনা সিস্টেম | উসমান সাঈদ</p>
+            <p>© ২০২৫-২৬ মাদরাসা ফলাফল ব্যবস্থাপনা সিস্টেম | আইটি বিভাগ</p>
+            <p>উসমান সাঈদ|সকল অধিকার সংরক্ষিত</p>
         </div>
+        <!-- ভাসমান হোম বাটন -->
+        <a href="index.html" class="floating-home" title="মূল পেইজে ফিরে যান">
+            <i class="fas fa-home"></i>
+        </a>
+
     </div>
 
     <script>
@@ -1665,12 +1729,16 @@
                     <span class="info-label">মেধাস্থান</span>
                     <span class="info-value bangla-number">${result.position || '—'}</span>
                 </div>
+                <div class="info-row">
+                    <span class="info-label">শিক্ষাবর্ষ</span>
+                    <span class="info-value bangla-number">১৪৪৬-৪৭ হিজরী/২০২৫-২৬ ঈসায়ী</span>
+                </div>
                 <div class="summary-stats">
                     <div class="stat-card">
                         <div class="stat-icon">
                             <i class="fas fa-book-open"></i>
                         </div>
-                        <div class="stat-label">মোট</div>
+                        <div class="stat-label">মোট পরিক্ষার বিষয়</div>
                         <div class="stat-value bangla-number">${toBanglaNumber(totalSubjects)}</div>
                     </div>
                     <div class="stat-card">
@@ -1873,4 +1941,3 @@
     </script>
 </body>
 </html>
-
