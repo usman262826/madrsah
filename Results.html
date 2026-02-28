@@ -59,7 +59,7 @@
         .exam-selection {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
+            gap: 15px;
             margin-bottom: 20px;
         }
 
@@ -516,37 +516,69 @@
         /* Summary Stats - Minimized version */
         .summary-stats {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 8px;
-            margin-top: 15px;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
         }
-        
+
         .stat-card {
-            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
-            border-radius: 10px;
-            padding: 8px 5px;
+            background: #ffffff;
+            padding: 30px 20px;
+            border-radius: 20px;
             text-align: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            border-top: 6px solid #007bff; /* উপরে রঙিন বর্ডার */
             transition: all 0.3s ease;
-            border: 1px solid #e0e0e0;
         }
-        
-        .stat-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+
+        .stat-card i {
+            font-size: 2rem;
+            color: #004c9d;
+            margin-bottom: 15px;
         }
-        
-        .stat-icon {
-            font-size: 14px;
-            color: #4CAF50;
-            margin-bottom: 3px;
-        }
-        
+
+        /* সারসংক্ষেপের লেবেল (বাংলা লেখা) বড় করার জন্য */
         .stat-label {
-            font-size: 11px;
-            color: #666;
-            margin-bottom: 2px;
+            display: block;
+            font-size: 1.8rem; /* বাংলা লেখাটি বড় করা হয়েছে */
+            color: #444;
+            font-weight: 700; /* লেখাটি বোল্ড বা মোটা করা হয়েছে */
+            margin-bottom: 15px;
+            line-height: 1.2;
         }
-        
+
+        /* সারসংক্ষেপের ভ্যালু (সংখ্যা বা রেজাল্ট) বড় করার জন্য */
+        .stat-value {
+            display: block;
+            font-size: 2.5rem; /* সংখ্যাগুলো অনেক বড় করা হয়েছে */
+            font-weight: 900; /* সবচেয়ে বেশি মোটা করা হয়েছে */
+            color: #000;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1); /* হালকা শ্যাডো */
+        }
+
+
+        /* মোবাইলের জন্য সামান্য ছোট করা (যাতে স্ক্রিনে ধরে) */
+        @media (max-width: 600px) {
+            .stat-label {
+                font-size: 1.4rem;
+            }
+            .stat-value {
+                font-size: 2rem;
+            }
+        }
+
+        /* কালার কোড */
+        .stat-card.total { border-color: #007bff; }
+        .stat-card.avg { border-color: #28a745; }
+        .stat-card.div { border-color: #fd7e14; }
+        .stat-card.pos { border-color: #dc3545; }
+
+        /* মোবাইলের জন্য সামান্য ছোট করা */
+        @media (max-width: 600px) {
+            .stat-label { font-size: 1.3rem; }
+            .stat-value { font-size: 1.7rem; }
+        }
+
         .stat-value {
             font-size: 16px;
             font-weight: bold;
@@ -878,6 +910,7 @@
                     <h3>প্রথম সাময়িক</h3>
                     <p>প্রথম সাময়িক পরীক্ষার ফলাফল</p>
                 </div>
+                
                 <div class="exam-card" data-exam="দ্বিতীয় সাময়িক" data-sheet-id="105bfnvzmJFmrvaOti1serQJYXv5jnn-vAAweuP8874A">
                     <i class="fas fa-file-contract"></i>
                     <h3>দ্বিতীয় সাময়িক</h3>
@@ -888,6 +921,12 @@
                     <h3>বার্ষিক পরীক্ষা</h3>
                     <p>বার্ষিক পরীক্ষার ফলাফল</p>
                 </div>
+                <div class="exam-card" data-exam="combined" id="combinedExamCard">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>বাৎসরিক ফলাফল</h3>
+                    <p>তিন পরীক্ষার সমন্বিত ফলাফল</p>
+                </div>
+            </div>
             </div>
 
             <!-- Exam Configuration Section -->
@@ -1253,7 +1292,15 @@
             errorMessage.style.display = 'none';
             loadingSpinner.style.display = 'none';
         }
+        async function fetchCombinedData(regNo, rollNo) {
+            // এখানে আপনার ৩টি আলাদা পরীক্ষার Google Sheets এর URL বা ফাংশন কল করতে হবে
+            // উদাহরণস্বরূপ:
+            const exam1 = await fetchResultFromSheet1(regNo, rollNo);
+            const exam2 = await fetchResultFromSheet2(regNo, rollNo);
+            const exam3 = await fetchResultFromSheet3(regNo, rollNo);
 
+            return { exam1, exam2, exam3 };
+        }
         async function searchResult() {
             const jamat = jamatSelect.value;
             const session = sessionSelect.value;
@@ -1264,7 +1311,32 @@
                 showError('সব তথ্য সঠিকভাবে পূরণ করুন');
                 return;
             }
+            const activeExamCard = document.querySelector('.exam-card.active');
+            const examType = activeExamCard.dataset.exam;
 
+            if (examType === 'combined') {
+                loadingSpinner.style.display = 'block';
+                try {
+                    const combinedData = await fetchCombinedAllResults(jamat, englishRegNo, englishRollNo);
+                    const subjects = await fetchJamatSubjects(jamat);
+                    
+                    displayStudentInfo(combinedData.exam3 || combinedData.exam1); // স্টুডেন্ট প্রোফাইল দেখাবে
+                    displayCombinedResultTable(combinedData, subjects);
+                    
+                    resultContainer.style.display = 'block';
+                    // অটো স্ক্রোল
+                    marksTableContainer.scrollIntoView({ behavior: 'smooth' });
+                } catch (e) {
+                    showError("সম্মিলিত ডাটা লোড করতে সমস্যা হয়েছে");
+                } finally {
+                    loadingSpinner.style.display = 'none';
+                }
+                return; // অন্য রেজাল্ট লোড বন্ধ করবে
+            }
+            // রেজাল্টের জন্য লিঙ্ক তৈরি করা হচ্ছে
+            updateURL(jamat, session, regNo, rollNo);
+
+            // ধাপ-১: লোডিং স্পিনারে স্ক্রোল
             loadingSpinner.style.display = 'block';
             loadingSpinner.scrollIntoView({ behavior: 'smooth', block: 'center' });
             
@@ -1284,17 +1356,15 @@
 
                 state.currentStudent = studentData;
                 
-                // স্ট্যাটাস ওভারলে লজিক
-                const rawStatus = studentData['শিক্ষার্থী ধরণ/স্ট্যাটাস'] || 'অধ্যয়নরত';
+                // স্ট্যাটাস দেখানো
+                const rawStatus = studentData['শিক্ষার্থী ধরণ/স্ট্যাটাস'] || 'অধ্যয়নরত';
                 overlayMain.innerText = rawStatus;
                 statusOverlay.classList.add('active');
-                
                 setTimeout(() => statusOverlay.classList.remove('active'), 2000);
 
-                // --- স্ক্রোল ধাপ ২: শিক্ষার্থীর তথ্য সেকশন ---
+                // ধাপ-২: শিক্ষার্থীর ব্যক্তিগত তথ্যের সেকশনে স্ক্রোল
                 displayStudentInfo(studentData);
                 resultContainer.style.display = 'block';
-                
                 setTimeout(() => {
                     studentInfoDiv.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }, 800);
@@ -1309,8 +1379,9 @@
                     state.currentResult = resultData;
                     displayResult(resultData, jamatSubjects);
                 }
+                
 
-                // --- স্ক্রোল ধাপ ৩: রেজাল্ট টেবিল সেকশন ---
+                // ধাপ-৩: সবশেষে রেজাল্ট টেবিলের কাছে অটো স্ক্রোল
                 setTimeout(() => {
                     marksTableContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }, 1800); 
@@ -1443,7 +1514,28 @@
                         rollColIndex = i;
                     }
                 }
+                // রেজাল্ট বের হওয়ার পর ইউআরএল আপডেট করার ফাংশন
+                function updateURL(jamat, session, regNo, rollNo) {
+                    const newUrl = `${window.location.origin}${window.location.pathname}?jamat=${encodeURIComponent(jamat)}&session=${encodeURIComponent(session)}&reg=${encodeURIComponent(regNo)}&roll=${encodeURIComponent(rollNo)}`;
+                    window.history.pushState({ path: newUrl }, '', newUrl);
+                }
 
+                // পেজ লোড হওয়ার সময় লিঙ্ক চেক করে অটো-রেজাল্ট দেখানোর ফাংশন
+                window.addEventListener('load', () => {
+                    const urlParams = new URLSearchParams(window.location.search);
+                    const jamat = urlParams.get('jamat');
+                    const session = urlParams.get('session');
+                    const reg = urlParams.get('reg');
+                    const roll = urlParams.get('roll');
+
+                    if (jamat && session && reg && roll) {
+                        jamatSelect.value = jamat;
+                        sessionSelect.value = session;
+                        regNoInput.value = reg;
+                        rollNoInput.value = roll;
+                        searchResult(); // অটোমেটিক সার্চ শুরু করবে
+                    }
+                });
                 // If we couldn't find them, try to find by position
                 if (regColIndex === -1) {
                     for (let i = 0; i < Math.min(3, cols.length); i++) {
@@ -1489,6 +1581,29 @@
                 console.error('Result fetch error:', error);
                 return null;
             }
+        }
+        async function fetchCombinedAllResults(jamat, regNo, rollNo) {
+            const sheetIds = {
+                exam1: "1XEaBQXReIMe2lEOWPcaY2jDu_SxIkPgOTzJluLbN42I", // ১ম সাময়িক
+                exam2: "105bfnvzmJFmrvaOti1serQJYXv5jnn-vAAweuP8874A", // ২য় সাময়িক
+                exam3: "1bQ9GYcYNxmjbaRGHGeboOXKwgmrQSjyBjUszThnX3pg"  // বার্ষিক
+            };
+
+            // আপনার মেইন গুগল অ্যাপস স্ক্রিপ্ট URL (যা দিয়ে বর্তমান রেজাল্ট আসে)
+            const scriptUrl = "https://script.google.com/macros/s/AKfycbz_Bf79R-U3u1AueS5T3r8k3p1K0_8-6oY9T9z-Q-Y-Y-Y/exec"; 
+
+            // ৩টি রিকোয়েস্ট একসাথে পাঠানো হচ্ছে
+            const results = await Promise.all([
+                fetch(`${scriptUrl}?sheetId=${sheetIds.exam1}&jamat=${jamat}&regNo=${regNo}&rollNo=${rollNo}`).then(res => res.json()),
+                fetch(`${scriptUrl}?sheetId=${sheetIds.exam2}&jamat=${jamat}&regNo=${regNo}&rollNo=${rollNo}`).then(res => res.json()),
+                fetch(`${scriptUrl}?sheetUrl=${sheetIds.exam3}&jamat=${jamat}&regNo=${regNo}&rollNo=${rollNo}`).then(res => res.json())
+            ]);
+
+            return {
+                exam1: results[0].data,
+                exam2: results[1].data,
+                exam3: results[2].data
+            };
         }
 
         function parseResultRow(row, cols) {
@@ -1660,6 +1775,42 @@
             `;
             studentInfoDiv.innerHTML = infoHTML;
         }
+        function displayCombinedResultTable(data, subjects) {
+            let tableHtml = `
+                <div class="result-table-container" style="overflow-x:auto;">
+                    <table class="result-table">
+                        <thead>
+                            <tr>
+                                <th>বিষয়</th>
+                                <th>১ম সাময়িক</th>
+                                <th>২য় সাময়িক</th>
+                                <th>বার্ষিক</th>
+                                <th>গড় (Avg)</th>
+                            </tr>
+                        </thead>
+                        <tbody>`;
+
+            subjects.forEach(subject => {
+                const m1 = (data.exam1 && data.exam1.marks) ? data.exam1.marks[subject] || 0 : 0;
+                const m2 = (data.exam2 && data.exam2.marks) ? data.exam2.marks[subject] || 0 : 0;
+                const m3 = (data.exam3 && data.exam3.marks) ? data.exam3.marks[subject] || 0 : 0;
+                
+                const avg = ((m1 + m2 + m3) / 3).toFixed(2);
+
+                tableHtml += `
+                    <tr>
+                        <td>${subject}</td>
+                        <td>${toBanglaNumber(m1)}</td>
+                        <td>${toBanglaNumber(m2)}</td>
+                        <td>${toBanglaNumber(m3)}</td>
+                        <td style="font-weight:bold; color:#1e8449;">${toBanglaNumber(avg)}%</td>
+                    </tr>`;
+            });
+
+            tableHtml += `</tbody></table></div>`;
+            marksTableContainer.innerHTML = tableHtml;
+            marksTableContainer.style.display = 'block';
+        }
 
         function displayEmptyResult(jamatSubjects) {
             if (!jamatSubjects || jamatSubjects.length === 0) {
@@ -1761,6 +1912,7 @@
                 </div>
             `;
             resultSummaryDiv.innerHTML = summaryHTML;
+            
 
             // Marks Table
             marksTableBody.innerHTML = '';
@@ -1941,6 +2093,39 @@
         // Make functions globally accessible
         window.toggleConfigPanel = toggleConfigPanel;
         window.saveExamConfig = saveExamConfig;
+        // ব্রাউজারের লিঙ্ক আপডেট করার জন্য
+        function updateURL(jamat, session, regNo, rollNo) {
+            const newUrl = `${window.location.origin}${window.location.pathname}?jamat=${encodeURIComponent(jamat)}&session=${encodeURIComponent(session)}&reg=${encodeURIComponent(regNo)}&roll=${encodeURIComponent(rollNo)}`;
+            window.history.pushState({ path: newUrl }, '', newUrl);
+        }
+        // ১. ইউআরএল আপডেট করার ফাংশন
+        function updateURL(jamat, session, regNo, rollNo) {
+            const newUrl = `${window.location.origin}${window.location.pathname}?jamat=${encodeURIComponent(jamat)}&session=${encodeURIComponent(session)}&reg=${encodeURIComponent(regNo)}&roll=${encodeURIComponent(rollNo)}`;
+            window.history.pushState({ path: newUrl }, '', newUrl);
+        }
+
+        // ২. পেজ লোড হওয়ার সময় ইউআরএল থেকে ডাটা নিয়ে অটো-সার্চ করার ফাংশন
+        window.addEventListener('load', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const jamat = urlParams.get('jamat');
+            const session = urlParams.get('session');
+            const reg = urlParams.get('reg');
+            const roll = urlParams.get('roll');
+
+            // যদি ইউআরএল-এ সব ডাটা থাকে
+            if (jamat && session && reg && roll) {
+                // ফর্মের ফিল্ডগুলোতে মান বসানো
+                jamatSelect.value = jamat;
+                sessionSelect.value = session;
+                regNoInput.value = reg;
+                rollNoInput.value = roll;
+                
+                // সামান্য দেরি করে সার্চ ফাংশন কল করা যাতে ড্রপডাউনগুলো সেট হওয়ার সময় পায়
+                setTimeout(() => {
+                    searchResult();
+                }, 500);
+            }
+        });
     </script>
 </body>
 </html>
