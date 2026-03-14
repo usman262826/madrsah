@@ -35,6 +35,12 @@
             font-weight: normal;
             font-style: normal;
         }
+         @font-face {
+            font-family: 'Sheikh Hasina';
+            src: url('ফন্ট/Li Sheikh Hasina 2 Unicode.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
 
         @font-face {
             font-family: 'Sheikh Hasina';
@@ -49,6 +55,12 @@
             font-weight: normal;
             font-style: normal;
         }
+         @font-face {
+            font-family: 'Ador Noirrit';
+            src: url('ফন্ট/Li Ador Noirrit A-V2 Light.ttf') format('truetype');
+            font-display: swap;
+            }
+
 
         @font-face {
             font-family: 'Bornomala-Bold';
@@ -60,6 +72,13 @@
         @font-face {
             font-family: 'Bornomala';
             src: url('ফন্ট/Bornomala-Regular.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'LiAlinurAkorshonUnicode';
+            src: url('ফন্ট/Li Alinur Akorshon Unicode.ttf') format('truetype');
             font-weight: normal;
             font-style: normal;
         }
@@ -104,7 +123,7 @@
         }
 
         .section-title h1 {
-            font-family: 'JunudullahZami';
+            font-family: 'SolaimanLipi';
             font-weight: normal;
             color: #ffffff;
             font-size: 42px;
@@ -195,7 +214,7 @@
         }
 
         .selected-exam-badge .exam-name i {
-            color: #ffb347;
+            color: #7efff6;
         }
 
         .change-exam-btn {
@@ -549,87 +568,116 @@
             background-color: #ffe6e6;
         }
 
-        /* Summary Stats - মিনিমাল ডিজাইন */
-        .summary-stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-            gap: 10px;
-            margin-top: 15px;
-        }
-
-        .stat-item {
-            background: #f8f9fa;
-            padding: 12px 8px;
-            border-radius: 8px;
-            text-align: center;
-            border-left: 4px solid #007c7c;
-        }
-
-        .stat-label {
-            font-size: 14px;
-            color: #00464e;
+        /* Combined Summary - আপনার দেওয়া ডিজাইনের মতো */
+        .combined-summary .title {
+            color: #006b64;
+            font-size: 24px;
             font-weight: bold;
             margin-bottom: 5px;
+            text-decoration: underline;
+            text-underline-offset: 8px;
+            text-decoration-thickness: 1px;
+            font-family: 'Sheikh Hasina';
         }
 
-        .stat-value {
-            font-size: 20px;
-            font-weight: 900;
-            color: #003333;
+        .combined-summary .divider {
+            border-top: 2px dashed #ccc;
+            margin-bottom: 20px;
         }
 
-        .stat-value.present {
-            color: #4CAF50;
-        }
-
-        .stat-value.absent {
-            color: #f44336;
-        }
-
-        /* Combined Summary - SVG স্টাইলে */
-        .combined-summary {
-            background: white;
-            border-radius: 12px;
-            padding: 20px;
-            margin-top: 20px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
-        }
-
-        .combined-summary h3 {
-            color: #00464e;
-            border-bottom: 2px solid #007c7c;
-            padding-bottom: 10px;
-            margin-bottom: 15px;
-            font-size: 20px;
-        }
-
-        .summary-table {
+        .combined-summary table {
             width: 100%;
             border-collapse: collapse;
-        }
-
-        .summary-table th {
-            background: #e8f5e9;
-            color: #006931;
-            padding: 10px;
-            font-size: 14px;
-            border: 1px solid #c0e0c0;
-        }
-
-        .summary-table td {
-            padding: 10px;
             text-align: center;
-            border: 1px solid #c0e0c0;
         }
 
-        .summary-table .exam-name {
-            font-weight: bold;
-            color: #00464e;
+        .combined-summary thead th {
+            background: linear-gradient(135deg, #007c7c, #005d5e);
+            color: white;
+            padding: 12px;
+            font-size: 18px;
+            border: 1px solid #fff;
         }
 
-        .summary-table .total-marks {
+        .combined-summary thead th:first-child {
+            background-color: #004d26;
+        }
+
+        .combined-summary tbody tr td {
+            padding: 10px;
+            border-bottom: 2px dashed #ddd;
+            font-size: 18px;
+        }
+
+        .combined-summary tbody td:first-child {
+            color: #006432;
             font-weight: bold;
-            color: #007c7c;
+            text-align: left;
+            padding-left: 20px;
+            width: 25%;
+        }
+
+        .combined-summary .bg-light-green {
+            background-color: #e8f1f5;
+        }
+
+        .combined-summary .footer-row {
+            background-color: #104358;
+            color: white;
+            font-weight: bold;
+        }
+
+        .combined-summary .footer-row td {
+            border-bottom: none;
+            padding: 15px;
+        }
+
+        .combined-summary .footer-label {
+            background-color: #004a63;
+        }
+
+        .combined-summary .footer-label-1 {
+            background-color: #06496b;
+        }
+
+        .combined-summary .rounded-bottom-left {
+            border-bottom-left-radius: 12px;
+        }
+
+        .combined-summary .rounded-bottom-right {
+            border-bottom-right-radius: 12px;
+        }
+
+        /* মোবাইলের জন্য রেসপনসিভ */
+        @media (max-width: 768px) {
+            .combined-summary table {
+                font-size: 14px;
+            }
+            .combined-summary thead th {
+                padding: 8px 4px;
+                font-size: 14px;
+            }
+            .combined-summary tbody tr td {
+                padding: 8px 4px;
+                font-size: 14px;
+            }
+            .combined-summary tbody td:first-child {
+                padding-left: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .combined-summary table {
+                font-size: 12px;
+            }
+            .combined-summary thead th {
+                padding: 6px 2px;
+                font-size: 12px;
+            }
+            .combined-summary tbody tr td {
+                padding: 6px 2px;
+                font-size: 12px;
+            }
         }
 
         /* No Result Message */
@@ -642,11 +690,11 @@
             border: 2px solid #ffb347;
         }
 
-        /* PDF Button - নিচে */
-        .pdf-download {
+        /* PDF Button - marks table container এর ভিতরে */
+        .pdf-button-container {
             text-align: center;
             margin-top: 30px;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
         }
 
         .btn-pdf {
@@ -734,6 +782,29 @@
         .floating-home:hover {
             transform: scale(1.1) rotate(360deg);
             box-shadow: 0 15px 40px rgba(0, 124, 124, 0.6);
+        }
+
+        /* Home Link */
+        .home-link {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            color: white;
+            padding: 12px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+            margin: 20px 0;
+            gap: 10px;
+        }
+
+        .home-link:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-3px);
         }
 
         /* মোবাইল বটম বার */
@@ -833,12 +904,6 @@
             .status-main {
                 font-size: 18px;
             }
-            .stat-item {
-                padding: 8px 5px;
-            }
-            .stat-value {
-                font-size: 16px;
-            }
         }
 
         /* বড় স্ক্রিনে মোবাইল বার লুকাবে */
@@ -933,11 +998,11 @@
                     </div>
                     <div class="form-group">
                         <label><i class="fas fa-id-card"></i> রেজিস্ট্রেশন নং লিখুন (ইংরেজিতে)</label>
-                        <input type="text" id="regNo" class="form-control" placeholder="রেজি. নং লিখুন">
+                        <input type="text" id="regNo" class="form-control" placeholder="রেজিস্ট্রেশন নং লিখুন (ইংরেজিতে)">
                     </div>
                     <div class="form-group">
                         <label><i class="fas fa-sort-numeric-up"></i> রোল নং লিখুন (ইংরেজিতে)</label>
-                        <input type="text" id="rollNo" class="form-control" placeholder="রোল নং">
+                        <input type="text" id="rollNo" class="form-control" placeholder=" রোল নং লিখুন (ইংরেজিতে)">
                     </div>
                 </div>
                 <div class="action-buttons">
@@ -992,9 +1057,8 @@
                         </thead>
                         <tbody id="marksTableBody"></tbody>
                     </table>
+                    <!-- PDF Button will be dynamically added here -->
                 </div>
-
-                <!-- PDF Button will be dynamically added here -->
             </div>
         </div>
 
@@ -1567,18 +1631,18 @@
                     <span class="info-label">শিক্ষাবর্ষ</span>
                     <span class="info-value bangla-number">১৪৪৬-৪৭ হিজরী/২০২৫-২৬ ঈসায়ী</span>
                 </div>
-                <div class="summary-stats">
-                    <div class="stat-item">
-                        <div class="stat-label">মোট বিষয়</div>
-                        <div class="stat-value bangla-number">${toBanglaNumber(totalSubjects)}</div>
+                <div class="summary-stats" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 15px;">
+                    <div style="background: #f8f9fa; padding: 10px; border-radius: 8px; text-align: center; border-left: 4px solid #007c7c;">
+                        <div style="font-size: 14px; color: #00464e;">মোট বিষয়</div>
+                        <div style="font-size: 20px; font-weight: 900; color: #003333;" class="bangla-number">${toBanglaNumber(totalSubjects)}</div>
                     </div>
-                    <div class="stat-item">
-                        <div class="stat-label">উপস্থিত</div>
-                        <div class="stat-value present bangla-number">${toBanglaNumber(subjectsWithMarks)}</div>
+                    <div style="background: #f8f9fa; padding: 10px; border-radius: 8px; text-align: center; border-left: 4px solid #4CAF50;">
+                        <div style="font-size: 14px; color: #00464e;">উপস্থিত</div>
+                        <div style="font-size: 20px; font-weight: 900; color: #4CAF50;" class="bangla-number">${toBanglaNumber(subjectsWithMarks)}</div>
                     </div>
-                    <div class="stat-item">
-                        <div class="stat-label">অনুপস্থিত</div>
-                        <div class="stat-value absent bangla-number">${toBanglaNumber(absentSubjects)}</div>
+                    <div style="background: #f8f9fa; padding: 10px; border-radius: 8px; text-align: center; border-left: 4px solid #f44336;">
+                        <div style="font-size: 14px; color: #00464e;">অনুপস্থিত</div>
+                        <div style="font-size: 20px; font-weight: 900; color: #f44336;" class="bangla-number">${toBanglaNumber(absentSubjects)}</div>
                     </div>
                 </div>
             `;
@@ -1615,66 +1679,96 @@
             noResultMessage.style.display = 'none';
             marksTableContainer.style.display = 'block';
 
-            // Add PDF button
+            // Add PDF button inside marks table container
             addPDFButton(student, result, subjects, false);
         }
 
-        // Display combined result (three exams) with SVG style summary
+        // Display combined result (three exams) with your exact design
         function displayCombinedResult(student, combinedData, subjects) {
             const totalSubjects = subjects.length;
             const totalFullMarks = totalSubjects * 100;
 
             // Calculate totals for each exam
             let total1 = 0, total2 = 0, total3 = 0;
+            let avg1 = 0, avg2 = 0, avg3 = 0;
+            let present1 = 0, present2 = 0, present3 = 0;
+            let absent1 = 0, absent2 = 0, absent3 = 0;
+
             subjects.forEach(subject => {
-                total1 += combinedData['প্রথম সাময়িক']?.marks[subject] || 0;
-                total2 += combinedData['দ্বিতীয় সাময়িক']?.marks[subject] || 0;
-                total3 += combinedData['বার্ষিক পরীক্ষা']?.marks[subject] || 0;
+                const m1 = combinedData['প্রথম সাময়িক']?.marks[subject] || 0;
+                const m2 = combinedData['দ্বিতীয় সাময়িক']?.marks[subject] || 0;
+                const m3 = combinedData['বার্ষিক পরীক্ষা']?.marks[subject] || 0;
+                
+                total1 += m1;
+                total2 += m2;
+                total3 += m3;
+                
+                if (m1 > 0) present1++; else absent1++;
+                if (m2 > 0) present2++; else absent2++;
+                if (m3 > 0) present3++; else absent3++;
             });
 
-            // Create SVG-style summary table
+            avg1 = (total1 / totalSubjects).toFixed(2);
+            avg2 = (total2 / totalSubjects).toFixed(2);
+            avg3 = (total3 / totalSubjects).toFixed(2);
+
+            // Create summary with your exact design
             const summaryHTML = `
                 <div class="combined-summary">
-                    <h3><i class="fas fa-chart-line"></i> ফলাফল সারসংক্ষেপ</h3>
-                    <table class="summary-table">
+                    <div class="title">ফলাফল সারসংক্ষেপ</div>
+                    <div class="divider"></div>
+
+                    <table>
                         <thead>
                             <tr>
-                                <th>পরীক্ষা</th>
-                                <th>মোট নাম্বার</th>
-                                <th>গড়</th>
-                                <th>স্থান</th>
-                                <th>বিভাগ</th>
-                                <th>অংশগ্রহণ</th>
-                                <th>অনুপস্থিত</th>
+                                <th></th>
+                                <th>প্রথম সাময়িক</th>
+                                <th>দ্বিতীয় সাময়িক</th>
+                                <th>বার্ষিক পরীক্ষা</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td class="exam-name">প্রথম সাময়িক</td>
-                                <td class="total-marks bangla-number">${toBanglaNumber(total1)}/${toBanglaNumber(totalFullMarks)}</td>
-                                <td class="bangla-number">${toBanglaNumber((total1/totalSubjects).toFixed(2))}</td>
+                                <td>মোট নাম্বার</td>
+                                <td class="bangla-number">${toBanglaNumber(total1)}/${toBanglaNumber(totalFullMarks)}</td>
+                                <td class="bangla-number">${toBanglaNumber(total2)}/${toBanglaNumber(totalFullMarks)}</td>
+                                <td class="bangla-number">${toBanglaNumber(total3)}/${toBanglaNumber(totalFullMarks)}</td>
+                            </tr>
+                            <tr class="bg-light-green">
+                                <td>গড়</td>
+                                <td class="bangla-number">${toBanglaNumber(avg1)}</td>
+                                <td class="bangla-number">${toBanglaNumber(avg2)}</td>
+                                <td class="bangla-number">${toBanglaNumber(avg3)}</td>
+                            </tr>
+                            <tr>
+                                <td>মেধাস্থান</td>
                                 <td class="bangla-number">${combinedData['প্রথম সাময়িক']?.position || '—'}</td>
-                                <td>${combinedData['প্রথম সাময়িক']?.division || '—'}</td>
-                                <td class="bangla-number present">${toBanglaNumber(subjects.filter(s => combinedData['প্রথম সাময়یک']?.marks[s] > 0).length)}</td>
-                                <td class="bangla-number absent">${toBanglaNumber(subjects.filter(s => combinedData['প্রথম সাময়িক']?.marks[s] === 0).length)}</td>
-                            </tr>
-                            <tr>
-                                <td class="exam-name">দ্বিতীয় সাময়িক</td>
-                                <td class="total-marks bangla-number">${toBanglaNumber(total2)}/${toBanglaNumber(totalFullMarks)}</td>
-                                <td class="bangla-number">${toBanglaNumber((total2/totalSubjects).toFixed(2))}</td>
                                 <td class="bangla-number">${combinedData['দ্বিতীয় সাময়িক']?.position || '—'}</td>
+                                <td class="bangla-number">${combinedData['বার্ষিক পরীক্ষা']?.position || '—'}</td>
+                            </tr>
+                            <tr class="bg-light-green">
+                                <td>বিভাগ</td>
+                                <td>${combinedData['প্রথম সাময়িক']?.division || '—'}</td>
                                 <td>${combinedData['দ্বিতীয় সাময়িক']?.division || '—'}</td>
-                                <td class="bangla-number present">${toBanglaNumber(subjects.filter(s => combinedData['দ্বিতীয় সাময়িক']?.marks[s] > 0).length)}</td>
-                                <td class="bangla-number absent">${toBanglaNumber(subjects.filter(s => combinedData['দ্বিতীয় সাময়িক']?.marks[s] === 0).length)}</td>
+                                <td>${combinedData['বার্ষিক পরীক্ষা']?.division || '—'}</td>
                             </tr>
                             <tr>
-                                <td class="exam-name">বার্ষিক পরীক্ষা</td>
-                                <td class="total-marks bangla-number">${toBanglaNumber(total3)}/${toBanglaNumber(totalFullMarks)}</td>
-                                <td class="bangla-number">${toBanglaNumber((total3/totalSubjects).toFixed(2))}</td>
-                                <td class="bangla-number">${combinedData['বার্ষিক পরীক্ষা']?.position || '—'}</td>
-                                <td>${combinedData['বার্ষিক পরীক্ষা']?.division || '—'}</td>
-                                <td class="bangla-number present">${toBanglaNumber(subjects.filter(s => combinedData['বার্ষিক পরীক্ষা']?.marks[s] > 0).length)}</td>
-                                <td class="bangla-number absent">${toBanglaNumber(subjects.filter(s => combinedData['বার্ষিক পরীক্ষা']?.marks[s] === 0).length)}</td>
+                                <td>অংশগ্রহণ</td>
+                                <td class="bangla-number present">${toBanglaNumber(present1)}</td>
+                                <td class="bangla-number present">${toBanglaNumber(present2)}</td>
+                                <td class="bangla-number present">${toBanglaNumber(present3)}</td>
+                            </tr>
+                            <tr class="bg-light-green">
+                                <td>অনুপস্থিতি</td>
+                                <td class="bangla-number absent">${toBanglaNumber(absent1)}</td>
+                                <td class="bangla-number absent">${toBanglaNumber(absent2)}</td>
+                                <td class="bangla-number absent">${toBanglaNumber(absent3)}</td>
+                            </tr>
+                            <tr class="footer-row">
+                                <td class="rounded-bottom-left" style="color: white;">মোট বিষয়</td>
+                                <td class="footer-label bangla-number">${toBanglaNumber(totalSubjects)} টি</td>
+                                <td class="footer-label-1">পূর্ণমান</td>
+                                <td class="rounded-bottom-right bangla-number">${toBanglaNumber(totalFullMarks)}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -1735,19 +1829,19 @@
             marksTableContainer.innerHTML = combinedTableHTML;
             marksTableContainer.style.display = 'block';
 
-            // Add PDF button
+            // Add PDF button inside marks table container
             addPDFButton(student, combinedData, subjects, true);
         }
 
-        // Add PDF button at the bottom
+        // Add PDF button inside marks table container
         function addPDFButton(student, data, subjects, isCombined) {
             // Remove existing PDF button if any
-            const existingBtn = document.getElementById('dynamicPdfBtn');
+            const existingBtn = document.getElementById('pdfButtonContainer');
             if (existingBtn) existingBtn.remove();
 
             const pdfDiv = document.createElement('div');
-            pdfDiv.className = 'pdf-download';
-            pdfDiv.id = 'dynamicPdfBtn';
+            pdfDiv.id = 'pdfButtonContainer';
+            pdfDiv.className = 'pdf-button-container';
             
             const btn = document.createElement('button');
             btn.className = 'btn btn-pdf';
@@ -1762,9 +1856,7 @@
             });
             
             pdfDiv.appendChild(btn);
-            
-            // Append after marks table container
-            marksTableContainer.parentNode.insertBefore(pdfDiv, marksTableContainer.nextSibling);
+            marksTableContainer.appendChild(pdfDiv);
         }
 
         // Generate PDF for single exam
