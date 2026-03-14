@@ -481,6 +481,37 @@
       transform: translateY(-3px);
       box-shadow: 0 10px 25px rgba(26, 95, 180, 0.3);
     }
+    /* মোবাইল বটম বার */
+    .mobile-bottom-bar {
+        display: none;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: white;
+        padding: 10px 5px;
+        box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.15);
+        z-index: 1000;
+        justify-content: space-around;
+        align-items: center;
+        border-top: 3px solid #007c7c;
+    }
+
+    .mobile-bottom-bar a {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-decoration: none;
+        color: #00464e;
+        font-size: 12px;
+        font-weight: bold;
+        gap: 5px;
+    }
+
+    .mobile-bottom-bar a i {
+        font-size: 20px;
+        color: #007c7c;
+    }
 
     /* ফুটার */
     .footer {
@@ -511,6 +542,65 @@
       animation: spin 1s linear infinite;
       margin: 0 auto 20px;
     }
+    
+        /* Responsive */
+        @media (max-width: 992px) {
+            .form-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+            .action-buttons {
+                flex-direction: column;
+            }
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+            .section-title h1 {
+                font-size: 28px;
+            }
+            .selected-exam-badge {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .change-exam-btn {
+                width: 100%;
+                justify-content: center;
+            }
+            .floating-home {
+                display: none; /* বড় স্ক্রিনে দেখাবে */
+            }
+            .mobile-bottom-bar {
+                display: flex; /* মোবাইলে দেখাবে */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .student-name {
+                font-size: 22px;
+            }
+            .status-main {
+                font-size: 18px;
+            }
+        }
+
+        /* বড় স্ক্রিনে মোবাইল বার লুকাবে */
+        @media (min-width: 769px) {
+            .mobile-bottom-bar {
+                display: none;
+            }
+            .floating-home {
+                display: flex;
+            }
+        }
 
     /* ========== মোবাইল রেসপন্সিভ (সংশোধিত) ========== */
     @media (max-width: 600px) {
@@ -620,12 +710,13 @@
       </div>
     </div>
 
-    <!-- ফুটার -->
-    <div class="footer">
-      <img src="png/madrasa head.png" alt="মাদরাসা হেডার">
-      <p>© ২০২৫ উসমান সাঈদ । সর্বস্বত্ব সংরক্ষিত</p>
+    <!-- মোবাইল বটম বার - শুধু মোবাইলে -->
+    <div class="mobile-bottom-bar">
+        <a href="index.html#home"><i class="fas fa-home"></i> হোম</a>
+        <a href="index.html#vorti"><i class="fas fa-pen"></i> ভর্তি</a>
+        <a href="index.html#gallery"><i class="fas fa-image"></i> গ্যালারি</a>
+        <a href="index.html#contact"><i class="fas fa-phone"></i> যোগাযোগ</a>
     </div>
-  </div>
 
   <!-- ভাসমান হোম বাটন -->
   <a href="index.html" class="floating-home" title="মূল পেইজে ফিরে যান">
