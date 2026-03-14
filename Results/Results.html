@@ -1,0 +1,1801 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
+    <title>মাদরাসা ফলাফল ব্যবস্থাপনা সিস্টেম</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.maateen.me/solaiman-lipi/font.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'kalpurush', Arial, sans-serif;
+        }
+
+        @font-face {
+            font-family: 'JunudullahZami';
+            src: url('ফন্ট/FN Junudullah Zami.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Qayyum book';
+            src: url('ফন্ট/Qayyum Book.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Sheikh Hasina';
+            src: url('ফন্ট/Li Sheikh Hasina 2 Unicode.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Headline Bangla';
+            src: url('ফন্ট/Headline Bangla Unicode Italic.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Bornomala-Bold';
+            src: url('ফন্ট/Bornomala-Bold.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Bornomala';
+            src: url('ফন্ট/Bornomala-Regular.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        body {
+            background: linear-gradient(135deg, #005d5e 0%, #00464e 100%);
+            min-height: 100vh;
+            padding: 10px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* হেডার লোগো - মানসম্মত করা হয়েছে */
+        .header-wrapper {
+            background: white;
+            border-radius: 20px;
+            padding: 20px 0;
+            margin: 20px 0 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+
+        .header-logo {
+            max-width: 90%;
+            height: auto;
+            max-height: 100px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .section-title h1 {
+            font-family: 'JunudullahZami';
+            font-weight: normal;
+            color: #ffffff;
+            font-size: 42px;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        }
+
+        .section-title p {
+            color: #ffffff;
+            font-size: 20px;
+            background: #007c7c;
+            display: inline-block;
+            padding: 10px 40px;
+            border-radius: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* পরীক্ষা সিলেকশন কার্ড */
+        /* এটি খুঁজে পরিবর্তন করুন */
+        .exam-selection {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px; /* ১৫ থেকে কমিয়ে ১০ করুন */
+            margin-bottom: 20px;
+        }
+
+        .exam-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 12px; /* ২০ থেকে কমিয়ে ১২ করুন */
+            padding: 10px 8px; /* ২০ থেকে কমিয়ে ১০ করুন */
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent; /* ৩ থেকে কমিয়ে ২ করুন */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .exam-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+        }
+
+        .exam-card.active {
+            border-color: #ffb347;
+            background: linear-gradient(135deg, #E8F5E9, #C8E6C9);
+            transform: scale(1.02);
+        }
+
+        .exam-card i {
+            font-size: 24px; /* ৪০ থেকে কমিয়ে ২৪ করুন */
+            color: #007c7c;
+            margin-bottom: 5px;
+        }
+
+        .exam-card h3 {
+            color: #00464e;
+            font-size: 16px; /* ২২ থেকে কমিয়ে ১৬ করুন */
+            margin-bottom: 2px;
+            font-weight: bold;
+        }
+
+        .exam-card p {
+            color: #00638d;
+            font-size: 11px; /* ১৩ থেকে কমিয়ে ১১ করুন */
+            display: none; /* আপনি চাইলে বিবরণটি একদম হাইড করে দিতে পারেন আরও ছোট দেখানোর জন্য */
+        }
+
+        /* নির্বাচিত পরীক্ষা ব্যাজ */
+        .selected-exam-badge {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,255,255,0.3);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 15px;
+            margin: 20px 0;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        .selected-exam-badge .exam-name {
+            font-size: 24px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .selected-exam-badge .exam-name i {
+            color: #ffb347;
+        }
+
+        .change-exam-btn {
+            background: rgba(255,255,255,0.2);
+            border: 2px solid white;
+            color: white;
+            padding: 10px 22px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .change-exam-btn:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+        }
+
+        /* সার্চ ফর্ম */
+        .search-form {
+            background: linear-gradient(#f2fff9, #ffffff);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            border: 1px solid rgba(255,255,255,0.5);
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            color: #00464e;
+            font-weight: bold;
+            margin-bottom: 8px;
+            font-size: 15px;
+        }
+
+        .form-group label i {
+            color: #007c7c;
+            margin-right: 5px;
+        }
+
+        .form-control {
+            padding: 14px;
+            border: 2px solid #c0d6d6;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        .form-control:focus {
+            border-color: #007c7c;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(0,124,124,0.2);
+        }
+
+        /* অ্যাকশন বাটন */
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .btn {
+            padding: 16px 40px;
+            font-size: 18px;
+            font-weight: bold;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .btn-reset {
+            background: linear-gradient(135deg, #512331, #a64ba5);
+            color: white;
+        }
+
+        .btn-reset:hover {
+            background: linear-gradient(135deg, #ff0000, #011c1e);
+            transform: translateY(-3px);
+        }
+
+        .btn-search {
+            background: linear-gradient(135deg, #007c7c, #005d5e);
+            color: white;
+        }
+
+        .btn-search:hover {
+            background: linear-gradient(135deg, #005d5e, #007c7c);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,124,124,0.4);
+        }
+
+        /* লোডিং স্পিনার */
+        .loading-spinner {
+            display: none;
+            text-align: center;
+            padding: 40px;
+        }
+
+        .spinner {
+            width: 60px;
+            height: 60px;
+            border: 6px solid #b2d8d8;
+            border-top: 6px solid #007c7c;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* এরর মেসেজ - এখন কাজ করবে */
+        .error-message {
+            background: #ffebee;
+            color: #c62828;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            margin: 20px 0;
+            display: none;
+            border-left: 6px solid #c62828;
+            font-size: 18px;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        /* ফলাফল কন্টেইনার */
+        .result-container {
+            display: none;
+            margin-top: 30px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .info-card {
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+            border: 1px solid #c0e0e0;
+        }
+
+        .info-card h3 {
+            color: #00464e;
+            border-bottom: 3px solid #007c7c;
+            padding-bottom: 12px;
+            margin-bottom: 20px;
+            font-size: 22px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .info-card h3 i {
+            color: #007c7c;
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px dashed #c0d6d6;
+        }
+
+        .info-label {
+            color: #00464e;
+            font-weight: bold;
+        }
+
+        .info-value {
+            color: #003333;
+            font-weight: 500;
+        }
+
+        .name-block {
+            background: #f0f7f7;
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            text-align: center;
+            border: 2px solid #007c7c;
+        }
+
+        .student-name {
+            font-size: 26px;
+            font-weight: bold;
+            color: #00464e;
+            margin-bottom: 8px;
+            font-family: 'Bornomala-Bold';
+        }
+
+        .student-id-badge {
+            background: #007c7c;
+            color: white;
+            padding: 6px 20px;
+            border-radius: 30px;
+            display: inline-block;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        /* স্ট্যাটাস ব্যাজ - উন্নত ডিজাইন */
+        .status-badge-container {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 15px;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-left: 8px solid #007c7c;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .status-badge-container.warning {
+            border-left-color: #f44336;
+            background: linear-gradient(135deg, #ffebee, #ffcdd2);
+        }
+
+        .status-badge-container.info {
+            border-left-color: #2196F3;
+            background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+        }
+
+        .status-label {
+            font-size: 15px;
+            color: #00464e;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: bold;
+        }
+
+        .status-main {
+            font-size: 22px;
+            font-weight: bold;
+            color: #00464e;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .status-sub {
+            font-size: 15px;
+            color: #666;
+            margin-top: 8px;
+            padding-left: 40px;
+        }
+
+        .status-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: #007c7c;
+            color: white;
+            font-size: 18px;
+        }
+
+        .status-icon.warning {
+            background: #f44336;
+        }
+
+        .status-icon.info {
+            background: #2196F3;
+        }
+
+        /* মার্কস টেবিল - উন্নত ডিজাইন */
+        .marks-table-container {
+            overflow-x: auto;
+            margin-top: 30px;
+            background: white;
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+
+        .marks-table {
+            width: 100%;
+            border-collapse: collapse;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .marks-table th {
+            background: linear-gradient(135deg, #007c7c, #005d5e);
+            color: white;
+            padding: 15px 10px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .marks-table td {
+            padding: 12px 8px;
+            text-align: center;
+            border-bottom: 1px solid #c0d6d6;
+        }
+
+        .marks-table tr:nth-child(even) {
+            background-color: #f0f7f7;
+        }
+
+        .marks-table tr:hover {
+            background-color: #e0f0f0;
+        }
+
+        .marks-table tr.total-row {
+            background: linear-gradient(135deg, #d4f0f0, #b0e0e0);
+            font-weight: bold;
+            border-top: 3px solid #007c7c;
+        }
+
+        .marks-table tr.total-row td {
+            font-size: 16px;
+            padding: 15px;
+        }
+
+        .fail-marks {
+            color: #f44336;
+            font-weight: bold;
+        }
+
+        .absent-text {
+            color: #f44336;
+            font-weight: bold;
+            background-color: #ffe6e6;
+        }
+
+        /* সমন্বিত ফলাফল টেবিল */
+        .combined-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .combined-table th {
+            background: linear-gradient(135deg, #006a6a, #004d4d);
+            color: white;
+            padding: 12px 8px;
+        }
+
+        .combined-table td {
+            padding: 10px 6px;
+            text-align: center;
+            border-bottom: 1px solid #c0d6d6;
+        }
+
+        .combined-exam-header {
+            background: #006a6a;
+        }
+
+        /* নো রেজাল্ট মেসেজ */
+        .no-result-message {
+            background: #fff3e0;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            margin: 20px 0;
+            border: 2px solid #ffb347;
+        }
+
+        /* পিডিএফ বাটন */
+        .pdf-download {
+            text-align: center;
+            margin: 30px 0 20px;
+        }
+
+        .btn-pdf {
+            background: linear-gradient(135deg, #c73e3e, #a13131);
+            color: white;
+            padding: 18px 45px;
+            font-size: 20px;
+            border-radius: 12px;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(199, 62, 62, 0.3);
+        }
+
+        .btn-pdf:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(199, 62, 62, 0.4);
+        }
+
+        /* হোম লিংক */
+        .home-link {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            color: white;
+            padding: 14px 32px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            border: 2px solid rgba(255,255,255,0.3);
+            transition: all 0.3s ease;
+            margin: 20px 0;
+            gap: 12px;
+        }
+
+        .home-link:hover {
+            background: rgba(255,255,255,0.25);
+            transform: translateY(-3px);
+        }
+
+        .floating-home {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, #007c7c, #005d5e);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 28px;
+            box-shadow: 0 10px 30px rgba(0,124,124,0.4);
+            border: 3px solid white;
+            z-index: 999;
+            transition: all 0.3s ease;
+        }
+
+        .floating-home:hover {
+            transform: scale(1.1) rotate(360deg);
+            box-shadow: 0 15px 40px rgba(0,124,124,0.6);
+        }
+
+        /* ফুটার */
+        .footer {
+            text-align: center;
+            color: white;
+            padding: 20px;
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        /* ইউটিলিটি ক্লাস */
+        .hidden {
+            display: none !important;
+        }
+
+        /* রেসপনসিভ */
+        @media (max-width: 992px) {
+            .form-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .exam-selection {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            .exam-selection {
+                grid-template-columns: 1fr;
+            }
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+            .action-buttons {
+                flex-direction: column;
+            }
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+            .section-title h1 {
+                font-size: 28px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .student-name {
+                font-size: 22px;
+            }
+            .status-main {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- হেডার লোগো - মানসম্মত -->
+        <div class="header-wrapper">
+            <img class="header-logo" src="jpg/ওয়েব-সাইট.png" alt="দারুল উলূম মাদানিয়া মহিলা মাদরাসা">
+        </div>
+
+        <div class="section-title">
+            <h1>মাদরাসার পরীক্ষার ব্যক্তিগত ফলাফল</h1>
+            <p id="examTitleText">প্রথম সাময়িক পরীক্ষা</p>
+        </div>
+
+        <!-- পরীক্ষা নির্বাচন কার্ড -->
+        <div id="examSelectionArea" class="exam-selection">
+            <div class="exam-card" data-exam="প্রথম সাময়িক" data-sheet-id="1XEaBQXReIMe2lEOWPcaY2jDu_SxIkPgOTzJluLbN42I">
+                <i class="fas fa-file-alt"></i>
+                <h3>প্রথম সাময়িক</h3>
+                <p>প্রথম সাময়িক পরীক্ষার ফলাফল</p>
+            </div>
+            <div class="exam-card" data-exam="দ্বিতীয় সাময়িক" data-sheet-id="105bfnvzmJFmrvaOti1serQJYXv5jnn-vAAweuP8874A">
+                <i class="fas fa-file-contract"></i>
+                <h3>দ্বিতীয় সাময়িক</h3>
+                <p>দ্বিতীয় সাময়িক পরীক্ষার ফলাফল</p>
+            </div>
+            <div class="exam-card active" data-exam="বার্ষিক পরীক্ষা" data-sheet-id="1bQ9GYcYNxmjbaRGHGeboOXKwgmrQSjyBjUszThnX3pg">
+                <i class="fas fa-award"></i>
+                <h3>বার্ষিক পরীক্ষা</h3>
+                <p>বার্ষিক পরীক্ষার ফলাফল</p>
+            </div>
+            <div class="exam-card" data-exam="combined" id="combinedExamCard">
+                <i class="fas fa-chart-line"></i>
+                <h3>বাৎসরিক ফলাফল</h3>
+                <p>তিন পরীক্ষার সমন্বিত ফলাফল</p>
+            </div>
+        </div>
+
+        <!-- নির্বাচিত পরীক্ষা ব্যাজ -->
+        <div id="selectedExamBadge" class="selected-exam-badge hidden">
+            <span class="exam-name"><i class="fas fa-check-circle"></i> <span id="selectedExamName">বার্ষিক পরীক্ষা</span></span>
+            <button class="change-exam-btn" id="changeExamBtn"><i class="fas fa-exchange-alt"></i> পরীক্ষা পরিবর্তন করুন</button>
+        </div>
+
+        <!-- সার্চ ফর্ম -->
+        <div id="searchFormArea" class="search-form hidden">
+            <div class="form-grid">
+                <div class="form-group">
+                    <label><i class="fas fa-calendar-alt"></i> শিক্ষাবর্ষ</label>
+                    <select id="session" class="form-control">
+                        <option value="">-- নির্বাচন করুন --</option>
+                        <option value="১৪৪৬-৪৭ হিজরী/২০২৫-২৬ ঈসায়ী" selected>১৪৪৬-৪৭ হিজরী/২০২৫-২৬ ঈসায়ী</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label><i class="fas fa-users"></i> জামাত সিলেক্ট করুন</label>
+                    <select id="jamat" class="form-control">
+                        <option value="">-- জামাত নির্বাচন করুন --</option>
+                        <option value="আতফাল (শিশু শ্রেণী)">আতফাল (শিশু শ্রেণী)</option>
+                        <option value="আওয়াল (১ম শ্রেণী)">আওয়াল (১ম শ্রেণী)</option>
+                        <option value="ছানী (২য় শ্রেণী)">ছানী (২য় শ্রেণী)</option>
+                        <option value="ছালেছ (৩য় শ্রেণী)">ছালেছ (৩য় শ্রেণী)</option>
+                        <option value="খুসুছি (ইবতেদায়ি রাবে)">খুসুছি (ইবতেদায়ি রাবে)</option>
+                        <option value="খামেস (ইবতেদায়ি খামেছ)">খামেস (ইবতেদায়ি খামেছ)</option>
+                        <option value="মিযান (মুতাওয়াসসিতাহ আওয়াল)">মিযান (মুতাওয়াসসিতাহ আওয়াল)</option>
+                        <option value="নাহবেমীর (মুতাওয়াসসিতাহ ছানি)">নাহবেমীর (মুতাওয়াসসিতাহ ছানি)</option>
+                        <option value="কুদূরী (সানাবিয়্যা আউয়াল)">কুদূরী (সানাবিয়্যা আউয়াল)</option>
+                        <option value="শরহে বেকায়া (সানাবিয়্যা ছানী)">শরহে বেকায়া (সানাবিয়্যা ছানী)</option>
+                        <option value="হেদায়া (ফজিলত আউয়াল)">হেদায়া (ফজিলত আউয়াল)</option>
+                        <option value="মেশকাত (ফজিলত ছানী)">মেশকাত (ফজিলত ছানী)</option>
+                        <option value="দাওরায়ে হাদিস (তাকমিল)">দাওরায়ে হাদিস (তাকমিল)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label><i class="fas fa-id-card"></i> রেজিস্ট্রেশন নং লিখুন (ইংরেজিতে)</label>
+                    <input type="text" id="regNo" class="form-control" placeholder="রেজি. নং লিখুন">
+                </div>
+                <div class="form-group">
+                    <label><i class="fas fa-sort-numeric-up"></i> রোল নং লিখুন (ইংরেজিতে)</label>
+                    <input type="text" id="rollNo" class="form-control" placeholder="রোল নং">
+                </div>
+            </div>
+            <div class="action-buttons">
+                <button id="searchBtn" class="btn btn-search"><i class="fas fa-search"></i> অনুসন্ধান</button>
+                <button id="resetBtn" class="btn btn-reset"><i class="fas fa-redo"></i> পুনরায় সেট</button>
+            </div>
+        </div>
+
+        <!-- লোডিং স্পিনার -->
+        <div id="loadingSpinner" class="loading-spinner">
+            <div class="spinner"></div>
+            <p style="color: white;">ফলাফল খুঁজে বের করা হচ্ছে...</p>
+        </div>
+
+        <!-- এরর মেসেজ - এখন কাজ করবে -->
+        <div id="errorMessage" class="error-message">
+            <i class="fas fa-exclamation-triangle"></i>
+            <span id="errorText">দুঃখিত! প্রদত্ত তথ্যের কোনো ছাত্র/ছাত্রী পাওয়া যায়নি।</span>
+        </div>
+
+        <!-- ফলাফল কন্টেইনার -->
+        <div id="resultContainer" class="result-container"></div>
+
+        <!-- হোম লিংক -->
+        <div style="text-align: center;">
+            <a href="index.html" class="home-link">
+                <i class="fas fa-home"></i> মূল পেইজে ফিরে যান
+            </a>
+        </div>
+
+        <!-- ফুটার -->
+        <div class="footer">
+            <p>© ২০২৫-২৬ মাদরাসা ফলাফল ব্যবস্থাপনা সিস্টেম | আইটি বিভাগ</p>
+            <p>উসমান সাঈদ | সকল অধিকার সংরক্ষিত</p>
+        </div>
+
+        <!-- ভাসমান হোম বাটন -->
+        <a href="index.html" class="floating-home" title="মূল পেইজে ফিরে যান">
+            <i class="fas fa-home"></i>
+        </a>
+    </div>
+
+    <script>
+        (function() {
+            // ---------- কনফিগারেশন ----------
+            const STUDENT_SHEET_ID = '1B6BzLPVKGeRosVm0p_DbMk5tssfuQTWbSF5W97-31-A';
+            
+            // পরীক্ষার কনফিগারেশন - আপনার দেওয়া সকল তথ্য অপরিবর্তিত রাখা হয়েছে
+            const EXAM_CONFIG = {
+                'প্রথম সাময়িক': {
+                    sheetId: '1XEaBQXReIMe2lEOWPcaY2jDu_SxIkPgOTzJluLbN42I',
+                    displayName: 'প্রথম সাময়িক',
+                    sheets: {
+                        'আতফাল (শিশু শ্রেণী)': null,
+                        'আওয়াল (১ম শ্রেণী)': 1596305010,
+                        'ছানী (২য় শ্রেণী)': 115216901,
+                        'ছালেছ (৩য় শ্রেণী)': 377836134,
+                        'খুসুছি (ইবতেদায়ি রাবে)': 1582404381,
+                        'খামেস (ইবতেদায়ি খামেছ)': null,
+                        'মিযান (মুতাওয়াসসিতাহ আওয়াল)': 1393773129,
+                        'নাহবেমীর (মুতাওয়াসসিতাহ ছানি)': 1482164241,
+                        'কুদূরী (সানাবিয়্যা আউয়াল)': null,
+                        'শরহে বেকায়া (সানাবিয়্যা ছানী)': 80783663,
+                        'হেদায়া (ফজিলত আউয়াল)': null,
+                        'মেশকাত (ফজিলত ছানী)': 232997342,
+                        'দাওরায়ে হাদিস (তাকমিল)': null
+                    }
+                },
+                'দ্বিতীয় সাময়িক': {
+                    sheetId: '105bfnvzmJFmrvaOti1serQJYXv5jnn-vAAweuP8874A',
+                    displayName: 'দ্বিতীয় সাময়িক',
+                    sheets: {
+                        'আতফাল (শিশু শ্রেণী)': null,
+                        'আওয়াল (১ম শ্রেণী)': 595250235,
+                        'ছানী (২য় শ্রেণী)': 1031467871,
+                        'ছালেছ (৩য় শ্রেণী)': 260667698,
+                        'খুসুছি (ইবতেদায়ি রাবে)': 166372688,
+                        'খামেস (ইবতেদায়ি খামেছ)': null,
+                        'মিযান (মুতাওয়াসসিতাহ আওয়াল)': 488766016,
+                        'নাহবেমীর (মুতাওয়াসসিতাহ ছানি)': 2022171255,
+                        'কুদূরী (সানাবিয়্যা আউয়াল)': null,
+                        'শরহে বেকায়া (সানাবিয়্যা ছানী)': 1086123970,
+                        'হেদায়া (ফজিলত আউয়াল)': null,
+                        'মেশকাত (ফজিলত ছানী)': 1534963162,
+                        'দাওরায়ে হাদিস (তাকমিল)': null
+                    }
+                },
+                'বার্ষিক পরীক্ষা': {
+                    sheetId: '1bQ9GYcYNxmjbaRGHGeboOXKwgmrQSjyBjUszThnX3pg',
+                    displayName: 'বার্ষিক পরীক্ষা',
+                    sheets: {
+                        'আতফাল (শিশু শ্রেণী)': null,
+                        'আওয়াল (১ম শ্রেণী)': 1596305010,
+                        'ছানী (২য় শ্রেণী)': 54303897,
+                        'ছালেছ (৩য় শ্রেণী)': 377836134,
+                        'খুসুছি (ইবতেদায়ি রাবে)': 1582404381,
+                        'খামেস (ইবতেদায়ি খামেছ)': null,
+                        'মিযান (মুতাওয়াসসিতাহ আওয়াল)': 1393773129,
+                        'নাহবেমীর (মুতাওয়াসসিতাহ ছানি)': 1482164241,
+                        'কুদূরী (সানাবিয়্যা আউয়াল)': null,
+                        'শরহে বেকায়া (সানাবিয়্যা ছানী)': null,
+                        'হেদায়া (ফজিলত আউয়াল)': null,
+                        'মেশকাত (ফজিলত ছানী)': 232997342,
+                        'দাওরায়ে হাদিস (তাকমিল)': null
+                    }
+                }
+            };
+
+            // ---------- বাংলা সংখ্যা কনভার্টার ----------
+            const banglaDigits = ['০', '১', '২', '৩', '৪', '৫', '৬', '৭', '৮', '৯'];
+            
+            function toBanglaNumber(num) {
+                if (num === undefined || num === null || num === '') return '';
+                return num.toString().replace(/\d/g, d => banglaDigits[parseInt(d)]);
+            }
+
+            function toEnglishNumber(banglaNum) {
+                if (!banglaNum) return banglaNum;
+                return banglaNum.toString().replace(/[০-৯]/g, d => banglaDigits.indexOf(d).toString());
+            }
+
+            // ---------- স্টেট ----------
+            let state = {
+                selectedExam: 'বার্ষিক পরীক্ষা',
+                selectedSheetId: EXAM_CONFIG['বার্ষিক পরীক্ষা'].sheetId,
+                currentStudent: null,
+                currentResult: null,
+                currentJamatSubjects: [],
+                isCombined: false
+            };
+
+            // ---------- ডম এলিমেন্টস ----------
+            const examSelectionArea = document.getElementById('examSelectionArea');
+            const selectedExamBadge = document.getElementById('selectedExamBadge');
+            const selectedExamNameSpan = document.getElementById('selectedExamName');
+            const changeExamBtn = document.getElementById('changeExamBtn');
+            const searchFormArea = document.getElementById('searchFormArea');
+            const resultContainer = document.getElementById('resultContainer');
+            const loadingSpinner = document.getElementById('loadingSpinner');
+            const errorMessage = document.getElementById('errorMessage');
+            const errorText = document.getElementById('errorText');
+            const sessionSelect = document.getElementById('session');
+            const jamatSelect = document.getElementById('jamat');
+            const regNoInput = document.getElementById('regNo');
+            const rollNoInput = document.getElementById('rollNo');
+            const searchBtn = document.getElementById('searchBtn');
+            const resetBtn = document.getElementById('resetBtn');
+            const examCards = document.querySelectorAll('.exam-card');
+            const examTitleText = document.getElementById('examTitleText');
+
+            // ---------- ফাংশন: পরীক্ষা নির্বাচন ----------
+            function selectExam(examName, sheetId, isCombined = false) {
+                state.selectedExam = examName;
+                state.selectedSheetId = sheetId;
+                state.isCombined = isCombined;
+                selectedExamNameSpan.innerText = examName;
+                examTitleText.textContent = `${examName} পরীক্ষা`;
+
+                // পরীক্ষার এলাকা লুকাও, ব্যাজ ও ফর্ম দেখাও
+                examSelectionArea.classList.add('hidden');
+                selectedExamBadge.classList.remove('hidden');
+                searchFormArea.classList.remove('hidden');
+                
+                // ফলাফল আড়াল করো
+                resultContainer.style.display = 'none';
+                errorMessage.style.display = 'none';
+            }
+
+            // পরীক্ষা পরিবর্তন
+            function showExamSelection() {
+                examSelectionArea.classList.remove('hidden');
+                selectedExamBadge.classList.add('hidden');
+                searchFormArea.classList.add('hidden');
+                resultContainer.style.display = 'none';
+                errorMessage.style.display = 'none';
+            }
+
+            // পরীক্ষার কার্ডে ইভেন্ট
+            examCards.forEach(card => {
+                card.addEventListener('click', () => {
+                    examCards.forEach(c => c.classList.remove('active'));
+                    card.classList.add('active');
+                    const exam = card.dataset.exam;
+                    const sheetId = card.dataset.sheetId;
+                    const isCombined = (exam === 'combined');
+                    selectExam(exam, sheetId, isCombined);
+                });
+            });
+
+            changeExamBtn.addEventListener('click', showExamSelection);
+
+            // ---------- ইউটিলিটি ----------
+            function showLoading(show) {
+                loadingSpinner.style.display = show ? 'block' : 'none';
+            }
+
+            function showError(message) {
+                errorText.textContent = message;
+                errorMessage.style.display = 'block';
+                resultContainer.style.display = 'none';
+                showLoading(false);
+            }
+
+            // ---------- স্টুডেন্ট ডাটা ফেচ ----------
+            async function fetchStudentData(jamat, regNo, rollNo) {
+                try {
+                    const url = `https://docs.google.com/spreadsheets/d/${STUDENT_SHEET_ID}/gviz/tq?tqx=out:json`;
+                    const response = await fetch(url);
+                    const text = await response.text();
+                    const json = JSON.parse(text.substr(47).slice(0, -2));
+                    
+                    const rows = json.table.rows;
+                    const cols = json.table.cols;
+
+                    for (const row of rows) {
+                        if (!row.c) continue;
+                        
+                        const student = {};
+                        cols.forEach((col, i) => {
+                            if (col.label && row.c[i]) {
+                                student[col.label] = row.c[i].v;
+                            }
+                        });
+
+                        if (student['জামাত'] === jamat && 
+                            student['রেজিস্ট্রেশন/আইডি নম্বর']?.toString() === regNo &&
+                            student['রোল নম্বর']?.toString() === rollNo) {
+                            return student;
+                        }
+                    }
+                    return null;
+                } catch (error) {
+                    console.error('Student fetch error:', error);
+                    return null;
+                }
+            }
+
+            // ---------- জামাতের বিষয় লিস্ট ----------
+            async function fetchJamatSubjects(jamat, examName) {
+                const gid = EXAM_CONFIG[examName]?.sheets?.[jamat];
+                if (!gid) return [];
+                
+                try {
+                    const sheetId = EXAM_CONFIG[examName].sheetId;
+                    const url = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:json&gid=${gid}`;
+                    const response = await fetch(url);
+                    const text = await response.text();
+                    const json = JSON.parse(text.substr(47).slice(0, -2));
+                    
+                    const cols = json.table.cols;
+                    
+                    const excludeHeaders = ['জামাত', 'রেজিস্ট্রেশন/আইডি নম্বর', 'রোল নম্বর', 'শিক্ষার্থীর নাম', 
+                                           'মোট নাম্বার', 'মোট নাম্বার', 'গড় নাম্বার', 'বিভাগ', 'মেধাস্থান', 'ক্রমিক', 
+                                           'মোট', 'Total', 'Average', 'Position', 'GPA', 'SL', 'ক্রমিক নং'];
+                    
+                    const subjects = [];
+                    
+                    for (let i = 0; i < cols.length; i++) {
+                        const label = cols[i]?.label || '';
+                        
+                        if (excludeHeaders.some(h => label.includes(h) || label.toLowerCase().includes(h.toLowerCase()))) {
+                            continue;
+                        }
+                        
+                        if (!label || label.trim() === '' || !isNaN(label)) {
+                            continue;
+                        }
+                        
+                        if (label.trim().length > 0) {
+                            subjects.push(label.trim());
+                        }
+                    }
+                    
+                    return subjects;
+                } catch (error) {
+                    console.error('Jamat subjects fetch error:', error);
+                    return [];
+                }
+            }
+
+            // ---------- একক পরীক্ষার রেজাল্ট ডাটা ----------
+            async function fetchResultData(jamat, regNo, rollNo, examName) {
+                const gid = EXAM_CONFIG[examName]?.sheets?.[jamat];
+                if (!gid) return null;
+                
+                try {
+                    const sheetId = EXAM_CONFIG[examName].sheetId;
+                    const url = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:json&gid=${gid}`;
+                    const response = await fetch(url);
+                    const text = await response.text();
+                    const json = JSON.parse(text.substr(47).slice(0, -2));
+                    
+                    const rows = json.table.rows;
+                    const cols = json.table.cols;
+
+                    let regColIndex = -1;
+                    let rollColIndex = -1;
+                    
+                    for (let i = 0; i < cols.length; i++) {
+                        const label = cols[i]?.label || '';
+                        if (label.includes('রেজিস্ট্রেশন') || label.includes('আইডি') || label.includes('Registration') || label.includes('Reg')) {
+                            regColIndex = i;
+                        } else if (label.includes('রোল') || label.includes('Roll')) {
+                            rollColIndex = i;
+                        }
+                    }
+                    
+                    if (regColIndex === -1) regColIndex = 1;
+                    if (rollColIndex === -1) rollColIndex = 2;
+
+                    for (const row of rows) {
+                        if (!row.c) continue;
+                        
+                        const rowRegNo = row.c[regColIndex]?.v?.toString();
+                        const rowRollNo = row.c[rollColIndex]?.v?.toString();
+                        
+                        if (rowRegNo === regNo && rowRollNo === rollNo) {
+                            return parseResultRow(row, cols);
+                        }
+                    }
+                    
+                    return null;
+                } catch (error) {
+                    console.error('Result fetch error:', error);
+                    return null;
+                }
+            }
+
+            // ---------- সমন্বিত ফলাফল (তিন পরীক্ষা থেকে) ----------
+            async function fetchCombinedResults(jamat, regNo, rollNo) {
+                const examNames = ['প্রথম সাময়িক', 'দ্বিতীয় সাময়িক', 'বার্ষিক পরীক্ষা'];
+                let combined = {};
+                
+                for (let examName of examNames) {
+                    let result = await fetchResultData(jamat, regNo, rollNo, examName);
+                    combined[examName] = result ? result : { marks: {}, total: 0, average: 0, division: '—', position: '—' };
+                }
+                
+                return combined;
+            }
+
+            // ---------- রেজাল্ট রো পার্স ----------
+            function parseResultRow(row, cols) {
+                const result = {
+                    marks: {},
+                    total: 0,
+                    average: 0,
+                    division: '',
+                    position: ''
+                };
+
+                let totalColIndex = -1;
+                for (let i = 0; i < cols.length; i++) {
+                    const label = cols[i]?.label || '';
+                    if (label.includes('মোট') || label.includes('Total') || label.includes('মোট')) {
+                        totalColIndex = i;
+                        break;
+                    }
+                }
+
+                const excludeHeaders = ['জামাত', 'রেজিস্ট্রেশন/আইডি নম্বর', 'রোল নম্বর', 'শিক্ষার্থীর নাম', 
+                                       'মোট নাম্বার', 'মোট নাম্বার', 'গড় নাম্বার', 'বিভাগ', 'মেধাস্থান', 'ক্রমিক',
+                                       'ক্রমিক নং', 'SL', 'Total', 'Average', 'Position', 'GPA'];
+
+                for (let i = 0; i < cols.length; i++) {
+                    const label = cols[i]?.label || '';
+                    const value = row.c[i]?.v;
+                    
+                    if (excludeHeaders.some(h => label.includes(h) || label.toLowerCase().includes(h.toLowerCase()))) {
+                        continue;
+                    }
+                    
+                    if (!label || label.trim() === '' || !isNaN(label)) {
+                        continue;
+                    }
+                    
+                    if (value !== undefined && value !== null) {
+                        const marks = parseFloat(value) || 0;
+                        result.marks[label] = marks;
+                    }
+                }
+
+                if (totalColIndex !== -1) {
+                    result.total = parseFloat(row.c[totalColIndex]?.v) || 0;
+                    if (totalColIndex + 1 < cols.length) {
+                        result.average = parseFloat(row.c[totalColIndex + 1]?.v) || 0;
+                    }
+                    if (totalColIndex + 2 < cols.length) {
+                        result.division = row.c[totalColIndex + 2]?.v || '';
+                    }
+                    if (totalColIndex + 3 < cols.length) {
+                        const pos = row.c[totalColIndex + 3]?.v;
+                        result.position = pos ? toBanglaNumber(pos) : '';
+                    }
+                }
+
+                return result;
+            }
+
+            // ---------- ডিসপ্লে ফাংশন: একক পরীক্ষা ----------
+            function displayNormalResult(student, result, subjects) {
+                // স্ট্যাটাস প্রসেসিং
+                const rawStatus = student['শিক্ষার্থী ধরণ/স্ট্যাটাস'] || 'অধ্যয়নরত';
+                let mainStatus = rawStatus;
+                let subStatus = '';
+                
+                if (rawStatus.includes('–') || rawStatus.includes('—') || rawStatus.includes('-')) {
+                    const parts = rawStatus.split(/[-–—]/);
+                    mainStatus = parts[0].trim();
+                    subStatus = parts[1] ? parts[1].trim() : '';
+                }
+                
+                const statusClass = rawStatus.includes('ত্যাগকৃত') || rawStatus.includes('বহিষ্কৃত') ? 'warning' : 
+                                   (rawStatus.includes('অপেক্ষমাণ') ? 'info' : '');
+
+                // শিক্ষার্থীর তথ্য HTML
+                const infoHTML = `
+                    <div class="info-card">
+                        <h3><i class="fas fa-user-graduate"></i> শিক্ষার্থীর তথ্য</h3>
+                        <div class="name-block">
+                            <div class="student-name">${student['শিক্ষার্থীর নাম'] || '—'}</div>
+                            <div class="student-id-badge">
+                                <i class="fas fa-qrcode"></i> আইডি: ${toBanglaNumber(student['রেজিস্ট্রেশন/আইডি নম্বর'] || '')}
+                            </div>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">রেজিস্ট্রেশন নম্বর</span>
+                            <span class="info-value bangla-number">${toBanglaNumber(student['রেজিস্ট্রেশন/আইডি নম্বর'] || '')}</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">রোল নম্বর</span>
+                            <span class="info-value bangla-number">${toBanglaNumber(student['রোল নম্বর'] || '')}</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">পিতার নাম</span>
+                            <span class="info-value">${student['পিতার নাম'] || '—'}</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">মারহালা</span>
+                            <span class="info-value">${student['মারহালা'] || '—'}</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">জামাত/শ্রেণী</span>
+                            <span class="info-value">${student['জামাত/শ্রেণী'] || '—'}</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">জন্ম তারিখ</span>
+                            <span class="info-value">${student['জন্ম তারিখ'] || '—'}</span>
+                        </div>
+                        <div class="status-badge-container ${statusClass}">
+                            <div class="status-label">
+                                <i class="fas fa-info-circle"></i> শিক্ষার্থী ধরণ/স্ট্যাটাস
+                            </div>
+                            <div class="status-main">
+                                <span class="status-icon ${statusClass}">
+                                    <i class="fas ${statusClass === 'warning' ? 'fa-exclamation-triangle' : (statusClass === 'info' ? 'fa-clock' : 'fa-check-circle')}"></i>
+                                </span>
+                                ${mainStatus}
+                            </div>
+                            ${subStatus ? `<div class="status-sub">${subStatus}</div>` : ''}
+                        </div>
+                    </div>
+                    <div class="info-card">
+                        <h3><i class="fas fa-chart-bar"></i> ফলাফল সারসংক্ষেপ</h3>
+                        <div class="info-row">
+                            <span class="info-label">মোট নাম্বার</span>
+                            <span class="info-value bangla-number">${toBanglaNumber(result.total)}/${toBanglaNumber(subjects.length * 100)}</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">গড় নাম্বার</span>
+                            <span class="info-value bangla-number">${toBanglaNumber(parseFloat(result.average).toFixed(2))}</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">বিভাগ</span>
+                            <span class="info-value">${result.division || '—'}</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">মেধাস্থান</span>
+                            <span class="info-value bangla-number">${result.position || '—'}</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">শিক্ষাবর্ষ</span>
+                            <span class="info-value bangla-number">১৪৪৬-৪৭ হিজরী/২০২৫-২৬ ঈসায়ী</span>
+                        </div>
+                    </div>
+                `;
+
+                // মার্কস টেবিল
+                let tableRows = '';
+                subjects.forEach((subject, index) => {
+                    const marks = result.marks[subject] !== undefined ? result.marks[subject] : 0;
+                    const isAbsent = marks === 0;
+                    const isFail = marks < 33 && marks > 0;
+                    
+                    tableRows += `
+                        <tr>
+                            <td class="bangla-number">${toBanglaNumber(index + 1)}</td>
+                            <td>${subject}</td>
+                            <td class="bangla-number">১০০</td>
+                            <td class="bangla-number ${isAbsent ? 'absent-text' : (isFail ? 'fail-marks' : '')}">
+                                ${isAbsent ? 'অনুপস্থিত' : toBanglaNumber(marks)}
+                            </td>
+                        </tr>
+                    `;
+                });
+
+                // সর্বমোট সারি
+                tableRows += `
+                    <tr class="total-row">
+                        <td colspan="2"><strong>মোট</strong></td>
+                        <td class="bangla-number"><strong>${toBanglaNumber(subjects.length * 100)}</strong></td>
+                        <td class="bangla-number"><strong>${toBanglaNumber(result.total)}</strong></td>
+                    </tr>
+                `;
+
+                resultContainer.innerHTML = `
+                    <div class="info-grid">${infoHTML}</div>
+                    <div class="marks-table-container">
+                        <h3 style="margin-bottom: 20px; color: #00464e;">
+                            <i class="fas fa-table"></i> বিস্তারিত নম্বর
+                        </h3>
+                        <table class="marks-table">
+                            <thead>
+                                <tr>
+                                    <th>ক্রমিক</th>
+                                    <th>বিষয়</th>
+                                    <th>পূর্ণমান</th>
+                                    <th>প্রাপ্ত নম্বর</th>
+                                </tr>
+                            </thead>
+                            <tbody>${tableRows}</tbody>
+                        </table>
+                    </div>
+                    <div class="pdf-download">
+                        <button id="downloadPdfBtn" class="btn btn-pdf">
+                            <i class="fas fa-file-pdf"></i> পিডিএফ ডাউনলোড
+                        </button>
+                    </div>
+                `;
+
+                document.getElementById('downloadPdfBtn').addEventListener('click', () => generatePDF(student, result, subjects));
+                resultContainer.style.display = 'block';
+            }
+
+            // ---------- ডিসপ্লে ফাংশন: সমন্বিত ফলাফল (বাৎসরিক) ----------
+            function displayCombinedResult(student, combinedData, subjects) {
+                // স্ট্যাটাস প্রসেসিং
+                const rawStatus = student['শিক্ষার্থী ধরণ/স্ট্যাটাস'] || 'অধ্যয়নরত';
+                let mainStatus = rawStatus;
+                let subStatus = '';
+                
+                if (rawStatus.includes('–') || rawStatus.includes('—') || rawStatus.includes('-')) {
+                    const parts = rawStatus.split(/[-–—]/);
+                    mainStatus = parts[0].trim();
+                    subStatus = parts[1] ? parts[1].trim() : '';
+                }
+                
+                const statusClass = rawStatus.includes('ত্যাগকৃত') || rawStatus.includes('বহিষ্কৃত') ? 'warning' : 
+                                   (rawStatus.includes('অপেক্ষমাণ') ? 'info' : '');
+
+                // শিক্ষার্থীর তথ্য HTML
+                const infoHTML = `
+                    <div class="info-card">
+                        <h3><i class="fas fa-user-graduate"></i> শিক্ষার্থীর তথ্য</h3>
+                        <div class="name-block">
+                            <div class="student-name">${student['শিক্ষার্থীর নাম'] || '—'}</div>
+                            <div class="student-id-badge">
+                                <i class="fas fa-qrcode"></i> আইডি: ${toBanglaNumber(student['রেজিস্ট্রেশন/আইডি নম্বর'] || '')}
+                            </div>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">রেজিস্ট্রেশন নম্বর</span>
+                            <span class="info-value bangla-number">${toBanglaNumber(student['রেজিস্ট্রেশন/আইডি নম্বর'] || '')}</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">রোল নম্বর</span>
+                            <span class="info-value bangla-number">${toBanglaNumber(student['রোল নম্বর'] || '')}</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">পিতার নাম</span>
+                            <span class="info-value">${student['পিতার নাম'] || '—'}</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">মারহালা</span>
+                            <span class="info-value">${student['মারহালা'] || '—'}</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">জামাত/শ্রেণী</span>
+                            <span class="info-value">${student['জামাত/শ্রেণী'] || '—'}</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">জন্ম তারিখ</span>
+                            <span class="info-value">${student['জন্ম তারিখ'] || '—'}</span>
+                        </div>
+                        <div class="status-badge-container ${statusClass}">
+                            <div class="status-label">
+                                <i class="fas fa-info-circle"></i> শিক্ষার্থী ধরণ/স্ট্যাটাস
+                            </div>
+                            <div class="status-main">
+                                <span class="status-icon ${statusClass}">
+                                    <i class="fas ${statusClass === 'warning' ? 'fa-exclamation-triangle' : (statusClass === 'info' ? 'fa-clock' : 'fa-check-circle')}"></i>
+                                </span>
+                                ${mainStatus}
+                            </div>
+                            ${subStatus ? `<div class="status-sub">${subStatus}</div>` : ''}
+                        </div>
+                    </div>
+                    <div class="info-card">
+                        <h3><i class="fas fa-chart-line"></i> সমন্বিত ফলাফল</h3>
+                        <div class="info-row">
+                            <span class="info-label">শিক্ষাবর্ষ</span>
+                            <span class="info-value bangla-number">১৪৪৬-৪৭ হিজরী/২০২৫-২৬ ঈসায়ী</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">মোট পরীক্ষা</span>
+                            <span class="info-value bangla-number">৩টি</span>
+                        </div>
+                    </div>
+                `;
+
+                // সমন্বিত মার্কস টেবিল - তিন কলামে তিন পরীক্ষার ফলাফল
+                let tableRows = '';
+                subjects.forEach((subject, index) => {
+                    const marks1 = combinedData['প্রথম সাময়িক']?.marks[subject] || 0;
+                    const marks2 = combinedData['দ্বিতীয় সাময়িক']?.marks[subject] || 0;
+                    const marks3 = combinedData['বার্ষিক পরীক্ষা']?.marks[subject] || 0;
+                    
+                    tableRows += `
+                        <tr>
+                            <td class="bangla-number">${toBanglaNumber(index + 1)}</td>
+                            <td>${subject}</td>
+                            <td class="bangla-number">১০০</td>
+                            <td class="bangla-number ${marks1 === 0 ? 'absent-text' : ''}">${marks1 === 0 ? 'অনু' : toBanglaNumber(marks1)}</td>
+                            <td class="bangla-number ${marks2 === 0 ? 'absent-text' : ''}">${marks2 === 0 ? 'অনু' : toBanglaNumber(marks2)}</td>
+                            <td class="bangla-number ${marks3 === 0 ? 'absent-text' : ''}">${marks3 === 0 ? 'অনু' : toBanglaNumber(marks3)}</td>
+                        </tr>
+                    `;
+                });
+
+                resultContainer.innerHTML = `
+                    <div class="info-grid">${infoHTML}</div>
+                    <div class="marks-table-container">
+                        <h3 style="margin-bottom: 20px; color: #00464e;">
+                            <i class="fas fa-table"></i> তিন পরীক্ষার সমন্বিত ফলাফল
+                        </h3>
+                        <table class="marks-table">
+                            <thead>
+                                <tr>
+                                    <th>ক্রমিক</th>
+                                    <th>বিষয়</th>
+                                    <th>পূর্ণমান</th>
+                                    <th>প্রথম সাময়িক</th>
+                                    <th>দ্বিতীয় সাময়িক</th>
+                                    <th>বার্ষিক</th>
+                                </tr>
+                            </thead>
+                            <tbody>${tableRows}</tbody>
+                        </table>
+                    </div>
+                    <div class="pdf-download">
+                        <button id="downloadCombinedPdfBtn" class="btn btn-pdf">
+                            <i class="fas fa-file-pdf"></i> পিডিএফ ডাউনলোড
+                        </button>
+                    </div>
+                `;
+
+                document.getElementById('downloadCombinedPdfBtn').addEventListener('click', () => generateCombinedPDF(student, combinedData, subjects));
+                resultContainer.style.display = 'block';
+            }
+
+            // ---------- পিডিএফ জেনারেট (একক) - সম্পূর্ণ কার্যকর ----------
+            function generatePDF(student, result, subjects) {
+                const { jsPDF } = window.jspdf;
+                const pdf = new jsPDF('p', 'mm', 'a4');
+                
+                // হেডার
+                pdf.setFillColor(0, 93, 93);
+                pdf.rect(0, 0, 210, 45, 'F');
+                
+                pdf.setTextColor(255, 255, 255);
+                pdf.setFontSize(22);
+                pdf.setFont('helvetica', 'bold');
+                pdf.text('মাদরাসা ফলাফল ব্যবস্থাপনা সিস্টেম', 105, 20, { align: 'center' });
+                
+                pdf.setFontSize(14);
+                pdf.text(`${state.selectedExam} - ১৪৪৬-৪৭ হিজরী/২০২৫-২৬ ঈসায়ী`, 105, 35, { align: 'center' });
+
+                // শিক্ষার্থীর তথ্য
+                pdf.setTextColor(0, 0, 0);
+                pdf.setFontSize(16);
+                pdf.setTextColor(0, 93, 93);
+                pdf.text('শিক্ষার্থীর তথ্য', 20, 60);
+
+                pdf.setFontSize(12);
+                pdf.setTextColor(0, 0, 0);
+                
+                pdf.text(`নাম: ${student['শিক্ষার্থীর নাম'] || '—'}`, 20, 70);
+                pdf.text(`রেজি: ${toBanglaNumber(student['রেজিস্ট্রেশন/আইডি নম্বর'] || '')}`, 120, 70);
+                pdf.text(`পিতার নাম: ${student['পিতার নাম'] || '—'}`, 20, 78);
+                pdf.text(`রোল: ${toBanglaNumber(student['রোল নম্বর'] || '')}`, 120, 78);
+                pdf.text(`জামাত: ${student['জামাত/শ্রেণী'] || '—'}`, 20, 86);
+                pdf.text(`মারহালা: ${student['মারহালা'] || '—'}`, 120, 86);
+                pdf.text(`স্ট্যাটাস: ${student['শিক্ষার্থী ধরণ/স্ট্যাটাস'] || '—'}`, 20, 94);
+                pdf.text(`জন্ম তারিখ: ${student['জন্ম তারিখ'] || '—'}`, 120, 94);
+
+                // মার্কস টেবিল
+                pdf.setFontSize(16);
+                pdf.setTextColor(0, 93, 93);
+                pdf.text('বিষয়ভিত্তিক নম্বর', 20, 110);
+
+                // টেবিল হেডার
+                pdf.setFillColor(240, 240, 240);
+                pdf.rect(20, 115, 170, 8, 'F');
+                
+                pdf.setFontSize(11);
+                pdf.setTextColor(0, 0, 0);
+                pdf.text('ক্রমিক', 25, 121);
+                pdf.text('বিষয়', 45, 121);
+                pdf.text('পূর্ণমান', 130, 121, { align: 'right' });
+                pdf.text('প্রাপ্ত', 175, 121, { align: 'right' });
+
+                // টেবিলের সারি
+                let y = 130;
+                
+                subjects.forEach((subject, index) => {
+                    const marks = result.marks[subject] || 0;
+                    const isAbsent = marks === 0;
+                    
+                    if (y > 250) {
+                        pdf.addPage();
+                        y = 20;
+                    }
+                    
+                    pdf.text(toBanglaNumber(index + 1), 25, y);
+                    
+                    let subjectName = subject;
+                    if (subject.length > 30) {
+                        subjectName = subject.substring(0, 27) + '...';
+                    }
+                    pdf.text(subjectName, 45, y);
+                    
+                    pdf.text('১০০', 130, y, { align: 'right' });
+                    
+                    if (isAbsent) {
+                        pdf.setTextColor(244, 67, 54);
+                        pdf.text('অনুপস্থিত', 175, y, { align: 'right' });
+                    } else {
+                        if (marks < 33) pdf.setTextColor(244, 67, 54);
+                        pdf.text(toBanglaNumber(marks), 175, y, { align: 'right' });
+                    }
+                    pdf.setTextColor(0, 0, 0);
+                    
+                    y += 7;
+                });
+
+                // সর্বমোট সারি
+                pdf.setFont('helvetica', 'bold');
+                pdf.text('মোট', 45, y + 5);
+                pdf.text(toBanglaNumber(subjects.length * 100), 130, y + 5, { align: 'right' });
+                pdf.text(toBanglaNumber(result.total), 175, y + 5, { align: 'right' });
+
+                // ফলাফল সারসংক্ষেপ
+                y += 20;
+                pdf.setFont('helvetica', 'normal');
+                pdf.setFontSize(16);
+                pdf.setTextColor(0, 93, 93);
+                pdf.text('ফলাফল সারসংক্ষেপ', 20, y);
+                
+                y += 8;
+                pdf.setFontSize(12);
+                pdf.setTextColor(0, 0, 0);
+                
+                pdf.text(`মোট বিষয়: ${toBanglaNumber(subjects.length)}টি`, 20, y);
+                pdf.text(`গড় নাম্বার: ${toBanglaNumber(parseFloat(result.average).toFixed(2))}`, 20, y + 7);
+                pdf.text(`বিভাগ: ${result.division || '—'}`, 20, y + 14);
+                pdf.text(`মেধাস্থান: ${result.position || '—'}`, 20, y + 21);
+
+                // ফুটার
+                pdf.setFontSize(9);
+                pdf.setTextColor(150, 150, 150);
+                pdf.text('almadania.netlify.app', 105, 280, { align: 'center' });
+
+                pdf.save(`Result_${student['রেজিস্ট্রেশন/আইডি নম্বর']}_${state.selectedExam}.pdf`);
+            }
+
+            // ---------- পিডিএফ জেনারেট (সমন্বিত) - সম্পূর্ণ কার্যকর ----------
+            function generateCombinedPDF(student, combinedData, subjects) {
+                const { jsPDF } = window.jspdf;
+                const pdf = new jsPDF('p', 'mm', 'a4');
+                
+                // হেডার
+                pdf.setFillColor(0, 93, 93);
+                pdf.rect(0, 0, 210, 45, 'F');
+                
+                pdf.setTextColor(255, 255, 255);
+                pdf.setFontSize(22);
+                pdf.setFont('helvetica', 'bold');
+                pdf.text('মাদরাসা ফলাফল ব্যবস্থাপনা সিস্টেম', 105, 20, { align: 'center' });
+                
+                pdf.setFontSize(14);
+                pdf.text('বাৎসরিক ফলাফল (তিন পরীক্ষার সমন্বিত)', 105, 35, { align: 'center' });
+
+                // শিক্ষার্থীর তথ্য
+                pdf.setTextColor(0, 0, 0);
+                pdf.setFontSize(16);
+                pdf.setTextColor(0, 93, 93);
+                pdf.text('শিক্ষার্থীর তথ্য', 20, 60);
+
+                pdf.setFontSize(12);
+                pdf.setTextColor(0, 0, 0);
+                
+                pdf.text(`নাম: ${student['শিক্ষার্থীর নাম'] || '—'}`, 20, 70);
+                pdf.text(`রেজি: ${toBanglaNumber(student['রেজিস্ট্রেশন/আইডি নম্বর'] || '')}`, 120, 70);
+                pdf.text(`পিতার নাম: ${student['পিতার নাম'] || '—'}`, 20, 78);
+                pdf.text(`রোল: ${toBanglaNumber(student['রোল নম্বর'] || '')}`, 120, 78);
+                pdf.text(`জামাত: ${student['জামাত/শ্রেণী'] || '—'}`, 20, 86);
+                pdf.text(`শিক্ষাবর্ষ: ১৪৪৬-৪৭ হিজরী/২০২৫-২৬ ঈসায়ী`, 20, 94);
+
+                // মার্কস টেবিল হেডার
+                pdf.setFontSize(16);
+                pdf.setTextColor(0, 93, 93);
+                pdf.text('সমন্বিত নম্বর (তিন পরীক্ষা)', 20, 110);
+
+                // টেবিল হেডার
+                pdf.setFillColor(240, 240, 240);
+                pdf.rect(20, 115, 170, 8, 'F');
+                
+                pdf.setFontSize(10);
+                pdf.setTextColor(0, 0, 0);
+                pdf.text('ক্রমিক', 22, 121);
+                pdf.text('বিষয়', 40, 121);
+                pdf.text('পূর্ণ', 80, 121, { align: 'right' });
+                pdf.text('১ম', 100, 121, { align: 'right' });
+                pdf.text('২য়', 120, 121, { align: 'right' });
+                pdf.text('বার্ষিক', 145, 121, { align: 'right' });
+
+                // টেবিলের সারি
+                let y = 130;
+                
+                subjects.forEach((subject, index) => {
+                    const marks1 = combinedData['প্রথম সাময়িক']?.marks[subject] || 0;
+                    const marks2 = combinedData['দ্বিতীয় সাময়িক']?.marks[subject] || 0;
+                    const marks3 = combinedData['বার্ষিক পরীক্ষা']?.marks[subject] || 0;
+                    
+                    if (y > 250) {
+                        pdf.addPage();
+                        y = 20;
+                    }
+                    
+                    pdf.text(toBanglaNumber(index + 1), 22, y);
+                    
+                    let subjectName = subject;
+                    if (subject.length > 20) {
+                        subjectName = subject.substring(0, 17) + '...';
+                    }
+                    pdf.text(subjectName, 40, y);
+                    
+                    pdf.text('১০০', 80, y, { align: 'right' });
+                    
+                    pdf.setTextColor(marks1 === 0 ? 244 : 0, marks1 === 0 ? 67 : 0, marks1 === 0 ? 54 : 0);
+                    pdf.text(marks1 === 0 ? 'অ' : toBanglaNumber(marks1), 100, y, { align: 'right' });
+                    
+                    pdf.setTextColor(marks2 === 0 ? 244 : 0, marks2 === 0 ? 67 : 0, marks2 === 0 ? 54 : 0);
+                    pdf.text(marks2 === 0 ? 'অ' : toBanglaNumber(marks2), 120, y, { align: 'right' });
+                    
+                    pdf.setTextColor(marks3 === 0 ? 244 : 0, marks3 === 0 ? 67 : 0, marks3 === 0 ? 54 : 0);
+                    pdf.text(marks3 === 0 ? 'অ' : toBanglaNumber(marks3), 145, y, { align: 'right' });
+                    
+                    pdf.setTextColor(0, 0, 0);
+                    
+                    y += 7;
+                });
+
+                // ফুটার
+                pdf.setFontSize(9);
+                pdf.setTextColor(150, 150, 150);
+                pdf.text('almadania.netlify.app', 105, 280, { align: 'center' });
+
+                pdf.save(`Combined_Result_${student['রেজিস্ট্রেশন/আইডি নম্বর']}.pdf`);
+            }
+
+            // ---------- সার্চ ফাংশন ----------
+            async function searchResult() {
+                const jamat = jamatSelect.value;
+                const session = sessionSelect.value;
+                const regNo = regNoInput.value.trim();
+                const rollNo = rollNoInput.value.trim();
+
+                // এরর চেক - এখন কাজ করবে
+                if (!session || !jamat || !regNo || !rollNo) {
+                    showError('সব তথ্য সঠিকভাবে পূরণ করুন');
+                    return;
+                }
+
+                showLoading(true);
+                errorMessage.style.display = 'none';
+                resultContainer.style.display = 'none';
+
+                try {
+                    const englishRegNo = toEnglishNumber(regNo);
+                    const englishRollNo = toEnglishNumber(rollNo);
+
+                    // স্টুডেন্ট ডাটা ফেচ
+                    const studentData = await fetchStudentData(jamat, englishRegNo, englishRollNo);
+                    
+                    if (!studentData) {
+                        showError('প্রদত্ত তথ্যের সাথে কোনো শিক্ষার্থীর তথ্য পাওয়া যায়নি');
+                        return;
+                    }
+
+                    state.currentStudent = studentData;
+
+                    if (state.isCombined) {
+                        // সমন্বিত ফলাফল (তিন পরীক্ষা থেকে)
+                        const combinedData = await fetchCombinedResults(jamat, englishRegNo, englishRollNo);
+                        
+                        // প্রথম পরীক্ষা থেকে বিষয় লিস্ট বের করি
+                        let subjects = await fetchJamatSubjects(jamat, 'প্রথম সাময়িক');
+                        if (!subjects.length) {
+                            subjects = ['কুরআন মাজীদ', 'বাংলা', 'ইংরেজি', 'গণিত', 'আরবি', 'ফিকহ', 'হাদীস', 'তাফসীর'];
+                        }
+                        
+                        displayCombinedResult(studentData, combinedData, subjects);
+                    } else {
+                        // একক পরীক্ষার ফলাফল
+                        const subjects = await fetchJamatSubjects(jamat, state.selectedExam);
+                        
+                        if (!subjects.length) {
+                            showError('এই জামাতের জন্য বিষয় তালিকা পাওয়া যায়নি');
+                            return;
+                        }
+                        
+                        state.currentJamatSubjects = subjects;
+                        
+                        const resultData = await fetchResultData(jamat, englishRegNo, englishRollNo, state.selectedExam);
+                        
+                        if (!resultData) {
+                            // ফলাফল না থাকলে খালি রেজাল্ট তৈরি
+                            const emptyMarks = {};
+                            subjects.forEach(subject => { emptyMarks[subject] = 0; });
+                            
+                            const emptyResult = {
+                                marks: emptyMarks,
+                                total: 0,
+                                average: 0,
+                                division: '—',
+                                position: '—'
+                            };
+                            
+                            state.currentResult = emptyResult;
+                            displayNormalResult(studentData, emptyResult, subjects);
+                        } else {
+                            state.currentResult = resultData;
+                            displayNormalResult(studentData, resultData, subjects);
+                        }
+                    }
+
+                    // সফল হলে ফর্ম হাইড করো
+                    searchFormArea.classList.add('hidden');
+                    
+                } catch (error) {
+                    console.error('Error:', error);
+                    showError('ডাটা লোড করতে সমস্যা হয়েছে');
+                } finally {
+                    showLoading(false);
+                }
+            }
+
+            // ---------- রিসেট ফাংশন ----------
+            function resetForm() {
+                jamatSelect.value = '';
+                regNoInput.value = '';
+                rollNoInput.value = '';
+                sessionSelect.value = '';
+                resultContainer.style.display = 'none';
+                errorMessage.style.display = 'none';
+            }
+
+            // ---------- ইভেন্ট লিসেনার ----------
+            searchBtn.addEventListener('click', searchResult);
+            resetBtn.addEventListener('click', resetForm);
+
+            // ---------- ইউআরএল প্যারামিটার চেক ----------
+            window.addEventListener('load', () => {
+                const params = new URLSearchParams(window.location.search);
+                const jamat = params.get('jamat');
+                const session = params.get('session');
+                const reg = params.get('reg');
+                const roll = params.get('roll');
+
+                if (jamat && session && reg && roll) {
+                    jamatSelect.value = jamat;
+                    sessionSelect.value = session;
+                    regNoInput.value = reg;
+                    rollNoInput.value = roll;
+                    
+                    setTimeout(() => {
+                        searchResult();
+                    }, 500);
+                }
+            });
+
+            // অনলি নাম্বার ইনপুট
+            [regNoInput, rollNoInput].forEach(input => {
+                input.addEventListener('input', function() {
+                    this.value = this.value.replace(/[^০-৯0-9]/g, '');
+                });
+            });
+
+        })();
+    </script>
+</body>
+</html>
