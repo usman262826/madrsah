@@ -33,13 +33,44 @@
         }
 
         body.dark {
-            --bg: #0F172A;
-            --card: #1E293B;
-            --text: #F1F5F9;
-            --text-light: #CBD5E1;
-            --border: #334155;
-            --step-bg: #1E2A3A;
-            --primary-light: #4FB3C9;
+            --bg: #0F172A; /* গাঢ় নীল/কালো ব্যাকগ্রাউন্ড */
+            --card: #1E293B; /* কার্ডের রঙ কিছুটা হালকা */
+            --text: #F8FAFC; /* একদম সাদা না দিয়ে অফ-হোয়াইট টেক্সট (চোখের আরামের জন্য) */
+            --text-light: #94A3B8; /* ছোট বা কম গুরুত্বপূর্ণ টেক্সটের জন্য */
+            --border: #334155; /* বর্ডার কালার */
+            --step-bg: #334155; /* স্টেপ ইন্ডিকেটরের ব্যাকগ্রাউন্ড */
+            --primary-light: #38BDF8; /* ডার্ক মোডে নীল রঙ কিছুটা ব্রাইট */
+        }
+        body.dark .float-group input, 
+        body.dark .float-group select, 
+        body.dark .float-group textarea {
+            background: #1E293B;
+            color: #F8FAFC;
+            border-color: #475569;
+        }
+
+        /* ইনপুট ফোকাস করলে বর্ডার হাইলাইট */
+        body.dark .float-group input:focus {
+            border-color: var(--primary-light);
+        }
+        body.dark .mobile-bottom-bar {
+            background: #1E293B;
+            border-top-color: var(--primary);
+        }
+
+        body.dark .mobile-bottom-bar a {
+            color: #CBD5E1;
+        }
+
+        body.dark .info-msg {
+            background: #1E3A8A; /* হালকা নীল ব্যাকগ্রাউন্ড */
+            color: #DBEAFE;
+        }
+
+        /* লেবেল বা লেখার রঙ ঠিক করা */
+        body.dark .float-group label {
+            background: #1E293B; /* ইনপুটের ব্যাকগ্রাউন্ডের সাথে মিল রেখে */
+            color: #94A3B8;
         }
 
         body {
@@ -55,7 +86,6 @@
             margin: 0 auto;
         }
 
-        /* Header */
         .app-header {
             display: flex;
             justify-content: space-between;
@@ -92,7 +122,6 @@
             box-shadow: var(--shadow-sm);
         }
 
-        /* Cards */
         .card {
             background: var(--card);
             border-radius: var(--radius-card);
@@ -102,7 +131,6 @@
             border: 1px solid var(--border);
         }
 
-        /* Steps */
         .steps {
             display: flex;
             gap: 12px;
@@ -130,7 +158,6 @@
             color: white;
         }
 
-        /* Form Sections */
         .form-section {
             display: none;
             animation: fadeSlide 0.25s ease;
@@ -151,7 +178,6 @@
             }
         }
 
-        /* Floating Label Groups */
         .float-group {
             position: relative;
             margin-bottom: 28px;
@@ -236,7 +262,6 @@
             background: var(--card);
         }
 
-        /* Phone with messaging icons */
         .phone-messaging {
             display: flex;
             align-items: center;
@@ -266,7 +291,6 @@
             color: var(--primary);
         }
 
-        /* Buttons */
         .btn-group {
             display: flex;
             gap: 12px;
@@ -315,7 +339,6 @@
             color: white;
         }
 
-        /* Old search card */
         .old-search-card {
             background: var(--card);
             border-radius: 32px;
@@ -324,7 +347,6 @@
             border-left: 5px solid var(--primary);
         }
 
-        /* Toast notification */
         .toast {
             position: fixed;
             bottom: 25px;
@@ -349,7 +371,6 @@
             background: var(--success);
         }
 
-        /* Overlay Modal for Old Student Verification */
         .overlay-modal {
             position: fixed;
             top: 0;
@@ -454,23 +475,16 @@
             .row-2 {
                 grid-template-columns: 1fr;
             }
-
             .btn-group {
                 flex-direction: column;
             }
-
             .phone-messaging {
                 flex-direction: column;
                 align-items: stretch;
             }
-
             .card {
                 padding: 22px 18px;
             }
-        }
-
-        .success-card {
-            text-align: center;
         }
 
         .app-no {
@@ -499,7 +513,6 @@
             display: inline-block;
         }
 
-        /* Success Panel Modern */
         .modern-success {
             text-align: center;
         }
@@ -535,9 +548,84 @@
             margin-top: 20px;
         }
 
-        @media (max-width: 550px) {
-            .btn-row {
-                flex-direction: column;
+        .review-block {
+            background: var(--step-bg);
+            border-radius: 24px;
+            padding: 16px;
+            margin-bottom: 20px;
+        }
+
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .review-title {
+            font-weight: 800;
+            font-size: 1.1rem;
+            color: var(--primary);
+        }
+
+        .review-content p {
+            margin: 8px 0;
+            font-size: 0.9rem;
+            word-break: break-word;
+        }
+
+        .edit-step-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 6px 14px;
+            border-radius: 40px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .mobile-bottom-bar {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            padding: 10px 5px;
+            box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.15);
+            z-index: 1000;
+            justify-content: space-around;
+            align-items: center;
+            border-top: 3px solid #007c7c;
+        }
+
+        .mobile-bottom-bar a {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: #00464e;
+            font-size: 12px;
+            font-weight: bold;
+            gap: 5px;
+        }
+
+        .mobile-bottom-bar a i {
+            font-size: 20px;
+            color: #007c7c;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-bottom-bar {
+                display: flex;
+            }
+        }
+        @media (min-width: 769px) {
+            .mobile-bottom-bar {
+                display: none;
             }
         }
     </style>
@@ -661,10 +749,20 @@
                         <div id="oldAutoMsg" class="hidden info-msg"></div>
                     </div>
 
-                    <div class="btn-group">
+                    <!-- Step 4: Review & Submit -->
+                    <div class="form-section" data-step="4">
+                        <h3 style="margin-bottom:20px;"><i class="fas fa-clipboard-list"></i> আপনার তথ্য যাচাই করুন</h3>
+                        <div id="reviewContainer"></div>
+                        <div class="btn-group" style="margin-top:20px;">
+                            <button type="button" class="btn btn-secondary" id="backToStep3Btn"><i class="fas fa-arrow-left"></i> পূর্ববর্তী</button>
+                            <button type="button" class="btn btn-success" id="finalSubmitBtn"><i class="fas fa-check-circle"></i> জমা দিন</button>
+                        </div>
+                    </div>
+
+                    <!-- Navigation Buttons (common for steps 1-3) -->
+                    <div class="btn-group" id="navButtons">
                         <button type="button" class="btn btn-secondary" id="prevBtn"><i class="fas fa-arrow-left"></i> পূর্ববর্তী</button>
                         <button type="button" class="btn btn-primary" id="nextBtn">পরবর্তী <i class="fas fa-arrow-right"></i></button>
-                        <button type="button" class="btn btn-success" id="submitBtn" style="display:none;">জমা দিন <i class="fas fa-check"></i></button>
                     </div>
                 </form>
             </div>
@@ -688,17 +786,19 @@
             </div>
         </div>
     </div>
+    <div class="mobile-bottom-bar">
+        <a href="index.html#home"><i class="fas fa-home"></i> হোম</a>
+        <a href="index.html#vorti"><i class="fas fa-pen"></i> ভর্তি</a>
+        <a href="index.html#gallery"><i class="fas fa-image"></i> গ্যালারি</a>
+        <a href="index.html#contact"><i class="fas fa-phone"></i> যোগাযোগ</a>
+    </div>
 
     <script>
         // ======================== DATABASE CONFIGURATION ========================
-        // পুরাতন শিক্ষার্থীদের যাচাই করার জন্য শিট আইডি
         const VERIFY_SHEET_ID = '1B6BzLPVKGeRosVm0p_DbMk5tssfuQTWbSF5W97-31-A';
         const VERIFY_SHEET_URL = `https://docs.google.com/spreadsheets/d/${VERIFY_SHEET_ID}/gviz/tq?tqx=out:json`;
+        const SUBMIT_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz3awcDFKi2pZnFs_ScI9VuI7gDgpfVYQL1-W8G5PvpbMuERXvE_092sXObnVjxBYriGA/exec';
         
-        // নতুন আবেদন জমা দেওয়ার জন্য স্ক্রিপ্ট URL
-        const SUBMIT_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwFNPwB_5Wq2N-aEg5NjPdcwh8btjRdj4HeTnT17FgR_njTIFT0QSL-xiY0WOZE-zaMiA/exec';
-        
-        // বাংলাদেশের জেলা ও উপজেলার তথ্য (পূর্ণাঙ্গ)
         const bangladeshData = {
             dhaka: { name: "ঢাকা", districts: { dhaka: { name: "ঢাকা", upazilas: ["সাভার","ধামরাই","কেরানীগঞ্জ","নবাবগঞ্জ","দোহার"] }, gazipur: { name: "গাজীপুর", upazilas: ["কালিয়াকৈর","কালীগঞ্জ","কাপাসিয়া","গাজীপুর সদর","শ্রীপুর"] }, narayanganj: { name: "নারায়ণগঞ্জ", upazilas: ["আড়াইহাজার","বন্দর","নারায়ণগঞ্জ সদর","রূপগঞ্জ","সোনারগাঁও"] }, narsingdi: { name: "নরসিংদী", upazilas: ["নরসিংদী সদর","বেলাবো","মনোহরদী","রায়পুরা","শিবপুর","পলাশ"] }, manikganj: { name: "মানিকগঞ্জ", upazilas: ["মানিকগঞ্জ সদর","সিংগাইর","শিবালয়","সাটুরিয়া","হরিরামপুর","ঘিওর","দৌলতপুর"] }, munshiganj: { name: "মুন্সীগঞ্জ", upazilas: ["মুন্সীগঞ্জ সদর","শ্রীনগর","সিরাজদিখান","লৌহজং","টংগিবাড়ী","গজারিয়া"] }, kishoreganj: { name: "কিশোরগঞ্জ", upazilas: ["সদর","হোসেনপুর","কটিয়াদী","পাকুন্দিয়া","তাড়াইল","ইটনা","মিঠামইন","অষ্টগ্রাম","নিকলী","বাজিতপুর","কুলিয়ারচর","ভৈরব","করিমগঞ্জ"] }, tangail: { name: "টাঙ্গাইল", upazilas: ["সদর","বাসাইল","কালিহাতী","ঘাটাইল","মির্জাপুর","নাগরপুর","মধুপুর","সখিপুর","দেলদুয়ার","ধনবাড়ী","গোপালপুর","ভূয়াপুর"] }, faridpur: { name: "ফরিদপুর", upazilas: ["সদর","মধুখালী","বোয়ালমারী","সালথা","নগরকান্দা","আলফাডাঙ্গা","সদরপুর","চরভদ্রাসন","ভাঙ্গা"] }, madaripur: { name: "মাদারীপুর", upazilas: ["সদর","শিবচর","কালকিনি","রাজৈর","ডাসার"] }, shariatpur: { name: "শরীয়তপুর", upazilas: ["সদর","ডামুড্যা","নড়িয়া","জাজিরা","ভেদরগঞ্জ","গোসাইরহাট"] }, gopalganj: { name: "গোপালগঞ্জ", upazilas: ["সদর","কোটালীপাড়া","টুঙ্গিপাড়া","কাশিয়ানী","মুকসুদপুর"] }, rajbari: { name: "রাজবাড়ী", upazilas: ["সদর","গোয়ালন্দ","পাংশা","বালিয়াকান্দি","কালুখালী"] } } },
             chattogram: { name: "চট্টগ্রাম", districts: { chattogram: { name: "চট্টগ্রাম", upazilas: ["রাঙ্গুনিয়া","সীতাকুণ্ড","মীরসরাই","পটিয়া","সন্দ্বীপ","বাঁশখালী","বোয়ালখালী","আনোয়ারা","চন্দনাইশ","সাতকানিয়া","লোহাগাড়া","হাটহাজারী","ফটিকছড়ি","রাউজান","কর্ণফুলী"] }, comilla: { name: "কুমিল্লা", upazilas: ["সদর","সদর দক্ষিণ","চৌদ্দগ্রাম","লাকসাম","বরুড়া","চান্দিনা","দাউদকান্দি","মুরাদনগর","লাঙ্গলকোট","দেবিদ্বার","মেঘনা","হোমনা","তিতাস","বুড়িচং","ব্রাহ্মণপাড়া","মনোহরগঞ্জ","লালমাই"] }, coxsBazar: { name: "কক্সবাজার", upazilas: ["সদর","চকরিয়া","কুতুবদিয়া","উখিয়া","মহেশখালী","টেকনাফ","রামু","পেকুয়া","ঈদগাঁও"] }, brahmanbaria: { name: "ব্রাহ্মণবাড়িয়া", upazilas: ["সদর","কসবা","নাসিরনগর","সরাইল","আশুগঞ্জ","আখাউড়া","নবীনগর","বাঞ্ছারামপুর","বিজয়নগর"] }, chandpur: { name: "চাঁদপুর", upazilas: ["সদর","কচুয়া","শাহরাস্তি","হাজীগঞ্জ","মতলব উত্তর","মতলব দক্ষিণ","ফরিদগঞ্জ","হাইমচর"] }, noakhali: { name: "নোয়াখালী", upazilas: ["সদর","কোম্পানীগঞ্জ","বেগমগঞ্জ","চাটখিল","সেনবাগ","হাতিয়া","সোনাইমুড়ী","কবিরহাট","সুবর্ণচর"] }, lakshmipur: { name: "লক্ষ্মীপুর", upazilas: ["সদর","রায়পুর","রামগঞ্জ","রামগতি","কমলনগর"] }, feni: { name: "ফেনী", upazilas: ["সদর","ছাগলনাইয়া","ফুলগাজী","পরশুরাম","দাগনভূঞা","সোনাগাজী"] }, khagrachhari: { name: "খাগড়াছড়ি", upazilas: ["সদর","দীঘিনালা","পানছড়ি","মাটিরাঙ্গা","গুইমারা","মানিকছড়ি","রামগড়","মহালছড়ি","লক্ষ্মীছড়ি"] }, rangamati: { name: "রাঙ্গামাটি", upazilas: ["সদর","কাপ্তাই","কাউখালী","বাঘাইছড়ি","বরকল","ল্যাঙ্গাদু","রাজস্থলী","বিলাইছড়ি","জুরাছড়ি","নানিয়ারচর"] }, bandarban: { name: "বান্দরবান", upazilas: ["সদর","থানচি","রুমা","রোয়াংছড়ি","লামা","আলীকদম","নাইক্ষ্যংছড়ি"] } } },
@@ -712,7 +812,6 @@
 
         const jamatList = ["আতফাল (শিশু শ্রেণী)", "আওয়াল (১ম শ্রেণী)", "ছানী (২য় শ্রেণী)", "ছালেছ (৩য় শ্রেণী)", "খুসুছি (ইবতেদায়ি রাবে)", "খামেস (ইবতেদায়ি খামেছ)", "মিযান (মুতাওয়াসসিতাহ আওয়াল)", "নাহবেমীর (মুতাওয়াসসিতাহ ছানি)", "কুদূরী (সানাবিয়্যা আউয়াল)", "শরহে বেকায়া (সানাবিয়্যা ছানী)", "হেদায়া (ফজিলত আউয়াল)", "মেশকাত (ফজিলত ছানী)", "দাওরায়ে হাদিস (তাকমিল)"];
 
-        // Helper Functions
         function populateSelects() {
             jamatList.forEach(j => {
                 ["desiredClass", "prevClass", "oldJamat"].forEach(id => {
@@ -754,7 +853,7 @@
             return idx !== -1 && idx + 1 < jamatList.length ? jamatList[idx + 1] : current;
         }
 
-        let currentStep = 1, totalSteps = 3, studentType = null, appCounter = parseInt(localStorage.getItem('appCounter') || '1150');
+        let currentStep = 1, totalSteps = 4, studentType = null, appCounter = parseInt(localStorage.getItem('appCounter') || '1150');
 
         function toast(msg, isError = false) {
             let d = document.createElement('div');
@@ -782,40 +881,64 @@
                     if (el && el.value !== undefined) el.value = data[k];
                 });
                 if (data.studentType) studentType = data.studentType;
+                if (studentType === 'new') document.getElementById('newStudentExtra').classList.remove('hidden');
+                else document.getElementById('newStudentExtra').classList.add('hidden');
             }
         }
 
         function updateStepUI() {
             for (let i = 1; i <= totalSteps; i++) {
-                document.querySelector(`.form-section[data-step="${i}"]`)?.classList.toggle('active', i === currentStep);
+                let sec = document.querySelector(`.form-section[data-step="${i}"]`);
+                if (sec) sec.classList.toggle('active', i === currentStep);
             }
-            document.getElementById('prevBtn').style.display = currentStep === 1 ? 'none' : 'inline-flex';
-            document.getElementById('nextBtn').style.display = currentStep === totalSteps ? 'none' : 'inline-flex';
-            document.getElementById('submitBtn').style.display = currentStep === totalSteps ? 'inline-flex' : 'none';
+            const nav = document.getElementById('navButtons');
+            const reviewNav = document.getElementById('reviewContainer')?.parentElement?.querySelector('.btn-group');
+            if (currentStep === totalSteps) {
+                nav.style.display = 'none';
+                if (reviewNav) reviewNav.style.display = 'flex';
+                generateReview();
+            } else {
+                nav.style.display = 'flex';
+                if (reviewNav) reviewNav.style.display = 'none';
+            }
             let stepsDiv = document.getElementById('stepIndicator');
-            stepsDiv.innerHTML = ['ব্যক্তিগত তথ্য', 'ঠিকানা', 'ভর্তি তথ্য'].map((l, i) => `<div class="step ${i + 1 === currentStep ? 'active' : (i + 1 < currentStep ? 'completed' : '')}">${l}</div>`).join('');
+            stepsDiv.innerHTML = ['ব্যক্তিগত তথ্য', 'ঠিকানা', 'ভর্তি তথ্য', 'যাচাই ও জমা'].map((l, i) => `<div class="step ${i + 1 === currentStep ? 'active' : (i + 1 < currentStep ? 'completed' : '')}">${l}</div>`).join('');
         }
 
         function validateCurrentStep() {
-            let fields = [];
-            let fieldNames = [];
+            let fields = [], fieldNames = [];
             if (currentStep === 1) {
                 fields = ['fullName', 'fatherName', 'dob', 'birthReg', 'mobile'];
                 fieldNames = ['শিক্ষার্থীর নাম', 'পিতার নাম', 'জন্ম তারিখ', 'জন্ম নিবন্ধন নাম্বার', 'মোবাইল নাম্বার'];
             } else if (currentStep === 2) {
                 fields = ['division', 'district', 'upazila', 'postOffice', 'village'];
                 fieldNames = ['বিভাগ', 'জেলা', 'উপজেলা', 'ডাকঘর', 'গ্রাম/মহল্লা'];
-            }
-            for (let i = 0; i < fields.length; i++) {
-                if (!document.getElementById(fields[i])?.value) {
-                    return fieldNames[i];
+            } else if (currentStep === 3) {
+                if (studentType === 'new') {
+                    fields = ['prevMadrasa', 'prevYear', 'prevClass', 'desiredClass'];
+                    fieldNames = ['পূর্বের মাদ্রাসার নাম', 'পূর্বের শিক্ষাবর্ষ', 'পূর্বের জামাত', 'ভর্তি জামাত'];
+                } else {
+                    fields = ['desiredClass'];
+                    fieldNames = ['ভর্তি জামাত'];
                 }
             }
+            for (let i = 0; i < fields.length; i++) {
+                if (!document.getElementById(fields[i])?.value) return fieldNames[i];
+            }
+            if (currentStep === 1 && document.getElementById('mobile').value.length !== 11) return 'মোবাইল নাম্বার ১১ ডিজিট হতে হবে';
             return null;
         }
 
         function goToStep(step) {
-            if (step < 1 || step > totalSteps) return;
+            // যদি প্রথম ধাপে থাকাকালীন কেউ 'পূর্ববর্তী' চাপে
+            if (step < 1) {
+                document.getElementById('mainForm').classList.add('hidden');
+                document.getElementById('selectionCard').classList.remove('hidden');
+                return;
+            }
+            
+            if (step > totalSteps) return;
+
             let missing = validateCurrentStep();
             if (step > currentStep && missing) {
                 toast(`দয়া করে ${missing} পূরণ করে সামনের দিকে এগিয়ে যান`, true);
@@ -824,6 +947,7 @@
             currentStep = step;
             updateStepUI();
             window.scrollTo({ top: 0, behavior: 'smooth' });
+            saveDraft();
         }
 
         async function verifyStudentData(year, jamat, reg, roll) {
@@ -851,9 +975,7 @@
             overlay.className = 'overlay-modal';
             overlay.innerHTML = `
                 <div class="overlay-content">
-                    <div class="overlay-success-icon">
-                        <i class="fas fa-check-circle"></i>
-                    </div>
+                    <div class="overlay-success-icon"><i class="fas fa-check-circle"></i></div>
                     <h3>✅ তথ্য যাচাই সফল!</h3>
                     <div class="overlay-student-details">
                         <p><strong>শিক্ষার্থীর নাম:</strong> ${student['শিক্ষার্থীর নাম'] || ''}</p>
@@ -877,34 +999,24 @@
             let jamat = document.getElementById('oldJamat').value;
             let reg = document.getElementById('oldReg').value.trim();
             let roll = document.getElementById('oldRoll').value.trim();
-
             if (!year || !jamat || !reg || !roll) {
                 toast('সব তথ্য পূরণ করুন', true);
                 return;
             }
-
             toast('অনুসন্ধান করা হচ্ছে...');
             let student = await verifyStudentData(year, jamat, reg, roll);
-
             if (student) {
                 toast('✅ তথ্য পাওয়া গেছে! ফর্ম অটো-ফিল হচ্ছে');
-
-                // Auto-fill all fields
                 document.getElementById('fullName').value = student['শিক্ষার্থীর নাম'] || '';
                 document.getElementById('fatherName').value = student['পিতার নাম'] || '';
                 document.getElementById('motherName').value = student['মাতার নাম'] || '';
-                document.getElementById('dob').value = student['জন্ম তারিখ'] || '';
+                document.getElementById('dob').value = formatDateForInput(student['জন্ম তারিখ']);
                 document.getElementById('birthReg').value = student['জন্ম নিবন্ধন নাম্বার'] || student['জন্ম নিবন্ধন/NID নং'] || '';
                 document.getElementById('mobile').value = student['মোবাইল নাম্বার'] || student['অভিভাবকের মোবাইল'] || '';
                 document.getElementById('altMobile').value = student['বিকল্প মোবাইল'] || '';
                 document.getElementById('email').value = student['ইমেইল'] || '';
                 document.getElementById('bloodGroup').value = student['রক্তের গ্রুপ'] || '';
-
-                // Auto-fill address with default fallback
-                let defaultDivision = 'chattogram';
-                let defaultDistrict = 'comilla';
-                let defaultUpazila = 'মেঘনা';
-
+                let defaultDivision = 'chattogram', defaultDistrict = 'comilla', defaultUpazila = 'মেঘনা';
                 document.getElementById('division').value = student['বিভাগ'] || defaultDivision;
                 loadDistricts('division', 'district', 'upazila');
                 setTimeout(() => {
@@ -917,22 +1029,17 @@
                         updateAddressPreview();
                     }, 100);
                 }, 100);
-
                 let nextClass = getNextClass(jamat);
                 document.getElementById('desiredClass').value = nextClass;
                 document.getElementById('oldAutoMsg').innerHTML = `<i class="fas fa-check-circle"></i> পুরাতন তথ্য মিলেছে! পূর্বের জামাত: ${jamat} → স্বয়ংক্রিয় ভর্তি জামাত: ${nextClass} (আপনি পরিবর্তন করতে পারেন)`;
                 document.getElementById('oldAutoMsg').classList.remove('hidden');
                 document.getElementById('oldWelcomeMsg').style.display = 'block';
-
                 studentType = 'old';
                 document.getElementById('newStudentExtra').classList.add('hidden');
                 document.getElementById('oldSearchPanel').classList.add('hidden');
                 document.getElementById('mainForm').classList.remove('hidden');
-
                 saveDraft();
                 goToStep(1);
-
-                // Show success overlay
                 showVerificationOverlay(student);
             } else {
                 toast('❌ তথ্য পাওয়া যায়নি! সঠিক তথ্য দিন অথবা নতুন ছাত্রী হিসেবে আবেদন করুন', true);
@@ -953,22 +1060,125 @@
         }
 
         function updateAddressPreview() {
-            document.getElementById('addressPreview').innerHTML = `সম্পূর্ণ ঠিকানা: ${formatFullAddress()}`;
+            let preview = document.getElementById('addressPreview');
+            if (preview) preview.innerHTML = `সম্পূর্ণ ঠিকানা: ${formatFullAddress()}`;
+        }
+
+        function formatDateForInput(dateStr) {
+            if (!dateStr) return '';
+            const date = new Date(dateStr);
+            if (isNaN(date.getTime())) return '';
+            return date.toISOString().split('T')[0];
+        }
+
+        function generateReview() {
+            const container = document.getElementById('reviewContainer');
+            if (!container) return;
+            const getVal = (id) => document.getElementById(id)?.value || '—';
+            const getSelectText = (id) => {
+                let sel = document.getElementById(id);
+                return sel.options[sel.selectedIndex]?.text || '—';
+            };
+            let step1Html = `
+                <div class="review-block">
+                    <div class="review-header">
+                        <span class="review-title"><i class="fas fa-user"></i> ব্যক্তিগত তথ্য</span>
+                        <button type="button" class="edit-step-btn" data-step="1">এডিট</button>
+                    </div>
+                    <div class="review-content">
+                        <p><strong>শিক্ষার্থীর নাম:</strong> ${escapeHtml(getVal('fullName'))}</p>
+                        <p><strong>পিতার নাম:</strong> ${escapeHtml(getVal('fatherName'))}</p>
+                        <p><strong>মাতার নাম:</strong> ${escapeHtml(getVal('motherName'))}</p>
+                        <p><strong>জন্ম তারিখ:</strong> ${escapeHtml(getVal('dob'))}</p>
+                        <p><strong>জন্ম নিবন্ধন/NID:</strong> ${escapeHtml(getVal('birthReg'))}</p>
+                        <p><strong>মোবাইল:</strong> ${escapeHtml(getVal('mobile'))}</p>
+                        <p><strong>বিকল্প মোবাইল:</strong> ${escapeHtml(getVal('altMobile'))}</p>
+                        <p><strong>ইমেইল:</strong> ${escapeHtml(getVal('email'))}</p>
+                        <p><strong>রক্তের গ্রুপ:</strong> ${escapeHtml(getVal('bloodGroup'))}</p>
+                    </div>
+                </div>
+            `;
+            let step2Html = `
+                <div class="review-block">
+                    <div class="review-header">
+                        <span class="review-title"><i class="fas fa-map-marker-alt"></i> স্থায়ী ঠিকানা</span>
+                        <button type="button" class="edit-step-btn" data-step="2">এডিট</button>
+                    </div>
+                    <div class="review-content">
+                        <p><strong>বিভাগ:</strong> ${escapeHtml(getSelectText('division'))}</p>
+                        <p><strong>জেলা:</strong> ${escapeHtml(getSelectText('district'))}</p>
+                        <p><strong>উপজেলা:</strong> ${escapeHtml(getSelectText('upazila'))}</p>
+                        <p><strong>ডাকঘর:</strong> ${escapeHtml(getVal('postOffice'))}</p>
+                        <p><strong>গ্রাম/মহল্লা:</strong> ${escapeHtml(getVal('village'))}</p>
+                        <p><strong>পূর্ণ ঠিকানা:</strong> ${escapeHtml(formatFullAddress())}</p>
+                    </div>
+                </div>
+            `;
+            let step3Extra = '';
+            if (studentType === 'new') {
+                step3Extra = `
+                    <p><strong>পূর্বের মাদ্রাসা:</strong> ${escapeHtml(getVal('prevMadrasa'))}</p>
+                    <p><strong>পূর্বের শিক্ষাবর্ষ:</strong> ${escapeHtml(getVal('prevYear'))}</p>
+                    <p><strong>পূর্বের জামাত:</strong> ${escapeHtml(getSelectText('prevClass'))}</p>
+                `;
+            }
+            let step3Html = `
+                <div class="review-block">
+                    <div class="review-header">
+                        <span class="review-title"><i class="fas fa-book-open"></i> ভর্তি তথ্য</span>
+                        <button type="button" class="edit-step-btn" data-step="3">এডিট</button>
+                    </div>
+                    <div class="review-content">
+                        <p><strong>বর্তমান শিক্ষাবর্ষ:</strong> ${escapeHtml(getVal('currentYear'))}</p>
+                        <p><strong>ভর্তি জামাত:</strong> ${escapeHtml(getSelectText('desiredClass'))}</p>
+                        ${step3Extra}
+                        <p><strong>মন্তব্য:</strong> ${escapeHtml(getVal('comment') || '—')}</p>
+                    </div>
+                </div>
+            `;
+            container.innerHTML = step1Html + step2Html + step3Html;
+            document.querySelectorAll('.edit-step-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    let step = parseInt(btn.getAttribute('data-step'));
+                    if (step >= 1 && step <= 3) goToStep(step);
+                });
+            });
+        }
+
+        function escapeHtml(str) {
+            if (!str) return '';
+            return str.replace(/[&<>]/g, function(m) {
+                if (m === '&') return '&amp;';
+                if (m === '<') return '&lt;';
+                if (m === '>') return '&gt;';
+                return m;
+            });
         }
 
         async function submitForm() {
-            let required = ['fullName', 'fatherName', 'dob', 'birthReg', 'mobile', 'division', 'district', 'upazila', 'postOffice', 'village'];
+            let required = ['fullName', 'fatherName', 'dob', 'birthReg', 'mobile', 'division', 'district', 'upazila', 'postOffice', 'village', 'desiredClass'];
             for (let r of required) {
                 if (!document.getElementById(r).value) {
                     toast(`দয়া করে সব প্রয়োজনীয় তথ্য পূরণ করুন`, true);
+                    goToStep(1);
                     return;
+                }
+            }
+            if (studentType === 'new') {
+                let newReq = ['prevMadrasa', 'prevYear', 'prevClass'];
+                for (let r of newReq) {
+                    if (!document.getElementById(r).value) {
+                        toast(`নতুন শিক্ষার্থীর জন্য পূর্বের শিক্ষা তথ্য প্রয়োজন`, true);
+                        goToStep(3);
+                        return;
+                    }
                 }
             }
             if (document.getElementById('mobile').value.length !== 11) {
                 toast('মোবাইল নাম্বার ১১ ডিজিট হতে হবে', true);
+                goToStep(1);
                 return;
             }
-
             toast('আবেদন জমা হচ্ছে...');
             let formData = {};
             document.querySelectorAll('#admissionForm input, #admissionForm select, #admissionForm textarea').forEach(el => {
@@ -981,31 +1191,27 @@
             formData.applicationId = appCounter++;
             localStorage.setItem('appCounter', appCounter);
             formData.studentType = studentType;
-
             try {
                 await fetch(SUBMIT_SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: JSON.stringify(formData) });
-
                 document.getElementById('mainForm').classList.add('hidden');
                 document.getElementById('selectionCard').classList.add('hidden');
                 document.getElementById('successPanel').classList.remove('hidden');
                 document.getElementById('appNoDisplay').innerText = formData.applicationId;
-
                 let detailsHtml = `
-                    <div class="label">নাম</div><div>${formData.fullName}</div>
-                    <div class="label">পিতার নাম</div><div>${formData.fatherName}</div>
-                    <div class="label">মাতার নাম</div><div>${formData.motherName || '—'}</div>
-                    <div class="label">জন্ম তারিখ</div><div>${formData.dob}</div>
-                    <div class="label">জন্ম নিবন্ধন</div><div>${formData.birthReg}</div>
-                    <div class="label">মোবাইল</div><div>${formData.mobile}</div>
-                    <div class="label">ভর্তি জামাত</div><div>${formData.desiredClass}</div>
-                    <div class="label">ঠিকানা</div><div>${formData.fullAddress}</div>
+                    <div class="label">নাম</div><div>${escapeHtml(formData.fullName)}</div>
+                    <div class="label">পিতার নাম</div><div>${escapeHtml(formData.fatherName)}</div>
+                    <div class="label">মাতার নাম</div><div>${escapeHtml(formData.motherName || '—')}</div>
+                    <div class="label">জন্ম তারিখ</div><div>${escapeHtml(formData.dob)}</div>
+                    <div class="label">জন্ম নিবন্ধন</div><div>${escapeHtml(formData.birthReg)}</div>
+                    <div class="label">মোবাইল</div><div>${escapeHtml(formData.mobile)}</div>
+                    <div class="label">ভর্তি জামাত</div><div>${escapeHtml(formData.desiredClass)}</div>
+                    <div class="label">ঠিকানা</div><div>${escapeHtml(formData.fullAddress)}</div>
                 `;
                 if (studentType === 'new') {
-                    detailsHtml += `<div class="label">পূর্বের মাদ্রাসা</div><div>${formData.prevMadrasa || '—'}</div>
-                                    <div class="label">পূর্বের জামাত</div><div>${formData.prevClass || '—'}</div>`;
+                    detailsHtml += `<div class="label">পূর্বের মাদ্রাসা</div><div>${escapeHtml(formData.prevMadrasa || '—')}</div>
+                                    <div class="label">পূর্বের জামাত</div><div>${escapeHtml(formData.prevClass || '—')}</div>`;
                 }
                 document.getElementById('successDetails').innerHTML = detailsHtml;
-
                 document.getElementById('downloadPDF').onclick = () => {
                     let pdfElem = document.createElement('div');
                     pdfElem.innerHTML = `<div style="padding: 20px; font-family: Kalpurush, sans-serif; max-width: 600px; margin: auto;">
@@ -1025,15 +1231,11 @@
 
         function init() {
             populateSelects();
-
-            // Load divisions
             Object.keys(bangladeshData).forEach(k => {
                 let opt = `<option value="${k}">${bangladeshData[k].name}</option>`;
                 document.getElementById('division').innerHTML += opt;
                 document.getElementById('tempDivision').innerHTML += opt;
             });
-
-            // Set default address: Chattogram, Comilla, Meghna
             setTimeout(() => {
                 document.getElementById('division').value = 'chattogram';
                 loadDistricts('division', 'district', 'upazila');
@@ -1046,8 +1248,6 @@
                     }, 50);
                 }, 50);
             }, 100);
-
-            // Event Listeners
             document.getElementById('division').addEventListener('change', () => { loadDistricts('division', 'district', 'upazila'); updateAddressPreview(); saveDraft(); });
             document.getElementById('district').addEventListener('change', () => { loadUpazilas('district', 'upazila', 'division'); updateAddressPreview(); saveDraft(); });
             document.getElementById('upazila').addEventListener('change', updateAddressPreview);
@@ -1056,7 +1256,6 @@
             document.getElementById('tempDivision').addEventListener('change', () => loadDistricts('tempDivision', 'tempDistrict', 'tempUpazila'));
             document.getElementById('tempDistrict').addEventListener('change', () => loadUpazilas('tempDistrict', 'tempUpazila', 'tempDivision'));
             document.getElementById('sameAsPermanent').addEventListener('change', e => document.getElementById('tempAddrBlock').classList.toggle('hidden', e.target.checked));
-
             document.getElementById('newStudentBtn').onclick = () => {
                 studentType = 'new';
                 document.getElementById('selectionCard').classList.add('hidden');
@@ -1067,32 +1266,27 @@
                 loadDraft();
                 goToStep(1);
             };
-
             document.getElementById('oldStudentBtn').onclick = () => {
                 document.getElementById('selectionCard').classList.add('hidden');
                 document.getElementById('oldSearchPanel').classList.remove('hidden');
             };
-
             document.getElementById('backToSelection').onclick = () => {
                 document.getElementById('oldSearchPanel').classList.add('hidden');
                 document.getElementById('selectionCard').classList.remove('hidden');
             };
-
             document.getElementById('searchOldBtn').onclick = onOldSearch;
-            document.getElementById('nextBtn').onclick = () => { if (currentStep === totalSteps) submitForm(); else goToStep(currentStep + 1); };
+            document.getElementById('nextBtn').onclick = () => goToStep(currentStep + 1);
             document.getElementById('prevBtn').onclick = () => goToStep(currentStep - 1);
-            document.getElementById('submitBtn').onclick = submitForm;
+            document.getElementById('backToStep3Btn').onclick = () => goToStep(3);
+            document.getElementById('finalSubmitBtn').onclick = submitForm;
             document.getElementById('newAppBtn').onclick = () => location.reload();
-
             document.querySelectorAll('.icon-opt').forEach(ic => ic.addEventListener('click', function () { this.classList.toggle('selected'); saveDraft(); }));
             document.getElementById('themeToggle').onclick = () => document.body.classList.toggle('dark');
             document.getElementById('prevClass')?.addEventListener('change', autoSelectDesiredClass);
-
             loadDraft();
             updateStepUI();
             updateAddressPreview();
         }
-
         init();
     </script>
 </body>
