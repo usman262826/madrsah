@@ -797,7 +797,7 @@
         // ======================== DATABASE CONFIGURATION ========================
         const VERIFY_SHEET_ID = '1B6BzLPVKGeRosVm0p_DbMk5tssfuQTWbSF5W97-31-A';
         const VERIFY_SHEET_URL = `https://docs.google.com/spreadsheets/d/${VERIFY_SHEET_ID}/gviz/tq?tqx=out:json`;
-        const SUBMIT_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz3awcDFKi2pZnFs_ScI9VuI7gDgpfVYQL1-W8G5PvpbMuERXvE_092sXObnVjxBYriGA/exec';
+        const SUBMIT_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzdKC_qS8uLAcpBOzmrNlgUq5eUC9G9tMwz28VopIehM5HroKfoR5PvVlHWd9lqZ-jAhQ/exec';
         
         const bangladeshData = {
             dhaka: { name: "ঢাকা", districts: { dhaka: { name: "ঢাকা", upazilas: ["সাভার","ধামরাই","কেরানীগঞ্জ","নবাবগঞ্জ","দোহার"] }, gazipur: { name: "গাজীপুর", upazilas: ["কালিয়াকৈর","কালীগঞ্জ","কাপাসিয়া","গাজীপুর সদর","শ্রীপুর"] }, narayanganj: { name: "নারায়ণগঞ্জ", upazilas: ["আড়াইহাজার","বন্দর","নারায়ণগঞ্জ সদর","রূপগঞ্জ","সোনারগাঁও"] }, narsingdi: { name: "নরসিংদী", upazilas: ["নরসিংদী সদর","বেলাবো","মনোহরদী","রায়পুরা","শিবপুর","পলাশ"] }, manikganj: { name: "মানিকগঞ্জ", upazilas: ["মানিকগঞ্জ সদর","সিংগাইর","শিবালয়","সাটুরিয়া","হরিরামপুর","ঘিওর","দৌলতপুর"] }, munshiganj: { name: "মুন্সীগঞ্জ", upazilas: ["মুন্সীগঞ্জ সদর","শ্রীনগর","সিরাজদিখান","লৌহজং","টংগিবাড়ী","গজারিয়া"] }, kishoreganj: { name: "কিশোরগঞ্জ", upazilas: ["সদর","হোসেনপুর","কটিয়াদী","পাকুন্দিয়া","তাড়াইল","ইটনা","মিঠামইন","অষ্টগ্রাম","নিকলী","বাজিতপুর","কুলিয়ারচর","ভৈরব","করিমগঞ্জ"] }, tangail: { name: "টাঙ্গাইল", upazilas: ["সদর","বাসাইল","কালিহাতী","ঘাটাইল","মির্জাপুর","নাগরপুর","মধুপুর","সখিপুর","দেলদুয়ার","ধনবাড়ী","গোপালপুর","ভূয়াপুর"] }, faridpur: { name: "ফরিদপুর", upazilas: ["সদর","মধুখালী","বোয়ালমারী","সালথা","নগরকান্দা","আলফাডাঙ্গা","সদরপুর","চরভদ্রাসন","ভাঙ্গা"] }, madaripur: { name: "মাদারীপুর", upazilas: ["সদর","শিবচর","কালকিনি","রাজৈর","ডাসার"] }, shariatpur: { name: "শরীয়তপুর", upazilas: ["সদর","ডামুড্যা","নড়িয়া","জাজিরা","ভেদরগঞ্জ","গোসাইরহাট"] }, gopalganj: { name: "গোপালগঞ্জ", upazilas: ["সদর","কোটালীপাড়া","টুঙ্গিপাড়া","কাশিয়ানী","মুকসুদপুর"] }, rajbari: { name: "রাজবাড়ী", upazilas: ["সদর","গোয়ালন্দ","পাংশা","বালিয়াকান্দি","কালুখালী"] } } },
@@ -1164,6 +1164,7 @@
                     return;
                 }
             }
+            
             if (studentType === 'new') {
                 let newReq = ['prevMadrasa', 'prevYear', 'prevClass'];
                 for (let r of newReq) {
