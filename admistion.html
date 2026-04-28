@@ -48,6 +48,26 @@
             color: #F8FAFC;
             border-color: #475569;
         }
+         /* হেডার লোগো - সাদা ব্যাকগ্রাউন্ড */
+        .header-wrapper {
+            background-color: #F0F7FC;;
+            border-radius: 12px;
+            padding: 20px 0;
+            margin: 10px 0 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .header-logo {
+            max-width: 90%;
+            height: auto;
+            max-height: 150px;
+            width: auto;
+            object-fit: contain;
+        }
+
 
         /* ইনপুট ফোকাস করলে বর্ডার হাইলাইট */
         body.dark .float-group input:focus {
@@ -105,7 +125,7 @@
         }
 
         .logo p {
-            font-size: 0.7rem;
+            font-size: 0.9rem;
             opacity: 0.8;
         }
 
@@ -632,10 +652,14 @@
 </head>
 <body>
     <div class="container">
+         <!-- হেডার লোগো - সাদা ব্যাকগ্রাউন্ড -->
+            <div class="header-wrapper">
+                <img class="header-logo" src="png/madrasha header4.png" alt="দারুল উলূম মাদানিয়া মহিলা মাদরাসা">
+            </div>
         <div class="app-header">
             <div class="logo">
-                <h2><i class="fas fa-graduation-cap"></i> দারুল উলূম মাদানিয়া</h2>
-                <p>মহিলা মাদরাসা · অনলাইন ভর্তি</p>
+                <h2><i class="fas fa-graduation-cap"></i> অনলাইন ভর্তি আবেদন ফরম</h2>
+                <p>জন্ম নিবন্ধন বা এনআইডি অনুযায়ী বাংলায় পূরণ করুন</p>
             </div>
             <div class="theme-toggle" id="themeToggle"><i class="fas fa-moon"></i> <span>ডার্ক</span></div>
         </div>
@@ -655,9 +679,9 @@
                 <h3 style="font-size: 1.3rem; color: var(--primary); text-align: center; margin-bottom: 20px;"><i class="fas fa-search"></i> শিক্ষার্থী যাচাইকরণ</h3>
                 <div class="select-group">
                     <label>শিক্ষাবর্ষ নির্বাচন করুন <span class="required-star">*</span></label>
-                    <select id="oldYear">
-                        <option value="">-- নির্বাচন করুন --</option>
+                    <select id="oldYear"disabled>
                         <option value="১৪৪৫-৪৬ হিজরী/২০২৫-২৬ ঈসায়ী">১৪৪৬-৪৭ হিজরী/২০২৫-২৬ ঈসায়ী</option>
+                        <option value="">-- নির্বাচন করুন --</option>
                     </select>
                 </div>
                 <div class="select-group">
@@ -694,14 +718,14 @@
                             <div class="float-group"><input type="text" id="birthReg" placeholder=" "><label>জন্ম নিবন্ধন/NID নং <span class="required-star">*</span></label></div>
                         </div>
                         <div class="phone-messaging">
-                            <div class="float-group" style="flex:1"><input type="tel" id="mobile" placeholder=" " maxlength="11" oninput="this.value=this.value.replace(/[^0-9]/g,'')"><label>অভিভাবকের মোবাইল <span class="required-star">*</span></label></div>
+                            <div class="float-group" style="flex:1"><input type="tel" id="mobile" placeholder=" " maxlength="11" oninput="this.value=this.value.replace(/[^0-9]/g,'')"><label>অভিভাবকের মোবাইল (মা) <span class="required-star">*</span></label></div>
                             <div class="messaging-icons" id="msgIcons">
                                 <i class="fab fa-whatsapp icon-opt" data-app="whatsapp"></i>
                                 <i class="fab fa-telegram icon-opt" data-app="telegram"></i>
                                 <i class="fab fa-imessage icon-opt" data-app="imessage"></i>
                             </div>
                         </div>
-                        <div class="float-group"><input type="tel" id="altMobile" placeholder=" " maxlength="11"><label>বিকল্প মোবাইল</label></div>
+                        <div class="float-group" style="flex:1"><input type="tel" id="altMobile" placeholder=" " maxlength="11" oninput="this.value=this.value.replace(/[^0-9]/g,'')"><label>অভিভাবকের মোবাইল (বাবা/ভাই) <span class="required-star">*</span></label></div>
                         <div class="float-group"><input type="email" id="email" placeholder=" "><label>ইমেইল</label></div>
                         <div class="float-group"><select id="bloodGroup"><option value=""></option><option>A+</option><option>A-</option><option>B+</option><option>B-</option><option>O+</option><option>O-</option><option>AB+</option><option>AB-</option></select><label>রক্তের গ্রুপ</label></div>
                     </div>
@@ -720,9 +744,15 @@
                             <div class="select-group"><label>বিভাগ নির্বাচন করুন<span class="required-star">*</span></label><select id="tempDivision"></select></div>
                             <div class="select-group"><label>জেলা নির্বাচন করুন <span class="required-star">*</span></label><select id="tempDistrict" disabled><option value="">প্রথমে বিভাগ নির্বাচন করুন</option></select></div>
                             <div class="select-group"><label>উপজেলা/থানা নির্বাচন করুন <span class="required-star">*</span></label><select id="tempUpazila" disabled><option value="">প্রথমে জেলা নির্বাচন করুন</option></select></div>
-                            <div class="float-group"><input type="text" id="tempPostOffice" placeholder=" "><label>ডাকঘর/পোস্ট অফিস <span class="required-star">*</span></label></div>
-                            <div class="float-group"><input type="text" id="tempVillage" placeholder=" "><label>গ্রাম/মহল্লা ও বাড়ির নম্বর <span class="required-star">*</span></label></div>
-                        </div>
+                            <div class="float-group">
+                                <input type="text" id="postOffice" placeholder=" " list="postOfficeSuggestions">
+                                <label>ডাকঘর/পোস্ট অফিস <span class="required-star">*</span></label>
+                                <datalist id="postOfficeSuggestions"></datalist> </div>
+
+                            <div class="float-group">
+                                <input type="text" id="village" placeholder=" " list="villageSuggestions">
+                                <label>গ্রাম/মহল্লা ও বাড়ির নম্বর <span class="required-star">*</span></label>
+                                <datalist id="villageSuggestions"></datalist> </div>                        </div>
                         <div class="full-address-preview" id="addressPreview"></div>
                     </div>
 
@@ -1287,6 +1317,37 @@
             loadDraft();
             updateStepUI();
             updateAddressPreview();
+        
+            function setupAddressSuggestions() {
+            // এখানে আপনার এলাকার প্রয়োজনীয় নামগুলো বসিয়ে নিন
+            const postOffices = ["মানিকার চর", "লুটেরচর", "ওমরাকান্দা", "ভাওরখোলা", "মুজাফফরগঞ্জ"];
+            const villages = ["চরমানিকা", "লুটেরচর পশ্চিম পাড়া", "সরকার বাড়ি", "মৃধা বাড়ি", "নয়াকান্দি"];
+
+            const poList = document.getElementById('postOfficeSuggestions');
+            const vList = document.getElementById('villageSuggestions');
+
+            // ডাকঘরের লিস্ট তৈরি
+            if (poList) {
+                postOffices.forEach(item => {
+                    let option = document.createElement('option');
+                    option.value = item;
+                    poList.appendChild(option);
+                });
+            }
+
+            // গ্রামের লিস্ট তৈরি
+            if (vList) {
+                villages.forEach(item => {
+                    let option = document.createElement('option');
+                    option.value = item;
+                    vList.appendChild(option);
+                });
+            }
+        }
+
+        // আপনার ফাইলের বিদ্যমান init() ফাংশনের ভেতর এটি কল করুন
+        // অথবা সরাসরি এখানে কল করে দিন
+        setupAddressSuggestions();
         }
         init();
     </script>
