@@ -6,6 +6,35 @@
     <title>দারুল উলূম মাদানিয়া | অনলাইন ভর্তি ফরম</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://almadania.netlify.app">
+    <meta property="og:title" content="দারুল উলূম মাদানিয়া মহিলা মাদ্রাসা">
+    <meta property="og:description" content="২০১৭ সালে প্রতিষ্ঠিত ইসলামি শিক্ষা প্রতিষ্ঠান">
+    <meta property="og:image" content="png/Asset 4.png">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://almadania.netlify.app">
+    <meta property="twitter:title" content="দারুল উলূম মাদানিয়া মহিলা মাদ্রাসা">
+    <meta property="twitter:description" content="২০১৭ সালে প্রতিষ্ঠিত ইসলামি শিক্ষা প্রতিষ্ঠান">
+    <meta property="twitter:image" content="png/Asset 4.png">
+    
+    <!-- Favicon / Thumbnail (Logo) -->
+    <link rel="icon" type="image/png" href="png/Asset 4.png">
+    <link rel="apple-touch-icon" href="png/Asset 4.png">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.maateen.me/kalpurush/font.css" rel="stylesheet">
+    <link href="https://fonts.maateen.me/solaiman-lipi/font.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -33,13 +62,13 @@
         }
 
         body.dark {
-            --bg: #0F172A; /* গাঢ় নীল/কালো ব্যাকগ্রাউন্ড */
-            --card: #1E293B; /* কার্ডের রঙ কিছুটা হালকা */
-            --text: #F8FAFC; /* একদম সাদা না দিয়ে অফ-হোয়াইট টেক্সট (চোখের আরামের জন্য) */
-            --text-light: #94A3B8; /* ছোট বা কম গুরুত্বপূর্ণ টেক্সটের জন্য */
-            --border: #334155; /* বর্ডার কালার */
-            --step-bg: #334155; /* স্টেপ ইন্ডিকেটরের ব্যাকগ্রাউন্ড */
-            --primary-light: #38BDF8; /* ডার্ক মোডে নীল রঙ কিছুটা ব্রাইট */
+            --bg: #0F172A;
+            --card: #1E293B;
+            --text: #F8FAFC;
+            --text-light: #94A3B8;
+            --border: #334155;
+            --step-bg: #334155;
+            --primary-light: #38BDF8;
         }
         body.dark .float-group input, 
         body.dark .float-group select, 
@@ -48,9 +77,8 @@
             color: #F8FAFC;
             border-color: #475569;
         }
-         /* হেডার লোগো - সাদা ব্যাকগ্রাউন্ড */
         .header-wrapper {
-            background-color: #F0F7FC;;
+            background-color: #ffffff;;
             border-radius: 12px;
             padding: 20px 0;
             margin: 10px 0 10px;
@@ -68,8 +96,6 @@
             object-fit: contain;
         }
 
-
-        /* ইনপুট ফোকাস করলে বর্ডার হাইলাইট */
         body.dark .float-group input:focus {
             border-color: var(--primary-light);
         }
@@ -83,13 +109,12 @@
         }
 
         body.dark .info-msg {
-            background: #1E3A8A; /* হালকা নীল ব্যাকগ্রাউন্ড */
+            background: #1E3A8A;
             color: #DBEAFE;
         }
 
-        /* লেবেল বা লেখার রঙ ঠিক করা */
         body.dark .float-group label {
-            background: #1E293B; /* ইনপুটের ব্যাকগ্রাউন্ডের সাথে মিল রেখে */
+            background: #1E293B;
             color: #94A3B8;
         }
 
@@ -652,8 +677,7 @@
 </head>
 <body>
     <div class="container">
-         <!-- হেডার লোগো - সাদা ব্যাকগ্রাউন্ড -->
-            <div class="header-wrapper">
+         <div class="header-wrapper">
                 <img class="header-logo" src="png/madrasha header4.png" alt="দারুল উলূম মাদানিয়া মহিলা মাদরাসা">
             </div>
         <div class="app-header">
@@ -664,7 +688,6 @@
             <div class="theme-toggle" id="themeToggle"><i class="fas fa-moon"></i> <span>ডার্ক</span></div>
         </div>
 
-        <!-- Selection Card -->
         <div class="card" id="selectionCard">
             <h3 style="text-align:center; margin-bottom:24px; font-size:1.6rem;">আবেদনকারীর ধরন</h3>
             <div class="btn-group">
@@ -673,7 +696,6 @@
             </div>
         </div>
 
-        <!-- Old Student Verification Panel -->
         <div id="oldSearchPanel" class="hidden">
             <div class="old-search-card">
                 <h3 style="font-size: 1.3rem; color: var(--primary); text-align: center; margin-bottom: 20px;"><i class="fas fa-search"></i> শিক্ষার্থী যাচাইকরণ</h3>
@@ -701,12 +723,10 @@
             </div>
         </div>
 
-        <!-- Main Multi-step Form -->
         <div id="mainForm" class="hidden">
             <div class="steps" id="stepIndicator"></div>
             <div class="card">
                 <form id="admissionForm">
-                    <!-- Step 1: Personal -->
                     <div class="form-section" data-step="1">
                         <h3 style="margin-bottom:10px;"><i class="fas fa-user-circle"></i> ব্যক্তিগত তথ্য</h3>
                         <div class="form-note"><i class="fas fa-info-circle"></i> জন্ম নিবন্ধন বা এনআইডি অনুযায়ী বাংলায় পূরণ করুন</div>
@@ -730,33 +750,25 @@
                         <div class="float-group"><select id="bloodGroup"><option value=""></option><option>A+</option><option>A-</option><option>B+</option><option>B-</option><option>O+</option><option>O-</option><option>AB+</option><option>AB-</option></select><label>রক্তের গ্রুপ</label></div>
                     </div>
 
-                    <!-- Step 2: Address -->
                     <div class="form-section" data-step="2">
                         <h3 style="margin-bottom:24px;"><i class="fas fa-map-marker-alt"></i> স্থায়ী ঠিকানা</h3>
                         <div class="select-group"><label>বিভাগ নির্বাচন করুন <span class="required-star">*</span></label><select id="division"></select></div>
                         <div class="select-group"><label>জেলা নির্বাচন করুন <span class="required-star">*</span></label><select id="district" disabled><option value="">প্রথমে বিভাগ নির্বাচন করুন</option></select></div>
                         <div class="select-group"><label>উপজেলা/থানা নির্বাচন করুন <span class="required-star">*</span></label><select id="upazila" disabled><option value="">প্রথমে জেলা নির্বাচন করুন</option></select></div>
-                        <div class="float-group"><input type="text" id="postOffice" placeholder=" "><label>ডাকঘর/পোস্ট অফিস <span class="required-star">*</span></label></div>
-                        <div class="float-group"><input type="text" id="village" placeholder=" "><label>গ্রাম/মহল্লা ও বাড়ির নম্বর <span class="required-star">*</span></label></div>
+                        <div class="float-group"><input type="text" id="postOffice" placeholder=" " list="postOfficeSuggestions"><label>ডাকঘর/পোস্ট অফিস <span class="required-star">*</span></label><datalist id="postOfficeSuggestions"></datalist></div>
+                        <div class="float-group"><input type="text" id="village" placeholder=" " list="villageSuggestions"><label>গ্রাম/মহল্লা ও বাড়ির নম্বর <span class="required-star">*</span></label><datalist id="villageSuggestions"></datalist></div>
                         <div class="checkbox-option"><input type="checkbox" id="sameAsPermanent" checked> <label>অস্থায়ী ঠিকানা স্থায়ী ঠিকানার মতোই</label></div>
                         <div id="tempAddrBlock" class="hidden">
                             <h4 style="margin:20px 0 12px">অস্থায়ী ঠিকানা</h4>
                             <div class="select-group"><label>বিভাগ নির্বাচন করুন<span class="required-star">*</span></label><select id="tempDivision"></select></div>
                             <div class="select-group"><label>জেলা নির্বাচন করুন <span class="required-star">*</span></label><select id="tempDistrict" disabled><option value="">প্রথমে বিভাগ নির্বাচন করুন</option></select></div>
                             <div class="select-group"><label>উপজেলা/থানা নির্বাচন করুন <span class="required-star">*</span></label><select id="tempUpazila" disabled><option value="">প্রথমে জেলা নির্বাচন করুন</option></select></div>
-                            <div class="float-group">
-                                <input type="text" id="postOffice" placeholder=" " list="postOfficeSuggestions">
-                                <label>ডাকঘর/পোস্ট অফিস <span class="required-star">*</span></label>
-                                <datalist id="postOfficeSuggestions"></datalist> </div>
-
-                            <div class="float-group">
-                                <input type="text" id="village" placeholder=" " list="villageSuggestions">
-                                <label>গ্রাম/মহল্লা ও বাড়ির নম্বর <span class="required-star">*</span></label>
-                                <datalist id="villageSuggestions"></datalist> </div>                        </div>
+                            <div class="float-group"><input type="text" id="tempPostOffice" placeholder=" " list="tempPostOfficeSuggestions"><label>ডাকঘর/পোস্ট অফিস <span class="required-star">*</span></label><datalist id="tempPostOfficeSuggestions"></datalist></div>
+                            <div class="float-group"><input type="text" id="tempVillage" placeholder=" " list="tempVillageSuggestions"><label>গ্রাম/মহল্লা ও বাড়ির নম্বর <span class="required-star">*</span></label><datalist id="tempVillageSuggestions"></datalist></div>
+                        </div>
                         <div class="full-address-preview" id="addressPreview"></div>
                     </div>
 
-                    <!-- Step 3: Admission -->
                     <div class="form-section" data-step="3">
                         <h3 style="margin-bottom:24px;"><i class="fas fa-book-open"></i> ভর্তি সংক্রান্ত তথ্য</h3>
                         <div id="newStudentExtra" class="hidden">
@@ -779,7 +791,6 @@
                         <div id="oldAutoMsg" class="hidden info-msg"></div>
                     </div>
 
-                    <!-- Step 4: Review & Submit -->
                     <div class="form-section" data-step="4">
                         <h3 style="margin-bottom:20px;"><i class="fas fa-clipboard-list"></i> আপনার তথ্য যাচাই করুন</h3>
                         <div id="reviewContainer"></div>
@@ -789,7 +800,6 @@
                         </div>
                     </div>
 
-                    <!-- Navigation Buttons (common for steps 1-3) -->
                     <div class="btn-group" id="navButtons">
                         <button type="button" class="btn btn-secondary" id="prevBtn"><i class="fas fa-arrow-left"></i> পূর্ববর্তী</button>
                         <button type="button" class="btn btn-primary" id="nextBtn">পরবর্তী <i class="fas fa-arrow-right"></i></button>
@@ -798,7 +808,6 @@
             </div>
         </div>
 
-        <!-- Success Panel -->
         <div id="successPanel" class="hidden">
             <div class="card modern-success">
                 <div class="success-header">
@@ -824,7 +833,6 @@
     </div>
 
     <script>
-        // ======================== DATABASE CONFIGURATION ========================
         const VERIFY_SHEET_ID = '1B6BzLPVKGeRosVm0p_DbMk5tssfuQTWbSF5W97-31-A';
         const VERIFY_SHEET_URL = `https://docs.google.com/spreadsheets/d/${VERIFY_SHEET_ID}/gviz/tq?tqx=out:json`;
         const SUBMIT_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzdKC_qS8uLAcpBOzmrNlgUq5eUC9G9tMwz28VopIehM5HroKfoR5PvVlHWd9lqZ-jAhQ/exec';
@@ -884,6 +892,8 @@
         }
 
         let currentStep = 1, totalSteps = 4, studentType = null, appCounter = parseInt(localStorage.getItem('appCounter') || '1150');
+        let autoSaveTimer = null;
+        let isFirstLoad = true;
 
         function toast(msg, isError = false) {
             let d = document.createElement('div');
@@ -893,27 +903,83 @@
             setTimeout(() => d.remove(), 3000);
         }
 
-        function saveDraft() {
-            let data = {};
-            document.querySelectorAll('#admissionForm input, #admissionForm select, #admissionForm textarea').forEach(el => {
-                if (el.id) data[el.id] = el.value;
-            });
-            data.studentType = studentType;
-            localStorage.setItem('admission_draft', JSON.stringify(data));
+        function saveToSession(showToastMsg = false) {
+            clearTimeout(autoSaveTimer);
+            autoSaveTimer = setTimeout(() => {
+                try {
+                    const data = {};
+                    document.querySelectorAll('#admissionForm input, #admissionForm select, #admissionForm textarea').forEach(el => {
+                        if (el.id) data[el.id] = el.value;
+                    });
+                    data.studentType = studentType;
+                    sessionStorage.setItem('admission_form_temp', JSON.stringify(data));
+                    if (showToastMsg) toast('📝 ড্রাফট সংরক্ষিত হয়েছে', false);
+                } catch(e) { console.log('session save error:', e); }
+            }, 3000);
         }
 
-        function loadDraft() {
-            let raw = localStorage.getItem('admission_draft');
-            if (raw) {
-                let data = JSON.parse(raw);
-                Object.keys(data).forEach(k => {
-                    let el = document.getElementById(k);
-                    if (el && el.value !== undefined) el.value = data[k];
-                });
-                if (data.studentType) studentType = data.studentType;
-                if (studentType === 'new') document.getElementById('newStudentExtra').classList.remove('hidden');
-                else document.getElementById('newStudentExtra').classList.add('hidden');
+        function loadFromSession() {
+            try {
+                const savedData = sessionStorage.getItem('admission_form_temp');
+                if (savedData && isFirstLoad) {
+                    const data = JSON.parse(savedData);
+                    Object.keys(data).forEach(key => {
+                        const element = document.getElementById(key);
+                        if (element && element.value !== undefined) {
+                            element.value = data[key];
+                        }
+                    });
+                    if (data.studentType === 'new') {
+                        document.getElementById('newStudentExtra')?.classList.remove('hidden');
+                    } else if (data.studentType === 'old') {
+                        document.getElementById('newStudentExtra')?.classList.add('hidden');
+                    }
+                    if (data.studentType) studentType = data.studentType;
+                    toast('💾 পূর্বে পূরণ করা তথ্য পুনরুদ্ধার করা হয়েছে', false);
+                }
+                isFirstLoad = false;
+            } catch(e) { console.log('session load error:', e); }
+        }
+
+        function attachAutoSaveToFields() {
+            const fields = document.querySelectorAll('#admissionForm input, #admissionForm select, #admissionForm textarea');
+            fields.forEach(field => {
+                field.addEventListener('input', () => saveToSession(false));
+                field.addEventListener('change', () => saveToSession(false));
+            });
+        }
+
+        function setupBeforeUnload() {
+            window.addEventListener('beforeunload', function() {
+                saveToSession(true);
+            });
+        }
+
+        function clearSessionDraft() {
+            sessionStorage.removeItem('admission_form_temp');
+            isFirstLoad = true;
+        }
+
+        function setupSmartSuggestions() {
+            const postOfficeSuggestions = ["মানিকার চর", "লুটেরচর", "ওমরাকান্দা", "ভাওরখোলা", "মুজাফফরগঞ্জ", "চরলুটেরচর", "গোবিন্দপুর", "রাধানগর", "চরভাওরখোলা", "কালীকান্দা", "মনোহরপুর", "বালিয়াপাড়া"];
+            const villageSuggestions = ["চরমানিকা", "লুটেরচর পশ্চিম পাড়া", "সরকার বাড়ি", "ওমরাকান্দা", "মৃধা বাড়ি", "কান্দারগাঁও", "শেখেরগাঁও", "নয়া মোহাম্মদপুর", "দড়ি লুটেরচর", "লুটেরচর", "মোহাম্মদপুর", "আব্দুল্লাহপুর", "নয়া কান্দারগাঁও", "ভাওরখোলা উত্তর পাড়া", "ভাওরখোলা দক্ষিণ পাড়া", "চরগোবিন্দপুর", "গোপালপুর", "বৈদ্যপাড়া", "খলিশাকান্দা"];
+
+            function populateDatalist(listId, suggestions) {
+                let datalist = document.getElementById(listId);
+                if (datalist) {
+                    datalist.innerHTML = '';
+                    suggestions.forEach(item => {
+                        let option = document.createElement('option');
+                        option.value = item;
+                        datalist.appendChild(option);
+                    });
+                }
             }
+
+            populateDatalist('postOfficeSuggestions', postOfficeSuggestions);
+            populateDatalist('villageSuggestions', villageSuggestions);
+            populateDatalist('tempPostOfficeSuggestions', postOfficeSuggestions);
+            populateDatalist('tempVillageSuggestions', villageSuggestions);
         }
 
         function updateStepUI() {
@@ -960,15 +1026,12 @@
         }
 
         function goToStep(step) {
-            // যদি প্রথম ধাপে থাকাকালীন কেউ 'পূর্ববর্তী' চাপে
             if (step < 1) {
                 document.getElementById('mainForm').classList.add('hidden');
                 document.getElementById('selectionCard').classList.remove('hidden');
                 return;
             }
-            
             if (step > totalSteps) return;
-
             let missing = validateCurrentStep();
             if (step > currentStep && missing) {
                 toast(`দয়া করে ${missing} পূরণ করে সামনের দিকে এগিয়ে যান`, true);
@@ -977,7 +1040,7 @@
             currentStep = step;
             updateStepUI();
             window.scrollTo({ top: 0, behavior: 'smooth' });
-            saveDraft();
+            saveToSession(false);
         }
 
         async function verifyStudentData(year, jamat, reg, roll) {
@@ -1068,7 +1131,7 @@
                 document.getElementById('newStudentExtra').classList.add('hidden');
                 document.getElementById('oldSearchPanel').classList.add('hidden');
                 document.getElementById('mainForm').classList.remove('hidden');
-                saveDraft();
+                saveToSession(false);
                 goToStep(1);
                 showVerificationOverlay(student);
             } else {
@@ -1194,7 +1257,6 @@
                     return;
                 }
             }
-            
             if (studentType === 'new') {
                 let newReq = ['prevMadrasa', 'prevYear', 'prevClass'];
                 for (let r of newReq) {
@@ -1254,7 +1316,7 @@
                     </div>`;
                     html2pdf().from(pdfElem).set({ margin: 1, filename: `Admission_${formData.applicationId}.pdf` }).save();
                 };
-                localStorage.removeItem('admission_draft');
+                clearSessionDraft();
             } catch (e) {
                 toast('জমা দিতে সমস্যা! আবার চেষ্টা করুন', true);
             }
@@ -1279,8 +1341,8 @@
                     }, 50);
                 }, 50);
             }, 100);
-            document.getElementById('division').addEventListener('change', () => { loadDistricts('division', 'district', 'upazila'); updateAddressPreview(); saveDraft(); });
-            document.getElementById('district').addEventListener('change', () => { loadUpazilas('district', 'upazila', 'division'); updateAddressPreview(); saveDraft(); });
+            document.getElementById('division').addEventListener('change', () => { loadDistricts('division', 'district', 'upazila'); updateAddressPreview(); saveToSession(false); });
+            document.getElementById('district').addEventListener('change', () => { loadUpazilas('district', 'upazila', 'division'); updateAddressPreview(); saveToSession(false); });
             document.getElementById('upazila').addEventListener('change', updateAddressPreview);
             document.getElementById('postOffice').addEventListener('input', updateAddressPreview);
             document.getElementById('village').addEventListener('input', updateAddressPreview);
@@ -1294,7 +1356,7 @@
                 document.getElementById('newStudentExtra').classList.remove('hidden');
                 document.getElementById('oldAutoMsg').classList.add('hidden');
                 document.getElementById('oldWelcomeMsg').style.display = 'none';
-                loadDraft();
+                loadFromSession();
                 goToStep(1);
             };
             document.getElementById('oldStudentBtn').onclick = () => {
@@ -1311,43 +1373,15 @@
             document.getElementById('backToStep3Btn').onclick = () => goToStep(3);
             document.getElementById('finalSubmitBtn').onclick = submitForm;
             document.getElementById('newAppBtn').onclick = () => location.reload();
-            document.querySelectorAll('.icon-opt').forEach(ic => ic.addEventListener('click', function () { this.classList.toggle('selected'); saveDraft(); }));
+            document.querySelectorAll('.icon-opt').forEach(ic => ic.addEventListener('click', function () { this.classList.toggle('selected'); saveToSession(false); }));
             document.getElementById('themeToggle').onclick = () => document.body.classList.toggle('dark');
             document.getElementById('prevClass')?.addEventListener('change', autoSelectDesiredClass);
-            loadDraft();
+            attachAutoSaveToFields();
+            loadFromSession();
+            setupBeforeUnload();
+            setupSmartSuggestions();
             updateStepUI();
             updateAddressPreview();
-        
-            function setupAddressSuggestions() {
-            // এখানে আপনার এলাকার প্রয়োজনীয় নামগুলো বসিয়ে নিন
-            const postOffices = ["মানিকার চর", "লুটেরচর", "ওমরাকান্দা", "ভাওরখোলা", "মুজাফফরগঞ্জ"];
-            const villages = ["চরমানিকা", "লুটেরচর পশ্চিম পাড়া", "সরকার বাড়ি", "মৃধা বাড়ি", "নয়াকান্দি"];
-
-            const poList = document.getElementById('postOfficeSuggestions');
-            const vList = document.getElementById('villageSuggestions');
-
-            // ডাকঘরের লিস্ট তৈরি
-            if (poList) {
-                postOffices.forEach(item => {
-                    let option = document.createElement('option');
-                    option.value = item;
-                    poList.appendChild(option);
-                });
-            }
-
-            // গ্রামের লিস্ট তৈরি
-            if (vList) {
-                villages.forEach(item => {
-                    let option = document.createElement('option');
-                    option.value = item;
-                    vList.appendChild(option);
-                });
-            }
-        }
-
-        // আপনার ফাইলের বিদ্যমান init() ফাংশনের ভেতর এটি কল করুন
-        // অথবা সরাসরি এখানে কল করে দিন
-        setupAddressSuggestions();
         }
         init();
     </script>
