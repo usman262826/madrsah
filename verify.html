@@ -110,7 +110,7 @@
 
     .main-container {
       width: 100%;
-      max-width: 850px; /* পরিবর্তিত: 900px থেকে 850px */
+      max-width: 850px;
       position: relative;
       z-index: 10;
       animation: fadeInUp 0.8s ease-out;
@@ -186,7 +186,7 @@
       margin-bottom: 2px;
       text-align: center;
       animation: fadeInUp 0.8s ease forwards;
-      border-bottom: 2px solid #eee; /* নতুন যোগ করা */
+      border-bottom: 2px solid #eee;
     }
     .logo {
       max-width: 200px;
@@ -206,18 +206,20 @@
     }
     .year-badge {
       display: inline-block;
-      color: rgb(0, 121, 89);
-      padding: 10px 30px; /* পরিবর্তিত */
-      border-radius: 50px; /* পরিবর্তিত */
+      background: linear-gradient(135deg, #f0f7ff, #e6f0ff);
+      color: #0a4b6e;
+      padding: 10px 30px;
+      border-radius: 50px;
       font-size: 20px;
       margin-top: 0px;
-      letter-spacing: 1px; /* নতুন যোগ করা */
-      font-weight: bold; /* নতুন যোগ করা */
+      letter-spacing: 1px;
+      font-weight: bold;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
     }
 
     /* ========== প্রধান কার্ড ========== */
     .student-card {
-      background: white; /* পরিবর্তিত: rgba থেকে সাদা */
+      background: white;
       border-radius: 0 0 var(--border-radius) var(--border-radius);
       padding: 30px;
       box-shadow: var(--card-shadow);
@@ -227,9 +229,9 @@
     /* নাম ব্লক */
     .name-block {
       background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-      color: white; /* নতুন যোগ করা */
-      border-radius: 15px; /* পরিবর্তিত */
-      padding: 25px; /* পরিবর্তিত */
+      color: white;
+      border-radius: 15px;
+      padding: 25px;
       margin-bottom: 30px;
       text-align: center;
       box-shadow: 0 10px 20px rgba(26, 95, 180, 0.3);
@@ -248,17 +250,17 @@
     }
     .student-name {
       font-family: 'Sheikh Hasina', serif;
-      font-size: clamp(24px, 5vw, 40px); /* পরিবর্তিত */
+      font-size: clamp(24px, 5vw, 40px);
       color: white;
       font-style: normal;
-      margin-bottom: 5px; /* পরিবর্তিত */
+      margin-bottom: 5px;
       position: relative;
     }
     .student-id-badge {
       display: inline-block;
       background: rgba(0, 172, 175, 0.2);
       padding: 5px 20px;
-      border-radius: 30px; /* পরিবর্তিত */
+      border-radius: 30px;
       color: white;
       font-size: 16px;
       backdrop-filter: blur(5px);
@@ -267,54 +269,54 @@
     /* ========== ইনফো গ্রিড (সংশোধিত) ========== */
     .info-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* পরিবর্তিত */
-      gap: 8px; /* পরিবর্তিত */
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 8px;
       margin-top: 20px;
     }
 
     .info-row {
       display: flex;
-      align-items: center; /* পরিবর্তিত */
-      gap: 0; /* পরিবর্তিত */
-      margin-bottom: 0; /* পরিবর্তিত */
-      padding: 15px; /* পরিবর্তিত */
-      background: #f8fbff; /* নতুন যোগ করা */
-      border-left: 4px solid var(--primary); /* নতুন যোগ করা */
-      border-radius: 10px; /* নতুন যোগ করা */
-      box-shadow: none; /* পরিবর্তিত */
+      align-items: center;
+      gap: 0;
+      margin-bottom: 0;
+      padding: 15px;
+      background: #f8fbff;
+      border-left: 4px solid var(--primary);
+      border-radius: 10px;
+      box-shadow: none;
       transition: var(--transition);
       width: 100%;
       box-sizing: border-box;
     }
     .info-row:hover {
-      transform: translateX(8px); /* নতুন যোগ করা */
-      background: #fff; /* নতুন যোগ করা */
-      box-shadow: 0 5px 15px rgba(0,0,0,0.08); /* নতুন যোগ করা */
-      border-left-color: var(--accent); /* বিদ্যমান */
+      transform: translateX(8px);
+      background: #fff;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+      border-left-color: var(--accent);
     }
 
     .label-section {
       display: flex;
-      align-items: center; /* পরিবর্তিত */
-      gap: 5; /* পরিবর্তিত */
-      min-width: 140px; /* নতুন যোগ করা */
-      color: var(--primary-dark); /* নতুন যোগ করা */
-      font-weight: 600; /* নতুন যোগ করা */
+      align-items: center;
+      gap: 5;
+      min-width: 140px;
+      color: var(--primary-dark);
+      font-weight: 600;
     }
 
     .info-icon {
-      width: 30px; /* নতুন যোগ করা */
+      width: 30px;
       color: var(--primary);
-      font-size: 18px; /* নতুন যোগ করা */
-      min-width: 30px; /* নতুন যোগ করা */
+      font-size: 18px;
+      min-width: 30px;
       text-align: center;
       line-height: 1.5;
     }
 
     .info-label {
       flex: 1;
-      font-weight: 600; /* পরিবর্তিত */
-      color: var(--primary-dark); /* পরিবর্তিত */
+      font-weight: 600;
+      color: var(--primary-dark);
       font-family:'li Ador Noirrit', 'Kalpurush', sans-serif;
       font-size: 18px;
       position: relative;
@@ -335,9 +337,9 @@
 
     .info-value {
       flex: 1;
-      font-size: 17px; /* পরিবর্তিত */
-      color: #005b20; /* পরিবর্তিত */
-      margin-left: 20px; /* পরিবর্তিত */
+      font-size: 17px;
+      color: #005b20;
+      margin-left: 20px;
       white-space: normal;
       font-family: 'Qayyum book';
       word-break: break-word;
@@ -360,18 +362,6 @@
     .status-badge.warning { background: #fff3e0; color: #e65100; }
     .status-badge.danger { background: #ffebee; color: #c62828; }
     .status-badge.info { background: #e3f2fd; color: #0d47a1; }
-
-    /* অ্যানিমেশন ডেলে */
-    .info-row:nth-child(1) { animation-delay: 0.3s; }
-    .info-row:nth-child(2) { animation-delay: 0.4s; }
-    .info-row:nth-child(3) { animation-delay: 0.5s; }
-    .info-row:nth-child(4) { animation-delay: 0.6s; }
-    .info-row:nth-child(5) { animation-delay: 0.7s; }
-    .info-row:nth-child(6) { animation-delay: 0.8s; }
-    .info-row:nth-child(7) { animation-delay: 0.9s; }
-    .info-row:nth-child(8) { animation-delay: 1.0s; }
-    .info-row:nth-child(9) { animation-delay: 1.1s; }
-    .info-row:nth-child(10) { animation-delay: 1.2s; }
 
     /* ব্লকড মেসেজ */
     .blocked-container {
@@ -576,10 +566,10 @@
                 justify-content: center;
             }
             .floating-home {
-                display: none; /* বড় স্ক্রিনে দেখাবে */
+                display: none;
             }
             .mobile-bottom-bar {
-                display: flex; /* মোবাইলে দেখাবে */
+                display: flex;
             }
         }
 
@@ -592,7 +582,6 @@
             }
         }
 
-        /* বড় স্ক্রিনে মোবাইল বার লুকাবে */
         @media (min-width: 769px) {
             .mobile-bottom-bar {
                 display: none;
@@ -602,54 +591,42 @@
             }
         }
 
-    /* ========== মোবাইল রেসপন্সিভ (সংশোধিত) ========== */
     @media (max-width: 600px) {
       body { padding: 10px; }
       .main-container { max-width: 100%; }
-      
       .header-card { padding: 20px; }
-      .student-card { padding: 15px; } /* পরিবর্তিত */
-      
+      .student-card { padding: 15px; }
       .info-grid { grid-template-columns: 1fr; }
-      
-      /* নতুন: মোবাইলের জন্য নির্দিষ্ট স্টাইল */
       .info-row {
-        flex-direction: column; /* পরিবর্তিত */
-        align-items: flex-start; /* পরিবর্তিত */
-        gap: 5px; /* নতুন যোগ করা */
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
         padding: 15px;
       }
-      
       .label-section {
-        min-width: 100%; /* পরিবর্তিত */
-        border-bottom: 1px dashed #ddd; /* নতুন যোগ করা */
-        padding-bottom: 5px; /* নতুন যোগ করা */
-        margin-bottom: 5px; /* নতুন যোগ করা */
+        min-width: 100%;
+        border-bottom: 1px dashed #ddd;
+        padding-bottom: 5px;
+        margin-bottom: 5px;
       }
-      
       .info-label {
-        font-family: 'li Ador noirrit';
         white-space: normal;
         font-size: 19px;
       }
     .info-label::after {
         display: none;
     }
-      
       .info-value {
         width: 100%;
-        padding-left: 30px; /* নতুন যোগ করা: আইকনের সাথে সামঞ্জস্য রেখে */
-        font-weight: 500; /* নতুন যোগ করা */
+        padding-left: 30px;
+        font-weight: 500;
         font-size: 19px;
-        font-family: 'Qayyum book';
         margin-left: 0;
       }
-      
       .info-icon {
         width: 25px;
         font-size: 18px;
       }
-      
       .overlay-card { padding: 30px 20px; }
       .floating-home {
         width: 50px;
@@ -662,22 +639,13 @@
       .blocked-subtitle { font-size: 18px; }
     }
 
-    /* খুব ছোট মোবাইল (480px এর নিচে) */
     @media (max-width: 480px) {
       .info-label { font-size: 18px; }
-      .info-value { 
-        font-size: 18px; 
-        padding-left: 25px;
-      }
+      .info-value { font-size: 18px; padding-left: 25px; }
       .info-icon { font-size: 16px; width: 22px; }
     }
-
-    /* ট্যাবলেটের জন্য (601px - 767px) */
     @media (min-width: 601px) and (max-width: 767px) {
-      .info-row {
-        flex-direction: row;
-        align-items: center;
-      }
+      .info-row { flex-direction: row; align-items: center; }
       .label-section { min-width: 140px; }
       .info-value { margin-left: 10px; }
     }
@@ -685,15 +653,13 @@
 </head>
 <body>
   <div class="main-container">
-    <!-- হেডার -->
     <div class="header-card">
-      <img src="png/logo.png" alt="লোগো" class="logo">
-        <p class="header-subtitle">শিক্ষার্থীদের তথ্য</p>
+      <img src="png/logo.png" alt="লোগো" class="logo" onerror="this.style.display='none'">
+      <p class="header-subtitle">শিক্ষার্থীদের তথ্য</p>
       <h1 class="header-title">ভেরিফিকেশন সিস্টেম</h1>
       <div id="yearDisplay" class="year-badge">শিক্ষাবর্ষ: লোড হচ্ছে...</div>
     </div>
 
-    <!-- শিক্ষার্থীর তথ্য কার্ড -->
     <div class="student-card">
       <div id="studentInfo">
         <div class="loading-spinner">
@@ -701,8 +667,6 @@
           <p>তথ্য লোড হচ্ছে...</p>
         </div>
       </div>
-      
-      <!-- হোম লিংক (মূল পেইজে ফিরে যেতে) -->
       <div style="text-align: center;">
         <a href="index.html" class="home-link">
           <i class="fas fa-home"></i> মূল পেইজে ফিরে যান
@@ -710,7 +674,6 @@
       </div>
     </div>
 
-    <!-- মোবাইল বটম বার - শুধু মোবাইলে -->
     <div class="mobile-bottom-bar">
         <a href="index.html#home"><i class="fas fa-home"></i> হোম</a>
         <a href="index.html#vorti"><i class="fas fa-pen"></i> ভর্তি</a>
@@ -718,12 +681,10 @@
         <a href="index.html#contact"><i class="fas fa-phone"></i> যোগাযোগ</a>
     </div>
 
-  <!-- ভাসমান হোম বাটন -->
   <a href="index.html" class="floating-home" title="মূল পেইজে ফিরে যান">
     <i class="fas fa-home"></i>
   </a>
 
-  <!-- স্ট্যাটাস ওভারলে -->
   <div id="statusOverlay" class="status-overlay">
     <div class="overlay-card">
       <span class="overlay-main" id="overlayMain"></span>
@@ -733,14 +694,18 @@
 
   <script>
     (function() {
+      // ---- শিক্ষাবর্ষ ও শীট আইডি ম্যাপিং (সহজে সম্প্রসারণযোগ্য) ----
+      const ACADEMIC_YEAR_SHEETS = {
+        "১৪৪৭-৪৮ হিজরী/২০২৬-২৭ ঈসায়ী": "1_JnCfyQSiKoBBdSK6BdY_Z7KeTqa-zpTwOPK7CjxBk0",
+        "১৪৪৫-৪৬ হিজরী/২০২৫-২৬ ঈসায়ী": "1B6BzLPVKGeRosVm0p_DbMk5tssfuQTWbSF5W97-31-A"
+      };
+
+      // ইউআরএল প্যারামিটার
       const params = new URLSearchParams(window.location.search);
-      const year = params.get('year');
+      let yearParam = params.get('year');
       const jamat = params.get('jamat');
       const reg = params.get('reg') ? parseInt(params.get('reg')) : null;
       const roll = params.get('roll') ? parseInt(params.get('roll')) : null;
-
-      const sheetID = '1B6BzLPVKGeRosVm0p_DbMk5tssfuQTWbSF5W97-31-A';
-      const sheetURL = `https://docs.google.com/spreadsheets/d/${sheetID}/gviz/tq?tqx=out:json`;
 
       const overlay = document.getElementById('statusOverlay');
       const overlayMain = document.getElementById('overlayMain');
@@ -748,26 +713,88 @@
       const infoDiv = document.getElementById('studentInfo');
       const yearDiv = document.getElementById('yearDisplay');
 
-      // ইউআরএল প্যারামিটার চেক
-      if (!year || !jamat || !reg || !roll) {
-        infoDiv.innerHTML = `
-          <div class="not-found">
-            <i class="fas fa-exclamation-triangle"></i>
-            <h2>⚠️ ভুল তথ্য!</h2>
-            <p style="font-size: 18px;">সঠিক তথ্য প্রদান করুন: year, jamat, reg, roll</p>
-          </div>
-        `;
+      // ফাংশন: বাংলা থেকে ইংরেজি সংখ্যা, ইংরেজি থেকে বাংলা
+      function bnToEnNumber(str) {
+        if(!str) return str;
+        const bn = '০১২৩৪৫৬৭৮৯';
+        const en = '0123456789';
+        return str.replace(/[০-৯]/g, d => en[bn.indexOf(d)]);
+      }
+      function enToBnNumber(str) {
+        if(!str) return str;
+        const bn = '০১২৩৪৫৬৭৮৯';
+        const en = '0123456789';
+        return str.replace(/[0-9]/g, d => bn[en.indexOf(d)]);
+      }
+
+      // হিজরি সাল অটো +১ ফিক্স (যদি প্রয়োজন হয়)
+      function fixHijriYear(text) {
+        if (!text) return text;
+        let converted = bnToEnNumber(text);
+        const match = converted.match(/(\d+)-(\d+)\s*হিজরী\/(.+)/);
+        if (match) {
+          let first = parseInt(match[1]) + 1;
+          let second = parseInt(match[2]) + 1;
+          let newHijri = `${first}-${second} হিজরী/${match[3]}`;
+          return enToBnNumber(newHijri);
+        }
+        return text;
+      }
+
+      // শিক্ষাবর্ষ ভ্যালিডেশন এবং শীট আইডি নির্বাচন
+      let selectedSheetId = null;
+      let matchedYearKey = null;
+
+      if (!yearParam || !jamat || !reg || !roll) {
+        infoDiv.innerHTML = `<div class="not-found"><i class="fas fa-exclamation-triangle"></i><h2>⚠️ ভুল তথ্য!</h2><p>সঠিক তথ্য প্রদান করুন: year, jamat, reg, roll</p></div>`;
         yearDiv.innerHTML = 'শিক্ষাবর্ষ: তথ্য পাওয়া যায়নি';
         overlay.classList.remove('active', 'warning');
         return;
       }
+
+      // ইউজারের দেয়া year কোন ম্যাপিং এর সাথে মেলে? (সাধারণ তুলনা)
+      const userYearClean = yearParam.trim();
+      let foundKey = null;
+      for (let key in ACADEMIC_YEAR_SHEETS) {
+        if (key === userYearClean || key.includes(userYearClean) || userYearClean.includes(key)) {
+          foundKey = key;
+          break;
+        }
+      }
+      // যদি সরাসরি ম্যাচ না পায়, তাহলে স্পেস ও ইউনিকোড ট্রিম করে চেক
+      if (!foundKey) {
+        const normalizedUser = userYearClean.replace(/\s/g, '').toLowerCase();
+        for (let key in ACADEMIC_YEAR_SHEETS) {
+          const normalizedKey = key.replace(/\s/g, '').toLowerCase();
+          if (normalizedUser === normalizedKey || normalizedKey.includes(normalizedUser) || normalizedUser.includes(normalizedKey)) {
+            foundKey = key;
+            break;
+          }
+        }
+      }
+      
+      if (foundKey) {
+        matchedYearKey = foundKey;
+        selectedSheetId = ACADEMIC_YEAR_SHEETS[foundKey];
+      } else {
+        // শিক্ষাবর্ষ খুঁজে পাওয়া যায়নি
+        infoDiv.innerHTML = `<div class="not-found"><i class="fas fa-calendar-times"></i><h2>⚠️ শিক্ষাবর্ষ ভুল বা অসমর্থিত</h2><p>"${escapeHtml(yearParam)}" এই শিক্ষাবর্ষের ডাটাবেইজ নেই। উপলব্ধ: ${Object.keys(ACADEMIC_YEAR_SHEETS).join(', ')}</p></div>`;
+        yearDiv.innerHTML = `শিক্ষাবর্ষ: ${escapeHtml(yearParam)} (অমিল)`;
+        overlay.classList.remove('active', 'warning');
+        return;
+      }
+
+      // হেডারে মিল রেখে শিক্ষাবর্ষ প্রদর্শন (মূল ম্যাচড কেয়ার নাম দেখানো)
+      yearDiv.innerHTML = `শিক্ষাবর্ষ: ${matchedYearKey}`;
+
+      // এখন শীট থেকে ডাটা আনা
+      const sheetURL = `https://docs.google.com/spreadsheets/d/${selectedSheetId}/gviz/tq?tqx=out:json`;
 
       fetch(sheetURL)
         .then(res => res.text())
         .then(text => {
           const json = JSON.parse(text.substr(47).slice(0, -2));
           const rows = json.table.rows;
-
           const data = rows.map(row => {
             const obj = {};
             json.table.cols.forEach((col, i) => {
@@ -778,194 +805,75 @@
             return obj;
           });
 
-          const student = data.find(s =>
-            s['শিক্ষাবর্ষ'] === year &&
-            s['জামাত'] === jamat &&
-            parseInt(s['রেজিস্ট্রেশন/আইডি নম্বর']) === reg &&
-            parseInt(s['রোল নম্বর']) === roll
-          );
+          // শিক্ষার্থী খোঁজা : শিক্ষাবর্ষের সাথে মিল করবে (তবে শীটে 'শিক্ষাবর্ষ' কলাম থাকলে সেটাও মিলানো যেতে পারে; আমরা ইউজারের yearParam এর সাথে সরাসরি তুলনা করছি; তবে শীটের ডাটাতে শিক্ষাবর্ষ ভিন্ন ফরম্যাট থাকলে সমস্যা হতে পারে। কিন্তু নির্দেশনা অনুযায়ী শীটের শিক্ষাবর্ষ ঠিক আছে)
+          // আমরা yearParam এর সাথে strict match করব কারণ প্যারামিটার ম্যাচিং হয়েছে আগেই।
+          const student = data.find(s => {
+            const sheetYear = s['শিক্ষাবর্ষ'] ? s['শিক্ষাবর্ষ'].toString().trim() : '';
+            // জামাত কম্পেয়ার, রেজি, রোল
+            const matchYear = (sheetYear === matchedYearKey) || (sheetYear === yearParam); 
+            return matchYear &&
+                   s['জামাত'] === jamat &&
+                   parseInt(s['রেজিস্ট্রেশন/আইডি']) === reg &&
+                   parseInt(s['রোল নম্বর']) === roll;
+          });
 
           if (!student) {
             infoDiv.innerHTML = `
               <div class="not-found">
                 <i class="fas fa-search"></i>
                 <h2>⚠️ শিক্ষার্থীর তথ্য পাওয়া যায়নি</h2>
-                <p>প্রদত্ত তথ্য অনুযায়ী কোনো শিক্ষার্থী খুঁজে পাওয়া যায়নি।</p>
-                <p style="margin-top: 15px; color: #666;">শিক্ষাবর্ষ: ${year || '?'}<br>জামাত: ${jamat || '?'}<br>রেজি: ${reg || '?'}<br>রোল: ${roll || '?'}</p>
+                <p>প্রদত্ত তথ্য অনুযায়ী <strong>${matchedYearKey}</strong> শিক্ষাবর্ষে কোনো শিক্ষার্থী খুঁজে পাওয়া যায়নি।</p>
+                <p style="margin-top:15px;">জামাত: ${jamat || '?'}<br>রেজি: ${reg || '?'}<br>রোল: ${roll || '?'}</p>
               </div>
             `;
-            yearDiv.innerHTML = 'শিক্ষাবর্ষ: পাওয়া যায়নি';
             overlay.classList.remove('active', 'warning');
             return;
           }
 
-          // শিক্ষাবর্ষ দেখানো
-          function bnToEnNumber(str) {
-            const bn = '০১২৩৪৫৬৭৮৯';
-            const en = '0123456789';
-            return str.replace(/[০-৯]/g, d => en[bn.indexOf(d)]);
-          }
-
-          function enToBnNumber(str) {
-            const bn = '০১২৩৪৫৬৭৮৯';
-            const en = '0123456789';
-            return str.replace(/[0-9]/g, d => bn[en.indexOf(d)]);
-          }
-
-          function fixHijriYear(text) {
-            if (!text) return text;
-
-            // বাংলা সংখ্যা → ইংরেজি
-            let converted = bnToEnNumber(text);
-
-            // ধরছে: 1445-46 হিজরী/2025-26 ঈসায়ী
-            const match = converted.match(/(\d+)-(\d+)\s*হিজরী\/(.+)/);
-
-            if (match) {
-              let first = parseInt(match[1]) + 1;
-              let second = parseInt(match[2]) + 1;
-
-              let newHijri = `${first}-${second} হিজরী/${match[3]}`;
-
-              // আবার বাংলা সংখ্যায় ফেরত
-              return enToBnNumber(newHijri);
-            }
-
-            return text;
-          }
-
-          const originalYear = student['শিক্ষাবর্ষ'] || 'উল্লেখ নেই';
-          const updatedYear = fixHijriYear(originalYear);
-
-          yearDiv.innerHTML = `শিক্ষাবর্ষ: ${updatedYear}`;
-
           // স্ট্যাটাস ব্যাজ ক্লাস
           const getStatusBadgeClass = (status) => {
-            if (status.includes('ত্যাগকৃত') || status.includes('বহিষ্কৃত') || status.includes('বাতিল')) 
-              return 'danger';
-            if (status.includes('অধ্যয়নরত')) 
-              return 'success';
-            if (status.includes('অপেক্ষমাণ')) 
-              return 'warning';
+            if (!status) return 'info';
+            if (status.includes('ত্যাগকৃত') || status.includes('বহিষ্কৃত') || status.includes('বাতিল')) return 'danger';
+            if (status.includes('অধ্যয়নরত')) return 'success';
+            if (status.includes('অপেক্ষমাণ')) return 'warning';
             return 'info';
           };
 
-          // তথ্যের HTML তৈরি
+          // তথ্যের HTML নির্মাণ
           const fullInfoHTML = `
             <div class="name-block">
-              <div class="student-name">${student['শিক্ষার্থীর নাম'] || 'উল্লেখ নেই'}</div>
+              <div class="student-name">${escapeHtml(student['শিক্ষার্থীর নাম'] || 'উল্লেখ নেই')}</div>
               <div class="student-id-badge">
-                <i class="fas fa-qrcode"></i> আইডি: ${student['রেজিস্ট্রেশন/আইডি নম্বর'] || 'N/A'}
+                <i class="fas fa-qrcode"></i> আইডি: ${escapeHtml(student['রেজিস্ট্রেশন/আইডি'] || 'N/A')}
               </div>
             </div>
             <div class="info-grid">
-              <div class="info-row">
-                <div class="label-section">
-                  <i class="fas fa-id-card info-icon"></i>
-                  <span class="info-label">রেজিস্ট্রেশন নম্বর</span>
-                </div>
-                <span class="info-value">${student['রেজিস্ট্রেশন/আইডি নম্বর'] || '<span class="info-value empty">উল্লেখ নেই</span>'}</span>
-              </div>
-              <div class="info-row">
-                <div class="label-section">
-                  <i class="fas fa-sort-numeric-up info-icon"></i>
-                  <span class="info-label">রোল নম্বর</span>
-                </div>
-                <span class="info-value">${student['রোল নম্বর'] || '<span class="info-value empty">উল্লেখ নেই</span>'}</span>
-              </div>
-              <div class="info-row">
-                <div class="label-section">
-                  <i class="fas fa-user-tie info-icon"></i>
-                  <span class="info-label">পিতার নাম</span>
-                </div>
-                <span class="info-value">${student['পিতার নাম'] || '<span class="info-value empty">উল্লেখ নেই</span>'}</span>
-              </div>
-              <div class="info-row">
-                <div class="label-section">
-                  <i class="fas fa-graduation-cap info-icon"></i>
-                  <span class="info-label">মারহালা</span>
-                </div>
-                <span class="info-value">${student['মারহালা'] || '<span class="info-value empty">উল্লেখ নেই</span>'}</span>
-              </div>
-              <div class="info-row">
-                <div class="label-section">
-                  <i class="fas fa-users info-icon"></i>
-                  <span class="info-label">জামাত/শ্রেণী</span>
-                </div>
-                <span class="info-value">${student['জামাত/শ্রেণী'] || '<span class="info-value empty">উল্লেখ নেই</span>'}</span>
-              </div>
-              <div class="info-row">
-                <div class="label-section">
-                  <i class="fas fa-phone info-icon"></i>
-                  <span class="info-label">অভিভাবকের মোবাইল</span>
-                </div>
-                <span class="info-value">${student['অভিভাবকের মোবাইল'] || '<span class="info-value empty">উল্লেখ নেই</span>'}</span>
-              </div>
-              <div class="info-row">
-                <div class="label-section">
-                  <i class="fas fa-calendar-alt info-icon"></i>
-                  <span class="info-label">জন্ম নিবন্ধন নম্বর</span>
-                </div>
-                <span class="info-value">${student['জন্ম নিবন্ধন নাম্বার'] || '<span class="info-value empty">উল্লেখ নেই</span>'}</span>
-              </div>
-              <div class="info-row">
-                <div class="label-section">
-                  <i class="fas fa-birthday-cake info-icon"></i>
-                  <span class="info-label">জন্ম তারিখ</span>
-                </div>
-                <span class="info-value">${student['জন্ম তারিখ'] || '<span class="info-value empty">উল্লেখ নেই</span>'}</span>
-              </div>
-              <div class="info-row">
-                <div class="label-section">
-                  <i class="fas fa-map-marker-alt info-icon"></i>
-                  <span class="info-label">ঠিকানা</span>
-                </div>
-                <span class="info-value">${student['ঠিকানা'] || '<span class="info-value empty">উল্লেখ নেই</span>'}</span>
-              </div>
-              <div class="info-row">
-                <div class="label-section">
-                  <i class="fas fa-info-circle info-icon"></i>
-                  <span class="info-label">শিক্ষার্থী ধরণ</span>
-                </div>
-                <span class="info-value">
-                  ${student['শিক্ষার্থী ধরণ/স্ট্যাটাস'] || '<span class="info-value empty">উল্লেখ নেই</span>'}
-                  ${student['শিক্ষার্থী ধরণ/স্ট্যাটাস'] ? `<span class="status-badge ${getStatusBadgeClass(student['শিক্ষার্থী ধরণ/স্ট্যাটাস'])}">${student['শিক্ষার্থী ধরণ/স্ট্যাটাস'].split(/[-–—]/)[0]}</span>` : ''}
-                </span>
-              </div>
+              <div class="info-row"><div class="label-section"><i class="fas fa-id-card info-icon"></i><span class="info-label">রেজিস্ট্রেশন নম্বর</span></div><span class="info-value">${escapeHtml(student['রেজিস্ট্রেশন/আইডি'] || 'উল্লেখ নেই')}</span></div>
+              <div class="info-row"><div class="label-section"><i class="fas fa-sort-numeric-up info-icon"></i><span class="info-label">রোল নম্বর</span></div><span class="info-value">${escapeHtml(student['রোল নম্বর'] || 'উল্লেখ নেই')}</span></div>
+              <div class="info-row"><div class="label-section"><i class="fas fa-user-tie info-icon"></i><span class="info-label">পিতার নাম</span></div><span class="info-value">${escapeHtml(student['পিতার নাম'] || 'উল্লেখ নেই')}</span></div>
+              <div class="info-row"><div class="label-section"><i class="fas fa-graduation-cap info-icon"></i><span class="info-label">মারহালা</span></div><span class="info-value">${escapeHtml(student['মারহালা'] || 'উল্লেখ নেই')}</span></div>
+              <div class="info-row"><div class="label-section"><i class="fas fa-users info-icon"></i><span class="info-label">জামাত/শ্রেণী</span></div><span class="info-value">${escapeHtml(student['জামাত/শ্রেণী'] || 'উল্লেখ নেই')}</span></div>
+               <div class="info-row"><div class="label-section"><i class="fas fa-phone info-icon"></i><span class="info-label">অভিভাবকের মোবাইল (মা/বোন) </span></div><span class="info-value">${escapeHtml(student['মোবাইল (মা)'] || 'উল্লেখ নেই')}</span></div>             
+              <div class="info-row"><div class="label-section"><i class="fas fa-phone info-icon"></i><span class="info-label">অভিভাবকের মোবাইল (বাবা/ভাই) </span></div><span class="info-value">${escapeHtml(student['মোবাইল (বাবা/ভাই)'] || 'উল্লেখ নেই')}</span></div>
+              <div class="info-row"><div class="label-section"><i class="fas fa-calendar-alt info-icon"></i><span class="info-label">জন্ম নিবন্ধন নম্বর</span></div><span class="info-value">${escapeHtml(student['জন্ম নিবন্ধন নাম্বার'] || 'উল্লেখ নেই')}</span></div>
+              <div class="info-row"><div class="label-section"><i class="fas fa-birthday-cake info-icon"></i><span class="info-label">জন্ম তারিখ</span></div><span class="info-value">${escapeHtml(student['জন্ম তারিখ'] || 'উল্লেখ নেই')}</span></div>
+              <div class="info-row"><div class="label-section"><i class="fas fa-map-marker-alt info-icon"></i><span class="info-label">ঠিকানা</span></div><span class="info-value">${escapeHtml(student['ঠিকানা'] || 'উল্লেখ নেই')}</span></div>
+              <div class="info-row"><div class="label-section"><i class="fas fa-info-circle info-icon"></i><span class="info-label">শিক্ষার্থী ধরণ</span></div><span class="info-value">${escapeHtml(student['শিক্ষার্থী ধরণ/স্ট্যাটাস'] || 'উল্লেখ নেই')} ${student['শিক্ষার্থী ধরণ/স্ট্যাটাস'] ? `<span class="status-badge ${getStatusBadgeClass(student['শিক্ষার্থী ধরণ/স্ট্যাটাস'])}">${escapeHtml(student['শিক্ষার্থী ধরণ/স্ট্যাটাস'].split(/[-–—]/)[0])}</span>` : ''}</span></div>
             </div>
           `;
 
-          // স্ট্যাটাস প্রক্রিয়াকরণ
+          // ওভারলে স্ট্যাটাস প্রক্রিয়া
           const rawStatus = student['শিক্ষার্থী ধরণ/স্ট্যাটাস'] || '';
           let mainStatus = rawStatus;
           let subStatus = '';
-
-          if (rawStatus.includes('–')) {
-            let parts = rawStatus.split('–');
-            mainStatus = parts[0].trim();
-            subStatus = parts[1] ? parts[1].trim() : '';
-          } else if (rawStatus.includes('—')) {
-            let parts = rawStatus.split('—');
-            mainStatus = parts[0].trim();
-            subStatus = parts[1] ? parts[1].trim() : '';
-          } else if (rawStatus.includes('-')) {
-            let parts = rawStatus.split('-');
-            mainStatus = parts[0].trim();
-            subStatus = parts[1] ? parts[1].trim() : '';
-          }
-
-          if (rawStatus.includes('সাময়িক ভর্তি বাতিল')) {
-            mainStatus = 'সাময়িক ভর্তি বাতিল';
-            subStatus = '';
-          }
+          if (rawStatus.includes('–')) { let parts = rawStatus.split('–'); mainStatus = parts[0].trim(); subStatus = parts[1] ? parts[1].trim() : ''; }
+          else if (rawStatus.includes('—')) { let parts = rawStatus.split('—'); mainStatus = parts[0].trim(); subStatus = parts[1] ? parts[1].trim() : ''; }
+          else if (rawStatus.includes('-')) { let parts = rawStatus.split('-'); mainStatus = parts[0].trim(); subStatus = parts[1] ? parts[1].trim() : ''; }
+          if (rawStatus.includes('সাময়িক ভর্তি বাতিল')) { mainStatus = 'সাময়িক ভর্তি বাতিল'; subStatus = ''; }
 
           overlayMain.innerText = mainStatus || 'স্ট্যাটাস';
           overlaySub.innerText = subStatus || '';
-
-          const isWarning = rawStatus.includes('ত্যাগকৃত') || 
-                            rawStatus.includes('বহিষ্কৃত') || 
-                            rawStatus.includes('সাময়িক ভর্তি বাতিল');
-
+          const isWarning = rawStatus.includes('ত্যাগকৃত') || rawStatus.includes('বহিষ্কৃত') || rawStatus.includes('সাময়িক ভর্তি বাতিল');
           overlay.classList.add('active');
           if (isWarning) {
             overlay.classList.add('warning');
@@ -979,31 +887,33 @@
             infoDiv.innerHTML = `
               <div class="blocked-container">
                 <div class="blocked-icon">⛔</div>
-                <div class="blocked-title">${mainStatus}</div>
-                <div class="blocked-subtitle">${subStatus || 'অনুমতি নেই'}</div>
-                <div class="blocked-message">
-                  <i class="fas fa-lock"></i> এই শিক্ষার্থীর বিস্তারিত তথ্য প্রদর্শন করা সম্ভব নয়
-                </div>
+                <div class="blocked-title">${escapeHtml(mainStatus)}</div>
+                <div class="blocked-subtitle">${escapeHtml(subStatus) || 'অনুমতি নেই'}</div>
+                <div class="blocked-message"><i class="fas fa-lock"></i> এই শিক্ষার্থীর বিস্তারিত তথ্য প্রদর্শন করা সম্ভব নয়</div>
               </div>
             `;
           } else {
             infoDiv.innerHTML = fullInfoHTML;
-            setTimeout(() => {
-              overlay.classList.remove('active', 'warning');
-            }, 1000);
+            setTimeout(() => { overlay.classList.remove('active', 'warning'); }, 1000);
           }
         })
         .catch(err => {
           console.error(err);
-          infoDiv.innerHTML = `
-            <div class="not-found">
-              <i class="fas fa-exclamation-circle"></i>
-              <h2>⚠️ ডেটা লোড করতে সমস্যা হয়েছে</h2>
-              <p>সার্ভার সংযোগে সমস্যা হচ্ছে। আবার চেষ্টা করুন।</p>
-            </div>
-          `;
+          infoDiv.innerHTML = `<div class="not-found"><i class="fas fa-exclamation-circle"></i><h2>⚠️ ডেটা লোড করতে সমস্যা হয়েছে</h2><p>সার্ভার সংযোগে সমস্যা হচ্ছে। আবার চেষ্টা করুন।</p><p style="font-size:14px;">শীট আইডি: ${selectedSheetId}</p></div>`;
           overlay.classList.remove('active', 'warning');
         });
+
+      function escapeHtml(str) {
+        if (!str) return '';
+        return String(str).replace(/[&<>]/g, function(m) {
+          if (m === '&') return '&amp;';
+          if (m === '<') return '&lt;';
+          if (m === '>') return '&gt;';
+          return m;
+        }).replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g, function(c) {
+          return c;
+        });
+      }
     })();
   </script>
 </body>
