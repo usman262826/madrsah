@@ -1179,7 +1179,7 @@
                     'মিযান (মুতাওয়াসসিতাহ আওয়াল)': 1393773129,
                     'নাহবেমীর (মুতাওয়াসসিতাহ ছানি)': 1482164241,
                     'কুদূরী (সানাবিয়্যা আউয়াল)': null,
-                    'শরহে বেকায়া (সানাবিয়্যা ছানী)': 232997342,
+                    'শরহে বেকায়া (সানাবিয়্যা ছানী)': null,
                     'হেদায়া (ফজিলত আউয়াল)': null,
                     'মেশকাত (ফজিলত ছানী)': 232997342,
                     'দাওরায়ে হাদিস (তাকমিল)': null
@@ -1354,7 +1354,7 @@
                     });
 
                     if (student['জামাত'] === jamat &&
-                        student['রেজিস্ট্রেশন/আইডি নম্বর']?.toString() === regNo &&
+                        student['রেজিস্ট্রেশন/আইডি']?.toString() === regNo &&
                         student['রোল নম্বর']?.toString() === rollNo) {
                         return student;
                     }
@@ -1380,7 +1380,7 @@
                 const json = JSON.parse(text.substr(47).slice(0, -2));
 
                 const cols = json.table.cols;
-                const excludeHeaders = ['জামাত', 'রেজিস্ট্রেশন/আইডি নম্বর', 'রোল নম্বর', 'শিক্ষার্থীর নাম',
+                const excludeHeaders = ['জামাত', 'রেজিস্ট্রেশন/আইডি', 'রোল নম্বর', 'শিক্ষার্থীর নাম',
                                        'মোট নাম্বার', 'মোট নাম্বার', 'গড় নাম্বার', 'বিভাগ', 'মেধাস্থান', 'ক্রমিক',
                                        'মোট', 'Total', 'Average', 'Position', 'GPA', 'SL', 'ক্রমিক নং'];
 
@@ -1510,7 +1510,7 @@
                 }
             }
 
-            const excludeHeaders = ['জামাত', 'রেজিস্ট্রেশন/আইডি নম্বর', 'রোল নম্বর', 'শিক্ষার্থীর নাম',
+            const excludeHeaders = ['জামাত', 'রেজিস্ট্রেশন/আইডি', 'রোল নম্বর', 'শিক্ষার্থীর নাম',
                                    'মোট নাম্বার', 'মোট নাম্বার', 'গড় নাম্বার', 'বিভাগ', 'মেধাস্থান', 'ক্রমিক',
                                    'ক্রমিক নং', 'SL', 'Total', 'Average', 'Position', 'GPA'];
 
@@ -1569,12 +1569,12 @@
                 <div class="name-block">
                     <div class="student-name">${studentData['শিক্ষার্থীর নাম'] || '—'}</div>
                     <div class="student-id-badge">
-                        <i class="fas fa-qrcode"></i> আইডি: ${toBanglaNumber(studentData['রেজিস্ট্রেশন/আইডি নম্বর'] || '')}
+                        <i class="fas fa-qrcode"></i> আইডি: ${toBanglaNumber(studentData['রেজিস্ট্রেশন/আইডি'] || '')}
                     </div>
                 </div>
                 <div class="info-row">
                     <span class="info-label">রেজিস্ট্রেশন নম্বর</span>
-                    <span class="info-value bangla-number">${toBanglaNumber(studentData['রেজিস্ট্রেশন/আইডি নম্বর'] || '')}</span>
+                    <span class="info-value bangla-number">${toBanglaNumber(studentData['রেজিস্ট্রেশন/আইডি'] || '')}</span>
                 </div>
                 <div class="info-row">
                     <span class="info-label">রোল নম্বর</span>
@@ -1906,7 +1906,7 @@
             pdf.setTextColor(0, 0, 0);
 
             pdf.text(`নাম: ${student['শিক্ষার্থীর নাম'] || '—'}`, 20, 70);
-            pdf.text(`রেজি: ${toBanglaNumber(student['রেজিস্ট্রেশন/আইডি নম্বর'] || '')}`, 120, 70);
+            pdf.text(`রেজি: ${toBanglaNumber(student['রেজিস্ট্রেশন/আইডি'] || '')}`, 120, 70);
             pdf.text(`পিতার নাম: ${student['পিতার নাম'] || '—'}`, 20, 78);
             pdf.text(`রোল: ${toBanglaNumber(student['রোল নম্বর'] || '')}`, 120, 78);
             pdf.text(`জামাত: ${student['জামাত/শ্রেণী'] || '—'}`, 20, 86);
@@ -2031,7 +2031,7 @@
             pdf.setTextColor(0, 0, 0);
 
             pdf.text(`নাম: ${student['শিক্ষার্থীর নাম'] || '—'}`, 20, 70);
-            pdf.text(`রেজি: ${toBanglaNumber(student['রেজিস্ট্রেশন/আইডি নম্বর'] || '')}`, 120, 70);
+            pdf.text(`রেজি: ${toBanglaNumber(student['রেজিস্ট্রেশন/আইডি'] || '')}`, 120, 70);
             pdf.text(`পিতার নাম: ${student['পিতার নাম'] || '—'}`, 20, 78);
             pdf.text(`রোল: ${toBanglaNumber(student['রোল নম্বর'] || '')}`, 120, 78);
             pdf.text(`জামাত: ${student['জামাত/শ্রেণী'] || '—'}`, 20, 86);
@@ -2110,7 +2110,7 @@
             pdf.setTextColor(150, 150, 150);
             pdf.text('almadania.netlify.app', 105, 280, { align: 'center' });
 
-            pdf.save(`Combined_Result_${student['রেজিস্ট্রেশন/আইডি নম্বর']}.pdf`);
+            pdf.save(`Combined_Result_${student['রেজিস্ট্রেশন/আইডি']}.pdf`);
         }
 
         // Search result function
