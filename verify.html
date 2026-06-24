@@ -705,7 +705,7 @@
       let yearParam = params.get('year');
       const jamat = params.get('jamat');
       const reg = params.get('reg') ? parseInt(params.get('reg')) : null;
-      const roll = params.get('roll') ? parseInt(params.get('roll')) : null;
+      const roll = params.get('roll') ? parseInt(params.get('roll')) : null; // ঐচ্ছিক - পুরাতন লিংকের জন্য রাখা হয়েছে
 
       const overlay = document.getElementById('statusOverlay');
       const overlayMain = document.getElementById('overlayMain');
@@ -745,8 +745,9 @@
       let selectedSheetId = null;
       let matchedYearKey = null;
 
-      if (!yearParam || !jamat || !reg || !roll) {
-        infoDiv.innerHTML = `<div class="not-found"><i class="fas fa-exclamation-triangle"></i><h2>⚠️ ভুল তথ্য!</h2><p>সঠিক তথ্য প্রদান করুন: year, jamat, reg, roll</p></div>`;
+      // শুধুমাত্র year, jamat এবং reg বাধ্যতামূলক
+      if (!yearParam || !jamat || !reg) {
+        infoDiv.innerHTML = `<div class="not-found"><i class="fas fa-exclamation-triangle"></i><h2>⚠️ ভুল তথ্য!</h2><p>সঠিক তথ্য প্রদান করুন: year, jamat, reg</p><p style="margin-top:10px;font-size:14px;color:#666;">(roll নম্বর ঐচ্ছিক - পুরাতন লিংকের জন্য সংরক্ষিত)</p></div>`;
         yearDiv.innerHTML = 'শিক্ষাবর্ষ: তথ্য পাওয়া যায়নি';
         overlay.classList.remove('active', 'warning');
         return;
@@ -805,16 +806,22 @@
             return obj;
           });
 
-          // শিক্ষার্থী খোঁজা : শিক্ষাবর্ষের সাথে মিল করবে (তবে শীটে 'শিক্ষাবর্ষ' কলাম থাকলে সেটাও মিলানো যেতে পারে; আমরা ইউজারের yearParam এর সাথে সরাসরি তুলনা করছি; তবে শীটের ডাটাতে শিক্ষাবর্ষ ভিন্ন ফরম্যাট থাকলে সমস্যা হতে পারে। কিন্তু নির্দেশনা অনুযায়ী শীটের শিক্ষাবর্ষ ঠিক আছে)
-          // আমরা yearParam এর সাথে strict match করব কারণ প্যারামিটার ম্যাচিং হয়েছে আগেই।
+          // শিক্ষার্থী খোঁজা : শুধুমাত্র শিক্ষাবর্ষ, জামাত এবং রেজি/আইডি মিলবে
+          // রোল নম্বর ঐচ্ছিক - পুরাতন লিংকের জন্য কাজ করবে কিন্তু বাধ্যতামূলক নয়
           const student = data.find(s => {
             const sheetYear = s['শিক্ষাবর্ষ'] ? s['শিক্ষাবর্ষ'].toString().trim() : '';
-            // জামাত কম্পেয়ার, রেজি, রোল
-            const matchYear = (sheetYear === matchedYearKey) || (sheetYear === yearParam); 
-            return matchYear &&
-                   s['জামাত'] === jamat &&
-                   parseInt(s['রেজিস্ট্রেশন/আইডি']) === reg &&
-                   parseInt(s['রোল নম্বর']) === roll;
+            
+            // মূল তিনটি ফিল্ড মিলানো (বাধ্যতামূলক)
+            const matchYear = (sheetYear === matchedYearKey) || (sheetYear === yearParam);
+            const matchJamat = s['জামাত'] === jamat;
+            const matchReg = parseInt(s['রেজিস্ট্রেশন/আইডি']) === reg;
+            
+            // যদি মূল তিনটি ফিল্ড মিলে, তাহলে রোল চেক না করেই গ্রহণ করবো
+            if (matchYear && matchJamat && matchReg) {
+              return true;
+            }
+            
+            return false;
           });
 
           if (!student) {
@@ -823,7 +830,8 @@
                 <i class="fas fa-search"></i>
                 <h2>⚠️ শিক্ষার্থীর তথ্য পাওয়া যায়নি</h2>
                 <p>প্রদত্ত তথ্য অনুযায়ী <strong>${matchedYearKey}</strong> শিক্ষাবর্ষে কোনো শিক্ষার্থী খুঁজে পাওয়া যায়নি।</p>
-                <p style="margin-top:15px;">জামাত: ${jamat || '?'}<br>রেজি: ${reg || '?'}<br>রোল: ${roll || '?'}</p>
+                <p style="margin-top:15px;">জামাত: ${jamat || '?'}<br>রেজি: ${reg || '?'}</p>
+                ${roll ? `<p style="color:#999;font-size:14px;margin-top:10px;">রোল: ${roll} (ঐচ্ছিক, মেলানো হয়নি)</p>` : ''}
               </div>
             `;
             overlay.classList.remove('active', 'warning');
