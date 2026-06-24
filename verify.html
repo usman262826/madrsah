@@ -8,7 +8,6 @@
   <link href="https://fonts.maateen.me/kalpurush/font.css" rel="stylesheet">
   
   <style>
-    /* ========== ফন্ট ডিক্লারেশন (বিকল্প ফন্ট সহ) ========== */
     @font-face {
       font-family: 'Qayyum Book';
       src: url('ফন্ট/Qayyum Book.ttf') format('truetype');
@@ -35,50 +34,44 @@
       font-display: swap;
     }
 
-    /* ========== রুট ভেরিয়েবল ========== */
     :root {
-      --primary: #1a5fb4;
-      --primary-dark: #0d3b6f;
-      --primary-light: #4d8cd4;
-      --secondary: #26a269;
-      --accent: #ff7800;
-      --warning: #f44336;
-      --warning-dark: #b71c1c;
-      --success: #4caf50;
-      --light-bg: #f5f9ff;
-      --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-      --hover-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-      --border-radius: 20px;
-      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --primary-light: #dbeafe;
+      --danger: #dc2626;
+      --danger-dark: #991b1b;
+      --gray-50: #fafafa;
+      --gray-100: #f4f4f5;
+      --gray-200: #e4e4e7;
+      --gray-300: #d4d4d8;
+      --gray-400: #a1a1aa;
+      --gray-500: #71717a;
+      --gray-600: #52525b;
+      --gray-700: #3f3f46;
+      --gray-800: #27272a;
+      --gray-900: #18181b;
+      --shadow: 0 1px 2px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.04);
+      --shadow-hover: 0 1px 3px rgba(0,0,0,0.06), 0 12px 40px rgba(0,0,0,0.06);
+      --radius: 12px;
+      --transition: all 0.2s ease;
     }
 
-    /* ========== অ্যানিমেশন ========== */
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(30px); }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(12px); }
       to { opacity: 1; transform: translateY(0); }
     }
-    @keyframes fadeInScale {
-      from { opacity: 0; transform: scale(0.9); }
+    @keyframes fadeScale {
+      from { opacity: 0; transform: scale(0.96); }
       to { opacity: 1; transform: scale(1); }
-    }
-    @keyframes slideInRight {
-      from { opacity: 0; transform: translateX(50px); }
-      to { opacity: 1; transform: translateX(0); }
-    }
-    @keyframes shimmer {
-      0% { background-position: -1000px 0; }
-      100% { background-position: 1000px 0; }
     }
     @keyframes pulse {
       0%, 100% { opacity: 1; }
-      50% { opacity: 0.7; }
+      50% { opacity: 0.5; }
     }
     @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
+      to { transform: rotate(360deg); }
     }
 
-    /* ========== গ্লোবাল স্টাইল ========== */
     * {
       margin: 0;
       padding: 0;
@@ -86,626 +79,511 @@
     }
 
     body {
-      background: linear-gradient(135deg, #d2fffa 0%, #faffdb 100%);
-      font-family: 'Kalpurush', 'Qayyum Book', Arial, sans-serif;
+      background: var(--gray-50);
+      font-family: 'Kalpurush', 'Qayyum Book', -apple-system, sans-serif;
       min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
       padding: 20px;
-      position: relative;
-    }
-
-    body::before {
-      content: '';
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.1"><path d="M10 10 L90 10 L90 90 L10 90 Z" fill="none" stroke="white" stroke-width="2"/><circle cx="50" cy="50" r="30" fill="none" stroke="white" stroke-width="2"/></svg>');
-      background-size: 50px 50px;
-      pointer-events: none;
+      color: var(--gray-900);
     }
 
     .main-container {
       width: 100%;
-      max-width: 850px;
-      position: relative;
-      z-index: 10;
-      animation: fadeInUp 0.8s ease-out;
+      max-width: 840px;
+      animation: fadeUp 0.4s ease;
     }
 
-    /* ========== স্ট্যাটাস ওভারলে ========== */
+    /* ===== Overlay ===== */
     .status-overlay {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(1, 79, 83, 0.85);
-      backdrop-filter: blur(10px);
+      inset: 0;
+      background: rgba(0,0,0,0.55);
+      backdrop-filter: blur(8px);
       display: flex;
       align-items: center;
       justify-content: center;
       z-index: 9999;
       opacity: 0;
       visibility: hidden;
-      transition: var(--transition);
+      transition: opacity 0.3s, visibility 0.3s;
     }
     .status-overlay.active {
       opacity: 1;
       visibility: visible;
     }
     .status-overlay.warning {
-      background: rgba(201, 13, 13, 0.9);
+      background: rgba(153,27,27,0.65);
     }
     .overlay-card {
-      background: rgba(255, 255, 255, 0.15);
-      backdrop-filter: blur(15px);
-      border-radius: 40px;
-      padding: 50px 70px;
-      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
-      border: 2px solid rgba(255, 215, 0, 0.3);
-      max-width: 800px;
-      width: 90%;
-      margin: 20px;
-      animation: fadeInScale 0.5s ease-out;
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(20px);
+      border-radius: 24px;
+      padding: 40px 56px;
+      border: 1px solid rgba(255,255,255,0.08);
       text-align: center;
+      animation: fadeScale 0.3s ease;
+      max-width: 580px;
+      width: 90%;
     }
     .overlay-main {
       font-family: 'Sheikh Hasina', serif;
-      font-size: clamp(2.5rem, 8vw, 5rem);
-      color: #ffffff;
-      text-shadow: 4px 4px 0 #0d3b6f;
+      font-size: clamp(2.2rem, 6vw, 4rem);
+      color: #fff;
       display: block;
-      border-bottom: 4px solid rgb(224, 224, 224);
-      padding-bottom: 20px;
-      margin-bottom: 20px;
-      line-height: 1.3;
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+      padding-bottom: 14px;
+      margin-bottom: 10px;
+      line-height: 1.2;
     }
     .overlay-sub {
       font-family: 'Bornomala', sans-serif;
-      font-size: clamp(1.5rem, 4vw, 2.5rem);
-      color: #f9c372;
+      font-size: clamp(1.1rem, 2.5vw, 1.8rem);
+      color: #fcd34d;
       display: block;
-      font-weight: 500;
     }
     .overlay-sub.warning-sub {
-      color: #ede9e3;
+      color: #fca5a5;
       animation: pulse 1.5s infinite;
     }
 
-    /* ========== হেডার সেকশন ========== */
-    .header-card {
-      background: rgb(249, 255, 255);
-      backdrop-filter: blur(10px);
-      border-radius: var(--border-radius) var(--border-radius) 0 0;
-      padding: 30px 30px 20px;
-      box-shadow: var(--card-shadow);
-      margin-bottom: 2px;
+    /* ===== Header ===== */
+    .header {
+      background: #fff;
+      border-radius: var(--radius) var(--radius) 0 0;
+      padding: 24px 28px 18px;
       text-align: center;
-      animation: fadeInUp 0.8s ease forwards;
-      border-bottom: 2px solid #eee;
+      border-bottom: 1px solid var(--gray-200);
+      box-shadow: var(--shadow);
     }
     .logo {
-      max-width: 200px;
+      max-width: 150px;
       height: auto;
-      margin-bottom: 15px;
-      filter: drop-shadow(0 5px 10px rgba(0,0,0,0.1));
+      margin-bottom: 6px;
     }
     .header-title {
       font-family: 'JunudullahZami', serif;
-      font-size: clamp(24px, 5vw, 32px);
-      color: var(--primary);
-      margin-bottom: 5px;
+      font-size: clamp(20px, 3.5vw, 26px);
+      color: var(--gray-900);
     }
-    .header-subtitle {
-      font-size: 16px;
-      color: #666;
+    .header-sub {
+      font-size: 14px;
+      color: var(--gray-500);
+      margin-top: 2px;
     }
     .year-badge {
       display: inline-block;
-      background: linear-gradient(135deg, #f0f7ff, #e6f0ff);
-      color: #0a4b6e;
-      padding: 10px 30px;
-      border-radius: 50px;
-      font-size: 20px;
-      margin-top: 0px;
-      letter-spacing: 1px;
-      font-weight: bold;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      background: var(--gray-100);
+      color: var(--gray-600);
+      padding: 5px 24px;
+      border-radius: 100px;
+      font-size: 15px;
+      font-weight: 500;
+      margin-top: 8px;
     }
 
-    /* ========== প্রধান কার্ড ========== */
+    /* ===== Main Card ===== */
     .student-card {
-      background: white;
-      border-radius: 0 0 var(--border-radius) var(--border-radius);
-      padding: 30px;
-      box-shadow: var(--card-shadow);
-      animation: fadeInUp 0.8s ease forwards 0.2s;
-    }
-
-    /* নাম ব্লক */
-    .name-block {
-      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-      color: white;
-      border-radius: 15px;
-      padding: 25px;
-      margin-bottom: 30px;
-      text-align: center;
-      box-shadow: 0 10px 20px rgba(26, 95, 180, 0.3);
-      position: relative;
-      overflow: hidden;
-    }
-    .name-block::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
-      animation: shimmer 5s infinite;
-    }
-    .student-name {
-      font-family: 'Sheikh Hasina', serif;
-      font-size: clamp(24px, 5vw, 40px);
-      color: white;
-      font-style: normal;
-      margin-bottom: 5px;
-      position: relative;
-    }
-    .student-id-badge {
-      display: inline-block;
-      background: rgba(0, 172, 175, 0.2);
-      padding: 5px 20px;
-      border-radius: 30px;
-      color: white;
-      font-size: 16px;
-      backdrop-filter: blur(5px);
-    }
-
-    /* ========== ইনফো গ্রিড (সংশোধিত) ========== */
-    .info-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 8px;
-      margin-top: 20px;
-    }
-
-    .info-row {
-      display: flex;
-      align-items: center;
-      gap: 0;
-      margin-bottom: 0;
-      padding: 15px;
-      background: #f8fbff;
-      border-left: 4px solid var(--primary);
-      border-radius: 10px;
-      box-shadow: none;
-      transition: var(--transition);
-      width: 100%;
-      box-sizing: border-box;
-    }
-    .info-row:hover {
-      transform: translateX(8px);
       background: #fff;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-      border-left-color: var(--accent);
+      border-radius: 0 0 var(--radius) var(--radius);
+      padding: 28px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--gray-200);
+      border-top: none;
     }
 
-    .label-section {
+    /* ===== Profile ===== */
+    .profile {
       display: flex;
       align-items: center;
-      gap: 5;
-      min-width: 140px;
-      color: var(--primary-dark);
-      font-weight: 600;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 20px 24px;
+      background: var(--gray-50);
+      border-radius: var(--radius);
+      margin-bottom: 24px;
+      border: 1px solid var(--gray-200);
+    }
+    .profile-name {
+      font-family: 'Sheikh Hasina', serif;
+      font-size: clamp(22px, 4vw, 32px);
+      color: var(--gray-900);
+      line-height: 1.2;
+    }
+    .profile-id {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 14px;
+      color: var(--gray-500);
+      background: #fff;
+      padding: 3px 16px;
+      border-radius: 100px;
+      border: 1px solid var(--gray-200);
+    }
+    .profile-avatar {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--gray-200);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      color: var(--gray-500);
+      flex-shrink: 0;
     }
 
-    .info-icon {
+    /* ===== Info Grid ===== */
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    .item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 16px;
+      background: var(--gray-50);
+      border-radius: 8px;
+      border: 1px solid var(--gray-100);
+      transition: var(--transition);
+    }
+    .item:hover {
+      background: #fff;
+      border-color: var(--gray-200);
+    }
+    .item.full {
+      grid-column: 1 / -1;
+    }
+    .item-icon {
       width: 30px;
-      color: var(--primary);
-      font-size: 18px;
-      min-width: 30px;
-      text-align: center;
-      line-height: 1.5;
+      height: 30px;
+      border-radius: 6px;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gray-500);
+      font-size: 14px;
+      flex-shrink: 0;
+      border: 1px solid var(--gray-200);
     }
-
-    .info-label {
-      flex: 1;
-      font-weight: 600;
-      color: var(--primary-dark);
-      font-family:'li Ador Noirrit', 'Kalpurush', sans-serif;
-      font-size: 18px;
-      position: relative;
-      word-break: keep-all;
-      white-space: nowrap;
-      font-weight: bold;
-      line-height: 1.5;
-      padding-right: 5px;
-      margin-right: 5%;
+    .item-label {
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--gray-400);
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+      display: block;
     }
-
-    .info-label::after {
-      content: ":";
-      position: absolute;
-      right: -12px;
-      color: #8b0303;
+    .item-value {
+      font-size: 15px;
+      color: var(--gray-900);
+      font-weight: 500;
     }
-
-    .info-value {
-      flex: 1;
-      font-size: 17px;
-      color: #005b20;
-      margin-left: 20px;
-      white-space: normal;
-      font-family: 'Qayyum book';
-      word-break: break-word;
-    }
-    .info-value.empty {
-      color: #999;
+    .item-value.empty {
+      color: var(--gray-300);
+      font-weight: 400;
       font-style: italic;
     }
 
-    /* স্ট্যাটাস ব্যাজ */
-    .status-badge {
-      display: inline-block;
-      padding: 3px 8px;
-      border-radius: 20px;
-      font-size: 13px;
-      font-weight: bold;
-      margin-left: 8px;
+    /* ===== Blood Group Badge ===== */
+    .blood-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #fef2f2;
+      color: var(--danger);
+      padding: 2px 14px 2px 10px;
+      border-radius: 100px;
+      font-size: 15px;
+      font-weight: 600;
+      border: 1px solid #fecaca;
     }
-    .status-badge.success { background: #e8f5e9; color: #2e7d32; }
-    .status-badge.warning { background: #fff3e0; color: #e65100; }
-    .status-badge.danger { background: #ffebee; color: #c62828; }
-    .status-badge.info { background: #e3f2fd; color: #0d47a1; }
+    .blood-badge i {
+      font-size: 13px;
+    }
+    .blood-badge .label {
+      font-weight: 400;
+      color: var(--gray-500);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
 
-    /* ব্লকড মেসেজ */
-    .blocked-container {
+    /* ===== Status Badge ===== */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 2px 12px;
+      border-radius: 100px;
+      font-size: 12px;
+      font-weight: 500;
+    }
+    .badge.success { background: #dcfce7; color: #166534; }
+    .badge.warning { background: #fef3c7; color: #92400e; }
+    .badge.danger { background: #fee2e2; color: #991b1b; }
+    .badge.info { background: #dbeafe; color: #1e40af; }
+    .badge i { font-size: 10px; }
+
+    /* ===== Blocked ===== */
+    .blocked {
       text-align: center;
-      padding: 60px 30px;
-      background: #ffebee;
-      border-radius: 30px;
-      border: 4px solid var(--warning-dark);
-      box-shadow: 0 0 50px rgba(244, 67, 54, 0.5);
-      animation: pulse 2s infinite;
+      padding: 48px 24px;
+      background: #fef2f2;
+      border-radius: var(--radius);
+      border: 1px solid #fecaca;
     }
     .blocked-icon {
-      font-size: 100px;
+      font-size: 64px;
       display: block;
-      margin-bottom: 30px;
-      filter: drop-shadow(0 10px 20px rgba(183, 28, 28, 0.3));
+      margin-bottom: 16px;
     }
     .blocked-title {
       font-family: 'Sheikh Hasina', serif;
-      font-size: clamp(36px, 8vw, 48px);
-      color: var(--warning-dark);
-      margin-bottom: 15px;
-      line-height: 1.3;
+      font-size: clamp(28px, 5vw, 38px);
+      color: var(--danger-dark);
     }
-    .blocked-subtitle {
-      font-size: clamp(20px, 5vw, 28px);
-      color: #b71c1c;
-      margin-bottom: 25px;
+    .blocked-sub {
+      font-size: clamp(16px, 3vw, 20px);
+      color: var(--danger);
+      margin: 4px 0 16px;
     }
-    .blocked-message {
-      background: white;
-      padding: 20px;
-      border-radius: 15px;
+    .blocked-msg {
+      background: #fff;
+      padding: 12px 24px;
+      border-radius: 8px;
       display: inline-block;
-      color: #666;
-      font-size: 18px;
-      border-left: 5px solid var(--warning-dark);
+      font-size: 14px;
+      color: var(--gray-600);
+      border-left: 3px solid var(--danger);
     }
 
-    /* নট ফাউন্ড */
+    /* ===== Not Found ===== */
     .not-found {
       text-align: center;
-      padding: 50px 30px;
-      background: #fff3e0;
-      border-radius: 30px;
-      border: 4px solid var(--accent);
+      padding: 40px 24px;
+      background: #fffbeb;
+      border-radius: var(--radius);
+      border: 1px solid #fde68a;
     }
     .not-found i {
-      font-size: 80px;
-      color: var(--accent);
-      margin-bottom: 20px;
+      font-size: 56px;
+      color: #d97706;
+      margin-bottom: 12px;
     }
     .not-found h2 {
-      font-size: 32px;
-      color: #e65100;
-      margin-bottom: 15px;
+      font-size: 24px;
+      color: #92400e;
+    }
+    .not-found p {
+      color: var(--gray-600);
+      margin-top: 4px;
+    }
+    .not-found .sub {
+      font-size: 13px;
+      color: var(--gray-400);
+      margin-top: 8px;
     }
 
-    /* হোম বাটন */
+    /* ===== Home Link ===== */
+    .home-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--gray-500);
+      padding: 10px 24px;
+      border-radius: 100px;
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 500;
+      border: 1px solid var(--gray-200);
+      transition: var(--transition);
+      margin-top: 16px;
+      background: #fff;
+    }
+    .home-link:hover {
+      border-color: var(--gray-300);
+      color: var(--gray-900);
+      background: var(--gray-50);
+    }
+
+    /* ===== Floating Home ===== */
     .floating-home {
       position: fixed;
-      bottom: 30px;
-      right: 30px;
-      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-      color: white;
-      width: 60px;
-      height: 60px;
+      bottom: 24px;
+      right: 24px;
+      background: #fff;
+      color: var(--gray-600);
+      width: 48px;
+      height: 48px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       text-decoration: none;
-      font-size: 28px;
-      box-shadow: 0 10px 30px rgba(26, 95, 180, 0.4);
-      border: 3px solid white;
-      z-index: 999;
+      font-size: 20px;
+      border: 1px solid var(--gray-200);
+      box-shadow: var(--shadow);
       transition: var(--transition);
+      z-index: 999;
     }
     .floating-home:hover {
-      transform: scale(1.1) rotate(360deg);
-      background: linear-gradient(135deg, var(--primary-dark), var(--primary));
-      box-shadow: 0 15px 40px rgba(26, 95, 180, 0.6);
+      border-color: var(--gray-300);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-hover);
     }
 
-    .home-link {
-      display: inline-flex;
+    /* ===== Mobile Bottom Bar ===== */
+    .bottom-bar {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #fff;
+      padding: 6px 0 10px;
+      border-top: 1px solid var(--gray-200);
+      z-index: 1000;
+      justify-content: space-around;
       align-items: center;
-      background: white;
-      color: var(--primary);
-      padding: 12px 30px;
-      border-radius: 50px;
+    }
+    .bottom-bar a {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       text-decoration: none;
-      font-size: 18px;
-      font-weight: bold;
-      border: 2px solid var(--primary);
+      color: var(--gray-400);
+      font-size: 10px;
+      font-weight: 500;
+      gap: 2px;
       transition: var(--transition);
-      margin: 20px 0;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     }
-    .home-link i {
-      margin-right: 10px;
-      font-size: 20px;
+    .bottom-bar a i {
+      font-size: 18px;
+      color: var(--gray-400);
     }
-    .home-link:hover {
-      background: var(--primary);
-      color: white;
-      transform: translateY(-3px);
-      box-shadow: 0 10px 25px rgba(26, 95, 180, 0.3);
+    .bottom-bar a:hover {
+      color: var(--gray-600);
     }
-    /* মোবাইল বটম বার */
-    .mobile-bottom-bar {
-        display: none;
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        background: white;
-        padding: 10px 5px;
-        box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.15);
-        z-index: 1000;
-        justify-content: space-around;
-        align-items: center;
-        border-top: 3px solid #007c7c;
+    .bottom-bar a:hover i {
+      color: var(--gray-600);
     }
 
-    .mobile-bottom-bar a {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-decoration: none;
-        color: #00464e;
-        font-size: 12px;
-        font-weight: bold;
-        gap: 5px;
-    }
-
-    .mobile-bottom-bar a i {
-        font-size: 20px;
-        color: #007c7c;
-    }
-
-    /* ফুটার */
-    .footer {
-      font-family: 'Kalpurush', 'Qayyum Book', sans-serif;
+    /* ===== Loading ===== */
+    .loading {
       text-align: center;
-      margin-top: 40px;
-      color: rgba(24, 0, 0, 0.8);
-      font-size: 14px;
-      animation: fadeInUp 0.8s ease forwards 0.5s;
-    }
-    .footer img {
-      max-width: 100%;
-      border-radius: 20px;
-      margin-bottom: 15px;
-    }
-
-    /* লোডিং স্পিনার */
-    .loading-spinner {
-      text-align: center;
-      padding: 40px;
+      padding: 32px 20px;
     }
     .spinner {
-      width: 50px;
-      height: 50px;
-      border: 5px solid #f3f3f3;
-      border-top: 5px solid var(--primary);
+      width: 36px;
+      height: 36px;
+      border: 2px solid var(--gray-200);
+      border-top-color: var(--gray-600);
       border-radius: 50%;
-      animation: spin 1s linear infinite;
-      margin: 0 auto 20px;
+      animation: spin 0.7s linear infinite;
+      margin: 0 auto 12px;
     }
-    
-        /* Responsive */
-        @media (max-width: 992px) {
-            .form-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
+    .loading p {
+      color: var(--gray-400);
+      font-size: 14px;
+    }
 
-        @media (max-width: 768px) {
-            .form-grid {
-                grid-template-columns: 1fr;
-            }
-            .info-grid {
-                grid-template-columns: 1fr;
-            }
-            .action-buttons {
-                flex-direction: column;
-            }
-            .btn {
-                width: 100%;
-                justify-content: center;
-            }
-            .section-title h1 {
-                font-size: 28px;
-            }
-            .selected-exam-badge {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            .change-exam-btn {
-                width: 100%;
-                justify-content: center;
-            }
-            .floating-home {
-                display: none;
-            }
-            .mobile-bottom-bar {
-                display: flex;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .student-name {
-                font-size: 22px;
-            }
-            .status-main {
-                font-size: 18px;
-            }
-        }
-
-        @media (min-width: 769px) {
-            .mobile-bottom-bar {
-                display: none;
-            }
-            .floating-home {
-                display: flex;
-            }
-        }
-
-    @media (max-width: 600px) {
-      body { padding: 10px; }
-      .main-container { max-width: 100%; }
-      .header-card { padding: 20px; }
-      .student-card { padding: 15px; }
-      .info-grid { grid-template-columns: 1fr; }
-      .info-row {
+    /* ===== Responsive ===== */
+    @media (max-width: 768px) {
+      body { padding: 12px; }
+      .header { padding: 18px 16px 14px; }
+      .student-card { padding: 16px; }
+      .grid { grid-template-columns: 1fr; }
+      .profile {
         flex-direction: column;
-        align-items: flex-start;
-        gap: 5px;
-        padding: 15px;
+        text-align: center;
+        padding: 16px;
+        gap: 12px;
       }
-      .label-section {
-        min-width: 100%;
-        border-bottom: 1px dashed #ddd;
-        padding-bottom: 5px;
-        margin-bottom: 5px;
-      }
-      .info-label {
-        white-space: normal;
-        font-size: 19px;
-      }
-    .info-label::after {
-        display: none;
+      .profile-avatar { width: 48px; height: 48px; font-size: 22px; }
+      .item { padding: 10px 14px; }
+      .floating-home { display: none; }
+      .bottom-bar { display: flex; }
+      .overlay-card { padding: 28px 20px; }
     }
-      .info-value {
-        width: 100%;
-        padding-left: 30px;
-        font-weight: 500;
-        font-size: 19px;
-        margin-left: 0;
-      }
-      .info-icon {
-        width: 25px;
-        font-size: 18px;
-      }
-      .overlay-card { padding: 30px 20px; }
-      .floating-home {
-        width: 50px;
-        height: 50px;
-        font-size: 24px;
-        bottom: 20px;
-        right: 20px;
-      }
-      .blocked-title { font-size: 28px; }
-      .blocked-subtitle { font-size: 18px; }
+
+    @media (min-width: 769px) {
+      .bottom-bar { display: none; }
+      .floating-home { display: flex; }
     }
 
     @media (max-width: 480px) {
-      .info-label { font-size: 18px; }
-      .info-value { font-size: 18px; padding-left: 25px; }
-      .info-icon { font-size: 16px; width: 22px; }
-    }
-    @media (min-width: 601px) and (max-width: 767px) {
-      .info-row { flex-direction: row; align-items: center; }
-      .label-section { min-width: 140px; }
-      .info-value { margin-left: 10px; }
+      .profile-name { font-size: 20px; }
+      .item-value { font-size: 14px; }
+      .item { padding: 8px 12px; gap: 10px; }
+      .item-icon { width: 26px; height: 26px; font-size: 12px; }
     }
   </style>
 </head>
 <body>
   <div class="main-container">
-    <div class="header-card">
+    <!-- Header -->
+    <div class="header">
       <img src="png/logo.png" alt="লোগো" class="logo" onerror="this.style.display='none'">
-      <p class="header-subtitle">শিক্ষার্থীদের তথ্য</p>
-      <h1 class="header-title">ভেরিফিকেশন সিস্টেম</h1>
+      <div class="header-title">ভেরিফিকেশন সিস্টেম</div>
+      <div class="header-sub">শিক্ষার্থী আইডি কার্ড</div>
       <div id="yearDisplay" class="year-badge">শিক্ষাবর্ষ: লোড হচ্ছে...</div>
     </div>
 
+    <!-- Content -->
     <div class="student-card">
       <div id="studentInfo">
-        <div class="loading-spinner">
+        <div class="loading">
           <div class="spinner"></div>
           <p>তথ্য লোড হচ্ছে...</p>
         </div>
       </div>
       <div style="text-align: center;">
         <a href="index.html" class="home-link">
-          <i class="fas fa-home"></i> মূল পেইজে ফিরে যান
+          <i class="fas fa-arrow-left"></i> ফিরে যান
         </a>
       </div>
     </div>
 
-    <div class="mobile-bottom-bar">
-        <a href="index.html#home"><i class="fas fa-home"></i> হোম</a>
-        <a href="index.html#vorti"><i class="fas fa-pen"></i> ভর্তি</a>
-        <a href="index.html#gallery"><i class="fas fa-image"></i> গ্যালারি</a>
-        <a href="index.html#contact"><i class="fas fa-phone"></i> যোগাযোগ</a>
+    <!-- Bottom Bar -->
+    <div class="bottom-bar">
+      <a href="index.html#home"><i class="fas fa-home"></i> হোম</a>
+      <a href="index.html#vorti"><i class="fas fa-pen"></i> ভর্তি</a>
+      <a href="index.html#gallery"><i class="fas fa-image"></i> গ্যালারি</a>
+      <a href="index.html#contact"><i class="fas fa-phone"></i> যোগাযোগ</a>
     </div>
 
-  <a href="index.html" class="floating-home" title="মূল পেইজে ফিরে যান">
-    <i class="fas fa-home"></i>
-  </a>
+    <!-- Floating Home -->
+    <a href="index.html" class="floating-home" title="হোম">
+      <i class="fas fa-home"></i>
+    </a>
 
-  <div id="statusOverlay" class="status-overlay">
-    <div class="overlay-card">
-      <span class="overlay-main" id="overlayMain"></span>
-      <span class="overlay-sub" id="overlaySub"></span>
+    <!-- Status Overlay -->
+    <div id="statusOverlay" class="status-overlay">
+      <div class="overlay-card">
+        <span class="overlay-main" id="overlayMain"></span>
+        <span class="overlay-sub" id="overlaySub"></span>
+      </div>
     </div>
   </div>
 
   <script>
     (function() {
-      // ---- শিক্ষাবর্ষ ও শীট আইডি ম্যাপিং (সহজে সম্প্রসারণযোগ্য) ----
       const ACADEMIC_YEAR_SHEETS = {
         "১৪৪৭-৪৮ হিজরী/২০২৬-২৭ ঈসায়ী": "1_JnCfyQSiKoBBdSK6BdY_Z7KeTqa-zpTwOPK7CjxBk0",
         "১৪৪৫-৪৬ হিজরী/২০২৫-২৬ ঈসায়ী": "1B6BzLPVKGeRosVm0p_DbMk5tssfuQTWbSF5W97-31-A"
       };
 
-      // ইউআরএল প্যারামিটার
       const params = new URLSearchParams(window.location.search);
       let yearParam = params.get('year');
       const jamat = params.get('jamat');
       const reg = params.get('reg') ? parseInt(params.get('reg')) : null;
-      const roll = params.get('roll') ? parseInt(params.get('roll')) : null; // ঐচ্ছিক - পুরাতন লিংকের জন্য রাখা হয়েছে
+      const roll = params.get('roll') ? parseInt(params.get('roll')) : null;
 
       const overlay = document.getElementById('statusOverlay');
       const overlayMain = document.getElementById('overlayMain');
@@ -713,47 +591,30 @@
       const infoDiv = document.getElementById('studentInfo');
       const yearDiv = document.getElementById('yearDisplay');
 
-      // ফাংশন: বাংলা থেকে ইংরেজি সংখ্যা, ইংরেজি থেকে বাংলা
       function bnToEnNumber(str) {
         if(!str) return str;
         const bn = '০১২৩৪৫৬৭৮৯';
         const en = '0123456789';
         return str.replace(/[০-৯]/g, d => en[bn.indexOf(d)]);
       }
-      function enToBnNumber(str) {
-        if(!str) return str;
-        const bn = '০১২৩৪৫৬৭৮৯';
-        const en = '0123456789';
-        return str.replace(/[0-9]/g, d => bn[en.indexOf(d)]);
-      }
 
-      // হিজরি সাল অটো +১ ফিক্স (যদি প্রয়োজন হয়)
-      function fixHijriYear(text) {
-        if (!text) return text;
-        let converted = bnToEnNumber(text);
-        const match = converted.match(/(\d+)-(\d+)\s*হিজরী\/(.+)/);
-        if (match) {
-          let first = parseInt(match[1]) + 1;
-          let second = parseInt(match[2]) + 1;
-          let newHijri = `${first}-${second} হিজরী/${match[3]}`;
-          return enToBnNumber(newHijri);
-        }
-        return text;
-      }
-
-      // শিক্ষাবর্ষ ভ্যালিডেশন এবং শীট আইডি নির্বাচন
       let selectedSheetId = null;
       let matchedYearKey = null;
 
-      // শুধুমাত্র year, jamat এবং reg বাধ্যতামূলক
       if (!yearParam || !jamat || !reg) {
-        infoDiv.innerHTML = `<div class="not-found"><i class="fas fa-exclamation-triangle"></i><h2>⚠️ ভুল তথ্য!</h2><p>সঠিক তথ্য প্রদান করুন: year, jamat, reg</p><p style="margin-top:10px;font-size:14px;color:#666;">(roll নম্বর ঐচ্ছিক - পুরাতন লিংকের জন্য সংরক্ষিত)</p></div>`;
-        yearDiv.innerHTML = 'শিক্ষাবর্ষ: তথ্য পাওয়া যায়নি';
+        infoDiv.innerHTML = `
+          <div class="not-found">
+            <i class="fas fa-exclamation-triangle"></i>
+            <h2>সঠিক তথ্য দিন</h2>
+            <p>year, jamat, reg প্রয়োজন</p>
+            <div class="sub">roll নম্বর ঐচ্ছিক</div>
+          </div>
+        `;
+        yearDiv.innerHTML = 'শিক্ষাবর্ষ: পাওয়া যায়নি';
         overlay.classList.remove('active', 'warning');
         return;
       }
 
-      // ইউজারের দেয়া year কোন ম্যাপিং এর সাথে মেলে? (সাধারণ তুলনা)
       const userYearClean = yearParam.trim();
       let foundKey = null;
       for (let key in ACADEMIC_YEAR_SHEETS) {
@@ -762,7 +623,6 @@
           break;
         }
       }
-      // যদি সরাসরি ম্যাচ না পায়, তাহলে স্পেস ও ইউনিকোড ট্রিম করে চেক
       if (!foundKey) {
         const normalizedUser = userYearClean.replace(/\s/g, '').toLowerCase();
         for (let key in ACADEMIC_YEAR_SHEETS) {
@@ -773,22 +633,26 @@
           }
         }
       }
-      
+
       if (foundKey) {
         matchedYearKey = foundKey;
         selectedSheetId = ACADEMIC_YEAR_SHEETS[foundKey];
       } else {
-        // শিক্ষাবর্ষ খুঁজে পাওয়া যায়নি
-        infoDiv.innerHTML = `<div class="not-found"><i class="fas fa-calendar-times"></i><h2>⚠️ শিক্ষাবর্ষ ভুল বা অসমর্থিত</h2><p>"${escapeHtml(yearParam)}" এই শিক্ষাবর্ষের ডাটাবেইজ নেই। উপলব্ধ: ${Object.keys(ACADEMIC_YEAR_SHEETS).join(', ')}</p></div>`;
+        infoDiv.innerHTML = `
+          <div class="not-found">
+            <i class="fas fa-calendar-times"></i>
+            <h2>শিক্ষাবর্ষ পাওয়া যায়নি</h2>
+            <p>"${escapeHtml(yearParam)}"</p>
+            <div class="sub">উপলব্ধ: ${Object.keys(ACADEMIC_YEAR_SHEETS).join(', ')}</div>
+          </div>
+        `;
         yearDiv.innerHTML = `শিক্ষাবর্ষ: ${escapeHtml(yearParam)} (অমিল)`;
         overlay.classList.remove('active', 'warning');
         return;
       }
 
-      // হেডারে মিল রেখে শিক্ষাবর্ষ প্রদর্শন (মূল ম্যাচড কেয়ার নাম দেখানো)
       yearDiv.innerHTML = `শিক্ষাবর্ষ: ${matchedYearKey}`;
 
-      // এখন শীট থেকে ডাটা আনা
       const sheetURL = `https://docs.google.com/spreadsheets/d/${selectedSheetId}/gviz/tq?tqx=out:json`;
 
       fetch(sheetURL)
@@ -806,40 +670,29 @@
             return obj;
           });
 
-          // শিক্ষার্থী খোঁজা : শুধুমাত্র শিক্ষাবর্ষ, জামাত এবং রেজি/আইডি মিলবে
-          // রোল নম্বর ঐচ্ছিক - পুরাতন লিংকের জন্য কাজ করবে কিন্তু বাধ্যতামূলক নয়
           const student = data.find(s => {
             const sheetYear = s['শিক্ষাবর্ষ'] ? s['শিক্ষাবর্ষ'].toString().trim() : '';
-            
-            // মূল তিনটি ফিল্ড মিলানো (বাধ্যতামূলক)
             const matchYear = (sheetYear === matchedYearKey) || (sheetYear === yearParam);
             const matchJamat = s['জামাত'] === jamat;
             const matchReg = parseInt(s['রেজিস্ট্রেশন/আইডি']) === reg;
-            
-            // যদি মূল তিনটি ফিল্ড মিলে, তাহলে রোল চেক না করেই গ্রহণ করবো
-            if (matchYear && matchJamat && matchReg) {
-              return true;
-            }
-            
-            return false;
+            return matchYear && matchJamat && matchReg;
           });
 
           if (!student) {
             infoDiv.innerHTML = `
               <div class="not-found">
                 <i class="fas fa-search"></i>
-                <h2>⚠️ শিক্ষার্থীর তথ্য পাওয়া যায়নি</h2>
-                <p>প্রদত্ত তথ্য অনুযায়ী <strong>${matchedYearKey}</strong> শিক্ষাবর্ষে কোনো শিক্ষার্থী খুঁজে পাওয়া যায়নি।</p>
-                <p style="margin-top:15px;">জামাত: ${jamat || '?'}<br>রেজি: ${reg || '?'}</p>
-                ${roll ? `<p style="color:#999;font-size:14px;margin-top:10px;">রোল: ${roll} (ঐচ্ছিক, মেলানো হয়নি)</p>` : ''}
+                <h2>শিক্ষার্থী পাওয়া যায়নি</h2>
+                <p>${matchedYearKey}</p>
+                <p style="margin-top:8px;">জামাত: ${escapeHtml(jamat)}<br>রেজি: ${escapeHtml(reg)}</p>
+                ${roll ? `<div class="sub">রোল: ${roll} (ঐচ্ছিক)</div>` : ''}
               </div>
             `;
             overlay.classList.remove('active', 'warning');
             return;
           }
 
-          // স্ট্যাটাস ব্যাজ ক্লাস
-          const getStatusBadgeClass = (status) => {
+          const getBadgeClass = (status) => {
             if (!status) return 'info';
             if (status.includes('ত্যাগকৃত') || status.includes('বহিষ্কৃত') || status.includes('বাতিল')) return 'danger';
             if (status.includes('অধ্যয়নরত')) return 'success';
@@ -847,41 +700,164 @@
             return 'info';
           };
 
-          // তথ্যের HTML নির্মাণ
-          const fullInfoHTML = `
-            <div class="name-block">
-              <div class="student-name">${escapeHtml(student['শিক্ষার্থীর নাম'] || 'উল্লেখ নেই')}</div>
-              <div class="student-id-badge">
-                <i class="fas fa-qrcode"></i> আইডি: ${escapeHtml(student['রেজিস্ট্রেশন/আইডি'] || 'N/A')}
+          const getBadgeIcon = (status) => {
+            if (!status) return 'fa-circle-info';
+            if (status.includes('ত্যাগকৃত') || status.includes('বহিষ্কৃত') || status.includes('বাতিল')) return 'fa-circle-exclamation';
+            if (status.includes('অধ্যয়নরত')) return 'fa-circle-check';
+            if (status.includes('অপেক্ষমাণ')) return 'fa-clock';
+            return 'fa-circle-info';
+          };
+
+          const blood = student['রক্তের গ্রুপ'] || '';
+          const bloodHTML = blood ? `
+            <span class="blood-badge">
+              <i class="fas fa-droplet"></i>
+              <span class="label">রক্তের গ্রুপ</span>
+              ${escapeHtml(blood)}
+            </span>
+          ` : `<span class="item-value empty">উল্লেখ নেই</span>`;
+
+          const eq = student['সমমান'] || '';
+          const eqHTML = eq ? escapeHtml(eq) : `<span class="item-value empty">উল্লেখ নেই</span>`;
+
+          const status = student['শিক্ষার্থী ধরণ/স্ট্যাটাস'] || '';
+          const statusLabel = status ? status.split(/[-–—]/)[0] : '';
+
+          const fullHTML = `
+            <div class="profile">
+              <div>
+                <div class="profile-name">${escapeHtml(student['শিক্ষার্থীর নাম'] || 'উল্লেখ নেই')}</div>
+                <div class="profile-id">
+                  <i class="fas fa-qrcode"></i>
+                  ${escapeHtml(student['রেজিস্ট্রেশন/আইডি'] || 'N/A')}
+                </div>
+              </div>
+              <div class="profile-avatar">
+                <i class="fas fa-user-graduate"></i>
               </div>
             </div>
-            <div class="info-grid">
-              <div class="info-row"><div class="label-section"><i class="fas fa-id-card info-icon"></i><span class="info-label">রেজিস্ট্রেশন নম্বর</span></div><span class="info-value">${escapeHtml(student['রেজিস্ট্রেশন/আইডি'] || 'উল্লেখ নেই')}</span></div>
-              <div class="info-row"><div class="label-section"><i class="fas fa-sort-numeric-up info-icon"></i><span class="info-label">রোল নম্বর</span></div><span class="info-value">${escapeHtml(student['রোল নম্বর'] || 'উল্লেখ নেই')}</span></div>
-              <div class="info-row"><div class="label-section"><i class="fas fa-user-tie info-icon"></i><span class="info-label">পিতার নাম</span></div><span class="info-value">${escapeHtml(student['পিতার নাম'] || 'উল্লেখ নেই')}</span></div>
-              <div class="info-row"><div class="label-section"><i class="fas fa-graduation-cap info-icon"></i><span class="info-label">মারহালা</span></div><span class="info-value">${escapeHtml(student['মারহালা'] || 'উল্লেখ নেই')}</span></div>
-              <div class="info-row"><div class="label-section"><i class="fas fa-users info-icon"></i><span class="info-label">জামাত/শ্রেণী</span></div><span class="info-value">${escapeHtml(student['জামাত/শ্রেণী'] || 'উল্লেখ নেই')}</span></div>
-               <div class="info-row"><div class="label-section"><i class="fas fa-phone info-icon"></i><span class="info-label">অভিভাবকের মোবাইল (মা/বোন) </span></div><span class="info-value">${escapeHtml(student['মোবাইল (মা)'] || 'উল্লেখ নেই')}</span></div>             
-              <div class="info-row"><div class="label-section"><i class="fas fa-phone info-icon"></i><span class="info-label">অভিভাবকের মোবাইল (বাবা/ভাই) </span></div><span class="info-value">${escapeHtml(student['মোবাইল (বাবা/ভাই)'] || 'উল্লেখ নেই')}</span></div>
-              <div class="info-row"><div class="label-section"><i class="fas fa-calendar-alt info-icon"></i><span class="info-label">জন্ম নিবন্ধন নম্বর</span></div><span class="info-value">${escapeHtml(student['জন্ম নিবন্ধন নাম্বার'] || 'উল্লেখ নেই')}</span></div>
-              <div class="info-row"><div class="label-section"><i class="fas fa-birthday-cake info-icon"></i><span class="info-label">জন্ম তারিখ</span></div><span class="info-value">${escapeHtml(student['জন্ম তারিখ'] || 'উল্লেখ নেই')}</span></div>
-              <div class="info-row"><div class="label-section"><i class="fas fa-map-marker-alt info-icon"></i><span class="info-label">ঠিকানা</span></div><span class="info-value">${escapeHtml(student['ঠিকানা'] || 'উল্লেখ নেই')}</span></div>
-              <div class="info-row"><div class="label-section"><i class="fas fa-info-circle info-icon"></i><span class="info-label">শিক্ষার্থী ধরণ</span></div><span class="info-value">${escapeHtml(student['শিক্ষার্থী ধরণ/স্ট্যাটাস'] || 'উল্লেখ নেই')} ${student['শিক্ষার্থী ধরণ/স্ট্যাটাস'] ? `<span class="status-badge ${getStatusBadgeClass(student['শিক্ষার্থী ধরণ/স্ট্যাটাস'])}">${escapeHtml(student['শিক্ষার্থী ধরণ/স্ট্যাটাস'].split(/[-–—]/)[0])}</span>` : ''}</span></div>
+
+            <div class="grid">
+              <div class="item">
+                <div class="item-icon"><i class="fas fa-id-card"></i></div>
+                <div>
+                  <span class="item-label">রেজিস্ট্রেশন</span>
+                  <div class="item-value">${escapeHtml(student['রেজিস্ট্রেশন/আইডি'] || 'উল্লেখ নেই')}</div>
+                </div>
+              </div>
+
+              <div class="item">
+                <div class="item-icon"><i class="fas fa-sort-numeric-up"></i></div>
+                <div>
+                  <span class="item-label">রোল নম্বর</span>
+                  <div class="item-value">${escapeHtml(student['রোল নম্বর'] || 'উল্লেখ নেই')}</div>
+                </div>
+              </div>
+
+              <div class="item">
+                <div class="item-icon"><i class="fas fa-user-tie"></i></div>
+                <div>
+                  <span class="item-label">পিতার নাম</span>
+                  <div class="item-value">${escapeHtml(student['পিতার নাম'] || 'উল্লেখ নেই')}</div>
+                </div>
+              </div>
+
+              <div class="item">
+                <div class="item-icon"><i class="fas fa-graduation-cap"></i></div>
+                <div>
+                  <span class="item-label">মারহালা</span>
+                  <div class="item-value">${escapeHtml(student['মারহালা'] || 'উল্লেখ নেই')}</div>
+                </div>
+              </div>
+
+              <div class="item">
+                <div class="item-icon"><i class="fas fa-users"></i></div>
+                <div>
+                  <span class="item-label">জামাত/শ্রেণী</span>
+                  <div class="item-value">${escapeHtml(student['জামাত/শ্রেণী'] || 'উল্লেখ নেই')}</div>
+                </div>
+              </div>
+
+              <div class="item">
+                <div class="item-icon"><i class="fas fa-tag"></i></div>
+                <div>
+                  <span class="item-label">সমমান</span>
+                  <div class="item-value">${eqHTML}</div>
+                </div>
+              </div>
+
+              <div class="item">
+                <div class="item-icon"><i class="fas fa-phone"></i></div>
+                <div>
+                  <span class="item-label">মোবাইল (মা/বোন)</span>
+                  <div class="item-value">${escapeHtml(student['মোবাইল (মা)'] || 'উল্লেখ নেই')}</div>
+                </div>
+              </div>
+
+              <div class="item">
+                <div class="item-icon"><i class="fas fa-phone"></i></div>
+                <div>
+                  <span class="item-label">মোবাইল (বাবা/ভাই)</span>
+                  <div class="item-value">${escapeHtml(student['মোবাইল (বাবা/ভাই)'] || 'উল্লেখ নেই')}</div>
+                </div>
+              </div>
+
+              <div class="item">
+                <div class="item-icon"><i class="fas fa-calendar-alt"></i></div>
+                <div>
+                  <span class="item-label">জন্ম নিবন্ধন</span>
+                  <div class="item-value">${escapeHtml(student['জন্ম নিবন্ধন নাম্বার'] || 'উল্লেখ নেই')}</div>
+                </div>
+              </div>
+
+              <div class="item">
+                <div class="item-icon"><i class="fas fa-cake-candles"></i></div>
+                <div>
+                  <span class="item-label">জন্ম তারিখ</span>
+                  <div class="item-value">${escapeHtml(student['জন্ম তারিখ'] || 'উল্লেখ নেই')}</div>
+                </div>
+              </div>
+
+              <div class="item full">
+                <div class="item-icon"><i class="fas fa-map-pin"></i></div>
+                <div>
+                  <span class="item-label">ঠিকানা</span>
+                  <div class="item-value">${escapeHtml(student['ঠিকানা'] || 'উল্লেখ নেই')}</div>
+                </div>
+              </div>
+
+              <div class="item">
+                <div class="item-icon"><i class="fas fa-droplet"></i></div>
+                <div>
+                  <span class="item-label">রক্তের গ্রুপ</span>
+                  <div class="item-value">${bloodHTML}</div>
+                </div>
+              </div>
+
+              <div class="item">
+                <div class="item-icon"><i class="fas fa-info-circle"></i></div>
+                <div>
+                  <span class="item-label">শিক্ষার্থী ধরণ</span>
+                  <div class="item-value">
+                    ${escapeHtml(status || 'উল্লেখ নেই')}
+                    ${status ? ` <span class="badge ${getBadgeClass(status)}"><i class="fas ${getBadgeIcon(status)}"></i> ${escapeHtml(statusLabel)}</span>` : ''}
+                  </div>
+                </div>
+              </div>
             </div>
           `;
 
-          // ওভারলে স্ট্যাটাস প্রক্রিয়া
-          const rawStatus = student['শিক্ষার্থী ধরণ/স্ট্যাটাস'] || '';
-          let mainStatus = rawStatus;
+          // Overlay
+          let mainStatus = status;
           let subStatus = '';
-          if (rawStatus.includes('–')) { let parts = rawStatus.split('–'); mainStatus = parts[0].trim(); subStatus = parts[1] ? parts[1].trim() : ''; }
-          else if (rawStatus.includes('—')) { let parts = rawStatus.split('—'); mainStatus = parts[0].trim(); subStatus = parts[1] ? parts[1].trim() : ''; }
-          else if (rawStatus.includes('-')) { let parts = rawStatus.split('-'); mainStatus = parts[0].trim(); subStatus = parts[1] ? parts[1].trim() : ''; }
-          if (rawStatus.includes('সাময়িক ভর্তি বাতিল')) { mainStatus = 'সাময়িক ভর্তি বাতিল'; subStatus = ''; }
+          if (status.includes('–')) { let parts = status.split('–'); mainStatus = parts[0].trim(); subStatus = parts[1] ? parts[1].trim() : ''; }
+          else if (status.includes('—')) { let parts = status.split('—'); mainStatus = parts[0].trim(); subStatus = parts[1] ? parts[1].trim() : ''; }
+          else if (status.includes('-')) { let parts = status.split('-'); mainStatus = parts[0].trim(); subStatus = parts[1] ? parts[1].trim() : ''; }
+          if (status.includes('সাময়িক ভর্তি বাতিল')) { mainStatus = 'সাময়িক ভর্তি বাতিল'; subStatus = ''; }
 
           overlayMain.innerText = mainStatus || 'স্ট্যাটাস';
           overlaySub.innerText = subStatus || '';
-          const isWarning = rawStatus.includes('ত্যাগকৃত') || rawStatus.includes('বহিষ্কৃত') || rawStatus.includes('সাময়িক ভর্তি বাতিল');
+          const isWarning = status.includes('ত্যাগকৃত') || status.includes('বহিষ্কৃত') || status.includes('সাময়িক ভর্তি বাতিল');
           overlay.classList.add('active');
           if (isWarning) {
             overlay.classList.add('warning');
@@ -893,21 +869,26 @@
 
           if (isWarning) {
             infoDiv.innerHTML = `
-              <div class="blocked-container">
-                <div class="blocked-icon">⛔</div>
+              <div class="blocked">
+                <span class="blocked-icon">⛔</span>
                 <div class="blocked-title">${escapeHtml(mainStatus)}</div>
-                <div class="blocked-subtitle">${escapeHtml(subStatus) || 'অনুমতি নেই'}</div>
-                <div class="blocked-message"><i class="fas fa-lock"></i> এই শিক্ষার্থীর বিস্তারিত তথ্য প্রদর্শন করা সম্ভব নয়</div>
+                <div class="blocked-sub">${escapeHtml(subStatus) || 'অনুমতি নেই'}</div>
+                <div class="blocked-msg"><i class="fas fa-lock"></i> বিস্তারিত তথ্য দেখা যাবে না</div>
               </div>
             `;
           } else {
-            infoDiv.innerHTML = fullInfoHTML;
-            setTimeout(() => { overlay.classList.remove('active', 'warning'); }, 1000);
+            infoDiv.innerHTML = fullHTML;
+            setTimeout(() => { overlay.classList.remove('active', 'warning'); }, 800);
           }
         })
-        .catch(err => {
-          console.error(err);
-          infoDiv.innerHTML = `<div class="not-found"><i class="fas fa-exclamation-circle"></i><h2>⚠️ ডেটা লোড করতে সমস্যা হয়েছে</h2><p>সার্ভার সংযোগে সমস্যা হচ্ছে। আবার চেষ্টা করুন।</p><p style="font-size:14px;">শীট আইডি: ${selectedSheetId}</p></div>`;
+        .catch(() => {
+          infoDiv.innerHTML = `
+            <div class="not-found">
+              <i class="fas fa-exclamation-circle"></i>
+              <h2>সংযোগ সমস্যা</h2>
+              <p>আবার চেষ্টা করুন</p>
+            </div>
+          `;
           overlay.classList.remove('active', 'warning');
         });
 
@@ -918,8 +899,6 @@
           if (m === '<') return '&lt;';
           if (m === '>') return '&gt;';
           return m;
-        }).replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g, function(c) {
-          return c;
         });
       }
     })();
